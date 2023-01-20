@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
+import Loader from './components/shared/loader';
 import Navbar from './components/shared/navbar';
 import Sidebar from './components/shared/sidebar';
 import AuthProvider, {
@@ -18,6 +19,8 @@ function Root() {
         <Sidebar />
 
         <div className="main-content">
+          <Loader />
+
           <div className="section">
             <div className="container">
               <Outlet />

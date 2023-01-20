@@ -45,3 +45,12 @@ body {
   box-shadow: 0 0 0.3em rgb(10 10 10 / 10%);
   clip-path: inset(0px -0.3em 0px 0px);
 }
+
+.loading-spinner {
+  height: 1em;
+  width: 1em;
+  position: absolute;
+  z-index: 1;
+  right: 0.5em;
+  top: 5.5em; // add 5em extra for navbar
+}
