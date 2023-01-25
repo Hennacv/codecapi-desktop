@@ -28,5 +28,4 @@ npm-debug.log.*
 *.sass.d.ts
 *.scss.d.ts
 
-src/renderer/firebase.ts
-src/renderer/.env
+.erb/configs/.env

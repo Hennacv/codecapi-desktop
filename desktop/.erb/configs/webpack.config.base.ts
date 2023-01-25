@@ -2,6 +2,8 @@
  * Base webpack config used across other specific configs
  */
 
+import dotenv from 'dotenv';
+dotenv.config({ path: __dirname + '/.env' });
 import webpack from 'webpack';
 import TsconfigPathsPlugins from 'tsconfig-paths-webpack-plugin';
 import webpackPaths from './webpack.paths';
@@ -50,6 +52,10 @@ const configuration: webpack.Configuration = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      API_URL: JSON.stringify(process.env.API_URL),
+      FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
+    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
