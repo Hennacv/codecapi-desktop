@@ -7,9 +7,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "db:create": "mikro-orm migration:create",
-    "db:up": "mikro-orm migration:up",
-    "db:down": "mikro-orm migration:down",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
