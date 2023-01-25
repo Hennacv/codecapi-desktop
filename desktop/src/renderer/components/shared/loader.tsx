@@ -4,7 +4,7 @@ import { useIsFetching } from 'react-query';
 function Loader() {
   const isFetching = useIsFetching();
 
-  if (isFetching === 1) {
+  if (isFetching === 0) {
     return null;
   }
 
