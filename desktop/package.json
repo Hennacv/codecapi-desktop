@@ -191,7 +191,7 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "[codecapi]",
+    "productName": "[code]capi",
     "appId": "org.erb.codecapi",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
