@@ -24,6 +24,6 @@ export class Question extends CustomBaseEntity {
   @JoinTable()
   tags: Tag[];
 
-  @OneToMany(() => Answer, (answer) => answer.user)
+  @OneToMany(() => Answer, (answer) => answer.question)
   answer: Answer[];
 }

@@ -41,7 +41,7 @@ export class AnswerService {
   async fetchAnswer(id: number) {
     return await Answer.findOneOrFail({
       where: { id },
-      relations: ['user'],
+      relations: ['question', 'user'],
       order: {
         createdAt: 'desc',
         user: {
