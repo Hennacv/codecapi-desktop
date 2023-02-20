@@ -24,12 +24,12 @@ function Root() {
     <AuthProvider>
       <Navbar />
 
-      <div className="is-flex">
+      <div className="flex">
         <Sidebar />
 
-        <div className="main-content">
-          <div className="section">
-            <div className="container">
+        <div className="w-full mt-20 ml-60">
+          <div className="block p-11">
+            <div className="relative m-auto">
               <Outlet />
             </div>
           </div>

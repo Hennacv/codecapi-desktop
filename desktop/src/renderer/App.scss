@@ -8,49 +8,54 @@ body {
   background-color: hsl(207, 60%, 98%);
 }
 
-.logo {
-  width: 10em;
-}
+// hr.solid {
+//   border-top: 1px solid #bbb;
+//   margin: 0.5em 0;
+// }
 
-.navbar-shadow {
-  box-shadow: 0 0.1em 0.3em -0.125em rgb(10 10 10 / 10%),
-    0 0px 0 1px rgb(10 10 10 / 2%);
-}
+// .logo {
+//   width: 10em;
+// }
 
-.navbar {
-  height: 5em;
-  width: 100%;
-  position: fixed;
-}
+// .navbar-shadow {
+//   box-shadow: 0 0.1em 0.3em -0.125em rgb(10 10 10 / 10%),
+//     0 0px 0 1px rgb(10 10 10 / 2%);
+// }
 
-.sidebar {
-  position: fixed;
-  min-width: 15em;
-  height: 100%;
-  z-index: 1;
-  margin-top: 5em;
-}
+// .navbar {
+//   height: 5em;
+//   width: 100%;
+//   position: fixed;
+// }
 
-.main-content {
-  width: 100%;
-  margin-left: 15em;
-  margin-top: 5em;
-}
+// .sidebar {
+//   position: fixed;
+//   min-width: 15em;
+//   height: 100%;
+//   z-index: 1;
+//   margin-top: 5em;
+// }
+
+// .main-content {
+//   width: 100%;
+//   margin-left: 15em;
+//   margin-top: 5em;
+// }
 
 .pointer {
   cursor: pointer;
 }
 
-.sidebar-shadow {
-  box-shadow: 0 0 0.3em rgb(10 10 10 / 10%);
-  clip-path: inset(0px -0.3em 0px 0px);
-}
+// .sidebar-shadow {
+//   box-shadow: 0 0 0.3em rgb(10 10 10 / 10%);
+//   clip-path: inset(0px -0.3em 0px 0px);
+// }
 
-.loading-spinner {
-  height: 1em;
-  width: 1em;
-  position: absolute;
-  z-index: 1;
-  right: 0.5em;
-  top: 5.5em; // add 5em extra for navbar
-}
+// .loading-spinner {
+//   height: 1em;
+//   width: 1em;
+//   position: absolute;
+//   z-index: 1;
+//   right: 0.5em;
+//   top: 5.5em; // add 5em extra for navbar
+// }
