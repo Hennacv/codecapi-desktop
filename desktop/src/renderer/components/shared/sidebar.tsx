@@ -9,23 +9,25 @@ function Sidebar() {
   }
 
   return (
-    <aside className="menu has-background-white p-3 sidebar sidebar-shadow">
-      <p className="menu-label">Vragen</p>
+    <aside className="text-base py-6 px-2 md:col-span-3 md:py-0 md:px-0">
+      {/* <p className="menu-label">Vragen</p> */}
 
-      <ul className="menu-list">
+      <ul className="space-y-1">
         <li>
-          <SidebarLink to="/questions">Overzicht</SidebarLink>
+          <SidebarLink to="/questions">Vragen</SidebarLink>
         </li>
         <li>
           <SidebarLink to="/questions/new">Vraag stellen</SidebarLink>
         </li>
       </ul>
 
-      <p className="menu-label">Gebruikers</p>
+      <hr className="border-t border-neutral-400 border-solid my-2" />
 
-      <ul className="menu-list">
+      {/* <p className="menu-label">Gebruikers</p> */}
+
+      <ul className="space-y-1">
         <li>
-          <SidebarLink to="/users">Overzicht</SidebarLink>
+          <SidebarLink to="/users">Gebruikers</SidebarLink>
         </li>
       </ul>
     </aside>
