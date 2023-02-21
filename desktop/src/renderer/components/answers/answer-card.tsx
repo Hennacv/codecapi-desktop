@@ -7,7 +7,6 @@ interface Props {
 
 function AnswerCard({ answer }: Props) { 
 
-    // placeholder styles
     const cardStyles = {
         margin: '0rem 0rem 1.5rem 0rem',
         padding: '1.5rem',
