@@ -35,7 +35,6 @@ function NewAnswer({id}: Props) {
         });
     }
 
-    // placeholder styles
     const contrainerStyle = {
         margin: '1.5rem 0rem 1.5rem 0rem',
         padding: '1.5rem',
