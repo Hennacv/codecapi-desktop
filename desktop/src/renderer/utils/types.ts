@@ -7,6 +7,11 @@ export interface AddQuestionDto {
   tags?: { id: number }[];
 }
 
+export interface AddAnswerDto {
+  text: string;
+  questionId: number;
+}
+
 export interface User {
   id: number;
   email: string;
@@ -19,10 +24,17 @@ export interface Tag {
 }
 
 export interface Question {
+  answer: Answer[];
   id: number;
   title: string;
   text: string;
   tags: Tag[];
   createdAt: string;
   user: User;
+}
+
+export interface Answer {
+  id: number;
+  text: string;
+  createdAt: string;
 }
