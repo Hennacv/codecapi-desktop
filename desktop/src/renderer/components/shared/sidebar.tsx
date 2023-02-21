@@ -9,10 +9,10 @@ function Sidebar() {
   }
 
   return (
-    <aside className="text-base bg-white p-3 fixed min-w-side h-full z-1 mt-20 shadow-side">
+    <aside className="text-base py-6 px-2 md:col-span-3 md:py-0 md:px-0">
       {/* <p className="menu-label">Vragen</p> */}
 
-      <ul>
+      <ul className="space-y-1">
         <li>
           <SidebarLink to="/questions">Vragen</SidebarLink>
         </li>
@@ -25,7 +25,7 @@ function Sidebar() {
 
       {/* <p className="menu-label">Gebruikers</p> */}
 
-      <ul>
+      <ul className="space-y-1">
         <li>
           <SidebarLink to="/users">Gebruikers</SidebarLink>
         </li>

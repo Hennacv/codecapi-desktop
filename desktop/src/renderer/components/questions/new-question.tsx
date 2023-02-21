@@ -71,36 +71,52 @@ function NewQuestion() {
   }
 
   return (
-    <div>
-      <form>
-        <div className="card">
-          <div className="card-content">
-            <header className="title is-5">Nieuwe vraag</header>
+    <form>
+      <div className="shadow sm:overflow-hidden sm:rounded-md">
+        <div className="space-y-6 bg-white py-6 px-4 sm:p-6">
+          <header className="text-lg font-medium leading-6 text-gray-900">
+            Nieuwe vraag
+          </header>
 
-            <div className="field">
-              <label className="label">Titel</label>
+          <div className="grid grid-cols-6 gap-6">
+            <div className="col-span-4">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Titel
+              </label>
               <div className="control">
                 <input
-                  className="input"
+                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   type="text"
+                  id="title"
                   onChange={(e) => updateFormValue('title', e.target.value)}
                 />
               </div>
             </div>
 
-            <div className="field mb-5">
-              <label className="label">Tekst</label>
-              <div className="control">
+            <div className="col-span-6">
+              <label
+                htmlFor="text"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Tekst
+              </label>
+              <div className="control mt-1">
                 <textarea
-                  className="textarea"
+                  id="text"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   onChange={(e) => updateFormValue('text', e.target.value)}
-                ></textarea>
+                />
               </div>
             </div>
 
-            <div className="field mb-5">
-              <div className="is-flex is-align-items-center mb-3">
-                <label className="label mb-0 mr-3">Tags</label>
+            <div className="col-span-6">
+              <div className="">
+                <label className="block text-sm font-medium text-gray-700">
+                  Tags
+                </label>
 
                 <span
                   className="pointer mr-3"
@@ -135,7 +151,7 @@ function NewQuestion() {
                 {tags.map((tag: any) => (
                   <div
                     key={tag.id}
-                    className={`tag is-medium pointer ${
+                    className={`inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 ${
                       tagIsSelected(tag) ? 'is-link' : ''
                     }`}
                     onClick={() => toggleTag(tag)}
@@ -145,26 +161,26 @@ function NewQuestion() {
                 ))}
               </div>
             </div>
+          </div>
 
-            <div className="field is-grouped">
-              <div className="control">
-                <button
-                  className="button is-link"
-                  disabled={addQuestion.isLoading || !form.text || !form.title}
-                  onClick={() => onSubmit(form)}
-                >
-                  Vraag aanmaken
-                </button>
-              </div>
-
-              <Link to="/questions" className="button mb-5">
-                Terug
-              </Link>
+          <div className="field is-grouped">
+            <div className="control">
+              <button
+                className="button is-link"
+                disabled={addQuestion.isLoading || !form.text || !form.title}
+                onClick={() => onSubmit(form)}
+              >
+                Vraag aanmaken
+              </button>
             </div>
+
+            <Link to="/questions" className="button mb-5">
+              Terug
+            </Link>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
