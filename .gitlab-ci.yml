@@ -29,7 +29,7 @@ release:
         # - yarn
         # - yarn package
         - mkdir release-cli
-        - curl -https://gitlab.com/gitlab-org/release-cli/-/releases/v0.15.0/downloads/bin/release-cli-linux-amd64 --output release-cli\release-cli
+        - curl https://gitlab.com/gitlab-org/release-cli/-/releases/v0.15.0/downloads/bin/release-cli-linux-amd64 --output release-cli\release-cli
         - cd release-cli
         - release-cli create --name "Release $CI_COMMIT_TAG" --description CHANGELOG.md --tag-name "$CI_COMMIT_TAG"     
 
