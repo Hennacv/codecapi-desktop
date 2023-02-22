@@ -20,7 +20,7 @@ stages: # List of stages for jobs, and their order of execution
     - release
 
 release:
-    image: node:11.14.0
+    image: electronuserland/builder:wine
     stage: release
     script:
         - cd desktop && npm run package
