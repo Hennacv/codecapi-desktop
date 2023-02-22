@@ -20,6 +20,7 @@ stages: # List of stages for jobs, and their order of execution
     - release
 
 release:
+    stage: release
     script:
         - cd desktop && npm run package
     release:
