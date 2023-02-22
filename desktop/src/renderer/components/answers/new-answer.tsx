@@ -3,17 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAddAnswer } from "renderer/hooks/use-add-answer";
 import { AddAnswerDto } from "renderer/utils/types";
 
-interface Props {
+interface NewAnswerProps {
     id: number 
 }
 
-interface AddAnswerForm {
-  text: string;
-  questionId: number;
-}
-
-function NewAnswer({id}: Props) {
-
+function NewAnswer({id}: NewAnswerProps) {
+    
     const navigate = useNavigate();
     const addAnswer = useAddAnswer({
         onSuccess: () => navigate('/questions/' + id)
@@ -23,12 +18,12 @@ function NewAnswer({id}: Props) {
         addAnswer.mutate(newAnswer);
     }
 
-    const [form, setForm] = useState<AddAnswerForm>({
+    const [form, setForm] = useState({
         text: '',
         questionId: id,
     });
 
-    function updateFormValue(field: string, value: any) {
+    function updateFormValue(field: string, value: string) {
         setForm({
           ...form,
           [field]: value,

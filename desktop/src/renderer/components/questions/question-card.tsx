@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import dayjs from 'renderer/utils/dayjs';
 import { Question } from 'renderer/utils/types';
 
-interface Props {
+interface QuestionCardProps {
   question: Question;
   showText?: boolean;
 }
 
-function QuestionCard({ question, showText = false }: Props) {
+function QuestionCard({ question, showText = false }: QuestionCardProps) {
   const navigate = useNavigate();
 
   function onPressCard(question: Question) {

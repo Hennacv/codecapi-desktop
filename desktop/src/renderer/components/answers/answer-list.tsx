@@ -1,11 +1,11 @@
 import { Answer } from 'renderer/utils/types';
 import AnswerCard from './answer-card';
 
-interface Props {
+interface AnswerListProps {
     answers: Answer[];
 }
 
-function AnswerList({answers}: Props) {
+function AnswerList({answers}: AnswerListProps) {
 
     const contrainerStyle = {
         margin: '1.5rem 0rem 1.5rem 0rem',

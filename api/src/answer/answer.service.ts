@@ -15,27 +15,22 @@ export class AnswerService {
   ) {}
 
   async create(createAnswerDto: CreateAnswerDto, user: User) {
-    console.log(createAnswerDto);
-
     let answer = this.repo.create({...createAnswerDto, userId: user.id });
     await answer.save();
     return this.fetchAnswer(answer.id);
   }
 
-  findAll() {
-    return `This action returns all answer`;
+  async update(id: number, updateAnswerDto: UpdateAnswerDto) {
+    const answer = await this.fetchAnswer(id);
+    Object.assign(answer, updateAnswerDto);
+    answer.save();
+    return answer;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} answer`;
-  }
-
-  update(id: number, updateAnswerDto: UpdateAnswerDto) {
-    return `This action updates a #${id} answer`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} answer`;
+  async remove(id: number) {
+    const answer = await Answer.findOneByOrFail({ id });
+    await this.repo.remove(answer);
+    return `Removed answer #${id}`;
   }
 
   async fetchAnswer(id: number) {

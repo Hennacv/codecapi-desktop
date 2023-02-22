@@ -1,5 +1,4 @@
-import { Type } from "class-transformer";
-import { IsInt, IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 
 export class CreateAnswerDto {
     @IsNotEmpty()

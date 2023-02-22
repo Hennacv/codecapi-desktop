@@ -1,11 +1,11 @@
 import dayjs from 'renderer/utils/dayjs';
 import { Answer } from "renderer/utils/types";
 
-interface Props {
+interface AnswerCardProps {
     answer: Answer;
 }
 
-function AnswerCard({ answer }: Props) { 
+function AnswerCard({ answer }: AnswerCardProps) { 
 
     const cardStyles = {
         margin: '0rem 0rem 1.5rem 0rem',
