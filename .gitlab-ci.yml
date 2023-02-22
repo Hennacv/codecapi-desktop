@@ -17,13 +17,16 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 stages: # List of stages for jobs, and their order of execution
+    - build
     - release
+
 
 release:
     image: electronuserland/builder:wine
     stage: release
     script:
-        - cd desktop && npm run package
+        - cd desktop yarn
+        - yarn package
     release:
         description: "super release"
         name: "My awesome release"
