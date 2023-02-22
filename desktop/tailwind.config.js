@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/renderer/*/.{js,ts,jsx,tsx}'],
+  content: ['./src/renderer/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       zIndex: {
@@ -17,7 +17,6 @@ module.exports = {
       },
     },
   },
-  variants: {},
   // eslint-disable-next-line global-require
   plugins: [require('@tailwindcss/forms')],
 };
