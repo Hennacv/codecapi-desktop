@@ -25,7 +25,8 @@ release:
     image: electronuserland/builder:wine
     stage: release
     script:
-        - cd desktop yarn
+        - cd desktop
+        - yarn
         - yarn package
     release:
         description: "super release"
