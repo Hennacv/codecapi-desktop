@@ -25,11 +25,11 @@ release:
     image: electronuserland/builder:wine
     stage: release
     script:
-        - cd desktop
-        - yarn
-        - yarn package
+        # - cd desktop
+        # - yarn
+        # - yarn package
         - mkdir release-cli
-        - curl.exe -L https://release-cli-downloads.s3.amazonaws.com/latest/release-cli-windows-amd64.exe --output release-cli\release-cli.exe
+        - curl -L https://release-cli-downloads.s3.amazonaws.com/latest/release-cli-windows-amd64.exe --output release-cli\release-cli.exe
         - dir release-cli\
         - release-cli\release-cli.exe -h
         - release-cli\release-cli.exe create --name "Release $CI_COMMIT_TAG" --description CHANGELOG.md --tag-name "$CI_COMMIT_TAG"     
