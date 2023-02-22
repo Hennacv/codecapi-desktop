@@ -47,7 +47,7 @@ electron-release-build:
   script:
         - cd desktop
         - yarn
-        - yarn package
+        - yarn package -- --mac
   artifacts:
     paths:
       - desktop/release/build/*.dmg
