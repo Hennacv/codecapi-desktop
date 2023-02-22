@@ -29,15 +29,20 @@ release:
         # - yarn
         # - yarn package
         - mkdir release-cli
-        - curl -L https://release-cli-downloads.s3.amazonaws.com/latest/release-cli-windows-amd64.exe --output release-cli\release-cli.exe
-        - dir release-cli\
-        - release-cli\release-cli.exe -h
-        - release-cli\release-cli.exe create --name "Release $CI_COMMIT_TAG" --description CHANGELOG.md --tag-name "$CI_COMMIT_TAG"     
+        - curl -https://gitlab.com/gitlab-org/release-cli/-/releases/v0.15.0/downloads/bin/release-cli-linux-amd64 --output release-cli\release-cli
+        - cd release-cli
+        - release-cli create --name "Release $CI_COMMIT_TAG" --description CHANGELOG.md --tag-name "$CI_COMMIT_TAG"     
 
     release:
         description: "super release"
         name: "My awesome release"
         tag_name: "$CI_COMMIT_TAG"
+
+
+
+
+
+
 # build:
 #     stage: build
 #     script:
