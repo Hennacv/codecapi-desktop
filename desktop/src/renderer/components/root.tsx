@@ -25,7 +25,9 @@ function Root() {
       {/* <Navbar /> */}
 
       <div className="h-screen md:grid md:grid-cols-12 md:gap-x-5">
-        <Sidebar />
+        <div className="text-base py-6 px-2 md:col-span-3 md:py-0 md:px-0">
+          <Sidebar />
+        </div>
 
         <div className="space-y-6 md:col-span-9 md:px-0">
           <div>

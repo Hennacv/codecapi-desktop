@@ -13,7 +13,11 @@ module.exports = {
         side: '15rem',
       },
       colors: {
-        'hover-bl': '#485fc7',
+        capiblack: '#1E1E1E',
+        'capi-green-800': '#10CA91',
+        'capi-green-400': '#C9ECE0',
+        'capi-green-200': '#DFF4EC',
+        capigrey: '#F8F8F8',
       },
     },
   },
