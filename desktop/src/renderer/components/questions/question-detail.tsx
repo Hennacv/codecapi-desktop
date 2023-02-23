@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetQuestion } from 'renderer/hooks/use-get-question';
 import QuestionCard from './question-card';
+import AnswerList from '../answers/answer-list';
+import NewAnswer from '../answers/new-answer';
 
 function QuestionDetail() {
   const { id } = useParams();
@@ -9,7 +11,7 @@ function QuestionDetail() {
   if (!question) {
     return null;
   }
-
+  
   return (
     <div>
       <button className="button mb-5" onClick={() => navigate('/questions')}>
@@ -17,6 +19,10 @@ function QuestionDetail() {
       </button>
 
       <QuestionCard question={question} showText />
+
+      <AnswerList answers={question.answer} />
+
+      <NewAnswer id={question.id}/>
     </div>
   );
 }

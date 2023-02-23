@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-interface Props {
+interface SidebarLinkProps {
   to: string;
   children: ReactNode;
 }
 
-function SidebarLink(props: Props) {
+function SidebarLink(props: SidebarLinkProps) {
   const location = useLocation();
 
   return (

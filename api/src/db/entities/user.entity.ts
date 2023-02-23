@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany } from 'typeorm';
+import { Answer } from './answer.entity';
 import { CustomBaseEntity } from './custom-base-entity';
 import { Question } from './question.entity';
 
@@ -15,4 +16,7 @@ export class User extends CustomBaseEntity {
 
   @OneToMany(() => Question, (question) => question.user)
   questions: Question[];
+
+  @OneToMany(() => Answer, (answer) => answer.user)
+  answer: Answer[];
 }
