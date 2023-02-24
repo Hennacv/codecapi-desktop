@@ -7,11 +7,9 @@ function Home() {
 
   return (
     <div>
-      <div className="columns is-multiline is-centered">
+      <div className="flex flex-col gap-y-4">
         {questions.map((q: Question) => (
-          <div key={q.id} className="column is-12">
-            <QuestionCard question={q} />
-          </div>
+            <QuestionCard key={q.id} question={q} />
         ))}
       </div>
     </div>

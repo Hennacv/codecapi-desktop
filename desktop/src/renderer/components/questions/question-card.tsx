@@ -15,35 +15,34 @@ function QuestionCard({ question, showText = false }: QuestionCardProps) {
   }
 
   return (
-    <div className="card pointer" onClick={() => onPressCard(question)}>
-      <div className="card-content">
-        <div className="is-flex is-align-items-center is-justify-content-space-between mb-4">
-          <div>
-            <span className="tag is-medium has-text-weight-bold is-dark mr-4">
-              {question.user.name}
-            </span>
-
-            {question.tags.map((tag) => (
-              <div key={tag.id} className="tag is-medium is-link mr-4">
-                {tag.title}
-              </div>
-            ))}
-          </div>
-
-          <span className="mr-5">{dayjs(question.createdAt).fromNow()}</span>
-        </div>
-
-        <p className="title is-6">{question.title}</p>
-
+    <div className={`group bg-white shadow-cards border border-gray-100 rounded-xl ${
+      !showText
+        ? 'hover:bg-gray-100 cursor-pointer'
+        : ''
+    }`}
+    onClick={() => onPressCard(question)}>
+      <div className="flex flex-row h-10 w-auto mx-6 my-4 items-center justify-between">
+        <h1 className="text-base">{question.user.name}</h1>
+        <span className="text-xs text-gray-400 justify-self-end">{dayjs(question.createdAt).fromNow()}</span>
+      </div>
+      <div className="px-6 pb-6">
+        <h1 className="is-6 text-lg font-semibold">{question.title}</h1>
         {showText && (
-          <div>
-            <hr />
-            <p>{question.text}</p>
-          </div>
+          <p className="mt-4">{question.text}</p>
         )}
+      </div>
+      <div className={`flex flex-row bg-gray-100 py-4 px-6 rounded-b-xl  ${
+        !showText
+          ? 'group-hover:bg-gray-200'
+          : ''
+      }`}>
+        {question.tags.map((tag) => (
+          <div key={tag.id} className="mr-4 px-3 py-2 bg-green-400 rounded-xl text-xs font-semibold text-white w-fit shadow-tag">
+            {tag.title}
+          </div>
+        ))}
       </div>
     </div>
   );
 }
-
 export default QuestionCard;
