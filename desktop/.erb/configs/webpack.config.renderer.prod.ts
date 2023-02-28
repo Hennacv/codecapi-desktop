@@ -51,7 +51,6 @@ const configuration: webpack.Configuration = {
               importLoaders: 1,
             },
           },
-          'sass-loader',
           {
             loader: 'postcss-loader',
             options: {

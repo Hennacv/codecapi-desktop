@@ -1,7 +1,6 @@
 import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import Loader from './components/shared/loader';
-import Navbar from './components/shared/navbar';
 import Sidebar from './components/shared/sidebar';
 import AuthProvider, {
   AuthContextData,

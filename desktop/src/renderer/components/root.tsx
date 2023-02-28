@@ -2,7 +2,6 @@ import { User } from 'firebase/auth';
 import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import AuthProvider from './auth-provider';
-import Navbar from './components/shared/navbar';
 import Sidebar from './components/shared/sidebar';
 
 interface AuthContextData {
