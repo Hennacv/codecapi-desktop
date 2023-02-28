@@ -20,6 +20,8 @@ function Sidebar() {
       <div className="">
         <Logo />
       </div>
+      <aside className="mt-5 flex grow flex-col">
+        <ul className="space-y-1">
       <aside className="">
         <ul className="">
           <li>

@@ -21,10 +21,8 @@ export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 function Root() {
   return (
     <AuthProvider>
-      {/* <Navbar /> */}
-
-      <div className="">
-        <div className="">
+      <div className="h-screen grid grid-cols-6 md:grid-cols-12 md:gap-x-5">
+        <div className="text-base py-6 px-2 md:col-span-3 md:py-0 md:px-0">
           <Sidebar />
         </div>
 
