@@ -11,7 +11,7 @@ function SidebarLink(props: SidebarLinkProps) {
 
   return (
     <Link
-      className={`group flex items-center px-3 py-2 text-base font-normal border-l-4 rounded-md ${
+      className={`flex items-center px-3 py-2 text-base font-normal border-l-4 rounded-md h-14 md:h-fit ${
         props.to === location.pathname
           ? 'bg-capi-green-200 border-capi-green-800 text-capi-green-800 '
           : 'border-transparent text-gray-600 hover:bg-gray-100 hover:text-capiblack'
