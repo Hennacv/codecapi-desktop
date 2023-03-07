@@ -9,7 +9,7 @@ function Loader() {
   }
 
   return (
-    <div className="h-4 w-4 absolute right-2 top-24 z-1">
+    <div className="">
       <img src={image} />
     </div>
   );

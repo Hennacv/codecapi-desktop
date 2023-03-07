@@ -11,12 +11,12 @@ function Sidebar() {
   }
 
   return (
-    <div className="flex grow flex-col overflow-y-auto py-5 px-2 h-screen">
-      <div className="flex shrink-0 w-28">
+    <div className="">
+      <div className="">
         <Logo />
       </div>
-      <aside className="mt-5 flex flex-grow flex-col">
-        <ul className="space-y-1">
+      <aside className="">
+        <ul className="">
           <li>
             <SidebarLink to="/questions">Vragen</SidebarLink>
           </li>
@@ -25,9 +25,9 @@ function Sidebar() {
           </li>
         </ul>
 
-        <hr className="border-t border-neutral-400 border-solid my-2" />
+        <hr className="" />
 
-        <ul className="space-y-1">
+        <ul className="">
           <li>
             <SidebarLink to="/users">Gebruikers</SidebarLink>
           </li>

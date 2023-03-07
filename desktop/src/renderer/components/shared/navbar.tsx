@@ -6,13 +6,13 @@ function Navbar() {
   const { user, signOut } = useContext(AuthContext);
 
   return (
-    <nav className="h-20 w-full shadow-nav fixed bg-neutral-100 px-4 flex justify-between items-center z-10">
+    <nav className="">
       <Logo />
 
       {user && (
         <div>
-          <p className="mr-4">Ingelogd als {user.email}</p>
-          <button onClick={signOut}>
+          <p className="">Ingelogd als {user.email}</p>
+          <button onClick={signOut} type="button">
             Uitloggen
           </button>
         </div>

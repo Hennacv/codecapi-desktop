@@ -8,10 +8,10 @@ function Home() {
 
   return (
     <div>
-      <div className="columns is-multiline is-centered">
+      <div className="">
         <div className={TestStyles} />
         {questions.map((q: Question) => (
-          <div key={q.id} className="column is-12">
+          <div key={q.id} className="">
             <QuestionCard question={q} />
           </div>
         ))}
