@@ -111,6 +111,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.11",
     "@vanilla-extract/css": "^1.9.5",
+    "@vanilla-extract/sprinkles": "^1.5.1",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.2",
     "dayjs": "^1.11.7",
