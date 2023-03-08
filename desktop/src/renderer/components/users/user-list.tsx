@@ -8,9 +8,9 @@ function UserList() {
   });
 
   return (
-    <div className="items-center flex flex-wrap justify-start mb-3.5">
+    <div className="">
       {data.map((user: any) => (
-        <div className="align-middle mb-2">{user.name}</div>
+        <div className="">{user.name}</div>
       ))}
     </div>
   );

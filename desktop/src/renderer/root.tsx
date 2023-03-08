@@ -15,10 +15,12 @@ function Root() {
     <AuthProvider>
       {/* <Navbar /> */}
 
-      <div className="h-screen md:grid md:grid-cols-12 md:gap-x-5">
-        <Sidebar />
+      <div className="">
+        <div className="">
+          <Sidebar />
+        </div>
 
-        <div className="space-y-6 md:col-span-9 md:p-3">
+        <div className="">
           <Loader />
 
           <div>

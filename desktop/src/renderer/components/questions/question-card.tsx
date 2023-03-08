@@ -15,18 +15,24 @@ function QuestionCard({ question, showText = false }: QuestionCardProps) {
   }
 
   return (
-    <div className={`group bg-white shadow-cards border border-gray-100 rounded-xl ${
-      !showText
-        ? 'hover:bg-gray-100 cursor-pointer'
-        : ''
-    }`}
-    onClick={() => onPressCard(question)}>
-      <div className="flex flex-row h-10 w-auto mx-6 my-4 items-center justify-between">
-        <h1 className="text-base">{question.user.name}</h1>
-        <span className="text-xs text-gray-400 justify-self-end">{dayjs(question.createdAt).fromNow()}</span>
-      </div>
-      <div className="px-6 pb-6">
-        <h1 className="is-6 text-lg font-semibold">{question.title}</h1>
+    <div className="" onClick={() => onPressCard(question)}>
+      <div className="">
+        <div className="">
+          <div>
+            <span className="">{question.user.name}</span>
+
+            {question.tags.map((tag) => (
+              <div key={tag.id} className="">
+                {tag.title}
+              </div>
+            ))}
+          </div>
+
+          <span className="">{dayjs(question.createdAt).fromNow()}</span>
+        </div>
+
+        <p className="">{question.title}</p>
+
         {showText && (
           <p className="mt-4">{question.text}</p>
         )}

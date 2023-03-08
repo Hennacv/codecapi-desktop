@@ -10,10 +10,7 @@ function SidebarLink(props: SidebarLinkProps) {
   const location = useLocation();
 
   return (
-    <Link
-      className={`${props.to === location.pathname ? 'is-active' : ''}`}
-      to={props.to}
-    >
+    <Link className="" to={props.to}>
       {props.children}
     </Link>
   );

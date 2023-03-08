@@ -1,11 +1,16 @@
 module.exports = {
   extends: 'erb',
+
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',
     'import/no-unresolved': 'error',
     // Since React 17 and typescript 4.1 you can safely disable the rule
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
+    'react/require-default-props': 'off',
+    'no-shadow': 'off',
     'react/jsx-filename-extension': [
       2,
       {
@@ -20,6 +25,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     createDefaultProgram: true,
   },
+
   settings: {
     'import/resolver': {
       // See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
