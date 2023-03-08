@@ -11,10 +11,10 @@ function QuestionDetail() {
   if (!question) {
     return null;
   }
-  
+
   return (
     <div>
-      <button className="button mb-5" onClick={() => navigate('/questions')}>
+      <button className="" onClick={() => navigate('/questions')} type="button">
         Terug
       </button>
 
@@ -22,7 +22,7 @@ function QuestionDetail() {
 
       <AnswerList answers={question.answer} />
 
-      <NewAnswer id={question.id}/>
+      <NewAnswer id={question.id} />
     </div>
   );
 }

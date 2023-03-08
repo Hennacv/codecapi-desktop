@@ -72,23 +72,18 @@ function NewQuestion() {
 
   return (
     <form>
-      <div className="shadow sm:overflow-hidden sm:rounded-md">
-        <div className="space-y-6 bg-white py-6 px-4 sm:p-6">
-          <header className="text-lg font-medium leading-6 text-gray-900">
-            Nieuwe vraag
-          </header>
+      <div className="">
+        <div className="">
+          <header className="">Nieuwe vraag</header>
 
-          <div className="grid grid-cols-6 gap-6">
-            <div className="col-span-4">
-              <label
-                htmlFor="title"
-                className="block text-sm font-medium text-gray-700"
-              >
+          <div className="">
+            <div className="">
+              <label htmlFor="title" className="">
                 Titel
               </label>
               <div className="control">
                 <input
-                  className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  className=""
                   type="text"
                   id="title"
                   onChange={(e) => updateFormValue('title', e.target.value)}
@@ -97,29 +92,25 @@ function NewQuestion() {
             </div>
 
             <div className="col-span-6">
-              <label
-                htmlFor="text"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="text" className="">
                 Tekst
               </label>
-              <div className="control mt-1">
+
+              <div className="">
                 <textarea
                   id="text"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className=""
                   onChange={(e) => updateFormValue('text', e.target.value)}
                 />
               </div>
             </div>
 
-            <div className="col-span-6">
+            <div className="">
               <div className="">
-                <label className="block text-sm font-medium text-gray-700">
-                  Tags
-                </label>
+                <label className="">Tags</label>
 
                 <span
-                  className="pointer mr-3"
+                  className=""
                   onClick={() =>
                     showTagInput ? clearTagForm() : setShowTagInput(true)
                   }
@@ -131,8 +122,7 @@ function NewQuestion() {
               {showTagInput && (
                 <input
                   value={tagInput}
-                  autoFocus
-                  className="input is-small mb-3"
+                  className=""
                   placeholder="Enter om aan te maken, escape om te annuleren"
                   onChange={(e) => {
                     setTagInput(e.target.value);
@@ -149,13 +139,7 @@ function NewQuestion() {
 
               <div className="tags">
                 {tags.map((tag: any) => (
-                  <div
-                    key={tag.id}
-                    className={`inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 ${
-                      tagIsSelected(tag) ? 'is-link' : ''
-                    }`}
-                    onClick={() => toggleTag(tag)}
-                  >
+                  <div key={tag.id} className="" onClick={() => toggleTag(tag)}>
                     {tag.title}
                   </div>
                 ))}
@@ -163,18 +147,19 @@ function NewQuestion() {
             </div>
           </div>
 
-          <div className="field is-grouped">
+          <div className="">
             <div className="control">
               <button
-                className="button is-link"
+                className=""
                 disabled={addQuestion.isLoading || !form.text || !form.title}
                 onClick={() => onSubmit(form)}
+                type="button"
               >
                 Vraag aanmaken
               </button>
             </div>
 
-            <Link to="/questions" className="button mb-5">
+            <Link to="/questions" className="">
               Terug
             </Link>
           </div>
