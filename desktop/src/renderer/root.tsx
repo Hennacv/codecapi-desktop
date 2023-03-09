@@ -17,7 +17,7 @@ function Root() {
           <Sidebar />
         </div>
 
-        <div className="space-y-6 col-span-9 p-3">
+        <div className="">
           <Loader />
 
           <div>
