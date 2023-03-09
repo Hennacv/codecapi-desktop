@@ -1,16 +1,20 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { style, styleVariants } from '@vanilla-extract/css';
 
-export const SideStyles = style({
+const BaseSideStyles = style({
   position: 'fixed',
   top: 0,
   left: 0,
   bottom: 0,
   display: 'flex',
   flexDirection: 'column',
-  width: 200,
   height: '100%',
   backgroundColor: '#333333',
+});
+
+export const SideStyles = styleVariants({
+  basic: [BaseSideStyles, { width: 200 }],
+  collapsed: [BaseSideStyles, { width: 80 }],
 });
 
 export const LogoStyle = style({
@@ -28,6 +32,16 @@ export const SideIcon = style({
   cursor: 'pointer',
   userSelect: 'none',
   flexShrink: 0,
+});
+
+export const SideToggle = style({
+  width: '1.25em',
+  height: '1.25em',
+  cursor: 'pointer',
+  position: 'fixed',
+  left: 160,
+  top: 30,
+  fill: '#BCBCBC',
 });
 
 export const SideText = style({
