@@ -22,7 +22,13 @@ const BaseSideStyles = style({
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',
+  height: '100%',
   backgroundColor: '#333333',
+});
+
+export const SideStyles = styleVariants({
+  basic: [BaseSideStyles, { width: 200 }],
+  collapsed: [BaseSideStyles, { width: 80 }],
 });
 
 export const SideStyles = styleVariants({
@@ -53,6 +59,16 @@ export const SideToggle = style({
   // position: 'fixed',
   // left: 160,
   // top: 30,
+  fill: '#BCBCBC',
+});
+
+export const SideToggle = style({
+  width: '1.25em',
+  height: '1.25em',
+  cursor: 'pointer',
+  position: 'fixed',
+  left: 160,
+  top: 30,
   fill: '#BCBCBC',
 });
 
