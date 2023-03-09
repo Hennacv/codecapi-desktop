@@ -4,10 +4,18 @@ import {
   RiQuestionAnswerLine,
   RiQuestionnaireLine,
   RiUser3Line,
+  RiSettings3Line,
 } from 'react-icons/ri';
 import UserInfo from '../users/user-info';
 import Logo from './logo';
 import SidebarLink from './sidebar-link';
+import {
+  LogoStyle,
+  SideIcon,
+  SideList,
+  SideStyles,
+  SideText,
+} from './shared-styles.css';
 
 function Sidebar() {
   const { user } = useContext(AuthContext);
@@ -20,31 +28,35 @@ function Sidebar() {
       <div className="">
         <Logo />
       </div>
-      <aside className="mt-5 flex grow flex-col">
-        <ul className="space-y-1">
-      <aside className="">
-        <ul className="">
+      <aside>
+        <ul className={SideList.top}>
           <li>
             <SidebarLink to="/questions">
-              <RiQuestionAnswerLine className="text-3xl shrink-0 mr-1.5 md:text-lg" />
-              <span className="invisible md:visible">Vragen</span>
+              <RiQuestionAnswerLine className={SideIcon} />
+              <span className={SideText}>Vragen</span>
             </SidebarLink>
           </li>
           <li>
             <SidebarLink to="/questions/new">
-              <RiQuestionnaireLine className="text-3xl shrink-0 mr-1.5 md:text-lg" />
-              <span className="invisible md:visible">Vraag stellen</span>
+              <RiQuestionnaireLine className={SideIcon} />
+              <span className={SideText}>Vraag stellen</span>
+            </SidebarLink>
+          </li>
+          <li>
+            <SidebarLink to="/users">
+              <RiUser3Line className={SideIcon} />
+              <span className={SideText}>Gebruikers</span>
             </SidebarLink>
           </li>
         </ul>
 
-        <hr className="" />
+        {/* <hr className="" /> */}
 
-        <ul className="">
+        <ul className={SideList.bottom}>
           <li>
-            <SidebarLink to="/users">
-              <RiUser3Line className="text-3xl shrink-0 mr-1.5 md:text-lg" />
-              <span className="invisible md:visible">Gebruikers</span>
+            <SidebarLink to="/">
+              <RiSettings3Line className={SideIcon} />
+              <span className={SideText}>Instellingen</span>
             </SidebarLink>
           </li>
         </ul>

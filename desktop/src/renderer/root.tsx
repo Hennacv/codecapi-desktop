@@ -12,16 +12,12 @@ export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 function Root() {
   return (
     <AuthProvider>
-      <div className="h-screen grid grid-cols-12 md:gap-x-5 bg-gray-50">
-        <div className="text-base py-0 px-0 col-span-2 min-w-side md:max-w-xxs md:col-span-3">
-      {/* <Navbar /> */}
-
       <div className="">
         <div className="">
           <Sidebar />
         </div>
 
-        <div className="space-y-6 col-span-9 p-3">
+        <div className="">
           <Loader />
 
           <div>
