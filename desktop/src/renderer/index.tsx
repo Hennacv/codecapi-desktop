@@ -2,6 +2,8 @@ import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import { auth } from './firebase';
+import "@fontsource/inter";
+import './global.css';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
