@@ -12,7 +12,22 @@ export const LogoStyle = styleVariants({
   basic: [BaseLogoStyle],
   collapsed: [BaseLogoStyle, { justifyContent: 'center' }],
 });
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
 
+// Logo styling
+const BaseLogoStyle = style({
+  display: 'flex',
+  alignItems: 'center',
+  margin: '30px 20px',
+  fill: '#BCBCBC',
+});
+
+export const LogoStyle = styleVariants({
+  basic: [BaseLogoStyle],
+  collapsed: [BaseLogoStyle, { justifyContent: 'center' }],
+});
+
+// Sidebar styling
 // Sidebar styling
 const BaseSideStyles = style({
   position: 'fixed',
@@ -22,7 +37,6 @@ const BaseSideStyles = style({
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',
-  height: '100%',
   backgroundColor: '#333333',
 });
 
@@ -36,6 +50,11 @@ export const SideStyles = styleVariants({
   collapsed: [BaseSideStyles, { width: 80 }],
 });
 
+export const AsideStyles = style({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+  justifyContent: 'space-between',
 export const AsideStyles = style({
   display: 'flex',
   flexDirection: 'column',
@@ -66,9 +85,19 @@ export const SideToggle = style({
   width: '1.25em',
   height: '1.25em',
   cursor: 'pointer',
-  position: 'fixed',
-  left: 160,
-  top: 30,
+  // position: 'fixed',
+  // left: 160,
+  // top: 30,
+  fill: '#BCBCBC',
+});
+
+export const SideToggle = style({
+  width: '1.25em',
+  height: '1.25em',
+  cursor: 'pointer',
+  // position: 'fixed',
+  // left: 160,
+  // top: 30,
   fill: '#BCBCBC',
 });
 
@@ -80,11 +109,16 @@ globalStyle(`.${SideStyles.collapsed} span`, {
   display: 'none',
 });
 
+globalStyle(`.${SideStyles.collapsed} span`, {
+  display: 'none',
+});
+
 export const SideLink = style({
   textDecoration: 'none',
   display: 'flex',
   alignItems: 'center',
   margin: '5px 20px',
+  padding: '10px 6px',
   padding: '10px 6px',
   borderStyle: 'solid',
   borderWidth: 'thin',
@@ -106,14 +140,19 @@ export const SideLinkSelected = style({
 });
 
 export const SideList = style({
+export const SideList = style({
   listStyleType: 'none',
   padding: 0,
   marginTop: 0,
 });
 
 // User Styling
+// User Styling
 export const UserSection = style({
   backgroundColor: '#3B3B3B',
+  padding: 20,
+  justifyContent: 'space-around',
+  userSelect: 'none',
   padding: 20,
   justifyContent: 'space-around',
   userSelect: 'none',
@@ -134,7 +173,13 @@ export const UserPhoto = style({
 });
 
 const BaseUserInfoStyle = style({
+const BaseUserInfoStyle = style({
   padding: '5px 10px',
+});
+
+export const UserInfoStyle = styleVariants({
+  basic: [BaseUserInfoStyle],
+  collapsed: [BaseUserInfoStyle, { display: 'none' }],
 });
 
 export const UserInfoStyle = styleVariants({
@@ -165,6 +210,10 @@ export const UserText = styleVariants({
     },
   ],
 });
+
+// globalStyle(`.${SideStyles.collapsed} svg`, {
+//   backgroundColor: 'red',
+// });
 
 // globalStyle(`.${SideStyles.collapsed} svg`, {
 //   backgroundColor: 'red',
