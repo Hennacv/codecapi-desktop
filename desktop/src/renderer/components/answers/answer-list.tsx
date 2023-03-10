@@ -6,15 +6,11 @@ interface AnswerListProps {
 }
 
 function AnswerList({answers}: AnswerListProps) {
-
-    const contrainerStyle = {
-        margin: '1.5rem 0rem 1.5rem 0rem',
-    };
-
     return (
-        <div style={contrainerStyle}>
+        <div className="">
+            <h1 className="">{ answers.length } antwoorden</h1>
             {answers.map((answer: Answer) => (
-                <AnswerCard answer={answer}/>
+                <AnswerCard key={answer.id} answer={answer}/>
             ))}
         </div>
     );

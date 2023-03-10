@@ -34,14 +34,17 @@ function QuestionCard({ question, showText = false }: QuestionCardProps) {
         <p className="">{question.title}</p>
 
         {showText && (
-          <div>
-            <hr />
-            <p>{question.text}</p>
-          </div>
+          <p className="">{question.text}</p>
         )}
+      </div>
+      <div className="">
+        {question.tags.map((tag) => (
+          <div key={tag.id} className="">
+            {tag.title}
+          </div>
+        ))}
       </div>
     </div>
   );
 }
-
 export default QuestionCard;
