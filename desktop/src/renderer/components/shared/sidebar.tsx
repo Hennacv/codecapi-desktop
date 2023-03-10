@@ -11,6 +11,7 @@ import UserInfo from '../users/user-info';
 import Logo from './logo';
 import SidebarLink from './sidebar-link';
 import {
+  AsideStyles,
   LogoStyle,
   SideIcon,
   SideList,
@@ -44,8 +45,8 @@ function Sidebar() {
         <Logo />
       </div>
       <RiMenuFill className={SideToggle} onClick={handleToggler} />
-      <aside>
-        <ul className={SideList.top}>
+      <aside className={AsideStyles}>
+        <ul className={SideList}>
           <li>
             <SidebarLink to="/questions">
               <RiQuestionAnswerLine className={SideIcon} />
@@ -67,17 +68,18 @@ function Sidebar() {
         </ul>
 
         {/* <hr className="" /> */}
-
-        <ul className={SideList.bottom}>
-          <li>
-            <SidebarLink to="/">
-              <RiSettings3Line className={SideIcon} />
-              <span className={SideText}>Instellingen</span>
-            </SidebarLink>
-          </li>
-        </ul>
+        <div>
+          <ul className={SideList}>
+            <li>
+              <SidebarLink to="/">
+                <RiSettings3Line className={SideIcon} />
+                <span className={SideText}>Instellingen</span>
+              </SidebarLink>
+            </li>
+          </ul>
+          <UserInfo isExpanded={isExpanded} />
+        </div>
       </aside>
-      <UserInfo />
     </div>
   );
 }

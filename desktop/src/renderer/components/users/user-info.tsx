@@ -6,7 +6,7 @@ import {
   UserText,
 } from '../shared/shared-styles.css';
 
-function UserInfo() {
+function UserInfo({ isExpanded }) {
   return (
     <div className={UserSection}>
       <div className={UserCard}>
@@ -17,7 +17,9 @@ function UserInfo() {
             alt=""
           />
         </div>
-        <div className={UserInfoStyle}>
+        <div
+          className={isExpanded ? UserInfoStyle.basic : UserInfoStyle.collapsed}
+        >
           <p className={UserText.name}>User Name</p>
           <p className={UserText.function}>Function</p>
         </div>
