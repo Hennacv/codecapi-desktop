@@ -34,16 +34,12 @@ function QuestionCard({ question, showText = false }: QuestionCardProps) {
         <p className="">{question.title}</p>
 
         {showText && (
-          <p className="mt-4">{question.text}</p>
+          <p className="">{question.text}</p>
         )}
       </div>
-      <div className={`flex flex-row bg-gray-100 py-4 px-6 rounded-b-xl  ${
-        !showText
-          ? 'group-hover:bg-gray-200'
-          : ''
-      }`}>
+      <div className="">
         {question.tags.map((tag) => (
-          <div key={tag.id} className="mr-4 px-3 py-2 bg-green-400 rounded-xl text-xs font-semibold text-white w-fit shadow-tag">
+          <div key={tag.id} className="">
             {tag.title}
           </div>
         ))}
