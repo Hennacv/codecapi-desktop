@@ -9,7 +9,7 @@ interface TagCardProps {
 function TagCard({ title, color, isSmall }: TagCardProps) {
     return (
       <div className={isSmall ? TagVariantsStyle.small : TagVariantsStyle.default}>
-        <div className={tagColor} style={{"backgroundColor": color}}></div>
+        <span className={tagColor} style={{"backgroundColor": color}}></span>
         {title}
       </div>
     );
