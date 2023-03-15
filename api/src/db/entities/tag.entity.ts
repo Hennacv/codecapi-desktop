@@ -5,4 +5,7 @@ import { CustomBaseEntity } from './custom-base-entity';
 export class Tag extends CustomBaseEntity {
   @Column({ unique: true })
   title: string;
+
+  @Column({ nullable: true })
+  color: string;
 }
