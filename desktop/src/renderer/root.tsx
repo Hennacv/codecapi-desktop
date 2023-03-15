@@ -6,13 +6,14 @@ import AuthProvider, {
   AuthContextData,
   defaultAuthContext,
 } from './context/auth-provider';
+import { bodyStyles } from './global.css';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 
 function Root() {
   return (
     <AuthProvider>
-      <div className="">
+      <div className={bodyStyles}>
         <div className="">
           <Sidebar />
         </div>

@@ -5,7 +5,7 @@ import {
   RiQuestionnaireLine,
   RiUser3Line,
   RiSettings3Line,
-  RiMenuFill,
+  RiArrowDropLeftLine,
 } from 'react-icons/ri';
 import UserInfo from '../users/user-info';
 import Logo from './logo';
@@ -18,6 +18,7 @@ import {
   SideStyles,
   SideText,
   SideToggle,
+  ToggleContainer,
 } from './shared-styles.css';
 
 function Sidebar() {
@@ -40,11 +41,17 @@ function Sidebar() {
   };
 
   return (
-    <div className="">
-      <div className="">
-        <Logo />
+    <div className={isExpanded ? SideStyles.basic : SideStyles.collapsed}>
+      <div className={isExpanded ? LogoStyle.basic : LogoStyle.collapsed}>
+        <Logo isExpanded={isExpanded} />
       </div>
-      <RiMenuFill className={SideToggle} onClick={handleToggler} />
+      <div
+        className={
+          isExpanded ? ToggleContainer.basic : ToggleContainer.collapsed
+        }
+      >
+        <RiArrowDropLeftLine className={SideToggle} onClick={handleToggler} />
+      </div>
       <aside className={AsideStyles}>
         <ul className={SideList}>
           <li>
@@ -57,6 +64,12 @@ function Sidebar() {
             <SidebarLink to="/questions/new">
               <RiQuestionnaireLine className={SideIcon} />
               <span className={SideText}>Vraag stellen</span>
+            </SidebarLink>
+          </li>
+          <li>
+            <SidebarLink to="/users">
+              <RiUser3Line className={SideIcon} />
+              <span className={SideText}>Gebruikers</span>
             </SidebarLink>
           </li>
           <li>
