@@ -10,8 +10,7 @@ interface SidebarLinkProps {
 
 function SidebarLink({ to, children }: SidebarLinkProps) {
   const location = useLocation();
-  const sideLink = classNames({
-    [SideLink]: true,
+  const sideLink = classNames(SideLink, {
     [SideLinkSelected]: to === location.pathname,
   });
 
