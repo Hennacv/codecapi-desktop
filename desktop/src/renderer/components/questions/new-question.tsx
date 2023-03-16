@@ -73,38 +73,68 @@ const NewQuestion = () => {
     <div className={NewQuestionContainer}>
       <header className={NewQuestionHeader}>
         <h1 className={NewQuestionTitle}>Nieuwe vraag</h1>
-        <p className={NewQuestionDescription}>Via onderstaand formulier kan een vraag worden gesteld aan alle medewerkers van CodeCapi.</p>
+        <p className={NewQuestionDescription}>
+          Via onderstaand formulier kan een vraag worden gesteld aan alle medewerkers van CodeCapi.
+        </p>
       </header>
       <form className={NewQuestionSection}>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel} htmlFor="title">Titel *</label>
-          <input className={!form.title ? NewQuestionInput.default : NewQuestionInput.validated} type="text" id="title" onChange={(e) => updateFormValue('title', e.target.value)}/>
+          <input 
+            className={!form.title ? NewQuestionInput.default : NewQuestionInput.validated} 
+            type="text" 
+            id="title" 
+            onChange={(e) => updateFormValue('title', e.target.value)}
+          />
         </div>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel} htmlFor="paragraph">
-            Beschrijving *
-            <span className={NewQuestionParagraph}>(paragraaf 1)</span>
+            Beschrijving *<span className={NewQuestionParagraph}>(paragraaf 1)</span>
           </label>
-          <textarea className={!form.text ? NewQuestionTextarea.default : NewQuestionTextarea.validated} id="text" onChange={(e) => updateFormValue('text', e.target.value)}/>
+          <textarea 
+            className={!form.text ? NewQuestionTextarea.default : NewQuestionTextarea.validated} 
+            id="text" 
+            onChange={(e) => updateFormValue('text', e.target.value)}
+          />
         </div>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel}>Labels</label>
           <div className={tags ? NewQuestionTagList : 'visibility: hidden'}>
             {tags.map((tag: Tag) => (
-                <TagButton key={tag.id} title={tag.title} color={tag.color} variant="defaultAdd" icon={'add'} onClick={() => addTag(tag)} />
+                <TagButton 
+                  key={tag.id} 
+                  title={tag.title} 
+                  color={tag.color} 
+                  variant="defaultAdd" 
+                  icon={'add'} 
+                  onClick={() => addTag(tag)} 
+                />
               ))}
           </div>
           <label className={NewQuestionDescription}>Geselecteerde labels:</label>
           <div className={NewQuestionTagContainer}>
             <div className={NewQuestionTagList}>
               {selectedTags.map((tag: Tag) => (
-                <TagButton key={tag.id} title={tag.title} color={tag.color} variant="defaultRemove" icon={'delete'} onClick={() => deleteTag(tag)} />
+                <TagButton 
+                  key={tag.id} 
+                  title={tag.title} 
+                  color={tag.color} 
+                  variant="defaultRemove" 
+                  icon={'delete'} 
+                  onClick={() => deleteTag(tag)} 
+                />
               ))}
             </div>
           </div>
         </div>
         <div className={NewQuestionFormItem}>
-          <button className={NewQuestionSubmit} type="button" disabled={addQuestion.isLoading || !form.text || !form.title} onClick={() => onSubmit(form)}>Opslaan</button>
+          <button 
+            className={NewQuestionSubmit}
+            type="button" 
+            disabled={addQuestion.isLoading || !form.text || !form.title} 
+            onClick={() => onSubmit(form)}>
+              Opslaan
+          </button>
         </div>
       </form>
     </div>
