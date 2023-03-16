@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SideLink, SideLinkSelected } from './shared-styles.css';
+import { SideLink, SideLinkSelected } from './sidebar-styles.css';
 
 interface SidebarLinkProps {
   to: string;

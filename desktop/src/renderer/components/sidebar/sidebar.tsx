@@ -7,20 +7,21 @@ import {
   RiSettings3Line,
   RiArrowDropLeftLine,
 } from 'react-icons/ri';
-import { useSidebar } from 'renderer/hooks/use-sidebar';
+
 import UserInfo from '../users/user-info';
-import Logo from './logo';
+import Logo from '../logo/logo';
 import SidebarLink from './sidebar-link';
 import {
   AsideStyles,
-  LogoStyle,
   SideIcon,
   SideList,
   SideStyles,
   SideText,
   SideToggle,
   ToggleContainer,
-} from './shared-styles.css';
+} from './sidebar-styles.css';
+import { LogoStyle } from '../logo/logo-styles.css';
+import { useSidebar } from './use-sidebar';
 
 function Sidebar() {
   const { toggleSideBar, isExpanded } = useSidebar();

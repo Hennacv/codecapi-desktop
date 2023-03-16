@@ -6,7 +6,7 @@ import {
   UserPhoto,
   UserSection,
   UserText,
-} from '../shared/shared-styles.css';
+} from './user-styles.css';
 
 function UserInfo({ isExpanded }) {
   const { user } = useContext(AuthContext);
