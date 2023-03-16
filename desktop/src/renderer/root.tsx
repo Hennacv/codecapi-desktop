@@ -1,21 +1,19 @@
 import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import Loader from './components/shared/loader';
-import Navbar from './components/shared/navbar';
-import Sidebar from './components/shared/sidebar';
+import Sidebar from './components/sidebar/sidebar';
 import AuthProvider, {
   AuthContextData,
   defaultAuthContext,
 } from './context/auth-provider';
+import { mainContainer } from './root.css';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 
 function Root() {
   return (
     <AuthProvider>
-      {/* <Navbar /> */}
-
-      <div className="">
+      <div className={mainContainer}>
         <div className="">
           <Sidebar />
         </div>
