@@ -1,11 +1,12 @@
 import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { vars } from 'renderer/vars.css';
 
 // Logo styling
 const BaseLogoStyle = style({
   display: 'flex',
   alignItems: 'center',
   margin: '30px 20px',
-  fill: '#BCBCBC',
+  fill: vars.color['text-white-200'],
 });
 
 export const LogoStyle = styleVariants({
@@ -18,7 +19,7 @@ const BaseSideStyles = style({
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',
-  backgroundColor: '#333333',
+  backgroundColor: vars.color['dark-200'],
   position: 'relative',
 });
 
@@ -47,7 +48,7 @@ export const SideToggle = style({
   width: '1.25em',
   height: '1.25em',
   cursor: 'pointer',
-  fill: '#BCBCBC',
+  fill: vars.color['text-white-200'],
 });
 
 const BaseToggleContainer = style({
@@ -55,11 +56,11 @@ const BaseToggleContainer = style({
   width: 'fit-content',
   right: -10,
   top: 30,
-  backgroundColor: '#3B3B3B',
+  backgroundColor: vars.color['dark-300'],
   borderStyle: 'solid',
   borderWidth: 'thin',
   borderRadius: '50%',
-  color: '#BCBCBC',
+  color: vars.color['text-white-200'],
   display: 'flex',
 });
 
@@ -86,19 +87,16 @@ export const SideLink = style({
   borderWidth: 'thin',
   borderLeftWidth: 5,
   borderRadius: 10,
-  color: '#BCBCBC',
-});
-
-export const SideLinkBaseStyle = style({
+  color: vars.color['text-white-200'],
   borderColor: 'transparent',
   ':hover': {
-    backgroundColor: '#4B4B4B',
+    backgroundColor: vars.color['dark-400'],
   },
 });
 
 export const SideLinkSelected = style({
-  borderColor: '#797979',
-  backgroundColor: '#4B4B4B',
+  borderColor: vars.color['dark-600'],
+  backgroundColor: vars.color['dark-400'],
 });
 
 export const SideList = style({
@@ -109,7 +107,7 @@ export const SideList = style({
 
 // User Styling
 export const UserSection = style({
-  backgroundColor: '#3B3B3B',
+  backgroundColor: vars.color['dark-300'],
   padding: 20,
   justifyContent: 'space-around',
   userSelect: 'none',
@@ -118,7 +116,7 @@ export const UserSection = style({
 export const UserCard = style({
   display: 'flex',
   flexDirection: 'row',
-  backgroundColor: '#4B4B4B',
+  backgroundColor: vars.color['dark-400'],
   height: 40,
   borderRadius: 10,
 });
@@ -150,18 +148,14 @@ export const UserText = styleVariants({
     BaseUserText,
     {
       fontSize: 9,
-      color: '#BCBCBC',
+      color: vars.color['text-white-200'],
     },
   ],
   function: [
     BaseUserText,
     {
       fontSize: 8,
-      color: '#8F8F8F',
+      color: vars.color['text-white-300'],
     },
   ],
 });
-
-// globalStyle(`.${SideStyles.collapsed} svg`, {
-//   backgroundColor: 'red',
-// });

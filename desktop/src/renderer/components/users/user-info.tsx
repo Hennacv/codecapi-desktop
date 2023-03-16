@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AuthContext } from 'renderer/root';
 import {
   UserCard,
   UserInfoStyle,
@@ -7,6 +9,8 @@ import {
 } from '../shared/shared-styles.css';
 
 function UserInfo({ isExpanded }) {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className={UserSection}>
       <div className={UserCard}>
@@ -20,7 +24,7 @@ function UserInfo({ isExpanded }) {
         <div
           className={isExpanded ? UserInfoStyle.basic : UserInfoStyle.collapsed}
         >
-          <p className={UserText.name}>User Name</p>
+          <p className={UserText.name}>{user?.displayName}</p>
           <p className={UserText.function}>Function</p>
         </div>
       </div>

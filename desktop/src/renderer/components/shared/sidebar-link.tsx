@@ -1,27 +1,23 @@
+import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  SideLink,
-  SideLinkBaseStyle,
-  SideLinkSelected,
-} from './shared-styles.css';
+import { SideLink, SideLinkSelected } from './shared-styles.css';
 
 interface SidebarLinkProps {
   to: string;
   children: ReactNode;
 }
 
-function SidebarLink(props: SidebarLinkProps) {
+function SidebarLink({ to, children }: SidebarLinkProps) {
   const location = useLocation();
+  const sideLink = classNames({
+    [SideLink]: true,
+    [SideLinkSelected]: to === location.pathname,
+  });
 
   return (
-    <Link
-      className={`${SideLink} ${
-        props.to === location.pathname ? SideLinkSelected : SideLinkBaseStyle
-      }`}
-      to={props.to}
-    >
-      {props.children}
+    <Link className={sideLink} to={to}>
+      {children}
     </Link>
   );
 }

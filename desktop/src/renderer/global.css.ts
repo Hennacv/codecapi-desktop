@@ -1,4 +1,4 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalStyle } from '@vanilla-extract/css';
 
 globalStyle('html', {
   boxSizing: 'border-box',
@@ -12,9 +12,4 @@ globalStyle('body , body *', {
 
 globalStyle('*, *:before, *:after', {
   boxSizing: 'inherit',
-});
-
-export const bodyStyles = style({
-  display: 'flex',
-  flexDirection: 'row',
 });

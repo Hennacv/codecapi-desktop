@@ -7,6 +7,7 @@ import {
   RiSettings3Line,
   RiArrowDropLeftLine,
 } from 'react-icons/ri';
+import { useSidebar } from 'renderer/hooks/use-sidebar';
 import UserInfo from '../users/user-info';
 import Logo from './logo';
 import SidebarLink from './sidebar-link';
@@ -22,23 +23,12 @@ import {
 } from './shared-styles.css';
 
 function Sidebar() {
-  const sidebarCollapsed = localStorage.getItem('sidebar-collapsed');
-  const [isExpanded, setIsExpanded] = useState(!sidebarCollapsed);
+  const { toggleSideBar, isExpanded } = useSidebar();
 
   const { user } = useContext(AuthContext);
   if (!user) {
     return null;
   }
-
-  const handleToggler = () => {
-    if (isExpanded) {
-      setIsExpanded(false);
-      localStorage.setItem('sidebar-collapsed', true);
-      return;
-    }
-    setIsExpanded(true);
-    localStorage.removeItem('sidebar-collapsed');
-  };
 
   return (
     <div className={isExpanded ? SideStyles.basic : SideStyles.collapsed}>
@@ -50,7 +40,7 @@ function Sidebar() {
           isExpanded ? ToggleContainer.basic : ToggleContainer.collapsed
         }
       >
-        <RiArrowDropLeftLine className={SideToggle} onClick={handleToggler} />
+        <RiArrowDropLeftLine className={SideToggle} onClick={toggleSideBar} />
       </div>
       <aside className={AsideStyles}>
         <ul className={SideList}>
@@ -72,15 +62,8 @@ function Sidebar() {
               <span className={SideText}>Gebruikers</span>
             </SidebarLink>
           </li>
-          <li>
-            <SidebarLink to="/users">
-              <RiUser3Line className={SideIcon} />
-              <span className={SideText}>Gebruikers</span>
-            </SidebarLink>
-          </li>
         </ul>
 
-        {/* <hr className="" /> */}
         <div>
           <ul className={SideList}>
             <li>
