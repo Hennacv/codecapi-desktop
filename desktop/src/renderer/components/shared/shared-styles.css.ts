@@ -21,11 +21,17 @@ const BaseSideStyles = style({
   height: '100vh',
   backgroundColor: vars.color['dark-200'],
   position: 'relative',
+  transition: 'width 300ms',
 });
 
 export const SideStyles = styleVariants({
   basic: [BaseSideStyles, { width: 200 }],
   collapsed: [BaseSideStyles, { width: 80 }],
+});
+
+globalStyle(`.${SideStyles.collapsed} span`, {
+  display: 'none',
+  overflow: 'hidden',
 });
 
 export const AsideStyles = style({
@@ -62,6 +68,7 @@ const BaseToggleContainer = style({
   borderRadius: '50%',
   color: vars.color['text-white-200'],
   display: 'flex',
+  transition: 'transform 400ms',
 });
 
 export const ToggleContainer = styleVariants({
@@ -73,16 +80,14 @@ export const SideText = style({
   fontSize: 12,
 });
 
-globalStyle(`.${SideStyles.collapsed} span`, {
-  display: 'none',
-});
-
 export const SideLink = style({
   textDecoration: 'none',
   display: 'flex',
   alignItems: 'center',
   margin: '5px 20px',
   padding: '10px 6px',
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
   borderStyle: 'solid',
   borderWidth: 'thin',
   borderLeftWidth: 5,
