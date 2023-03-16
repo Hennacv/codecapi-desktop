@@ -64,7 +64,6 @@ export const TagIcon = styleVariants({
     add: [TagIconBase],
     delete: [TagIconBase, {
         transform: 'rotateY(180deg) rotate(45deg) translateZ(0)',
-        perspective: '100px'
     }],
 });
 
