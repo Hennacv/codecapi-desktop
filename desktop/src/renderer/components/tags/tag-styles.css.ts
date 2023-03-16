@@ -53,13 +53,20 @@ export const TagColorBlob = style({
     height: '0.65rem',
 });
 
-export const TagIcon = style({
+export const TagIconBase = style({
     backgroundColor: 'transparent',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
 });
 
+export const TagIcon = styleVariants({
+    add: [TagIconBase],
+    delete: [TagIconBase, {
+        transform: 'rotateY(180deg) rotate(45deg) translateZ(0)',
+        perspective: '100px'
+    }],
+});
 
 export const tagButton = style({ 
 	border: 'none',
