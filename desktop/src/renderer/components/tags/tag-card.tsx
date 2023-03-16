@@ -12,12 +12,7 @@ function TagCard({ title, color, variant, icon }: TagCardProps) {
       <div className={TagVariantsStyle[variant]}>
         <span className={TagColorBlob} style={{"backgroundColor": color}}></span>
         {title}
-        {icon === 'add' ?
-          <span className={TagIcon}>+</span>
-          : icon === 'delete' ?
-          <span className={TagIcon}>x</span>
-          : null
-        }
+        <span className={icon === 'add' ? TagIcon.add : TagIcon.delete}>+</span>
       </div>
     );
   }
