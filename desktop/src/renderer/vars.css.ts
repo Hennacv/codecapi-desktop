@@ -33,8 +33,8 @@ export const vars = createGlobalTheme(':root', {
         default: 'Inter, sans-serif'
     },
     fontSize: {
-        'extraSmall': '0.5em',     
-        'small': '0.75em',      
+        'extraSmall': '0.75em',     
+        'small': '0.875em',      
         'base': '1em',          
         'large': '1.25em',      
         'extraLarge': '1.5em'    
@@ -54,10 +54,19 @@ export const vars = createGlobalTheme(':root', {
         '0.5x': '0.5rem',       
         '0.75x': '0.75rem',     
         '1x': '1rem',           
-        '1.25x': '1.25rem'    
+        '1.25x': '1.25rem',
+        '2x': '2rem',
+        '3x': '3rem',    
     },
     width: {
         'full': '100%',
         'fit': 'fit-content'
     },
+    height: {
+        'page': '100vh',
+        'full': '100%'
+    },
+    transition: {
+        'defaultHover': 'all 50ms ease-in-out'
+    }
 });

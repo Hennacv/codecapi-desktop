@@ -7,7 +7,10 @@ globalStyle('html', {
 globalStyle('body , body *', {
     margin: '0px',
     padding: '0px',
-    fontFamily: 'Inter, sans-serif'
+    fontFamily: 'Inter, sans-serif',
+    backgroundColor: '#1E1E1E',
+    color: '#FDFDFD',
+    fontSize: '16px',
 });
 
 globalStyle('*, *:before, *:after', {

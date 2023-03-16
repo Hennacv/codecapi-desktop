@@ -11,28 +11,59 @@ const TagBaseStyle = style({
     gap: vars.spacing['0.5x'],
 });
 
+
 export const TagVariantsStyle = styleVariants({
     default: [TagBaseStyle, {
-        paddingTop: vars.spacing['0.5x'],
-        paddingBottom: vars.spacing['0.5x'],
-        paddingLeft: vars.spacing['0.75x'],
-        paddingRight: vars.spacing['0.75x'],
+        padding: vars.spacing['0.5x'] + vars.spacing['0.75x'],
         borderRadius: vars.borderRadius.medium,
-        fontSize: vars.fontSize.base,
+        fontSize: vars.fontSize.small,
     }],
     small: [TagBaseStyle, {
-        paddingTop: vars.spacing['0.25x'],
-        paddingBottom: vars.spacing['0.25x'],
-        paddingLeft: vars.spacing['0.5x'],
-        paddingRight: vars.spacing['0.5x'],
+        padding: vars.spacing['0.25x'] + vars.spacing['0.5x'],
         borderRadius: vars.borderRadius.small,
+        fontSize: vars.fontSize.extraSmall,
+    }],
+    defaultAdd: [TagBaseStyle, {
+        padding: vars.spacing['0.5x'] + vars.spacing['0.75x'],
+        borderRadius: vars.borderRadius.medium,
         fontSize: vars.fontSize.small,
-    }]
+        transition: vars.transition.defaultHover,
+        ':hover': {
+            backgroundColor: vars.color['dark-400'],
+            transition: vars.transition.defaultHover,
+        }
+    }],
+    defaultRemove: [TagBaseStyle, {
+        padding: vars.spacing['0.5x'] + vars.spacing['0.75x'],
+        borderRadius: vars.borderRadius.medium,
+        fontSize: vars.fontSize.small,
+        transition: vars.transition.defaultHover,
+        ':hover': {
+            backgroundColor: vars.color['dark-300'],
+            transition: vars.transition.defaultHover,
+            opacity: '0.5',
+        }
+    }],
 });
 
-export const tagColor = style({ 
-    width: '0.5rem',
-    height: '0.5rem',
+export const TagColorBlob = style({
     backgroundColor: 'white',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    width: '0.65rem',
+    height: '0.65rem',
+});
+
+export const TagIcon = style({
+    backgroundColor: 'transparent',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+});
+
+
+export const tagButton = style({ 
+	border: 'none',
+	font: 'inherit',
+	cursor: 'pointer',
+    backgroundColor: 'transparent',
 });
