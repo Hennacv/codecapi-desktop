@@ -21,6 +21,7 @@ export interface User {
 export interface Tag {
   id: number;
   title: string;
+  color: string;
 }
 
 export interface Question {

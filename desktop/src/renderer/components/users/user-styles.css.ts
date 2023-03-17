@@ -25,6 +25,8 @@ export const UserPhoto = style({
 
 const BaseUserInfoStyle = style({
   padding: '5px 10px',
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
 });
 
 export const UserInfoStyle = styleVariants({
