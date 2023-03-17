@@ -2,7 +2,7 @@ import { globalStyle } from '@vanilla-extract/css';
 import { vars } from './vars.css';
 
 globalStyle('html', {
-    boxSizing: 'border-box'
+  boxSizing: 'border-box',
 });
 
 globalStyle('body , body *', {
@@ -15,5 +15,5 @@ globalStyle('body , body *', {
 });
 
 globalStyle('*, *:before, *:after', {
-    boxSizing: 'inherit'
+  boxSizing: 'inherit',
 });
