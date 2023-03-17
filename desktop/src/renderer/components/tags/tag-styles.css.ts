@@ -9,24 +9,19 @@ const TagBaseStyle = style({
     backgroundColor: vars.color['dark-300'],
     color: vars.color['text-white-100'],
     gap: vars.spacing['0.5x'],
+    padding: vars.spacing['0.5x'] + vars.spacing['0.75x'],
+    borderRadius: vars.borderRadius.medium,
+    fontSize: vars.fontSize.small,
 });
 
-
 export const TagVariantsStyle = styleVariants({
-    default: [TagBaseStyle, {
-        padding: vars.spacing['0.5x'] + vars.spacing['0.75x'],
-        borderRadius: vars.borderRadius.medium,
-        fontSize: vars.fontSize.small,
-    }],
+    default: [TagBaseStyle],
     small: [TagBaseStyle, {
         padding: vars.spacing['0.25x'] + vars.spacing['0.5x'],
         borderRadius: vars.borderRadius.small,
         fontSize: vars.fontSize.extraSmall,
     }],
     defaultAdd: [TagBaseStyle, {
-        padding: vars.spacing['0.5x'] + vars.spacing['0.75x'],
-        borderRadius: vars.borderRadius.medium,
-        fontSize: vars.fontSize.small,
         transition: vars.transition.defaultHover,
         ':hover': {
             backgroundColor: vars.color['dark-400'],
