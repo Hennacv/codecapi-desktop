@@ -15,7 +15,7 @@ export function useFormTags() {
     }
 
     return {
-      tags: tags.filter((tag) => !selectedTags.some((selectedTag) => selectedTag.id === tag.id)),
+      tags: tags.filter((tag) => !selectedTags.some((selectedTag) => selectedTag.id === tag.id)).sort((a, b) => a.id - b.id),
       selectedTags, 
       addTag, 
       deleteTag

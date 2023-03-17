@@ -43,9 +43,6 @@ const NewQuestion = () => {
 
   let formTags = useFormTags();
 
-  let tags = formTags.tags.sort((a, b) => a.id - b.id);
-  let selectedTags = formTags.selectedTags;
-
   function addTag(tag: Tag) {
     formTags.addTag(tag);
     updateFormValue('tags', [...form.tags, {'id': tag.id}]);
@@ -99,8 +96,8 @@ const NewQuestion = () => {
         </div>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel}>Labels</label>
-          <div className={tags ? NewQuestionTagList : 'visibility: hidden'}>
-            {tags.map((tag: Tag) => (
+          <div className={formTags.tags ? NewQuestionTagList : 'visibility: hidden'}>
+            {formTags.tags.map((tag: Tag) => (
                 <TagButton 
                   key={tag.id} 
                   title={tag.title} 
@@ -114,7 +111,7 @@ const NewQuestion = () => {
           <label className={NewQuestionDescription}>Geselecteerde labels:</label>
           <div className={NewQuestionTagContainer}>
             <div className={NewQuestionTagList}>
-              {selectedTags.map((tag: Tag) => (
+              {formTags.selectedTags.map((tag: Tag) => (
                 <TagButton 
                   key={tag.id} 
                   title={tag.title} 
