@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { AddQuestionDto, Tag } from 'renderer/utils/types';
-import { useFormTags } from './use-form-tags';
+import { useSelectedTags } from './use-selected-tags';
 import { 
   NewQuestionContainer, 
   NewQuestionDescription, 
@@ -41,7 +41,7 @@ const NewQuestion = () => {
     tags: [],
   });
 
-  let formTags = useFormTags();
+  let formTags = useSelectedTags();
 
   function addTag(tag: Tag) {
     formTags.addTag(tag);

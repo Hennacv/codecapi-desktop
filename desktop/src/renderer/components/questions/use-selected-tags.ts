@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useGetTags } from 'renderer/hooks/use-get-tags';
 import { Tag } from 'renderer/utils/types';
 
-export function useFormTags() {
+export function useSelectedTags() {
     const { data: tags = [] } = useGetTags();
     const [selectedTags, setSeletectTags] = useState<Tag[]>([]);
 
