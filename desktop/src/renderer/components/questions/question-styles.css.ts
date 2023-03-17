@@ -3,8 +3,7 @@ import { vars } from 'renderer/vars.css';
 
 export const NewQuestionContainer = style({
   width: vars.width.full,
-  height: vars.height.page,
-  padding: vars.spacing['3x'],
+  height: vars.height.full,
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['3x'],

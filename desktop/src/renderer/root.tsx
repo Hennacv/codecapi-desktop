@@ -6,7 +6,7 @@ import AuthProvider, {
   AuthContextData,
   defaultAuthContext,
 } from './context/auth-provider';
-import { mainContainer } from './root.css';
+import { contentContainer, mainContainer } from './root.css';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 
@@ -14,13 +14,9 @@ function Root() {
   return (
     <AuthProvider>
       <div className={mainContainer}>
-        <div className="">
-          <Sidebar />
-        </div>
-
-        <div className="">
+        <Sidebar />
+        <div className={contentContainer}>
           <Loader />
-
           <div>
             <Outlet />
           </div>

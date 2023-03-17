@@ -9,7 +9,6 @@ globalStyle('body , body *', {
     margin: vars.spacing['0x'],
     padding: vars.spacing['0x'],
     fontFamily: 'Inter, sans-serif',
-    backgroundColor: vars.color['dark-100'],
     color: vars.color['text-white-100'],
     fontSize: '16px',
 });
