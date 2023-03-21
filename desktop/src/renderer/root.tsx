@@ -7,7 +7,7 @@ import AuthProvider, {
 import { contentContainer, mainContainer } from './root.css';
 
 import Loader from './components/shared/loader';
-import Sidebar from './components/sidebar/sidebar-container/sidebar';
+import Sidebar from './components/sidebar/sidebar/sidebar';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 

@@ -11,17 +11,17 @@ const BaseSideStyles = style({
 });
 
 const BaseToggleContainer = style({
-    position: 'absolute',
-    width: 'fit-content',
-    right: -10,
-    top: 30,
-    backgroundColor: vars.color['dark-300'],
-    borderStyle: 'solid',
-    borderWidth: 'thin',
-    borderRadius: '50%',
-    color: vars.color['text-white-200'],
-    display: 'flex',
-    transition: 'transform 400ms',
+  position: 'absolute',
+  width: 'fit-content',
+  right: -10,
+  top: 30,
+  backgroundColor: vars.color['dark-300'],
+  borderStyle: 'solid',
+  borderWidth: 'thin',
+  borderRadius: '50%',
+  color: vars.color['text-white-200'],
+  display: 'flex',
+  transition: 'transform 400ms',
 });
 
 export const SideStyles = styleVariants({
