@@ -1,16 +1,13 @@
-import { useQuery } from 'react-query';
-import api from 'renderer/utils/api';
+import { useGetUsers } from 'renderer/hooks/user-get-users';
+import { User } from 'renderer/utils/types';
 
-function UserList() {
-  const { data = [] } = useQuery('users', async () => {
-    const res = await api.get('users');
-    return res.data;
-  });
+const UserList = () => {
+  const { data: users = [] } = useGetUsers();
 
   return (
-    <div className="">
-      {data.map((user: any) => (
-        <div className="">{user.name}</div>
+    <div>
+      {users.map((user: User) => (
+        <div key={user.id}>{user.name}</div>
       ))}
     </div>
   );

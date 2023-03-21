@@ -7,10 +7,10 @@ interface AddAnswerProps {
 }
 
 export function useAddAnswer({ onSuccess }: AddAnswerProps) {
-    return useMutation(
-        (data: AddAnswerDto) => {
-            return api.post('/answer', data);
-        },
-        { onSuccess }
-    );
+	return useMutation(
+		(data: AddAnswerDto) => {
+				return api.post('/answer', data);
+		},
+		{ onSuccess }
+	);
 }

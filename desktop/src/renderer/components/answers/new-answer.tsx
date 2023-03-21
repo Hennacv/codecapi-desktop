@@ -7,7 +7,7 @@ interface NewAnswerProps {
     id: number 
 }
 
-function NewAnswer({id}: NewAnswerProps) {
+const NewAnswer = ({id}: NewAnswerProps) => {
     
     const navigate = useNavigate();
     const addAnswer = useAddAnswer({

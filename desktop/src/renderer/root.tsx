@@ -1,12 +1,13 @@
 import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import Loader from './components/shared/loader';
-import Sidebar from './components/sidebar/sidebar';
 import AuthProvider, {
   AuthContextData,
   defaultAuthContext,
 } from './context/auth-provider';
 import { contentContainer, mainContainer } from './root.css';
+
+import Loader from './components/shared/loader';
+import Sidebar from './components/sidebar/sidebar-container/sidebar';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 

@@ -8,18 +8,18 @@ import {
   NewQuestionDescription, 
   NewQuestionFormItem, 
   NewQuestionHeader, 
-  NewQuestionInput,
   NewQuestionLabel, 
   NewQuestionParagraph, 
   NewQuestionSection, 
-  NewQuestionSubmit, 
   NewQuestionTagContainer, 
   NewQuestionTagList, 
-  NewQuestionTextarea, 
   NewQuestionTitle 
-} from './question-styles.css';
+} from './new-question-styles.css';
 
-import TagButton from '../tags/tag-button';
+import TagButton from '../../tags/tag-button/tag-button';
+import InputText from '../../ui/input-text/input-text';
+import Textarea from '../../ui/textarea/textarea';
+import Button from '../../ui/button/button'
 
 interface AddQuestionForm {
   title: string;
@@ -77,20 +77,20 @@ const NewQuestion = () => {
       <form className={NewQuestionSection}>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel} htmlFor="title">Titel *</label>
-          <input 
-            className={!form.title ? NewQuestionInput.default : NewQuestionInput.validated} 
+          <InputText 
             type="text" 
-            id="title" 
-            onChange={(e) => updateFormValue('title', e.target.value)}
+            id="title"
+            variant={!form.title ? 'default' : 'defaultValidated'}
+            onChange={(e) => updateFormValue('title', e.target.value)} 
           />
         </div>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel} htmlFor="paragraph">
             Beschrijving *<span className={NewQuestionParagraph}>(paragraaf 1)</span>
           </label>
-          <textarea 
-            className={!form.text ? NewQuestionTextarea.default : NewQuestionTextarea.validated} 
+          <Textarea 
             id="text" 
+            variant={!form.text ? 'default' : 'validated'} 
             onChange={(e) => updateFormValue('text', e.target.value)}
           />
         </div>
@@ -103,7 +103,7 @@ const NewQuestion = () => {
                   title={tag.title} 
                   color={tag.color} 
                   variant="defaultAdd" 
-                  icon={'add'} 
+                  icon="add"
                   onClick={() => addTag(tag)} 
                 />
               ))}
@@ -117,7 +117,7 @@ const NewQuestion = () => {
                   title={tag.title} 
                   color={tag.color} 
                   variant="defaultRemove" 
-                  icon={'delete'} 
+                  icon="delete"
                   onClick={() => deleteTag(tag)} 
                 />
               ))}
@@ -125,13 +125,13 @@ const NewQuestion = () => {
           </div>
         </div>
         <div className={NewQuestionFormItem}>
-          <button 
-            className={NewQuestionSubmit}
-            type="button" 
+          <Button 
+            text="Opslaan" 
+            type="submit" 
+            variant="defaultDisabled" 
             disabled={addQuestion.isLoading || !form.text || !form.title} 
-            onClick={() => onSubmit(form)}>
-              Opslaan
-          </button>
+            onClick={() => onSubmit(form)}
+          />
         </div>
       </form>
     </div>
