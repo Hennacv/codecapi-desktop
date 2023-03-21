@@ -48,19 +48,19 @@ const Sidebar = () => {
           <li>
             <SidebarLink to="/questions">
               <RiQuestionAnswerLine className={SideIcon} />
-              <span className={SideText}>Vragen</span>
+              <span className={SideText}>Questions</span>
             </SidebarLink>
           </li>
           <li>
             <SidebarLink to="/questions/new">
               <RiQuestionnaireLine className={SideIcon} />
-              <span className={SideText}>Vraag stellen</span>
+              <span className={SideText}>Ask Question</span>
             </SidebarLink>
           </li>
           <li>
             <SidebarLink to="/users">
               <RiUser3Line className={SideIcon} />
-              <span className={SideText}>Gebruikers</span>
+              <span className={SideText}>Users</span>
             </SidebarLink>
           </li>
         </ul>
@@ -70,7 +70,7 @@ const Sidebar = () => {
             <li>
               <SidebarLink to="/">
                 <RiSettings3Line className={SideIcon} />
-                <span className={SideText}>Instellingen</span>
+                <span className={SideText}>Settings</span>
               </SidebarLink>
             </li>
           </ul>

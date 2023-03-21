@@ -69,14 +69,14 @@ const NewQuestion = () => {
   return (
     <div className={NewQuestionContainer}>
       <header className={NewQuestionHeader}>
-        <h1 className={NewQuestionTitle}>Nieuwe vraag</h1>
+        <h1 className={NewQuestionTitle}>New question</h1>
         <p className={NewQuestionDescription}>
-          Via onderstaand formulier kan een vraag worden gesteld aan alle medewerkers van CodeCapi.
+          Use the form below to submit a question to all CodeCapi employees.
         </p>
       </header>
       <form className={NewQuestionSection}>
         <div className={NewQuestionFormItem}>
-          <label className={NewQuestionLabel} htmlFor="title">Titel *</label>
+          <label className={NewQuestionLabel} htmlFor="title">Title *</label>
           <InputText 
             type="text" 
             id="title"
@@ -86,7 +86,7 @@ const NewQuestion = () => {
         </div>
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel} htmlFor="paragraph">
-            Beschrijving *<span className={NewQuestionParagraph}>(paragraaf 1)</span>
+          Description *<span className={NewQuestionParagraph}>(paragraph 1)</span>
           </label>
           <Textarea 
             id="text" 
@@ -108,7 +108,7 @@ const NewQuestion = () => {
                 />
               ))}
           </div>
-          <label className={NewQuestionDescription}>Geselecteerde labels:</label>
+          <label className={NewQuestionDescription}>Selected labels:</label>
           <div className={NewQuestionTagContainer}>
             <div className={NewQuestionTagList}>
               {formTags.selectedTags.map((tag: Tag) => (
@@ -126,7 +126,7 @@ const NewQuestion = () => {
         </div>
         <div className={NewQuestionFormItem}>
           <Button 
-            text="Opslaan" 
+            text="Save" 
             type="submit" 
             variant="defaultDisabled" 
             disabled={addQuestion.isLoading || !form.text || !form.title} 

@@ -31,11 +31,11 @@ const NewAnswer = ({id}: NewAnswerProps) => {
 	}
 
 	return (
-		<div className="">
-			<form className="">
-			<header className="">Nieuw antwoord</header>
-				<textarea className="" onChange={(e) => updateFormValue('text', e.target.value)}/>
-				<button className="" onClick={() => onSubmit(form)}>Post</button>
+		<div>
+			<form>
+			<header>New answer</header>
+				<textarea onChange={(e) => updateFormValue('text', e.target.value)}/>
+				<button onClick={() => onSubmit(form)}>Post</button>
 			</form>
 		</div>
 	)

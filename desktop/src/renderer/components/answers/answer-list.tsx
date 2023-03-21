@@ -8,7 +8,7 @@ interface AnswerListProps {
 const AnswerList = ({answers}: AnswerListProps) => {
 	return (
 		<div>
-			<h1>{ answers.length } antwoorden</h1>
+			<h1>{ answers.length } Answers</h1>
 			{answers.map((answer: Answer) => (
 					<AnswerCard key={answer.id} answer={answer}/>
 			))}
