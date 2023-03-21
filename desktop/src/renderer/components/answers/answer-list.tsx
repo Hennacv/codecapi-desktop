@@ -5,15 +5,15 @@ interface AnswerListProps {
     answers: Answer[];
 }
 
-function AnswerList({answers}: AnswerListProps) {
-    return (
-        <div className="">
-            <h1 className="">{ answers.length } antwoorden</h1>
-            {answers.map((answer: Answer) => (
-                <AnswerCard key={answer.id} answer={answer}/>
-            ))}
-        </div>
-    );
+const AnswerList = ({answers}: AnswerListProps) => {
+	return (
+		<div>
+			<h1>{ answers.length } Answers</h1>
+			{answers.map((answer: Answer) => (
+					<AnswerCard key={answer.id} answer={answer}/>
+			))}
+		</div>
+	);
 } 
 
 export default AnswerList;

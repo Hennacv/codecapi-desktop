@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from 'renderer/root';
 
-export default function Login() {
+const Login = () => {
   const { signIn } = useContext(AuthContext);
 
   return (
@@ -18,3 +18,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

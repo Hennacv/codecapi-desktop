@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useSidebar = () => {
+export function useSidebar() {
   const [isExpanded, setIsExpanded] = useState(
     Boolean(localStorage.getItem('sidebar-isExpanded'))
   );

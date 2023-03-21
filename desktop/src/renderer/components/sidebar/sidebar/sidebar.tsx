@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from 'renderer/root';
+import { LogoStyle } from 'assets/logo/logo-styles.css';
+import { useSidebar } from './use-sidebar';
 import {
   RiQuestionAnswerLine,
   RiQuestionnaireLine,
@@ -7,10 +9,6 @@ import {
   RiSettings3Line,
   RiArrowDropLeftLine,
 } from 'react-icons/ri';
-
-import UserInfo from '../users/user-info';
-import Logo from '../logo/logo';
-import SidebarLink from './sidebar-link';
 import {
   AsideStyles,
   SideIcon,
@@ -20,10 +18,12 @@ import {
   SideToggle,
   ToggleContainer,
 } from './sidebar-styles.css';
-import { LogoStyle } from '../logo/logo-styles.css';
-import { useSidebar } from './use-sidebar';
 
-function Sidebar() {
+import UserInfo from '../../users/user-info/user-info';
+import Logo from '../../../../assets/logo/logo';
+import SidebarLink from '../sidebar-link/sidebar-link';
+
+const Sidebar = () => {
   const { toggleSideBar, isExpanded } = useSidebar();
 
   const { user } = useContext(AuthContext);
@@ -48,19 +48,19 @@ function Sidebar() {
           <li>
             <SidebarLink to="/questions">
               <RiQuestionAnswerLine className={SideIcon} />
-              <span className={SideText}>Vragen</span>
+              <span className={SideText}>Questions</span>
             </SidebarLink>
           </li>
           <li>
             <SidebarLink to="/questions/new">
               <RiQuestionnaireLine className={SideIcon} />
-              <span className={SideText}>Vraag stellen</span>
+              <span className={SideText}>Ask Question</span>
             </SidebarLink>
           </li>
           <li>
             <SidebarLink to="/users">
               <RiUser3Line className={SideIcon} />
-              <span className={SideText}>Gebruikers</span>
+              <span className={SideText}>Users</span>
             </SidebarLink>
           </li>
         </ul>
@@ -70,7 +70,7 @@ function Sidebar() {
             <li>
               <SidebarLink to="/">
                 <RiSettings3Line className={SideIcon} />
-                <span className={SideText}>Instellingen</span>
+                <span className={SideText}>Settings</span>
               </SidebarLink>
             </li>
           </ul>

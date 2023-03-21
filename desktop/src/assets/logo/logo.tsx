@@ -1,4 +1,8 @@
-function Logo({ isExpanded }) {
+interface LogoProps {
+  isExpanded: boolean;
+}
+
+function Logo({ isExpanded }: LogoProps) {
   if (isExpanded) {
     return (
       <svg viewBox="0 0 3430.85 623.17" height="22">

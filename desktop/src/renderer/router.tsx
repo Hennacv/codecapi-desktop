@@ -1,8 +1,8 @@
 import { createMemoryRouter } from 'react-router-dom';
 import Login from './components/auth/login';
-import NewQuestion from './components/questions/new-question';
-import QuestionDetail from './components/questions/question-detail';
-import QuestionList from './components/questions/question-list';
+import NewQuestion from './components/questions/new-question/new-question';
+import QuestionDetail from './components/questions/question-details/question-detail';
+import QuestionList from './components/questions/question-list/question-list';
 import UserList from './components/users/user-list';
 import Root from './root';
 
