@@ -8,37 +8,37 @@ interface NewAnswerProps {
 }
 
 const NewAnswer = ({id}: NewAnswerProps) => {
-    
-    const navigate = useNavigate();
-    const addAnswer = useAddAnswer({
-        onSuccess: () => navigate('/questions/' + id)
-    });
+	
+	const navigate = useNavigate();
+	const addAnswer = useAddAnswer({
+			onSuccess: () => navigate('/questions/' + id)
+	});
 
-    function onSubmit(newAnswer: AddAnswerDto) {
-        addAnswer.mutate(newAnswer);
-    }
+	function onSubmit(newAnswer: AddAnswerDto) {
+		addAnswer.mutate(newAnswer);
+	}
 
-    const [form, setForm] = useState({
-        text: '',
-        questionId: id,
-    });
+	const [form, setForm] = useState({
+		text: '',
+		questionId: id,
+	});
 
-    function updateFormValue(field: string, value: string) {
-        setForm({
-          ...form,
-          [field]: value,
-        });
-    }
+	function updateFormValue(field: string, value: string) {
+		setForm({
+			...form,
+			[field]: value,
+		});
+	}
 
-    return (
-        <div className="">
-            <form className="">
-            <header className="">Nieuw antwoord</header>
-                <textarea className="" onChange={(e) => updateFormValue('text', e.target.value)}/>
-                <button className="" onClick={() => onSubmit(form)}>Post</button>
-            </form>
-        </div>
-    )
+	return (
+		<div className="">
+			<form className="">
+			<header className="">Nieuw antwoord</header>
+				<textarea className="" onChange={(e) => updateFormValue('text', e.target.value)}/>
+				<button className="" onClick={() => onSubmit(form)}>Post</button>
+			</form>
+		</div>
+	)
 }
 
 export default NewAnswer;
