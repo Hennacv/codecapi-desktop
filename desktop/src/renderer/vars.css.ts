@@ -55,6 +55,7 @@ export const vars = createGlobalTheme(':root', {
         '0.75x': '0.75rem',     
         '1x': '1rem',           
         '1.25x': '1.25rem',
+        '1.5x': '1.5rem',
         '2x': '2rem',
         '3x': '3rem',    
     },
