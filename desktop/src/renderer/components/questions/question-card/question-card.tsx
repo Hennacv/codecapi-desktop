@@ -11,6 +11,7 @@ import {
 } from './question-card-styles.css';
 
 import dayjs from 'renderer/utils/dayjs';
+import classNames from 'classnames';
 import TagCard from 'renderer/components/tags/tag-card/tag-card';
 import IconQuestions from 'assets/icons/icon-questions.svg';
 
@@ -21,6 +22,10 @@ interface QuestionCardProps {
 
 const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
 
+  const showQuestionCard = classNames(QuestionCardVariants.default, {
+    [QuestionCardVariants.defaultHover]: !showText,
+  });
+
   const navigate = useNavigate();
 
   function onPressCard(question: Question) {
@@ -28,7 +33,7 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
   }
 
   return (
-    <div className={showText ? QuestionCardVariants.default : QuestionCardVariants.defaultHover} onClick={() => onPressCard(question)}>
+    <div className={showQuestionCard} onClick={() => onPressCard(question)}>
       <div className={QuestionCardHeader}>
         {`${question.user.name} - ${dayjs(question.createdAt).fromNow()}`}
         {!showText &&
