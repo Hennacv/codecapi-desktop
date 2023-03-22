@@ -22,10 +22,6 @@ interface QuestionCardProps {
 
 const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
 
-  const showQuestionCard = classNames(QuestionCardVariants.default, {
-    [QuestionCardVariants.defaultHover]: !showText,
-  });
-
   const navigate = useNavigate();
 
   function onPressCard(question: Question) {
@@ -33,7 +29,8 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
   }
 
   return (
-    <div className={showQuestionCard} onClick={() => onPressCard(question)}>
+    <div className={classNames(QuestionCardVariants.default, {[QuestionCardVariants.defaultHover]: !showText,})} 
+      onClick={() => onPressCard(question)}>
       <div className={QuestionCardHeader}>
         {question.user.name} 
         <span>-</span>
