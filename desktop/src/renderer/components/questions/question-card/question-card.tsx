@@ -47,7 +47,7 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
             </div>
           </>
         }
-        {question.tags.length > 0 &&
+        {!!question.tags.length &&
           <>
             <span>-</span>
             {question.tags.map((tag) => (
