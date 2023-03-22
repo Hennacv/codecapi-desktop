@@ -31,14 +31,12 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
     <div className={showText ? QuestionCardVariants.default : QuestionCardVariants.defaultHover} onClick={() => onPressCard(question)}>
       <div className={QuestionCardHeader}>
         {`${question.user.name} - ${dayjs(question.createdAt).fromNow()}`}
-        {!showText ?
+        {!showText &&
           <div className={QuestionCardIconContainer}>
             <span>-</span>
             <img className={QuestionCardIcon} src={IconQuestions} />
             {question.answer.length}
           </div>
-        :
-          null
         }
         {question.tags.length ?
           <>
