@@ -38,15 +38,13 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
             {question.answer.length}
           </div>
         }
-        {question.tags.length ?
+        {question.tags.length &&
           <>
             <span>-</span>
             {question.tags.map((tag) => (
               <TagCard key={tag.id} title={tag.title} color={tag.color} variant="small" />
             ))}
           </>
-        :
-          null
         }
       </div>
       <div className={QuestionCardContent}>
