@@ -24,7 +24,7 @@ export const QuestionCardHeader = style({
   flexDirection: 'row',
   alignItems: 'center',
   flexWrap: 'wrap',
-  gap: vars.spacing["0.75x"],
+  gap: vars.spacing["0.5x"],
   fontSize: vars.fontSize.small,
   color: vars.color["text-white-300"],
   marginBottom: vars.spacing["1x"],
@@ -34,7 +34,7 @@ export const QuestionCardIconContainer = style({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: vars.spacing["0.5x"],
+  gap: vars.spacing["0.25x"],
 });
 
 export const QuestionCardIcon = style({

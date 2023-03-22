@@ -35,15 +35,19 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
   return (
     <div className={showQuestionCard} onClick={() => onPressCard(question)}>
       <div className={QuestionCardHeader}>
-        {`${question.user.name} - ${dayjs(question.createdAt).fromNow()}`}
+        {question.user.name} 
+        <span>-</span>
+        {dayjs(question.createdAt).fromNow()}
         {!showText &&
-          <div className={QuestionCardIconContainer}>
+          <>
             <span>-</span>
-            <img className={QuestionCardIcon} src={IconQuestions} />
-            {question.answer.length}
-          </div>
+            <div className={QuestionCardIconContainer}>
+              <img className={QuestionCardIcon} src={IconQuestions} />
+              {question.answer.length}
+            </div>
+          </>
         }
-        {question.tags.length &&
+        {question.tags.length > 0 &&
           <>
             <span>-</span>
             {question.tags.map((tag) => (
