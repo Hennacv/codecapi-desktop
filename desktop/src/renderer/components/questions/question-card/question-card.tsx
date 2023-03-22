@@ -30,8 +30,7 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
   return (
     <div className={showText ? QuestionCardVariants.default : QuestionCardVariants.defaultHover} onClick={() => onPressCard(question)}>
       <div className={QuestionCardHeader}>
-        {question.user.name}<span>-</span>
-        {dayjs(question.createdAt).fromNow()}
+        {`${question.user.name} - ${dayjs(question.createdAt).fromNow()}`}
         {!showText ?
           <div className={QuestionCardIconContainer}>
             <span>-</span>
