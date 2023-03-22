@@ -13,10 +13,8 @@ const TagCard = ({ title, color, variant, icon }: TagCardProps) => {
     <div className={TagCardVariants[variant]}>
       <span className={TagColorBlob} style={{"backgroundColor": color}}></span>
       {title}
-      {icon ? 
+      {icon && 
         <RiAddFill className={icon === 'add' ? TagIconVariants.add : TagIconVariants.remove} />
-      :
-        null
       }
     </div>
   );
