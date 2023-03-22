@@ -18,7 +18,7 @@ export const NewQuestionHeader = style({
 export const NewQuestionSection = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: vars.spacing['3x'],
+  gap: vars.spacing['2x'],
 })
 
 export const NewQuestionTitle = style({
