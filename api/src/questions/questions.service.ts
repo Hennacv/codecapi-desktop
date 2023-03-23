@@ -68,7 +68,7 @@ export class QuestionsService {
   async fetchQuestion(id: number) {
     return await Question.findOneOrFail({
       where: { id },
-      relations: ['answer', 'tags', 'user'],
+      relations: ['answer.user', 'tags', 'user'],
       order: {
         tags: {
           title: 'asc',
