@@ -1,6 +1,7 @@
 import { Answer } from 'renderer/utils/types';
-import AnswerCard from '../answer-card/answer-card';
 import { AnswerListContainer } from './answer-list-styling.css';
+
+import AnswerCard from '../answer-card/answer-card';
 
 interface AnswerListProps {
   answers: Answer[];

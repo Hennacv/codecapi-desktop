@@ -15,13 +15,11 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
   return (
     <div className={AnswerCardContainer}>
       <div className={AnswerCardHeader}>
-        {answer.user.name} 
+        {answer.user.name}
         <span>-</span>
         {dayjs(answer.createdAt).fromNow()}
       </div>
-			<div className={AnswerCardContent}>
-      	{answer.text}
-			</div>
+      <div className={AnswerCardContent}>{answer.text}</div>
     </div>
   );
 };
