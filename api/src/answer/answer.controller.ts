@@ -12,6 +12,11 @@ import { UpdateAnswerDto } from './dto/update-answer.dto';
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.answerService.findOne(id);
+  }
+
   @Post()
   create(@Body() createAnswerDto: CreateAnswerDto, @Req() req: Request) {
     return this.answerService.create(createAnswerDto, req['user']);

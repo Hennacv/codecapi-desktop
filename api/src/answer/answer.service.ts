@@ -15,9 +15,13 @@ export class AnswerService {
   ) {}
 
   async create(createAnswerDto: CreateAnswerDto, user: User) {
-    let answer = this.repo.create({...createAnswerDto, userId: user.id });
+    let answer = this.repo.create({ ...createAnswerDto, userId: user.id });
     await answer.save();
     return this.fetchAnswer(answer.id);
+  }
+
+  async findOne(id: number) {
+    return await this.fetchAnswer(id);
   }
 
   async update(id: number, updateAnswerDto: UpdateAnswerDto) {
@@ -41,9 +45,8 @@ export class AnswerService {
         createdAt: 'desc',
         user: {
           id: 'asc',
-        }
+        },
       },
     });
   }
-
 }

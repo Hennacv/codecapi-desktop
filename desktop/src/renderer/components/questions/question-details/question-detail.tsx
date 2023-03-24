@@ -7,7 +7,7 @@ import {
 } from './question-details-styles.css';
 
 import QuestionCard from '../question-card/question-card';
-import AnswerList from '../../answers/answer-list';
+import AnswerList from '../../answers/answer-list/answer-list';
 import NewAnswer from '../../answers/new-answer';
 import Button from '../../ui/button/button';
 import IconQuestionsGrey from 'assets/icons/icon-questions-grey.svg';
