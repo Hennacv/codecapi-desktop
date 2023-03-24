@@ -1,5 +1,5 @@
-import { style } from "@vanilla-extract/css";
-import { vars } from "renderer/vars.css";
+import { style } from '@vanilla-extract/css';
+import { vars } from 'renderer/vars.css';
 
 export const NewQuestionContainer = style({
   width: vars.width.full,
@@ -10,27 +10,27 @@ export const NewQuestionContainer = style({
 });
 
 export const NewQuestionHeader = style({
-	display: 'flex',
-	flexDirection: 'column',
-	gap: vars.spacing['1.25x'],
-})
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing['1.25x'],
+});
 
 export const NewQuestionSection = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['2x'],
-})
+});
 
 export const NewQuestionTitle = style({
   fontSize: vars.fontSize.extraLarge,
-  fontWeight: vars.fontWeight.medium
-})
+  fontWeight: vars.fontWeight.medium,
+});
 
 export const NewQuestionDescription = style({
   fontSize: vars.fontSize.small,
   fontWeight: vars.fontWeight.regular,
-  color: vars.color['text-white-300']
-})
+  color: vars.color['text-white-300'],
+});
 
 export const NewQuestionFormItem = style({
   display: 'flex',
@@ -46,7 +46,7 @@ export const NewQuestionLabel = style({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: vars.spacing['0.5x']
+  gap: vars.spacing['0.5x'],
 });
 
 export const NewQuestionParagraph = style({
@@ -70,5 +70,5 @@ export const NewQuestionTagContainer = style({
   backgroundColor: vars.color['dark-200'],
   border: '2px solid ' + vars.color['dark-300'],
   borderRadius: vars.borderRadius.medium,
-  minHeight: '4.5rem'
+  minHeight: '4.5rem',
 });
