@@ -16,14 +16,6 @@ export const ReactLiveEditorHeader = style({
   flexDirection: 'row',
   flexWrap: 'wrap',
   alignItems: 'center',
-  gap: vars.spacing['2x'],
-});
-
-export const ReactLiveEditorOptions = style({
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  alignItems: 'center',
   gap: vars.spacing['1x'],
 });
 
@@ -31,12 +23,16 @@ export const ReactLiveEditorTitle = style({
   fontSize: vars.fontSize.small,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-300'],
-})
+});
 
 export const ReactLiveEditorPaste = style({
   position: 'absolute',
   right: '0.5rem',
   top: '0.5rem',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: vars.spacing['0.5x']
 });
 
 export const ReactLiveEditoLabel = style({

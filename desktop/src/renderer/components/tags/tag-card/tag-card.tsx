@@ -1,5 +1,11 @@
-import { TagColorBlob, TagIconVariants, TagCardVariants } from './tag-card-styles.css';
+import {
+  TagColorBlob,
+  TagIconVariants,
+  TagCardVariants,
+} from './tag-card-styles.css';
 import { RiAddFill } from 'react-icons/ri';
+import IconAdd from 'assets/icons/icon-add';
+import IconRemove from 'assets/icons/icon-remove';
 
 interface TagCardProps {
   title: string;
@@ -11,12 +17,14 @@ interface TagCardProps {
 const TagCard = ({ title, color, variant, icon }: TagCardProps) => {
   return (
     <div className={TagCardVariants[variant]}>
-      <span className={TagColorBlob} style={{"backgroundColor": color}}></span>
+      <span className={TagColorBlob} style={{ backgroundColor: color }}></span>
       {title}
-      {icon && 
-        <RiAddFill className={icon === 'add' ? TagIconVariants.add : TagIconVariants.remove} />
-      }
+      {icon === 'add' ? (
+        <IconAdd variant="extraSmall" />
+      ) : (
+        <IconRemove variant="extraSmall" />
+      )}
     </div>
   );
-}
+};
 export default TagCard;

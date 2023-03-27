@@ -1,14 +1,16 @@
+import { ReactNode } from "react";
 import { ButtonVariants } from "./button-styles.css";
 
 interface ButtonProps {
-	text: string;
+	text?: string;
+	children?: ReactNode;
   type: 'button' | 'submit' | 'reset';
 	variant: keyof typeof ButtonVariants;
 	disabled?: boolean;
   onClick: () => void;
 }
 
-const Button = ({text, type, variant, disabled, onClick}: ButtonProps) => {
+const Button = ({text, children, type, variant, disabled, onClick}: ButtonProps) => {
 	return (
 		<button 
 			className={ButtonVariants[variant]}
@@ -16,7 +18,7 @@ const Button = ({text, type, variant, disabled, onClick}: ButtonProps) => {
 			disabled={disabled} 
 			onClick={onClick}
 		>
-		{text}
+		{!text ? children : text}
 		</button>
 	);
 }

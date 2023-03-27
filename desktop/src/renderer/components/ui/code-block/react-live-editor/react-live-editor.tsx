@@ -5,13 +5,13 @@ import {
   ReactLiveEditoLabel,
   ReactLiveEditorContainer,
   ReactLiveEditorHeader,
-  ReactLiveEditorOptions,
   ReactLiveEditorPaste,
   ReactLiveEditorTitle,
 } from './react-live-editor-styles.css';
 import Button from '../../button/button';
 import Select from '../../select/select';
 import theme from '../themes/theme';
+import IconPlus from 'assets/icons/icon-add';
 
 interface ReactLiveEditorProps {
   position: number;
@@ -43,17 +43,14 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
         <label className={ReactLiveEditoLabel}>
           Code block <span className={ReactLiveEditorTitle}>{position}</span>
         </label>
+        <Button
+          type="button"
+          variant="smallSquare"
+          onClick={() => console.log('remove')}
+        >
+          <IconPlus variant="small" />
+        </Button>
       </div>
-      <div className={ReactLiveEditorOptions}>
-        <p className={ReactLiveEditorTitle}>Programming language:</p>
-        <Select
-          options={languages.map((language) => {
-            return { value: language, label: language };
-          })}
-          onChange={(event) => setSelectedLanguage(event.target.value as Language)}
-        />
-      </div>
-
       <div className={ReactLiveEditorContainer}>
         <LiveProvider
           code={!code ? '// paste your code here' : code}
@@ -63,6 +60,14 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
           <LiveEditor />
         </LiveProvider>
         <div className={ReactLiveEditorPaste}>
+          <Select
+            options={languages.map((language) => {
+              return { value: language, label: language };
+            })}
+            onChange={(event) =>
+              setSelectedLanguage(event.target.value as Language)
+            }
+          />
           <Button
             text="Paste"
             type="button"
