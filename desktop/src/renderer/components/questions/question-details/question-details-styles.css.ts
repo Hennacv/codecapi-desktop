@@ -7,12 +7,12 @@ export const QuestionDetailsContainer = style({
   gap: vars.spacing['2x'],
 });
 
-export const QuestionDetailsIcon = style({
-  width: '1rem',
-  height: '1rem',
+export const QuestionDetailsIconContainer = style({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: vars.spacing['0.25x'],
   marginLeft: vars.spacing['0.5x'],
-  marginRight: vars.spacing['0.25x']
-});
+})
 
 export const QuestionDetailsAnswerContainer = style({
   display: 'flex',

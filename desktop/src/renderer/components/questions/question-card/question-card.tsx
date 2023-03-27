@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { Question } from 'renderer/utils/types';
 import { 
   QuestionCardHeader,
-  QuestionCardIcon,
   QuestionCardContent, 
   QuestionCardVariants,
   QuestionCardIconContainer,
@@ -13,7 +12,7 @@ import {
 import dayjs from 'renderer/utils/dayjs';
 import classNames from 'classnames';
 import TagCard from 'renderer/components/tags/tag-card/tag-card';
-import IconQuestions from 'assets/icons/icon-questions.svg';
+import IconQuestions from 'assets/icons/icon-questions';
 
 interface QuestionCardProps {
   question: Question;
@@ -39,7 +38,7 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
           <>
             <span>-</span>
             <div className={QuestionCardIconContainer}>
-              <img className={QuestionCardIcon} src={IconQuestions} />
+              <IconQuestions variant='small' />
               {question.answer.length}
             </div>
           </>

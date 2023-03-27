@@ -3,14 +3,14 @@ import { useGetQuestion } from 'renderer/hooks/use-get-question';
 import {
   QuestionDetailsAnswerContainer,
   QuestionDetailsContainer,
-  QuestionDetailsIcon,
+  QuestionDetailsIconContainer,
 } from './question-details-styles.css';
 
 import QuestionCard from '../question-card/question-card';
 import AnswerList from '../../answers/answer-list/answer-list';
 import NewAnswer from '../../answers/new-answer';
 import Button from '../../ui/button/button';
-import IconQuestionsGrey from 'assets/icons/icon-questions-grey.svg';
+import IconQuestionsGrey from 'assets/icons/icon-question-grey';
 
 const QuestionDetail = () => {
   const { id } = useParams();
@@ -31,9 +31,12 @@ const QuestionDetail = () => {
       />
       <QuestionCard question={question} showText />
       <div className={QuestionDetailsAnswerContainer}>
-        Number of answers:
-        <img className={QuestionDetailsIcon} src={IconQuestionsGrey} />
-        {question.answer.length}
+        <p>Number of answers:</p>
+        <div className={QuestionDetailsIconContainer}>
+          <IconQuestionsGrey variant="small" />
+          {question.answer.length}
+        </div>
+
       </div>
       <AnswerList answers={question.answer} />
       <NewAnswer id={question.id} />

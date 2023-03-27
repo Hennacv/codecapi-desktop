@@ -59,6 +59,7 @@ export const ToggleContainer = styleVariants({
 
 export const SideText = style({
   fontSize: 12,
+  marginLeft: vars.spacing['0.5x']
 });
 
 export const SideList = style({
