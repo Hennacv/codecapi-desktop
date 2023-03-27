@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { AddQuestionDto, Tag } from 'renderer/utils/types';
 import { useSelectedTags } from './use-selected-tags';
-import { LiveEditor, LiveProvider } from 'react-live';
 import {
   NewQuestionContainer,
   NewQuestionDescription,
@@ -22,7 +21,6 @@ import InputText from '../../ui/input-text/input-text';
 import Textarea from '../../ui/textarea/textarea';
 import Button from '../../ui/button/button';
 import ReactLiveEditor from 'renderer/components/ui/code-block/react-live-editor/react-live-editor';
-import ReactMonacoEditor from 'renderer/components/ui/code-block/monaco-editor/react-monaco-editor';
 
 interface AddQuestionForm {
   title: string;
@@ -101,8 +99,7 @@ const NewQuestion = () => {
         </div>
 
         <div className={NewQuestionFormItem}>
-          <ReactLiveEditor />
-          <ReactMonacoEditor />
+          <ReactLiveEditor position={1} />
         </div>
 
         <div className={NewQuestionFormItem}>

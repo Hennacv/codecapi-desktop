@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 export const ReactLiveEditorContainer = style({
-  backgroundColor: vars.color['dark-200'],
+  backgroundColor: vars.color['dark-100'],
   border: '2px solid ' + vars.color['dark-300'],
   borderRadius: vars.borderRadius.medium,
   fontSize: vars.fontSize.extraSmall,
@@ -10,6 +10,28 @@ export const ReactLiveEditorContainer = style({
   padding: vars.spacing['0.5x'],
   position: 'relative',
 });
+
+export const ReactLiveEditorHeader = style({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  gap: vars.spacing['2x'],
+});
+
+export const ReactLiveEditorOptions = style({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  gap: vars.spacing['1x'],
+});
+
+export const ReactLiveEditorTitle = style({
+  fontSize: vars.fontSize.small,
+  fontWeight: vars.fontWeight.regular,
+  color: vars.color['text-white-300'],
+})
 
 export const ReactLiveEditorPaste = style({
   position: 'absolute',
