@@ -129,6 +129,7 @@
     "react-icons": "^4.8.0",
     "react-live": "^3.2.0",
     "react-query": "^3.39.2",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.4.0"
   },
   "devDependencies": {
