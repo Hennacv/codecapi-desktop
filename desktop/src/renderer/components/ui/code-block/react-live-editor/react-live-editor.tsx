@@ -1,41 +1,26 @@
 import { useState } from 'react';
-import { LiveEditor, LiveProvider } from 'react-live';
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import { Language } from 'prism-react-renderer';
+import { languages } from './languages';
 import {
   ReactLiveEditoLabel,
   ReactLiveEditorContainer,
   ReactLiveEditorHeader,
-  ReactLiveEditorPaste,
+  ReactLiveEditorOptions,
   ReactLiveEditorTitle,
 } from './react-live-editor-styles.css';
 import Button from '../../button/button';
 import Select from '../../select/select';
 import theme from '../themes/theme';
-import IconPlus from 'assets/icons/icon-add';
+import IconRemove from 'assets/icons/icon-remove';
 
 interface ReactLiveEditorProps {
   position: number;
 }
 
 const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
-  const [code, setCode] = useState<string>();
+  const [code, setCode] = useState<string>('');
   const [selectedLanguage, setSelectedLanguage] = useState<Language>('jsx');
-  const [languages, setLanguages] = useState<Array<Language>>([
-    'jsx',
-    'css',
-    'javascript',
-    'sass',
-    'scss',
-    'graphql',
-    'python',
-    'typescript',
-  ]);
-
-  async function PasteClipboard() {
-    const clipboard = await navigator.clipboard.readText();
-
-    setCode(code + clipboard);
-  }
 
   return (
     <>
@@ -46,9 +31,9 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
         <Button
           type="button"
           variant="smallSquare"
-          onClick={() => console.log('remove')}
+          onClick={() => null}
         >
-          <IconPlus variant="small" />
+          <IconRemove variant="small" />
         </Button>
       </div>
       <div className={ReactLiveEditorContainer}>
@@ -56,10 +41,11 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
           code={!code ? '// paste your code here' : code}
           language={selectedLanguage}
           theme={theme}
+          noInline={true}
         >
-          <LiveEditor />
+          <LiveEditor onChange={() => console.log(code)} />
         </LiveProvider>
-        <div className={ReactLiveEditorPaste}>
+        <div className={ReactLiveEditorOptions}>
           <Select
             options={languages.map((language) => {
               return { value: language, label: language };
@@ -67,12 +53,6 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
             onChange={(event) =>
               setSelectedLanguage(event.target.value as Language)
             }
-          />
-          <Button
-            text="Paste"
-            type="button"
-            variant="small"
-            onClick={PasteClipboard}
           />
         </div>
       </div>

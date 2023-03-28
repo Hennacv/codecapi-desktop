@@ -20,6 +20,8 @@ import TagButton from '../../tags/tag-button/tag-button';
 import InputText from '../../ui/input-text/input-text';
 import Textarea from '../../ui/textarea/textarea';
 import Button from '../../ui/button/button';
+import IconAdd from 'assets/icons/icon-add';
+import IconRemove from 'assets/icons/icon-remove';
 import ReactLiveEditor from 'renderer/components/ui/code-block/react-live-editor/react-live-editor';
 
 interface AddQuestionForm {
@@ -115,9 +117,10 @@ const NewQuestion = () => {
                 title={tag.title}
                 color={tag.color}
                 variant="defaultAdd"
-                icon="add"
                 onClick={() => addTag(tag)}
-              />
+              >
+                <IconAdd variant={'small'} />
+              </TagButton>
             ))}
           </div>
           <label className={NewQuestionDescription}>Selected labels:</label>
@@ -131,7 +134,9 @@ const NewQuestion = () => {
                   variant="defaultRemove"
                   icon="delete"
                   onClick={() => deleteTag(tag)}
-                />
+                >
+                  <IconRemove variant={'small'} />
+                </TagButton>
               ))}
             </div>
           </div>

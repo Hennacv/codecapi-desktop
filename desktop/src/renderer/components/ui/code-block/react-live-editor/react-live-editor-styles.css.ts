@@ -25,14 +25,14 @@ export const ReactLiveEditorTitle = style({
   color: vars.color['text-white-300'],
 });
 
-export const ReactLiveEditorPaste = style({
+export const ReactLiveEditorOptions = style({
   position: 'absolute',
   right: '0.5rem',
   top: '0.5rem',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: vars.spacing['0.5x']
+  gap: vars.spacing['0.5x'],
 });
 
 export const ReactLiveEditoLabel = style({
