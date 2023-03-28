@@ -7,8 +7,9 @@ export const ReactLiveEditorContainer = style({
   borderRadius: vars.borderRadius.medium,
   fontSize: vars.fontSize.extraSmall,
   fontWeight: vars.fontWeight.extraLight,
-  padding: vars.spacing['0.5x'],
+  padding: vars.spacing['1x'] + vars.spacing['1x'] + vars.spacing['1x'] + vars.spacing['0x'],
   position: 'relative',
+  minHeight: '5vh',
 });
 
 export const ReactLiveEditorHeader = style({
@@ -26,9 +27,6 @@ export const ReactLiveEditorTitle = style({
 });
 
 export const ReactLiveEditorOptions = style({
-  position: 'absolute',
-  right: '0.5rem',
-  top: '0.5rem',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

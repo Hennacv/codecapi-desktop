@@ -1,16 +1,15 @@
-import { Language } from 'prism-react-renderer';
-
-export const languages: Array<Language> = [
-  'jsx',
-  'css',
+export const languages: Array<string> = [
   'javascript',
-  'sass',
-  'scss',
-  'graphql',
-  'python',
   'typescript',
-  'sql',
-  'yaml',
+  'css',
+  'less',
+  'scss',
   'json',
+  'html',
+  'xml',
+  'sass',
+  'python',
+  'php',
 ];
+
 
