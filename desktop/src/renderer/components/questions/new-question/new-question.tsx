@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { AddQuestionDto, Tag } from 'renderer/utils/types';
-import ReactQuill from 'react-quill';
 import IconAdd from 'assets/icons/icon-add';
 import IconRemove from 'assets/icons/icon-remove';
 import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor';
@@ -23,7 +22,7 @@ import {
 import TagButton from '../../tags/tag-button/tag-button';
 import InputText from '../../ui/input-text/input-text';
 import Button from '../../ui/button/button';
-import 'react-quill/dist/quill.snow.css';
+import QuestionEditor from '../question-editor/question-editor';
 
 interface AddQuestionForm {
   title: string;
@@ -99,7 +98,7 @@ function NewQuestion() {
             variant={!form.text ? 'default' : 'validated'}
             onChange={(e) => updateFormValue('text', e.target.value)}
           /> */}
-          <ReactQuill theme="snow" />
+          <QuestionEditor />
         </div>
 
         <div className={NewQuestionFormItem}>
