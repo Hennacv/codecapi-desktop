@@ -31,9 +31,9 @@ const IconUser = ({ variant }: IconUserProps) => {
             y2="28.7717"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FDFDFD" />
-            <stop offset="1" stop-color="#929292" />
-            <stop offset="1" stop-color="#A4A4A4" />
+            <stop stopColor="#FDFDFD" />
+            <stop offset="1" stopColor="#929292" />
+            <stop offset="1" stopColor="#A4A4A4" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_372_4511"
@@ -43,9 +43,9 @@ const IconUser = ({ variant }: IconUserProps) => {
             y2="28.0622"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FDFDFD" />
-            <stop offset="1" stop-color="#929292" />
-            <stop offset="1" stop-color="#A4A4A4" />
+            <stop stopColor="#FDFDFD" />
+            <stop offset="1" stopColor="#929292" />
+            <stop offset="1" stopColor="#A4A4A4" />
           </linearGradient>
         </defs>
       </svg>

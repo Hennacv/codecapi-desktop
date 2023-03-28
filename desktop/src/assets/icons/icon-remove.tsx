@@ -17,14 +17,14 @@ const IconRemove = ({ variant }: IconRemoveProps) => {
         <path
           d="M5.75781 5.75739L14.2431 14.2427"
           stroke="#FDFDFD"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
         <path
           d="M14.2431 5.75733L5.75781 14.2426"
           stroke="#FDFDFD"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
       </svg>
     </div>

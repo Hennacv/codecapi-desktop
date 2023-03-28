@@ -17,14 +17,14 @@ const IconAdd = ({ variant }: IconAddProps) => {
         <path
           d="M10 4V16"
           stroke="#FDFDFD"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
         <path
           d="M16 10H4"
           stroke="#FDFDFD"
-          stroke-width="2"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeMiterlimit="10"
         />
       </svg>
     </div>

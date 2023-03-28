@@ -13,8 +13,8 @@ interface SelectProps<T> {
 const Select = <T extends unknown>({ options, onChange }: SelectProps<T>) => {
   return (
     <select className={SelectButton} onChange={onChange}>
-      {options.map((option) => (
-        <option value={option.value as string}>{option.label.charAt(0).toUpperCase() + option.label.slice(1)}</option>
+      {options.map((option, index) => (
+        <option key={index} value={option.value as string}>{option.label.charAt(0).toUpperCase() + option.label.slice(1)}</option>
       ))}
     </select>
   );

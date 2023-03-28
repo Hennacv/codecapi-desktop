@@ -13,8 +13,8 @@ const IconQuestionsGrey = ({ variant }: IconQuestionsGreyProps) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M1 11.5778C1 12.6578 1.87553 13.5333 2.95556 13.5333C3.49557 13.5333 3.93333 13.9711 3.93333 14.5111V14.9062C3.93333 15.5351 4.66078 15.8847 5.15186 15.4918L7.32609 13.7525C7.5034 13.6106 7.72371 13.5333 7.95078 13.5333H8.2V10.1C8.2 8.71929 9.31929 7.6 10.7 7.6H14.2V6C14.2 4.89543 13.3046 4 12.2 4H3C1.89543 4 1 4.89543 1 6V11.5778Z"
           fill="url(#paint0_linear_437_4272)"
         />
@@ -31,8 +31,8 @@ const IconQuestionsGrey = ({ variant }: IconQuestionsGreyProps) => {
             y2="24.4734"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#989898" />
-            <stop offset="1" stop-color="#797979" />
+            <stop stopColor="#989898" />
+            <stop offset="1" stopColor="#797979" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_437_4272"
@@ -42,8 +42,8 @@ const IconQuestionsGrey = ({ variant }: IconQuestionsGreyProps) => {
             y2="15.4051"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#989898" />
-            <stop offset="1" stop-color="#797979" />
+            <stop stopColor="#989898" />
+            <stop offset="1" stopColor="#797979" />
           </linearGradient>
         </defs>
       </svg>

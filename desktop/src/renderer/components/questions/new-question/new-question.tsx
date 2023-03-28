@@ -91,7 +91,7 @@ const NewQuestion = () => {
         <div className={NewQuestionFormItem}>
           <label className={NewQuestionLabel} htmlFor="paragraph">
             Description *
-            <span className={NewQuestionParagraph}>(paragraph 1)</span>
+            <span className={NewQuestionParagraph}>(paragraph: 1)</span>
           </label>
           <Textarea
             id="text"
