@@ -9,10 +9,8 @@ import {
   ReactLiveEditorOptions,
   ReactLiveEditorTitle,
 } from './react-live-editor-styles.css';
-import Button from '../../button/button';
 import Select from '../../select/select';
 import theme from '../themes/theme';
-import IconRemove from 'assets/icons/icon-remove';
 
 interface ReactLiveEditorProps {
   position: number;
@@ -26,15 +24,8 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
     <>
       <div className={ReactLiveEditorHeader}>
         <label className={ReactLiveEditoLabel}>
-          Code block <span className={ReactLiveEditorTitle}>{position}</span>
+          Code block <span className={ReactLiveEditorTitle}>(number: {position})</span>
         </label>
-        <Button
-          type="button"
-          variant="smallSquare"
-          onClick={() => null}
-        >
-          <IconRemove variant="small" />
-        </Button>
       </div>
       <div className={ReactLiveEditorContainer}>
         <LiveProvider
@@ -43,7 +34,7 @@ const ReactLiveEditor = ({ position }: ReactLiveEditorProps) => {
           theme={theme}
           noInline={true}
         >
-          <LiveEditor onChange={() => console.log(code)} />
+          <LiveEditor />
         </LiveProvider>
         <div className={ReactLiveEditorOptions}>
           <Select

@@ -20,7 +20,7 @@ export const ReactLiveEditorHeader = style({
 });
 
 export const ReactLiveEditorTitle = style({
-  fontSize: vars.fontSize.small,
+  fontSize: vars.fontSize.extraSmall,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-300'],
 });
