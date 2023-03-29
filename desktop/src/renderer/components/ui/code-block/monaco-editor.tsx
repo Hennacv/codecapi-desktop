@@ -10,7 +10,7 @@ import {
   MonacoEditorInput,
 } from './monaco-editor-styles.css';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-import Select from '../../select/select';
+import Select from '../select/select';
 
 interface MonacoEditorProps {
   position: number;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { AddQuestionDto, Tag } from 'renderer/utils/types';
@@ -22,7 +22,7 @@ import Textarea from '../../ui/textarea/textarea';
 import Button from '../../ui/button/button';
 import IconAdd from 'assets/icons/icon-add';
 import IconRemove from 'assets/icons/icon-remove';
-import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor/monaco-editor';
+import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor';
 
 interface AddQuestionForm {
   title: string;
