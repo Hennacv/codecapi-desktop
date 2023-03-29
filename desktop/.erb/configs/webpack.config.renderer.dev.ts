@@ -11,8 +11,6 @@ import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
 import checkNodeEnv from '../scripts/check-node-env';
 import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
-// import { MonacoWebpackPlugin } from 'monaco-editor-webpack-plugin';
-
 
 // When an ESLint server is running, we can't set the NODE_ENV so we'll check if it's
 // at the dev webpack config is not accidentally run in a production environment
@@ -174,7 +172,6 @@ const configuration: webpack.Configuration = {
     }),
 
     new VanillaExtractPlugin(),
-    // new MonacoWebpackPlugin(),
   ],
 
   node: {
