@@ -20,6 +20,9 @@ export class Question extends CustomBaseEntity {
   @Column()
   text: string;
 
+  @Column({type: 'json', default: [], nullable: true})
+  blocks: Block[];
+
   @ManyToMany(() => Tag, { cascade: true, onDelete: 'CASCADE' })
   @JoinTable()
   tags: Tag[];
