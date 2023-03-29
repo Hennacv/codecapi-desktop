@@ -132,7 +132,6 @@ const NewQuestion = () => {
                   title={tag.title}
                   color={tag.color}
                   variant="defaultRemove"
-                  icon="delete"
                   onClick={() => deleteTag(tag)}
                 >
                   <IconRemove variant={'small'} />

@@ -9,7 +9,6 @@ interface TagButtonProps {
   children?: ReactNode;
   color: string;
   variant: keyof typeof TagCardVariants;
-  icon?: 'add' | 'delete';
   onClick: () => void;
 }
 
@@ -18,12 +17,11 @@ const TagButton = ({
   children,
   color,
   variant,
-  icon,
   onClick,
 }: TagButtonProps) => {
   return (
     <button type="button" className={tagButton} onClick={onClick}>
-      <TagCard title={title} color={color} variant={variant} icon={icon}>
+      <TagCard title={title} color={color} variant={variant}>
         {children}
       </TagCard>
     </button>

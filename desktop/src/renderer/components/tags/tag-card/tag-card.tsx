@@ -6,7 +6,6 @@ interface TagCardProps {
   children?: ReactNode;
   color: string;
   variant: keyof typeof TagCardVariants;
-  icon?: 'add' | 'delete';
 }
 
 const TagCard = ({ title, children, color, variant }: TagCardProps) => {
