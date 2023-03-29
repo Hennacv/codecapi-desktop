@@ -119,7 +119,7 @@ const NewQuestion = () => {
                 variant="defaultAdd"
                 onClick={() => addTag(tag)}
               >
-                <IconAdd variant={'small'} />
+                <IconAdd variant="small" />
               </TagButton>
             ))}
           </div>
@@ -134,7 +134,7 @@ const NewQuestion = () => {
                   variant="defaultRemove"
                   onClick={() => deleteTag(tag)}
                 >
-                  <IconRemove variant={'small'} />
+                  <IconRemove variant="small" />
                 </TagButton>
               ))}
             </div>

@@ -61,7 +61,7 @@ const MonacoEditor = ({ position, isReadOnly }: MonacoEditorProps) => {
             options={languages.map((language) => {
               return { value: language, label: language };
             })}
-            variant={'small'}
+            variant="small"
             onChange={(event) => setSelectedLanguage(event.target.value)}
           />
         </div>
