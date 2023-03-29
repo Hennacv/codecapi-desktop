@@ -1,17 +1,28 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
-export const SelectContainer = style({
+const SelectBase = style({
   backgroundColor: vars.color['dark-300'],
   width: vars.width.fit,
+  border: '2px solid ' + vars.color['dark-400'],
+  fontWeight: vars.fontWeight.regular,
 });
 
-export const SelectButton = style({
-  backgroundColor: vars.color['dark-300'],
-  width: vars.width.fit,
+const SelectSmall = style({
+  padding: '0.4rem',
+  fontSize: vars.fontSize.extraSmall,
+  fontWeight: vars.fontWeight.light,
+  borderRadius: vars.borderRadius.medium,
+});
+
+const SelectDefault = style({
   padding: vars.spacing['0.5x'],
   fontSize: vars.fontSize.small,
   fontWeight: vars.fontWeight.light,
-  border: '2px solid ' + vars.color['dark-400'],
   borderRadius: vars.borderRadius.medium,
+});
+
+export const SelectVariants = styleVariants({
+  small: [SelectBase, SelectSmall],
+  default: [SelectBase, SelectDefault],
 });

@@ -22,7 +22,7 @@ import Textarea from '../../ui/textarea/textarea';
 import Button from '../../ui/button/button';
 import IconAdd from 'assets/icons/icon-add';
 import IconRemove from 'assets/icons/icon-remove';
-import ReactLiveEditor from 'renderer/components/ui/code-block/react-live-editor/react-live-editor';
+import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor/monaco-editor';
 
 interface AddQuestionForm {
   title: string;
@@ -101,7 +101,7 @@ const NewQuestion = () => {
         </div>
 
         <div className={NewQuestionFormItem}>
-          <ReactLiveEditor position={1} />
+          <MonacoEditor position={1} isReadOnly={false} />
         </div>
 
         <div className={NewQuestionFormItem}>

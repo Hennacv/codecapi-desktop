@@ -11,5 +11,3 @@ export const languages: Array<string> = [
   'python',
   'php',
 ];
-
-
