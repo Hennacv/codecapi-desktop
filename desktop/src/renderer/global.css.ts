@@ -13,7 +13,7 @@ globalStyle('body', {
   fontSize: '100%',
 });
 
-globalStyle('button, input, textarea', {
+globalStyle('button, input, textarea, select', {
   margin: vars.spacing['0x'],
   padding: vars.spacing['0x'],
   fontFamily: 'Inter, sans-serif',

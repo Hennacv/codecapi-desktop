@@ -42,13 +42,6 @@ const TagCardRemove = style({
 	}
 });
 
-const TagIconBase = style({
-	backgroundColor: 'transparent',
-	display: 'flex',
-	flexDirection: 'row',
-	alignItems: 'center',
-});
-
 export const TagCardVariants = styleVariants({
 	small: [TagCardBase, TagCardSmall],
 	smallAdd: [TagCardBase, TagCardSmall, TagCardTransition, TagCardAdd],
@@ -57,13 +50,6 @@ export const TagCardVariants = styleVariants({
 	default: [TagCardBase, TagCardDefault],
 	defaultAdd: [TagCardBase, TagCardDefault, TagCardTransition, TagCardAdd],
 	defaultRemove: [TagCardBase, TagCardDefault, TagCardTransition, TagCardRemove],
-});
-
-export const TagIconVariants = styleVariants({
-	add: [TagIconBase],
-	remove: [TagIconBase, {
-			transform: 'rotateY(180deg) rotate(45deg) translateZ(0)',
-	}],
 });
 
 export const TagColorBlob = style({
