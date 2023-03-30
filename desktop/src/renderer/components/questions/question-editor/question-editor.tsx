@@ -4,24 +4,24 @@ import * as Emoji from 'quill-emoji';
 import 'react-quill/dist/quill.snow.css';
 import 'quill-emoji/dist/quill-emoji.css';
 import { useState } from 'react';
+import { ContainerStyles } from './question-editor-styles.css';
 
 Quill.register('modules/emoji', Emoji);
 
 const toolbarOptions = [
   [{ header: [1, 2, 3, false] }],
   ['bold', 'italic', 'underline', 'link', 'image'],
-  [{ list: 'ordered' }, { list: 'bullet' }],
-  [{ indent: '-1' }, { indent: '+1' }],
+  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
   ['emoji'],
 ];
 
 function QuestionEditor() {
   const [value, setValue] = useState('');
-  console.log(value);
 
   return (
     <ReactQuill
       theme="snow"
+      className={ContainerStyles}
       placeholder="Start writing..."
       modules={{
         toolbar: {
