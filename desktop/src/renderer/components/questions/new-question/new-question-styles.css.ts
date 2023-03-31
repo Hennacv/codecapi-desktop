@@ -72,3 +72,18 @@ export const NewQuestionTagContainer = style({
   borderRadius: vars.borderRadius.medium,
   minHeight: '4.5rem',
 });
+
+export const NewQuestionBlocks = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing['1x'],
+  fontSize: vars.fontSize.small,
+  fontWeight: vars.fontWeight.regular,
+  color: vars.color['text-white-300'],
+});
+
+export const NewQuestionBlocksOptions = style({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: vars.spacing['1x'],
+});

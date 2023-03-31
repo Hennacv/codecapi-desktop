@@ -10,9 +10,6 @@ export class CreateQuestionDto {
   @IsNotEmpty()
   title: string;
 
-  @IsNotEmpty()
-  text: string;
-
   @IsOptional()
   blocks: Block[];
 

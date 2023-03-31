@@ -1,9 +1,18 @@
 export interface AddTagDto {
   title: string;
 }
+
+export interface Block {
+  position: number;
+  type: 'code' | 'text';
+  value: string;
+  language?: string;
+}
+
 export interface AddQuestionDto {
   title: string;
   text: string;
+  blocks: Block[];
   tags?: { id: number }[];
 }
 

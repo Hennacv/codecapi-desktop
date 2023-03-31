@@ -17,9 +17,6 @@ export class Question extends CustomBaseEntity {
   @Column()
   title: string;
 
-  @Column()
-  text: string;
-
   @Column({type: 'json', default: [], nullable: true})
   blocks: Block[];
 

@@ -15,9 +15,11 @@ import Select from '../select/select';
 interface MonacoEditorProps {
   position: number;
   isReadOnly: boolean;
+  updateFormBlock: (position: number, value: string, language?: string) => void;
 }
 
-const MonacoEditor = ({ position, isReadOnly }: MonacoEditorProps) => {
+const MonacoEditor = ({ position, isReadOnly, updateFormBlock }: MonacoEditorProps) => {
+  
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>('javascript');
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
@@ -26,12 +28,19 @@ const MonacoEditor = ({ position, isReadOnly }: MonacoEditorProps) => {
     editorRef.current = editor;
   }
 
+  function updateParent(position: number, language?: string) {
+    if (editorRef.current) {
+      const value = editorRef.current.getValue();
+      updateFormBlock(position, value, selectedLanguage)
+    }
+  }
+
   return (
     <>
       <div className={MonacoEditorHeader}>
         <label className={MonacoEditorLabel}>
           Code block
-          <span className={MonacoEditorTitle}>(number: {position})</span>
+          <span className={MonacoEditorTitle}>(block: {position})</span>
         </label>
       </div>
       <div className={MonacoEditorContainer}>
@@ -54,6 +63,7 @@ const MonacoEditor = ({ position, isReadOnly }: MonacoEditorProps) => {
               enabled: false,
             },
           }}
+          onChange={() => {updateParent(position)}}
           onMount={handleEditorDidMount}
         />
         <div className={MonacoEditorOptions}>
@@ -62,7 +72,7 @@ const MonacoEditor = ({ position, isReadOnly }: MonacoEditorProps) => {
               return { value: language, label: language };
             })}
             variant="small"
-            onChange={(event) => setSelectedLanguage(event.target.value)}
+            onChange={(event) => {updateParent(position, event.target.value)}}
           />
         </div>
       </div>
