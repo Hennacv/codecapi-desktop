@@ -27,11 +27,11 @@ globalStyle(`.${ContainerStyles} .ql-toolbar .ql-fill`, {
 });
 
 // I'm not sure if we should seperate the buttons like this
-// globalStyle(`.${ContainerStyles} .ql-toolbar .ql-formats button`, {
-//   margin: vars.spacing['0.25x'],
-//   backgroundColor: vars.color['dark-400'],
-//   borderRadius: vars.borderRadius.small,
-// });
+globalStyle(`.${ContainerStyles} .ql-toolbar .ql-formats button`, {
+  margin: 2,
+  backgroundColor: vars.color['dark-400'],
+  borderRadius: vars.borderRadius.small,
+});
 
 globalStyle(`.${ContainerStyles} .ql-container`, {
   borderBottomLeftRadius: vars.borderRadius.medium,
