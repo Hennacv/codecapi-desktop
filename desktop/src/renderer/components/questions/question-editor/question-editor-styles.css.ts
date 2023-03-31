@@ -43,3 +43,28 @@ globalStyle(`.${ContainerStyles} .ql-container`, {
 globalStyle(`.${ContainerStyles} .ql-container .ql-editor.ql-blank::before`, {
   color: vars.color['text-white-300'],
 });
+
+export const QuestionEditorHeader = style({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  gap: vars.spacing['1x'],
+});
+
+export const QuestionEditorTitle = style({
+  fontSize: vars.fontSize.extraSmall,
+  fontWeight: vars.fontWeight.regular,
+  color: vars.color['text-white-300'],
+});
+
+export const QuestionEditorLabel = style({
+  fontSize: vars.fontSize.base,
+  fontWeight: vars.fontWeight.regular,
+  color: vars.color['text-white-100'],
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: vars.spacing['0.5x'],
+});
+

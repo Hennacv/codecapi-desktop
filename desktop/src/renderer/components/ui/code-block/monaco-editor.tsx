@@ -18,8 +18,11 @@ interface MonacoEditorProps {
   updateFormBlock: (position: number, value: string, language?: string) => void;
 }
 
-const MonacoEditor = ({ position, isReadOnly, updateFormBlock }: MonacoEditorProps) => {
-  
+const MonacoEditor = ({
+  position,
+  isReadOnly,
+  updateFormBlock,
+}: MonacoEditorProps) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>('javascript');
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
@@ -31,7 +34,7 @@ const MonacoEditor = ({ position, isReadOnly, updateFormBlock }: MonacoEditorPro
   function updateParent(position: number, language?: string) {
     if (editorRef.current) {
       const value = editorRef.current.getValue();
-      updateFormBlock(position, value, selectedLanguage)
+      updateFormBlock(position, value, selectedLanguage);
     }
   }
 
@@ -39,7 +42,7 @@ const MonacoEditor = ({ position, isReadOnly, updateFormBlock }: MonacoEditorPro
     <>
       <div className={MonacoEditorHeader}>
         <label className={MonacoEditorLabel}>
-          Code block
+          Code
           <span className={MonacoEditorTitle}>(block: {position})</span>
         </label>
       </div>
@@ -63,7 +66,9 @@ const MonacoEditor = ({ position, isReadOnly, updateFormBlock }: MonacoEditorPro
               enabled: false,
             },
           }}
-          onChange={() => {updateParent(position)}}
+          onChange={() => {
+            updateParent(position);
+          }}
           onMount={handleEditorDidMount}
         />
         <div className={MonacoEditorOptions}>
@@ -72,7 +77,10 @@ const MonacoEditor = ({ position, isReadOnly, updateFormBlock }: MonacoEditorPro
               return { value: language, label: language };
             })}
             variant="small"
-            onChange={(event) => {updateParent(position, event.target.value)}}
+            onChange={(event) => {
+              setSelectedLanguage(event.target.value);
+              updateParent(position, event.target.value);
+            }}
           />
         </div>
       </div>
