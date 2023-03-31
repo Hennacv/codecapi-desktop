@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { AddQuestionDto, Tag } from 'renderer/utils/types';
+import IconAdd from 'assets/icons/icon-add';
+import IconRemove from 'assets/icons/icon-remove';
+import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor';
 import { useSelectedTags } from './use-selected-tags';
 import {
   NewQuestionContainer,
@@ -18,11 +21,8 @@ import {
 
 import TagButton from '../../tags/tag-button/tag-button';
 import InputText from '../../ui/input-text/input-text';
-import Textarea from '../../ui/textarea/textarea';
 import Button from '../../ui/button/button';
-import IconAdd from 'assets/icons/icon-add';
-import IconRemove from 'assets/icons/icon-remove';
-import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor';
+import QuestionEditor from '../question-editor/question-editor';
 
 interface AddQuestionForm {
   title: string;
@@ -30,7 +30,7 @@ interface AddQuestionForm {
   tags: Pick<Tag, 'id'>[];
 }
 
-const NewQuestion = () => {
+function NewQuestion() {
   const navigate = useNavigate();
 
   const addQuestion = useAddQuestion({
@@ -43,7 +43,7 @@ const NewQuestion = () => {
     tags: [],
   });
 
-  let formTags = useSelectedTags();
+  const formTags = useSelectedTags();
 
   function addTag(tag: Tag) {
     formTags.addTag(tag);
@@ -53,7 +53,7 @@ const NewQuestion = () => {
   function deleteTag(tag: Tag) {
     formTags.deleteTag(tag);
 
-    let tempTag = form.tags.filter((formTag) => formTag.id !== tag.id);
+    const tempTag = form.tags.filter((formTag) => formTag.id !== tag.id);
     updateFormValue('tags', tempTag);
   }
 
@@ -93,11 +93,12 @@ const NewQuestion = () => {
             Description *
             <span className={NewQuestionParagraph}>(paragraph: 1)</span>
           </label>
-          <Textarea
+          {/* <Textarea
             id="text"
             variant={!form.text ? 'default' : 'validated'}
             onChange={(e) => updateFormValue('text', e.target.value)}
-          />
+          /> */}
+          <QuestionEditor />
         </div>
 
         <div className={NewQuestionFormItem}>
@@ -152,6 +153,6 @@ const NewQuestion = () => {
       </form>
     </div>
   );
-};
+}
 
 export default NewQuestion;
