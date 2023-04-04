@@ -2,6 +2,7 @@ import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 const ButtonBase = style({
+  textDecoration: 'none',
   width: vars.width.fit,
   backgroundColor: vars.color['dark-300'],
   border: `2px solid ${vars.color['dark-400']}`,
