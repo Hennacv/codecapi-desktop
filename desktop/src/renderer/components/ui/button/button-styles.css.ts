@@ -2,10 +2,8 @@ import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 const ButtonBase = style({
-  textDecoration: 'none',
   width: vars.width.fit,
   backgroundColor: vars.color['dark-300'],
-  color: vars.color['text-white-200'],
   border: `2px solid ${vars.color['dark-400']}`,
   borderRadius: vars.borderRadius.medium,
   cursor: 'pointer',

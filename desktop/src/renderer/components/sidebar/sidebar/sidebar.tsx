@@ -51,12 +51,6 @@ const Sidebar = () => {
             </SidebarLink>
           </li>
           <li>
-            <SidebarLink to="/questions/new">
-              <IconQuestions variant='default'/>
-              <span className={SideText}>Ask Question</span>
-            </SidebarLink>
-          </li>
-          <li>
             <SidebarLink to="/users">
               <IconUser variant='default'/>
               <span className={SideText}>Users</span>
