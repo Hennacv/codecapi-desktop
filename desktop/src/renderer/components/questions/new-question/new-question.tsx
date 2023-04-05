@@ -28,7 +28,6 @@ import IconRemove from 'assets/icons/icon-remove';
 import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor';
 import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
-import Textarea from 'renderer/components/ui/textarea/textarea';
 
 interface AddQuestionForm {
   title: string;
@@ -50,7 +49,7 @@ function NewQuestion() {
     blocks: [],
     tags: [],
   });
-  
+
   let formTags = useSelectedTags();
 
   function addTag(tag: Tag) {
@@ -134,22 +133,13 @@ function NewQuestion() {
                   }
                 />
               ) : block.type === 'text' ? (
-                <div className={NewQuestionFormItem} key={index}>
-                  <label className={NewQuestionLabel} htmlFor="title">
-                    Description
-                    <span className={NewQuestionParagraph}>
-                      (block: {block.position})
-                    </span>
-                  </label>
-                  <Textarea
-                    placeholder='Describe your question in detail here.'
-                    id="title"
-                    variant={!form.title ? 'default' : 'validated'}
-                    onChange={(event) =>
-                      updateFormBlock(block.position, event.target.value)
-                    }
-                  />
-                </div>
+                <QuestionEditor
+                  key={index}
+                  position={block.position}
+                  updateFormBlock={(position, value, language) =>
+                    updateFormBlock(position, value, language)
+                  }
+                />
               ) : null
             )}
           </div>
