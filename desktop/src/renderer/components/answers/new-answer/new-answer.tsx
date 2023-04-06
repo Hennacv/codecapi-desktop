@@ -55,16 +55,6 @@ const NewAnswer = ({ id }: NewAnswerProps) => {
     });
   }
 
-  function updateFormBlock(position: number, value: string, language?: string) {
-    const indexSelectedBlock = form.blocks
-      .map((block) => block.position)
-      .indexOf(position);
-    const tempBlocks = form.blocks;
-    tempBlocks[indexSelectedBlock].value = value;
-    tempBlocks[indexSelectedBlock].language = language;
-    updateFormValue('blocks', tempBlocks);
-  }
-
   function onSubmit(newAnswer: AddAnswerDto) {
     addAnswer.mutate(newAnswer);
   }
@@ -83,9 +73,10 @@ const NewAnswer = ({ id }: NewAnswerProps) => {
             ></Button>
           </div>
           <DynamicBlock
+          field="blocks"
             blocks={form.blocks}
-            updateFormBlock={(position, value, language) =>
-              updateFormBlock(position, value, language)
+            updateFormValue={(field, value) =>
+              updateFormValue(field, value)
             }
           />
           <div className={NewAnswerFormItem}>

@@ -80,20 +80,6 @@ function NewQuestion() {
     });
   }
 
-  const updateFormBlock = (
-    position: number,
-    value: string,
-    language?: string
-  ) => {
-    const indexSelectedBlock = form.blocks
-      .map((block) => block.position)
-      .indexOf(position);
-    const tempBlocks = form.blocks;
-    tempBlocks[indexSelectedBlock].value = value;
-    tempBlocks[indexSelectedBlock].language = language;
-    updateFormValue('blocks', tempBlocks);
-  };
-
   function onSubmit(newQuestion: AddQuestionDto) {
     addQuestion.mutate(newQuestion);
   }
@@ -119,9 +105,10 @@ function NewQuestion() {
           />
         </div>
         <DynamicBlock
+          field="blocks"
           blocks={form.blocks}
-          updateFormBlock={(position, value, language) =>
-            updateFormBlock(position, value, language)
+          updateFormValue={(field, value) =>
+            updateFormValue(field, value,)
           }
         />
         <div className={NewQuestionFormItem}>

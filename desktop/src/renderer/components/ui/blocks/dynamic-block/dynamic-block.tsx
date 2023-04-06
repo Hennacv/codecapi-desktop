@@ -5,18 +5,26 @@ import MonacoEditor from '../../code-block/monaco-editor';
 import QuestionEditor from 'renderer/components/questions/question-editor/question-editor';
 
 interface DynamicBlockProps {
+  field: string
   blocks: Block[];
-  updateFormBlock: (position: number, value: string, language?: string) => void;
+  updateFormValue: (field: string, value: any) => void;
 }
 
-const DynamicBlock = ({ blocks, updateFormBlock }: DynamicBlockProps) => {
-  function updateDynamicBlock(
+const DynamicBlock = ({ blocks, field, updateFormValue }: DynamicBlockProps) => {
+
+  const updateDynamicBlock = (
     position: number,
     value: string,
     language?: string
-  ) {
-    updateFormBlock(position, value, language);
-  }
+  ) => {
+    const indexSelectedBlock = blocks
+      .map((block) => block.position)
+      .indexOf(position);
+    const tempBlocks = blocks;
+    tempBlocks[indexSelectedBlock].value = value;
+    tempBlocks[indexSelectedBlock].language = language;
+    updateFormValue(field, tempBlocks);
+  };
 
   return (
     <>
