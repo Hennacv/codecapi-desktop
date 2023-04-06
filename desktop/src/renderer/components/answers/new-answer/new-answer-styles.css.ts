@@ -11,11 +11,11 @@ export const NewAnswerContainer = style({
   gap: vars.spacing['2x'],
 });
 
-export const NewAnswerHeader = style({
+export const NewAnswerForm = style({
   display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-});
+  flexDirection: 'column',
+  gap: vars.spacing['2x'],
+})
 
 export const NewAnswerTitle = style({
   fontSize: vars.fontSize.extraLarge,
@@ -50,7 +50,7 @@ export const NewAnswerBlocksOptions = style({
   gap: vars.spacing['1x'],
 });
 
-export const NewAnswerNewContainer = style({
+export const NewAnswerAddContainer = style({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'row',

@@ -15,7 +15,7 @@ import IconQuestionsGrey from 'assets/icons/icon-question-grey';
 const QuestionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: question } = useGetQuestion(+id!);
+  let { data: question, refetch } = useGetQuestion(+id!);
 
   if (!question) {
     return null;
@@ -40,7 +40,7 @@ const QuestionDetail = () => {
       {!!question.answer.length &&
         <AnswerList answers={question.answer} />
       }
-      <NewAnswer id={question.id} />
+      <NewAnswer id={question.id} refetch={refetch} />
     </div>
   );
 };

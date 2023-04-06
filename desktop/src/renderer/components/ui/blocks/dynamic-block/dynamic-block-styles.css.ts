@@ -4,5 +4,5 @@ import { vars } from "renderer/vars.css";
 export const DynamicBlockContainer = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: vars.spacing['2x'],
+  gap: vars.spacing['1.25x'],
 });

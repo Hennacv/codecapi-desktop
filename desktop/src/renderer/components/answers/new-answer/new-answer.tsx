@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAddAnswer } from 'renderer/hooks/use-add-answer';
 import { AddAnswerDto, Block } from 'renderer/utils/types';
 import {
+  NewAnswerAddContainer,
   NewAnswerBlocks,
   NewAnswerBlocksOptions,
   NewAnswerContainer,
+  NewAnswerForm,
   NewAnswerFormItem,
-  NewAnswerHeader,
-  NewAnswerNewContainer,
 } from './new-answer-styles.css';
 import Button from 'renderer/components/ui/button/button';
 import IconText from 'assets/icons/icon-text';
@@ -18,6 +17,7 @@ import DynamicBlock from 'renderer/components/ui/blocks/dynamic-block/dynamic-bl
 
 interface NewAnswerProps {
   id: number;
+  refetch: () => void;
 }
 
 interface AddAnswerForm {
@@ -25,10 +25,9 @@ interface AddAnswerForm {
   questionId: number;
 }
 
-const NewAnswer = ({ id }: NewAnswerProps) => {
-  const navigate = useNavigate();
+const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
   const addAnswer = useAddAnswer({
-    onSuccess: () => navigate('/questions/' + id),
+    onSuccess: () => refetch()
   });
 
   const [formIsActive, setFormIsActive] = useState(false);
@@ -57,69 +56,67 @@ const NewAnswer = ({ id }: NewAnswerProps) => {
 
   function onSubmit(newAnswer: AddAnswerDto) {
     addAnswer.mutate(newAnswer);
+    setFormIsActive(false);
   }
 
   return (
     <>
       {formIsActive ? (
-        <form className={NewAnswerContainer}>
-          <div className={NewAnswerHeader}>
-            <p>New answer</p>
-            <Button
-              text="Close"
-              type={'button'}
-              variant={'small'}
-              onClick={() => setFormIsActive(!formIsActive)}
-            ></Button>
-          </div>
-          <DynamicBlock
-          field="blocks"
-            blocks={form.blocks}
-            updateFormValue={(field, value) =>
-              updateFormValue(field, value)
-            }
-          />
-          <div className={NewAnswerFormItem}>
-            <div className={NewAnswerBlocks}>
-              <p>
-                The buttons below allow you to add a text or code field to your
-                answer.
-              </p>
-              <div className={NewAnswerBlocksOptions}>
-                <Button
-                  type="button"
-                  variant="smallSquare"
-                  onClick={() => addBlock('text')}
-                >
-                  <IconText variant={'small'} />
-                </Button>
-                <Button
-                  type="button"
-                  variant="smallSquare"
-                  onClick={() => addBlock('code')}
-                >
-                  <IconCode variant={'small'} />
-                </Button>
+        <div className={NewAnswerContainer}>
+          <Button
+            text="Close"
+            type={'button'}
+            variant={'small'}
+            onClick={() => setFormIsActive(!formIsActive)}
+          ></Button>
+          <form className={NewAnswerForm}>
+            <DynamicBlock
+              field="blocks"
+              blocks={form.blocks}
+              updateFormValue={(field, value) => updateFormValue(field, value)}
+            />
+            <div className={NewAnswerFormItem}>
+              <div className={NewAnswerBlocks}>
+                <p>
+                  The buttons below allow you to add a text or code field to
+                  your answer.
+                </p>
+                <div className={NewAnswerBlocksOptions}>
+                  <Button
+                    type="button"
+                    variant="smallSquare"
+                    onClick={() => addBlock('text')}
+                  >
+                    <IconText variant={'small'} />
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="smallSquare"
+                    onClick={() => addBlock('code')}
+                  >
+                    <IconCode variant={'small'} />
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-          {form.blocks.length > 0 && (
-            <Button
-              text="Post"
-              type="button"
-              variant="default"
-              onClick={() => onSubmit(form)}
-            />
-          )}
-        </form>
+            {form.blocks.length > 0 && (
+              <Button
+                text="Post"
+                type="button"
+                variant="default"
+                onClick={() => onSubmit(form)}
+              />
+            )}
+          </form>
+        </div>
       ) : (
-        <div className={NewAnswerNewContainer}>
+        <div className={NewAnswerAddContainer}>
           <Button
-            type={'button'}
-            variant={'defaultSquare'}
+            type="button"
+            variant="defaultSquare"
             onClick={() => setFormIsActive(!formIsActive)}
           >
-            <IconAdd variant={'default'} />
+            <IconAdd variant="default" />
           </Button>
           <p>New answer</p>
         </div>
