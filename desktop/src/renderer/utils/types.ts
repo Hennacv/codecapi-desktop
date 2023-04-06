@@ -17,7 +17,7 @@ export interface AddQuestionDto {
 }
 
 export interface AddAnswerDto {
-  text: string;
+  blocks: Block[];
   questionId: number;
 }
 
@@ -45,7 +45,7 @@ export interface Question {
 
 export interface Answer {
   id: number;
-  text: string;
+  blocks: Block[];
   createdAt: string;
   user: User;
 }

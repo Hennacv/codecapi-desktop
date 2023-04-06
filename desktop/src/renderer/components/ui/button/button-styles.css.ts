@@ -37,9 +37,14 @@ const ButtonSmallSquare = style({
   padding: vars.spacing['0.5x'],
 });
 
+const ButtonDefaultSquare = style({
+  padding: vars.spacing['0.75x'],
+});
+
 export const ButtonVariants = styleVariants({
 	small: [ButtonBase, ButtonSmall],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
   default: [ButtonBase, ButtonDefault],
+  defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
 });

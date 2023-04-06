@@ -8,7 +8,7 @@ import {
 
 import QuestionCard from '../question-card/question-card';
 import AnswerList from '../../answers/answer-list/answer-list';
-import NewAnswer from '../../answers/new-answer';
+import NewAnswer from '../../answers/new-answer/new-answer';
 import Button from '../../ui/button/button';
 import IconQuestionsGrey from 'assets/icons/icon-question-grey';
 
@@ -36,9 +36,10 @@ const QuestionDetail = () => {
           <IconQuestionsGrey variant="small" />
           {question.answer.length}
         </div>
-
       </div>
-      <AnswerList answers={question.answer} />
+      {!!question.answer.length &&
+        <AnswerList answers={question.answer} />
+      }
       <NewAnswer id={question.id} />
     </div>
   );
