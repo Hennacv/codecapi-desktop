@@ -74,10 +74,6 @@ function NewQuestion() {
       ...form.blocks,
       { position: form.blocks.length + 1, type: type, value: '', language: '' },
     ]);
-
-    form.blocks.sort((a, b) => {
-      return a.position - b.position;
-    });
   }
 
   function onSubmit(newQuestion: AddQuestionDto) {
