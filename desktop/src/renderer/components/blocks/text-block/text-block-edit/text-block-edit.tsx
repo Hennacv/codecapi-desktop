@@ -1,16 +1,15 @@
 import ReactQuill, { Quill } from 'react-quill';
-import * as Emoji from 'quill-emoji';
-
 import 'react-quill/dist/quill.snow.css';
 import 'quill-emoji/dist/quill-emoji.css';
+import * as Emoji from 'quill-emoji';
 import {
   ContainerStyles,
-  QuestionEditorHeader,
-  QuestionEditorLabel,
-  QuestionEditorTitle,
-} from './question-editor-styles.css';
+  TextBlockHeader,
+  TextBlockLabel,
+  TextBlockTitle,
+} from '../text-block-styles.css';
 
-interface QuestionEditorProps {
+interface TextBlockEditProps {
   position: number;
   updateFormBlock: (position: number, value: string, language?: string) => void;
 }
@@ -24,17 +23,17 @@ const toolbarOptions = [
   ['emoji'],
 ];
 
-const QuestionEditor = ({ position, updateFormBlock }: QuestionEditorProps) => {
+const TextBlockEdit = ({ position, updateFormBlock }: TextBlockEditProps) => {
   function updateParent(position: number, value: string) {
     updateFormBlock(position, value);
   }
 
   return (
     <>
-      <div className={QuestionEditorHeader}>
-        <label className={QuestionEditorLabel}>
+      <div className={TextBlockHeader}>
+        <label className={TextBlockLabel}>
           Description
-          <span className={QuestionEditorTitle}>(block: {position})</span>
+          <span className={TextBlockTitle}>(block: {position})</span>
         </label>
       </div>
       <ReactQuill
@@ -57,4 +56,4 @@ const QuestionEditor = ({ position, updateFormBlock }: QuestionEditorProps) => {
   );
 };
 
-export default QuestionEditor;
+export default TextBlockEdit;

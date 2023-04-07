@@ -16,4 +16,5 @@ export const contentContainer = style({
   overflow: 'hidden',
   padding: vars.spacing['2x'],
   overflowY: 'auto',
+  position: 'relative'
 });

@@ -1,16 +1,15 @@
 import { Block } from 'renderer/utils/types';
-import { DynamicBlockContainer } from './dynamic-block-styles.css';
+import { DynamicBlocksContainer } from '../dynamic-blocks-styles.css';
+import QuestionEditor from 'renderer/components/blocks/text-block/text-block-edit/text-block-edit';
+import CodeBlockEdit from '../../code-block/code-block-edit/code-block-edit';
 
-import MonacoEditor from '../../code-block/monaco-editor';
-import QuestionEditor from 'renderer/components/questions/question-editor/question-editor';
-
-interface DynamicBlockProps {
+interface DynamicBlocksEditProps {
   field: string
   blocks: Block[];
   updateFormValue: (field: string, value: any) => void;
 }
 
-const DynamicBlock = ({ blocks, field, updateFormValue }: DynamicBlockProps) => {
+const DynamicBlocksEdit = ({ blocks, field, updateFormValue }: DynamicBlocksEditProps) => {
 
   const updateDynamicBlock = (
     position: number,
@@ -26,10 +25,10 @@ const DynamicBlock = ({ blocks, field, updateFormValue }: DynamicBlockProps) => 
   return (
     <>
       {blocks.length > 0 && (
-        <div className={DynamicBlockContainer}>
+        <div className={DynamicBlocksContainer}>
           {blocks.map((block: Block, index) =>
             block.type === 'code' ? (
-              <MonacoEditor
+              <CodeBlockEdit
                 key={index}
                 position={block.position}
                 updateDynamicBlock={(position, value, language) =>
@@ -52,4 +51,4 @@ const DynamicBlock = ({ blocks, field, updateFormValue }: DynamicBlockProps) => 
   );
 };
 
-export default DynamicBlock;
+export default DynamicBlocksEdit;

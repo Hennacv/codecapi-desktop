@@ -4,7 +4,7 @@ import AuthProvider, {
   AuthContextData,
   defaultAuthContext,
 } from './context/auth-provider';
-import { contentContainer, mainContainer } from './root.css';
+import { contentContainer, mainContainer } from './root-styles.css';
 
 import Loader from './components/shared/loader';
 import Sidebar from './components/sidebar/sidebar/sidebar';

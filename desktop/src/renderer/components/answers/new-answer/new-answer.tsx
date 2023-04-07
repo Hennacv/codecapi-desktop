@@ -9,11 +9,12 @@ import {
   NewAnswerForm,
   NewAnswerFormItem,
 } from './new-answer-styles.css';
+
 import Button from 'renderer/components/ui/button/button';
 import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
 import IconAdd from 'assets/icons/icon-add';
-import DynamicBlock from 'renderer/components/ui/blocks/dynamic-block/dynamic-block';
+import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
 
 interface NewAnswerProps {
   id: number;
@@ -27,7 +28,7 @@ interface AddAnswerForm {
 
 const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
   const addAnswer = useAddAnswer({
-    onSuccess: () => refetch()
+    onSuccess: () => refetch(),
   });
 
   const [formIsActive, setFormIsActive] = useState(false);
@@ -66,7 +67,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
             onClick={() => setFormIsActive(!formIsActive)}
           ></Button>
           <form className={NewAnswerForm}>
-            <DynamicBlock
+            <DynamicBlocksEdit
               field="blocks"
               blocks={form.blocks}
               updateFormValue={(field, value) => updateFormValue(field, value)}
