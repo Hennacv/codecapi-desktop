@@ -14,15 +14,14 @@ import Select from '../select/select';
 
 interface MonacoEditorProps {
   position: number;
-  isReadOnly: boolean;
-  updateFormBlock: (position: number, value: string, language?: string) => void;
+  updateDynamicBlock: (
+    position: number,
+    value: string,
+    language?: string
+  ) => void;
 }
 
-const MonacoEditor = ({
-  position,
-  isReadOnly,
-  updateFormBlock,
-}: MonacoEditorProps) => {
+const MonacoEditor = ({ position, updateDynamicBlock }: MonacoEditorProps) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>('javascript');
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
@@ -34,7 +33,7 @@ const MonacoEditor = ({
   function updateParent(position: number, language?: string) {
     if (editorRef.current) {
       const value = editorRef.current.getValue();
-      updateFormBlock(position, value, selectedLanguage);
+      updateDynamicBlock(position, value, selectedLanguage);
     }
   }
 
@@ -61,7 +60,6 @@ const MonacoEditor = ({
             autoIndent: 'advanced',
             formatOnPaste: true,
             formatOnType: true,
-            readOnly: isReadOnly,
             minimap: {
               enabled: false,
             },

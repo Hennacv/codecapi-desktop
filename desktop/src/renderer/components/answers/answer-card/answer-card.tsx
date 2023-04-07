@@ -19,7 +19,6 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
         <span>-</span>
         {dayjs(answer.createdAt).fromNow()}
       </div>
-      <div className={AnswerCardContent}>{answer.text}</div>
     </div>
   );
 };

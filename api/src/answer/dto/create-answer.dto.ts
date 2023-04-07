@@ -2,7 +2,7 @@ import { IsNotEmpty } from "class-validator";
 
 export class CreateAnswerDto {
     @IsNotEmpty()
-    text: string;
+    blocks: Block[];
 
     @IsNotEmpty()
     questionId: number;

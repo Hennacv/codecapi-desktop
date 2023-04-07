@@ -12,7 +12,6 @@ import {
   NewQuestionFormItem,
   NewQuestionHeader,
   NewQuestionLabel,
-  NewQuestionParagraph,
   NewQuestionSection,
   NewQuestionTagContainer,
   NewQuestionTagList,
@@ -22,12 +21,11 @@ import {
 import TagButton from '../../tags/tag-button/tag-button';
 import InputText from '../../ui/input-text/input-text';
 import Button from '../../ui/button/button';
-import QuestionEditor from '../question-editor/question-editor';
 import IconAdd from 'assets/icons/icon-add';
 import IconRemove from 'assets/icons/icon-remove';
-import MonacoEditor from 'renderer/components/ui/code-block/monaco-editor';
 import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
+import DynamicBlock from 'renderer/components/ui/blocks/dynamic-block/dynamic-block';
 
 interface AddQuestionForm {
   title: string;
@@ -76,25 +74,7 @@ function NewQuestion() {
       ...form.blocks,
       { position: form.blocks.length + 1, type: type, value: '', language: '' },
     ]);
-
-    form.blocks.sort((a, b) => {
-      return a.position - b.position;
-    });
   }
-
-  const updateFormBlock = (
-    position: number,
-    value: string,
-    language?: string
-  ) => {
-    const indexSelectedBlock = form.blocks
-      .map((block) => block.position)
-      .indexOf(position);
-    const tempBlocks = form.blocks;
-    tempBlocks[indexSelectedBlock].value = value;
-    tempBlocks[indexSelectedBlock].language = language;
-    updateFormValue('blocks', tempBlocks);
-  };
 
   function onSubmit(newQuestion: AddQuestionDto) {
     addQuestion.mutate(newQuestion);
@@ -120,30 +100,13 @@ function NewQuestion() {
             onChange={(e) => updateFormValue('title', e.target.value)}
           />
         </div>
-        {form.blocks.length > 0 && (
-          <div className={NewQuestionSection}>
-            {form.blocks.map((block: Block, index) =>
-              block.type === 'code' ? (
-                <MonacoEditor
-                  key={index}
-                  position={block.position}
-                  isReadOnly={false}
-                  updateFormBlock={(position, value, language) =>
-                    updateFormBlock(position, value, language)
-                  }
-                />
-              ) : block.type === 'text' ? (
-                <QuestionEditor
-                  key={index}
-                  position={block.position}
-                  updateFormBlock={(position, value, language) =>
-                    updateFormBlock(position, value, language)
-                  }
-                />
-              ) : null
-            )}
-          </div>
-        )}
+        <DynamicBlock
+          field="blocks"
+          blocks={form.blocks}
+          updateFormValue={(field, value) =>
+            updateFormValue(field, value,)
+          }
+        />
         <div className={NewQuestionFormItem}>
           <div className={NewQuestionBlocks}>
             <p>

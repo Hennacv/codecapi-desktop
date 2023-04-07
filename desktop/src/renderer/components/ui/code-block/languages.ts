@@ -1,13 +1,9 @@
 export const languages: Array<string> = [
   'javascript',
   'typescript',
+  'html',
   'css',
   'less',
   'scss',
-  'json',
-  'html',
-  'xml',
   'sass',
-  'python',
-  'php',
 ];

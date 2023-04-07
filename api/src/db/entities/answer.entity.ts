@@ -18,6 +18,6 @@ export class Answer extends CustomBaseEntity{
   @ManyToOne(() => Question, (question) => question.answer, { onDelete: 'CASCADE' })
   question: Question;
 
-  @Column()
-  text: string;
+  @Column({type: 'json', default: []})
+  blocks: Block[];
 }
