@@ -17,13 +17,10 @@ const DynamicBlock = ({ blocks, field, updateFormValue }: DynamicBlockProps) => 
     value: string,
     language?: string
   ) => {
-    const indexSelectedBlock = blocks
-      .map((block) => block.position)
-      .indexOf(position);
-    const tempBlocks = blocks;
-    tempBlocks[indexSelectedBlock].value = value;
-    tempBlocks[indexSelectedBlock].language = language;
-    updateFormValue(field, tempBlocks);
+    const indexSelectedBlock = blocks.findIndex((block) => block.position === position);
+    blocks[indexSelectedBlock].value = value;
+    blocks[indexSelectedBlock].language = language;
+    updateFormValue(field, blocks);
   };
 
   return (
