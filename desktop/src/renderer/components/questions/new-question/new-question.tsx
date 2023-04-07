@@ -25,7 +25,7 @@ import IconAdd from 'assets/icons/icon-add';
 import IconRemove from 'assets/icons/icon-remove';
 import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
-import DynamicBlock from 'renderer/components/ui/blocks/dynamic-block/dynamic-block';
+import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
 
 interface AddQuestionForm {
   title: string;
@@ -100,7 +100,7 @@ function NewQuestion() {
             onChange={(e) => updateFormValue('title', e.target.value)}
           />
         </div>
-        <DynamicBlock
+        <DynamicBlocksEdit
           field="blocks"
           blocks={form.blocks}
           updateFormValue={(field, value) =>

@@ -1,7 +1,6 @@
 import { Answer } from 'renderer/utils/types';
 import {
   AnswerCardContainer,
-  AnswerCardContent,
   AnswerCardHeader,
 } from './answer-card-styling.css';
 

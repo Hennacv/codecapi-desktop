@@ -1,5 +1,6 @@
 import image from 'assets/img/loading.gif';
 import { useIsFetching } from 'react-query';
+import { LoaderContainer, LoaderImage } from './loader-styles.css';
 
 const Loader = () => {
   const isFetching = useIsFetching();
@@ -9,7 +10,9 @@ const Loader = () => {
   }
 
   return (
-    <img src={image} />
+    <div className={LoaderContainer}>
+      <img className={LoaderImage} src={image} />
+    </div>
   );
 }
 

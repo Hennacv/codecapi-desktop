@@ -18,7 +18,3 @@ export const AnswerCardHeader = style({
   color: vars.color['text-white-300'],
   marginBottom: vars.spacing['1x'],
 });
-
-export const AnswerCardContent = style({
-  fontSize: vars.fontSize.small,
-});

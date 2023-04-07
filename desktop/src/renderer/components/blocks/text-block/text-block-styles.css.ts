@@ -44,7 +44,7 @@ globalStyle(`.${ContainerStyles} .ql-container .ql-editor.ql-blank::before`, {
   color: vars.color['text-white-300'],
 });
 
-export const QuestionEditorHeader = style({
+export const TextBlockHeader = style({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
@@ -52,13 +52,13 @@ export const QuestionEditorHeader = style({
   gap: vars.spacing['1x'],
 });
 
-export const QuestionEditorTitle = style({
+export const TextBlockTitle = style({
   fontSize: vars.fontSize.extraSmall,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-300'],
 });
 
-export const QuestionEditorLabel = style({
+export const TextBlockLabel = style({
   fontSize: vars.fontSize.base,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-100'],

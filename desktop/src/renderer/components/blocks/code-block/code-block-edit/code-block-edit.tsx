@@ -2,17 +2,17 @@ import { useRef, useState } from 'react';
 import { languages } from './languages';
 import Editor from '@monaco-editor/react';
 import {
-  MonacoEditorLabel,
-  MonacoEditorContainer,
-  MonacoEditorHeader,
-  MonacoEditorOptions,
-  MonacoEditorTitle,
-  MonacoEditorInput,
-} from './monaco-editor-styles.css';
+  CodeBlockLabel,
+  CodeBlockContainer,
+  CodeBlockHeader,
+  CodeBlockOptions,
+  CodeBlockTitle,
+  CodeBlockInput,
+} from '../code-block-styles.css';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-import Select from '../select/select';
+import Select from 'renderer/components/ui/select/select';
 
-interface MonacoEditorProps {
+interface CodeBlockEditProps {
   position: number;
   updateDynamicBlock: (
     position: number,
@@ -21,7 +21,7 @@ interface MonacoEditorProps {
   ) => void;
 }
 
-const MonacoEditor = ({ position, updateDynamicBlock }: MonacoEditorProps) => {
+const CodeBlockEdit = ({ position, updateDynamicBlock }: CodeBlockEditProps) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>('javascript');
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
@@ -39,15 +39,15 @@ const MonacoEditor = ({ position, updateDynamicBlock }: MonacoEditorProps) => {
 
   return (
     <>
-      <div className={MonacoEditorHeader}>
-        <label className={MonacoEditorLabel}>
+      <div className={CodeBlockHeader}>
+        <label className={CodeBlockLabel}>
           Code
-          <span className={MonacoEditorTitle}>(block: {position})</span>
+          <span className={CodeBlockTitle}>(block: {position})</span>
         </label>
       </div>
-      <div className={MonacoEditorContainer}>
+      <div className={CodeBlockContainer}>
         <Editor
-          className={MonacoEditorInput}
+          className={CodeBlockInput}
           theme="vs-dark"
           language={selectedLanguage}
           defaultValue="// paste your code here"
@@ -69,7 +69,7 @@ const MonacoEditor = ({ position, updateDynamicBlock }: MonacoEditorProps) => {
           }}
           onMount={handleEditorDidMount}
         />
-        <div className={MonacoEditorOptions}>
+        <div className={CodeBlockOptions}>
           <Select
             options={languages.map((language) => {
               return { value: language, label: language };
@@ -86,4 +86,4 @@ const MonacoEditor = ({ position, updateDynamicBlock }: MonacoEditorProps) => {
   );
 };
 
-export default MonacoEditor;
+export default CodeBlockEdit;
