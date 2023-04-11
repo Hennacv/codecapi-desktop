@@ -47,7 +47,7 @@ export const CodeBlockOptions = style({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: vars.spacing['0.5x'],
+  gap: vars.spacing['0.75x'],
   position: 'absolute',
   top: '0.7rem',
   right: '0.7rem',
