@@ -103,9 +103,7 @@ function NewQuestion() {
         <DynamicBlocksEdit
           field="blocks"
           blocks={form.blocks}
-          updateFormValue={(field, value) =>
-            updateFormValue(field, value,)
-          }
+          updateFormValue={(field, value) => updateFormValue(field, value)}
         />
         <div className={NewQuestionFormItem}>
           <div className={NewQuestionBlocks}>

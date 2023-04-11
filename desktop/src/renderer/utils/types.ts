@@ -37,7 +37,7 @@ export interface Question {
   answer: Answer[];
   id: number;
   title: string;
-  text: string;
+  blocks: Block[];
   tags: Tag[];
   createdAt: string;
   user: User;
