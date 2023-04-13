@@ -9,7 +9,7 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, Notification } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -32,6 +32,20 @@ ipcMain.on('ipc-example', async (event, arg) => {
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
 });
+
+app.on('browser-window-focus', (event, win) => {
+  app.setBadgeCount(0);
+});
+
+ipcMain.on('new-message', async (event, arg) => {
+  new Notification({title: arg[0], body: arg[1]}).show();
+  ipcMain.emit('increment-badge-count');
+});
+
+ipcMain.on('increment-badge-count', async (event, arg) => {  
+  app.setBadgeCount(app.getBadgeCount() + 1);
+});
+
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
