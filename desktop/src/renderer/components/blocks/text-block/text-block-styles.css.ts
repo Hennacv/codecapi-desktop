@@ -34,6 +34,7 @@ globalStyle(`.${ContainerStyles} .ql-toolbar .ql-formats button`, {
 });
 
 globalStyle(`.${ContainerStyles} .ql-container`, {
+  fontSize: vars.fontSize.base,
   borderBottomLeftRadius: vars.borderRadius.medium,
   borderBottomRightRadius: vars.borderRadius.medium,
   border: `2px solid ${vars.color['dark-300']}`,
@@ -42,6 +43,7 @@ globalStyle(`.${ContainerStyles} .ql-container`, {
 
 globalStyle(`.${ContainerStyles} .ql-container .ql-editor.ql-blank::before`, {
   color: vars.color['text-white-300'],
+  paddingLeft: vars.spacing['0.5x'],
 });
 
 export const TextBlockHeader = style({
@@ -72,3 +74,28 @@ export const TextBlockHTML = style({
   color: vars.color['text-white-200'],
 });
 
+globalStyle(`.${ContainerStyles} .ql-editor`, {
+  fontFamily: vars.font.default,
+  lineHeight: 1.2,
+  padding: vars.spacing['1.5x'],
+});
+
+globalStyle(`.${TextBlockHTML} > p > a, ${ContainerStyles} .ql-editor p > a`, {
+  color: vars.color['primary-100'],
+});
+
+globalStyle(`.${TextBlockHTML} > h1, ${ContainerStyles} .ql-editor > h1`, {
+  fontSize: vars.fontSize.extraLarge,
+});
+
+globalStyle(`.${TextBlockHTML} > h2, ${ContainerStyles} .ql-editor > h2`, {
+  fontSize: vars.fontSize.large,
+});
+
+globalStyle(`.${TextBlockHTML} > h3, ${ContainerStyles} .ql-editor > h3`, {
+  fontSize: '1.15em',
+});
+
+globalStyle(`.${TextBlockHTML} > p, ${ContainerStyles} .ql-editor > p`, {
+  fontSize: vars.fontSize.base,
+});
