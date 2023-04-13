@@ -30,7 +30,6 @@ const CodeBlockRead = ({ language, value }: CodeBlockReadProps) => {
 
   function copytoClipboard() {
     navigator.clipboard.writeText(value);
-    console.log("click");  
   }
 
   return (
