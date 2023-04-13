@@ -8,6 +8,7 @@ export const vars = createGlobalTheme(':root', {
         'dark-400': '#606060',
         'dark-500': '#797979',
         'dark-600': '#929292',
+        'dark-opaque': '#1E1E1E80',
         'primary-100': '#13CB90',
         'primary-200': '#49D19C',
         'primary-300': '#68D8A8',
@@ -57,7 +58,8 @@ export const vars = createGlobalTheme(':root', {
         '1.25x': '1.25rem',
         '1.5x': '1.5rem',
         '2x': '2rem',
-        '3x': '3rem',    
+        '3x': '3rem',
+        '4.75x': '4.75rem'
     },
     width: {
         'full': '100%',

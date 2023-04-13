@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { AddQuestionDto, Tag } from 'renderer/utils/types';
-import { useSelectedTags } from './use-selected-tags';
+import { useSelectedTags } from '../../../hooks/use-selected-tags';
 import { Block } from '../../../utils/types';
 import {
   NewQuestionBlocks,
