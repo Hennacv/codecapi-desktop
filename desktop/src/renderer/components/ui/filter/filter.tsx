@@ -1,10 +1,11 @@
 import { FilterStyles } from "renderer/components/questions/question-list/question-list-styles.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import Button from "../button/button";
-import { DialogContent, DialogOverlay, DialogPortal, DialogTag, DialogTitle, Reset } from "./filter-styles.css";
+import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogTag, DialogTitle, Reset } from "./filter-styles.css";
 import TagButton from "renderer/components/tags/tag-button/tag-button";
 import { Tag } from "renderer/utils/types";
 import { useSelectedTags } from "renderer/hooks/use-selected-tags";
+import IconRemove from "assets/icons/icon-remove";
 
 interface Filter {
   tags: Tag[];
@@ -71,6 +72,13 @@ const Filter = ({items, setItems}) => {
                   />
                 ))}
               </div>
+            </div>
+            <div className={DialogClose}>
+              <Dialog.Close asChild className={Reset}>
+                <button>
+                  <IconRemove variant='small'/>
+                </button>
+              </Dialog.Close>
             </div>
           </Dialog.Content>
         </Dialog.Portal>

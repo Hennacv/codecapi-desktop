@@ -43,7 +43,7 @@ const QuestionList = () => {
     }
   },[items.tags])
 
-  function onNewQuestion() {
+  const onNewQuestion = () => {
     navigate(`/questions/new`);
   }
 

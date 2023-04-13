@@ -38,3 +38,20 @@ export const DialogTag = style({
   flexDirection: 'row',
   gap: vars.spacing['0.75x'],
 })
+
+export const DialogClose = style({
+  borderRadius: vars.borderRadius.large,
+  height: vars.spacing['1.5x'],
+  width: vars.spacing['1.5x'],
+  display: 'inline-flex',
+  alignItems:'center',
+  justifyContent: 'center',
+  position: 'absolute',
+  top: vars.spacing['1x'],
+  right: vars.spacing['1x'],
+
+  ':hover': {
+    backgroundColor: vars.color['dark-400'],
+    transition: vars.transition.defaultHover,
+  },
+})
