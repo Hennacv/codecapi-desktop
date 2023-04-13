@@ -11,7 +11,7 @@ import {
 
 interface TextBlockEditProps {
   position: number;
-  updateFormBlock: (position: number, value: string, language?: string) => void;
+  updateFormBlock: (position: number, value: string, contents: string) => void;
 }
 
 Quill.register('modules/emoji', Emoji);
@@ -24,8 +24,8 @@ const toolbarOptions = [
 ];
 
 const TextBlockEdit = ({ position, updateFormBlock }: TextBlockEditProps) => {
-  function updateParent(position: number, value: string) {
-    updateFormBlock(position, value);
+  function updateParent(position: number, value: string, contents: string) {
+    updateFormBlock(position, value, contents);
   }
 
   return (
@@ -40,9 +40,9 @@ const TextBlockEdit = ({ position, updateFormBlock }: TextBlockEditProps) => {
         theme="snow"
         className={ContainerStyles}
         placeholder="Start writing..."
-        onChange={(content, delta, source, editor) =>
-          updateParent(position, editor.getText())
-        }
+        onChange={(content, delta, source, editor) => {
+          updateParent(position, editor.getHTML(), JSON.stringify(editor.getContents()));
+        }}
         modules={{
           toolbar: {
             container: toolbarOptions,

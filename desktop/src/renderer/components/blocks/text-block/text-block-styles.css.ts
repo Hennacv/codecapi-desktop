@@ -68,3 +68,7 @@ export const TextBlockLabel = style({
   gap: vars.spacing['0.5x'],
 });
 
+export const TextBlockHTML = style({
+  color: vars.color['text-white-200'],
+});
+
