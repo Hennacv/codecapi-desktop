@@ -1,22 +1,27 @@
 import { Block } from 'renderer/utils/types';
 import { DynamicBlocksContainer } from '../dynamic-blocks-styles.css';
-import QuestionEditor from 'renderer/components/blocks/text-block/text-block-edit/text-block-edit';
+import TextBlockEdit from 'renderer/components/blocks/text-block/text-block-edit/text-block-edit';
 import CodeBlockEdit from '../../code-block/code-block-edit/code-block-edit';
 
 interface DynamicBlocksEditProps {
-  field: string
+  field: string;
   blocks: Block[];
   updateFormValue: (field: string, value: any) => void;
 }
 
-const DynamicBlocksEdit = ({ blocks, field, updateFormValue }: DynamicBlocksEditProps) => {
-
+const DynamicBlocksEdit = ({
+  blocks,
+  field,
+  updateFormValue,
+}: DynamicBlocksEditProps) => {
   const updateDynamicBlock = (
     position: number,
     value: string,
     language?: string
   ) => {
-    const indexSelectedBlock = blocks.findIndex((block) => block.position === position);
+    const indexSelectedBlock = blocks.findIndex(
+      (block) => block.position === position
+    );
     blocks[indexSelectedBlock].value = value;
     blocks[indexSelectedBlock].language = language;
     updateFormValue(field, blocks);
@@ -36,7 +41,7 @@ const DynamicBlocksEdit = ({ blocks, field, updateFormValue }: DynamicBlocksEdit
                 }
               />
             ) : block.type === 'text' ? (
-              <QuestionEditor
+              <TextBlockEdit
                 key={index}
                 position={block.position}
                 updateFormBlock={(position, value, language) =>

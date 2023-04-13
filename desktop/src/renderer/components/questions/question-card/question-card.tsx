@@ -1,18 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { Question } from 'renderer/utils/types';
-import { 
+import {
   QuestionCardHeader,
-  QuestionCardContent, 
+  QuestionCardContent,
   QuestionCardVariants,
   QuestionCardIconContainer,
-  QuestionCardParagraph,
-  QuestionCardTitle
+  QuestionCardTitle,
 } from './question-card-styles.css';
 
 import dayjs from 'renderer/utils/dayjs';
 import classNames from 'classnames';
 import TagCard from 'renderer/components/tags/tag-card/tag-card';
 import IconQuestions from 'assets/icons/icon-questions';
+import DynamicBlocksRead from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-read/dynamic-blocks-read';
 
 interface QuestionCardProps {
   question: Question;
@@ -20,7 +20,6 @@ interface QuestionCardProps {
 }
 
 const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
-
   const navigate = useNavigate();
 
   function onPressCard(question: Question) {
@@ -28,37 +27,44 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
   }
 
   return (
-    <div className={classNames(QuestionCardVariants.default, {[QuestionCardVariants.defaultHover]: !showText,})} 
-      onClick={() => onPressCard(question)}>
+    <div
+      className={classNames(QuestionCardVariants.default, {
+        [QuestionCardVariants.defaultHover]: !showText,
+      })}
+      onClick={() => onPressCard(question)}
+    >
       <div className={QuestionCardHeader}>
-        {question.user.name} 
+        {question.user.name}
         <span>-</span>
         {dayjs(question.createdAt).fromNow()}
-        {!showText &&
+        {!showText && (
           <>
             <span>-</span>
             <div className={QuestionCardIconContainer}>
-              <IconQuestions variant='small' />
+              <IconQuestions variant="small" />
               {question.answer.length}
             </div>
           </>
-        }
-        {!!question.tags.length &&
+        )}
+        {!!question.tags.length && (
           <>
             <span>-</span>
             {question.tags.map((tag) => (
-              <TagCard key={tag.id} title={tag.title} color={tag.color} variant="small" />
+              <TagCard
+                key={tag.id}
+                title={tag.title}
+                color={tag.color}
+                variant="small"
+              />
             ))}
           </>
-        }
+        )}
       </div>
       <div className={QuestionCardContent}>
         <span className={QuestionCardTitle}>{question.title}</span>
-        {showText && (
-          <p className={QuestionCardParagraph}>{question.text}</p>
-        )}
+        {showText && <DynamicBlocksRead blocks={question.blocks} />}
       </div>
     </div>
   );
-}
+};
 export default QuestionCard;

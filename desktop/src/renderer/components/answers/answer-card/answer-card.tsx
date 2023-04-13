@@ -5,6 +5,7 @@ import {
 } from './answer-card-styling.css';
 
 import dayjs from 'renderer/utils/dayjs';
+import DynamicBlocksRead from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-read/dynamic-blocks-read';
 
 interface AnswerCardProps {
   answer: Answer;
@@ -18,6 +19,7 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
         <span>-</span>
         {dayjs(answer.createdAt).fromNow()}
       </div>
+      {answer.blocks && <DynamicBlocksRead blocks={answer.blocks} />}
     </div>
   );
 };

@@ -1,11 +1,12 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 export const CodeBlockContainer = style({
   position: 'relative',
+  overflow: 'hidden',
 });
 
-export const CodeBlockInput = style({
+const CodeBlockInput = style({
   backgroundColor: vars.color['dark-100'],
   border: '2px solid ' + vars.color['dark-300'],
   borderRadius: vars.borderRadius.medium,
@@ -16,8 +17,17 @@ export const CodeBlockInput = style({
     vars.spacing['1x'] +
     vars.spacing['1x'] +
     vars.spacing['0x'],
-  height: '20vh',
+  height: 'auto',
 });
+
+const CodeBlockInputRead = style({
+  pointerEvents: 'none',
+});
+
+export const CodeBlockVariants = styleVariants({
+  edit: [CodeBlockInput],
+  read: [CodeBlockInput, CodeBlockInputRead],
+})
 
 export const CodeBlockHeader = style({
   display: 'flex',
@@ -37,10 +47,10 @@ export const CodeBlockOptions = style({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: vars.spacing['0.5x'],
+  gap: vars.spacing['0.75x'],
   position: 'absolute',
-  top: '1rem',
-  right: '1rem',
+  top: '0.7rem',
+  right: '0.7rem',
 });
 
 export const CodeBlockLabel = style({
@@ -51,4 +61,18 @@ export const CodeBlockLabel = style({
   flexDirection: 'row',
   alignItems: 'center',
   gap: vars.spacing['0.5x'],
+});
+
+export const CodeBlockEditorContainer = style({
+  width: vars.width.full,
+  height: vars.height.full,
+  position: 'relative',
+});
+
+export const CodeBlockLanguage = style({
+  color: vars.color['primary-100'],
+  fontSize: vars.fontSize.extraSmall,
+  '::first-letter': {
+    textTransform: 'uppercase',
+  },
 });

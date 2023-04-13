@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { languages } from './languages';
 import Editor from '@monaco-editor/react';
 import {
@@ -7,7 +7,7 @@ import {
   CodeBlockHeader,
   CodeBlockOptions,
   CodeBlockTitle,
-  CodeBlockInput,
+  CodeBlockVariants,
 } from '../code-block-styles.css';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import Select from 'renderer/components/ui/select/select';
@@ -21,16 +21,36 @@ interface CodeBlockEditProps {
   ) => void;
 }
 
-const CodeBlockEdit = ({ position, updateDynamicBlock }: CodeBlockEditProps) => {
+const CodeBlockEdit = ({
+  position,
+  updateDynamicBlock,
+}: CodeBlockEditProps) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>('javascript');
+
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
+
+  useEffect(() => {
+    updateParent(position);
+  }, [selectedLanguage]);
 
   function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
+
+    editor.layout({
+      width: 1000,
+      height: 19,
+    });
+
+    editorRef.current.onDidContentSizeChange(() => {
+      editorRef.current?.layout({
+        width: 1000,
+        height: Math.min(1000, editorRef.current.getContentHeight()),
+      });
+    });
   }
 
-  function updateParent(position: number, language?: string) {
+  function updateParent(position: number) {
     if (editorRef.current) {
       const value = editorRef.current.getValue();
       updateDynamicBlock(position, value, selectedLanguage);
@@ -47,16 +67,15 @@ const CodeBlockEdit = ({ position, updateDynamicBlock }: CodeBlockEditProps) => 
       </div>
       <div className={CodeBlockContainer}>
         <Editor
-          className={CodeBlockInput}
+          className={CodeBlockVariants['edit']}
           theme="vs-dark"
           language={selectedLanguage}
           defaultValue="// paste your code here"
           options={{
-            automaticLayout: true,
             scrollBeyondLastLine: false,
             wordWrap: 'on',
             wrappingStrategy: 'advanced',
-            overviewRulerLanes: 3,
+            overviewRulerLanes: 0,
             autoIndent: 'advanced',
             formatOnPaste: true,
             formatOnType: true,
@@ -77,7 +96,6 @@ const CodeBlockEdit = ({ position, updateDynamicBlock }: CodeBlockEditProps) => 
             variant="small"
             onChange={(event) => {
               setSelectedLanguage(event.target.value);
-              updateParent(position, event.target.value);
             }}
           />
         </div>
