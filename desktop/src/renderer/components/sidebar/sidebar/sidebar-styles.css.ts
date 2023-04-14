@@ -68,7 +68,7 @@ export const SideList = style({
   marginTop: 0,
 });
 
-globalStyle(`.${SideStyles.collapsed} span`, {
+globalStyle(`${SideStyles.collapsed} span`, {
 	display: 'none',
 	overflow: 'hidden',
 });
