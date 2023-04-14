@@ -1,8 +1,0 @@
-import { style } from "@vanilla-extract/css";
-import { vars } from "renderer/vars.css";
-
-export const DynamicBlockContainer = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: vars.spacing['2x'],
-});
