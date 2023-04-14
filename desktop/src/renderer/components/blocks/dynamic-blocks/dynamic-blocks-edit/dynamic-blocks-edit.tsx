@@ -17,12 +17,14 @@ const DynamicBlocksEdit = ({
   const updateDynamicBlock = (
     position: number,
     value: string,
+    contents?: string,
     language?: string
   ) => {
     const indexSelectedBlock = blocks.findIndex(
       (block) => block.position === position
     );
     blocks[indexSelectedBlock].value = value;
+    blocks[indexSelectedBlock].contents = contents;
     blocks[indexSelectedBlock].language = language;
     updateFormValue(field, blocks);
   };
@@ -37,15 +39,15 @@ const DynamicBlocksEdit = ({
                 key={index}
                 position={block.position}
                 updateDynamicBlock={(position, value, language) =>
-                  updateDynamicBlock(position, value, language)
+                  updateDynamicBlock(position, value, '', language)
                 }
               />
             ) : block.type === 'text' ? (
               <TextBlockEdit
                 key={index}
                 position={block.position}
-                updateFormBlock={(position, value, language) =>
-                  updateDynamicBlock(position, value, language)
+                updateFormBlock={(position, value, contents) =>
+                  updateDynamicBlock(position, value, contents, '')
                 }
               />
             ) : null
