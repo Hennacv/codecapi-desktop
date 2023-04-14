@@ -1,38 +1,27 @@
-import { FilterStyles } from "renderer/components/questions/question-list/question-list-styles.css";
 import * as Dialog from "@radix-ui/react-dialog";
-import Button from "../button/button";
-import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogTag, DialogTitle, Reset } from "./filter-styles.css";
-import TagButton from "renderer/components/tags/tag-button/tag-button";
-import { Tag } from "renderer/utils/types";
+import { Tag, Filter } from "renderer/utils/types";
 import { useSelectedTags } from "renderer/hooks/use-selected-tags";
+import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogTag, DialogTitle, Reset } from "./filter-styles.css";
+import Button from "../button/button";
+import TagButton from "renderer/components/tags/tag-button/tag-button";
 import IconRemove from "assets/icons/icon-remove";
 
-interface Filter {
-  tags: Tag[];
-}
-
-const Filter = ({items, setItems}) => {
+const Filter = ({tags, setTags}:Filter) => {
   let selectedTags = useSelectedTags();
 
-  function addTag(tag: Tag) {
+  const addTag= (tag: Tag) => {
     selectedTags.addTag(tag);
-    updateFilter('tags', [...items.tags, tag]);
+    setTags([...tags, tag]);
   }
 
-  function deleteTag(tag: Tag) {
+  const deleteTag=(tag: Tag) =>{
     selectedTags.deleteTag(tag);
-
-    const tempTag = items.tags.filter((selectedTag:Tag) => selectedTag !== tag);
-    updateFilter('tags', tempTag);
-
-  }
-
-  function updateFilter(field: string, value: any) {
-   setItems({...items, [field]: value,});
+    const tempTags = tags.filter((selectedTag:Tag) => selectedTag !== tag);
+     setTags(tempTags);
   }
 
   return (
-    <div className={FilterStyles}>
+    <div>
       <Dialog.Root>
         <Dialog.Trigger className={Reset}>
           <Button
@@ -67,7 +56,7 @@ const Filter = ({items, setItems}) => {
                   key={tag.id}
                   title={tag.title}
                   color={tag.color}
-                  variant='defaultAdd'
+                  variant="defaultAdd"
                   onClick={() => deleteTag(tag)}
                   />
                 ))}
@@ -76,7 +65,7 @@ const Filter = ({items, setItems}) => {
             <div className={DialogClose}>
               <Dialog.Close asChild className={Reset}>
                 <button>
-                  <IconRemove variant='small'/>
+                  <IconRemove variant="small"/>
                 </button>
               </Dialog.Close>
             </div>

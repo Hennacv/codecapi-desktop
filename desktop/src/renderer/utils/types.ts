@@ -31,6 +31,8 @@ export interface Tag {
   id: number;
   title: string;
   color: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Question {
@@ -48,4 +50,14 @@ export interface Answer {
   blocks: Block[];
   createdAt: string;
   user: User;
+}
+
+export interface Filter {
+  tags: Tag[];
+  setTags: (tags:Tag[])=>void;
+}
+
+export interface Searched {
+  searchTerm: string;
+  setSearchTerm: (str: string) => void;
 }

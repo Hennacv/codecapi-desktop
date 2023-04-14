@@ -1,56 +1,49 @@
-import { useGetQuestions } from 'renderer/hooks/use-get-questions';
-import { Question, Tag } from 'renderer/utils/types';
-import { useNavigate } from 'react-router-dom';
-import QuestionCard from '../question-card/question-card';
-import { NewQuestionButtonPosition } from '../new-question/new-question-styles.css';
-import Button from 'renderer/components/ui/button/button';
-import Filter from 'renderer/components/ui/filter/filter';
-import { useEffect, useState } from 'react';
-
-interface Filtered {
-  tags: Tag[];
-}
-
-interface QuestionTagsIncludesTag { (arg0: Tag[], arg1: Tag): boolean }
-
-const questionTagsIncludesTag: QuestionTagsIncludesTag = (questionTags, tag) => questionTags.some(questionTag => questionTag.id === tag.id);
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Question, Tag } from "renderer/utils/types";
+import { useGetQuestions } from "renderer/hooks/use-get-questions";
+import { SFContainer } from "renderer/components/ui/search/search-styles.css";
+import { NewQuestionButtonPosition } from "../new-question/new-question-styles.css";
+import QuestionCard from "../question-card/question-card";
+import Button from "renderer/components/ui/button/button";
+import Filter from "renderer/components/ui/filter/filter";
+import Search from "renderer/components/ui/search/search";
 
 const QuestionList = () => {
-  const { data = [] } = useGetQuestions();
   const navigate = useNavigate();
+  const { data = [] } = useGetQuestions();
   const [questions,setQuestions]=useState(data);
-  const [items, setItems] = useState<Filtered>({
-    tags: [],
-  });
+  const [searchTerm,setSearchTerm]=useState('');
+  const [tags, setTags] = useState<Tag[]>([]);
+
+  useEffect(()=>{
+    setQuestions(data)
+  },[data])
 
   useEffect(()=> {
-    if (items.tags.length === 0) {
-      setQuestions(data);
-    }
-    if(items.tags.length > 0) {
-      setQuestions(() => {
-        let newQuestions: Question[] = [];
+    let result = data.filter((question) => question.title.toLowerCase().includes(searchTerm));
 
-        for (let question of data) {
-          items.tags.forEach((tag) => {
-            if (questionTagsIncludesTag(question.tags, tag)) {
-              newQuestions.push(question);
-            }
-          })
-        }
-        return newQuestions;
+    if(!!tags.length){
+      result = result.filter((question) => {
+        return question.tags.some((questionTag)=>{
+          return tags.some((tag)=>tag.id === questionTag.id)
+        })
       })
     }
-  },[items.tags])
+
+    setQuestions(result)
+  },[tags,searchTerm])
+
 
   const onNewQuestion = () => {
-    navigate(`/questions/new`);
+    navigate("/questions/new");
   }
 
   return (
     <div>
-      <div>
-        <Filter items={items} setItems={setItems} />
+      <div className={SFContainer}>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Filter tags={tags} setTags={setTags} />
       </div>
       <div className={NewQuestionButtonPosition}>
         <Button

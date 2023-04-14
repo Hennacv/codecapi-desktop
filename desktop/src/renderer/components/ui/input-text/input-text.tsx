@@ -4,16 +4,18 @@ interface InputTextProps {
   placeholder?: string;
   type: 'text' | 'email' | 'search' | 'url';
   id: string;
+  value: string;
   variant: keyof typeof InputTextVariants;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputText = ({placeholder, type, id, variant, onChange}: InputTextProps) => {
+const InputText = ({placeholder, type, id, variant, onChange,value}: InputTextProps) => {
   return (
     <input className={InputTextVariants[variant]}
       placeholder={placeholder}
-      type={type} 
-      id={id} 
+      type={type}
+      value={value}
+      id={id}
       onChange={onChange}
     />
   );
