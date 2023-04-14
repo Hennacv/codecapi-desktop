@@ -38,14 +38,17 @@ app.on('browser-window-focus', (event, win) => {
 });
 
 ipcMain.on('new-message', async (event, arg) => {
-  new Notification({title: arg[0], body: arg[1]}).show();
+  new Notification({
+    title: arg[0],
+    body: arg[1],
+    icon: 'assets/icon.png',
+  }).show();
   ipcMain.emit('increment-badge-count');
 });
 
-ipcMain.on('increment-badge-count', async (event, arg) => {  
+ipcMain.on('increment-badge-count', async (event, arg) => {
   app.setBadgeCount(app.getBadgeCount() + 1);
 });
-
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -96,6 +99,10 @@ const createWindow = async () => {
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
   });
+
+  if (process.platform === 'win32') {
+    app.setAppUserModelId(app.name);
+  }
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
