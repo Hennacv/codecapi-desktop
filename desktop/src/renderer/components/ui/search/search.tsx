@@ -4,7 +4,7 @@ import { Searched } from "renderer/utils/types";
 const Search = ({searchTerm, setSearchTerm}: Searched) => {
   return (
   <InputText
-    placeholder="Whatchu lookin for?"
+    placeholder="Search"
     type= "search"
     id = "question-search"
     value={searchTerm}
