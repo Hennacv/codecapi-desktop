@@ -16,7 +16,7 @@ function Root() {
     <AuthProvider>
       <div className={mainContainer}>
         <Sidebar />
-        <div className={contentContainer}>
+        <div className={contentContainer} id='main'>
           <Loader />
           <div>
             <Outlet />

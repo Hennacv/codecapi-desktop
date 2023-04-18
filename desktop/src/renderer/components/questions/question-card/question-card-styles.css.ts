@@ -3,6 +3,7 @@ import { vars } from 'renderer/vars.css';
 
 const QuestionCardContainer = style({
   padding: vars.spacing['1.5x'],
+  marginBottom: vars.spacing['1.25x'],
   width: vars.width.full,
   backgroundColor: vars.color['dark-200'],
   borderRadius: vars.borderRadius.large,
@@ -47,7 +48,7 @@ export const QuestionCardContent = style({
   width: vars.width.full,
   display: 'flex',
   flexDirection: 'column',
-  gap: vars.spacing['1.25x'],
+  gap: vars.spacing['0.75x'],
   fontSize: vars.fontSize.base,
 });
 

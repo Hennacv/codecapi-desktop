@@ -8,6 +8,13 @@ export const InputTextBase = style({
   fontWeight: vars.fontWeight.regular,
 });
 
+export const InputTextExtraSmall = style({
+  height: 37,
+  width: '70%',
+  padding: vars.spacing['0.5x'],
+  fontSize: vars.fontSize.small
+})
+
 export const InputTextSmall = style({
   padding: vars.spacing["0.75x"],
   fontSize: vars.fontSize.small
@@ -23,6 +30,7 @@ export const InputTextValidated = style({
 });
 
 export const InputTextVariants = styleVariants({
+  extraSmall: [InputTextBase, InputTextExtraSmall],
   small: [InputTextBase, InputTextSmall],
   smallValidated: [InputTextBase, InputTextSmall, InputTextValidated],
   default: [InputTextBase, InputTextDefault],

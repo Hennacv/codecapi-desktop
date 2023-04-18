@@ -68,7 +68,7 @@ export const NewQuestionTagList = style({
 export const NewQuestionTagContainer = style({
   padding: vars.spacing['1x'],
   backgroundColor: vars.color['dark-200'],
-  border: '2px solid ' + vars.color['dark-300'],
+  border: `2px solid ${vars.color['dark-300']}`,
   borderRadius: vars.borderRadius.medium,
   minHeight: '4.5rem',
 });
@@ -86,4 +86,10 @@ export const NewQuestionBlocksOptions = style({
   display: 'flex',
   flexDirection: 'row',
   gap: vars.spacing['1x'],
+});
+
+export const NewQuestionButtonPosition = style({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginBottom: vars.spacing['1.25x'],
 });
