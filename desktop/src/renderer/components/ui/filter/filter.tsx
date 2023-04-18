@@ -4,8 +4,7 @@ import { ModalStyles, ModalClose, ModalContent, ModalTag, ModalTitle, Reset } fr
 import TagButton from "renderer/components/tags/tag-button/tag-button";
 import IconRemove from "assets/icons/icon-remove";
 
-
-const Filter = ({tags, setTags, show, onClose}:Filter) => {
+const Filter = ({tags, setTags, isShown, onClose}:Filter) => {
   let selectedTags = useSelectedTags();
 
   const addTag= (tag: Tag) => {
@@ -20,7 +19,7 @@ const Filter = ({tags, setTags, show, onClose}:Filter) => {
   }
 
   return (
-    <div className={show ? ModalStyles.show : ModalStyles.basic } onClick={onClose}>
+    <div className={isShown ? ModalStyles.show : ModalStyles.basic } onClick={onClose}>
       <div className={ModalContent} onClick={e => e.stopPropagation()}>
         <h4 className={ModalTitle}>Tags</h4>
         <div className={ModalTag}>

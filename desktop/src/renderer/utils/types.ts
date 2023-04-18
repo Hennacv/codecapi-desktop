@@ -55,7 +55,7 @@ export interface Answer {
 export interface Filter {
   tags: Tag[];
   setTags: (tags:Tag[])=>void;
-  show: boolean;
+  isShown: boolean;
   onClose: ()=>void;
 }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Question, Tag } from 'renderer/utils/types';
 import { useGetQuestions } from 'renderer/hooks/use-get-questions';
@@ -14,7 +14,7 @@ const QuestionList = () => {
   const { data = [] } = useGetQuestions();
   const [searchTerm, setSearchTerm] = useState('');
   const [tags, setTags] = useState<Tag[]>([]);
-  const [show, setShow] = useState(false);
+  const [isShown, setIsShown] = useState(false);
 
   let result = data.filter((question) =>
     question.title.toLowerCase().includes(searchTerm)
@@ -28,6 +28,14 @@ const QuestionList = () => {
     });
   }
 
+  useEffect(() => {
+    const scrollableElement = document.getElementById('main')
+
+    if(scrollableElement){
+      scrollableElement.style.overflowY = isShown ? 'hidden' : 'visible';
+    }
+  }, [isShown]);
+
   const onNewQuestion = () => {
     navigate('/questions/new');
   };
@@ -40,9 +48,9 @@ const QuestionList = () => {
             text="Filter"
             variant="small"
             type="button"
-            onClick={() => setShow(true)}
+            onClick={() => setIsShown(true)}
           />
-        <Filter tags={tags} setTags={setTags} show={show} onClose={() => setShow(false)}/>
+        <Filter tags={tags} setTags={setTags} isShown={isShown} onClose={() => setIsShown(false)}/>
       </div>
       <div className={NewQuestionButtonPosition}>
         <Button
