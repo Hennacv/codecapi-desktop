@@ -22,6 +22,7 @@ const BaseToggleContainer = style({
   color: vars.color['text-white-200'],
   display: 'flex',
   transition: 'transform 400ms',
+  zIndex: 2000,
 });
 
 export const SideStyles = styleVariants({

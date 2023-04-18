@@ -55,6 +55,8 @@ export interface Answer {
 export interface Filter {
   tags: Tag[];
   setTags: (tags:Tag[])=>void;
+  show: boolean;
+  onClose: ()=>void;
 }
 
 export interface Searched {

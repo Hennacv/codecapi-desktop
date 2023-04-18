@@ -14,6 +14,7 @@ const QuestionList = () => {
   const { data = [] } = useGetQuestions();
   const [searchTerm, setSearchTerm] = useState('');
   const [tags, setTags] = useState<Tag[]>([]);
+  const [show, setShow] = useState(false);
 
   let result = data.filter((question) =>
     question.title.toLowerCase().includes(searchTerm)
@@ -35,7 +36,13 @@ const QuestionList = () => {
     <div>
       <div className={SFContainer}>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <Filter tags={tags} setTags={setTags} />
+        <Button
+            text="Filter"
+            variant="small"
+            type="button"
+            onClick={() => setShow(true)}
+          />
+        <Filter tags={tags} setTags={setTags} show={show} onClose={() => setShow(false)}/>
       </div>
       <div className={NewQuestionButtonPosition}>
         <Button
