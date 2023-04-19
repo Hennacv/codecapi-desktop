@@ -3,23 +3,31 @@ import { vars } from 'renderer/vars.css';
 
 export const UserInfoSection = style({
   backgroundColor: vars.color['dark-300'],
-  padding: vars.spacing['1.25x'], 
-  justifyContent: 'space-around',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '5.5rem',
+  width: vars.width.full, 
   userSelect: 'none',
+  padding: vars.spacing['0x'] + vars.spacing['1x']
 });
 
 export const UserInfoCard = style({
   display: 'flex',
   flexDirection: 'row',
   backgroundColor: vars.color['dark-400'],
-  height: '2,5rem',
   borderRadius: vars.borderRadius.small,
+  width: vars.width.full,
 });
 
 export const UserInfoImage = style({
-  width: '2,5rem',
-  height: '2.5rem',
+  width: '3rem',
+  height: '3rem',
   borderRadius: vars.borderRadius.small,
+  backgroundColor: vars.color['dark-500'],
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 const UserInfoBase = style({
@@ -49,6 +57,11 @@ export const UserText = styleVariants({
     {
       fontSize: '0.75em',
       color: vars.color['text-white-100'],
+
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      maxWidth: '7.5rem',
     },
   ],
   function: [
