@@ -42,10 +42,37 @@ const ButtonDefaultSquare = style({
   padding: vars.spacing['0.75x'],
 });
 
+const Reset = style({
+  all: 'unset',
+});
+
 export const ButtonVariants = styleVariants({
   small: [ButtonBase, ButtonSmall],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
   default: [ButtonBase, ButtonDefault],
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
+  reset: [Reset],
 });
+
+const Close = style({
+  borderRadius: vars.borderRadius.large,
+  height: vars.spacing['1.5x'],
+  width: vars.spacing['1.5x'],
+  display: 'inline-flex',
+  alignItems:'center',
+  justifyContent: 'center',
+  position: 'absolute',
+
+  ':hover': {
+    backgroundColor: vars.color['dark-400'],
+    transition: vars.transition.defaultHover,
+  },
+});
+
+export const ButtonClose = styleVariants({
+  base: [Close, {right: vars.spacing['1x']}],
+  filter: [Close, {  top: vars.spacing['1x'], right: vars.spacing['1x']}],
+
+});
+

@@ -7,12 +7,14 @@ interface DynamicBlocksEditProps {
   field: string;
   blocks: Block[];
   updateFormValue: (field: string, value: any) => void;
+  removeBlock: (position: number) => void
 }
 
 const DynamicBlocksEdit = ({
   blocks,
   field,
   updateFormValue,
+  removeBlock
 }: DynamicBlocksEditProps) => {
   const updateDynamicBlock = (
     position: number,
@@ -29,6 +31,8 @@ const DynamicBlocksEdit = ({
     updateFormValue(field, blocks);
   };
 
+  // delete block based on id, should auto-re-render blocks list
+
   return (
     <>
       {blocks.length > 0 && (
@@ -41,6 +45,7 @@ const DynamicBlocksEdit = ({
                 updateDynamicBlock={(position, value, language) =>
                   updateDynamicBlock(position, value, '', language)
                 }
+                removeBlock={removeBlock}
               />
             ) : block.type === 'text' ? (
               <TextBlockEdit
@@ -49,6 +54,7 @@ const DynamicBlocksEdit = ({
                 updateFormBlock={(position, value, contents) =>
                   updateDynamicBlock(position, value, contents, '')
                 }
+                removeBlock={removeBlock}
               />
             ) : null
           )}

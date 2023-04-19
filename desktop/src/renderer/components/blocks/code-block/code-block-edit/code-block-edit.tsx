@@ -11,6 +11,9 @@ import {
 } from '../code-block-styles.css';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import Select from 'renderer/components/ui/select/select';
+import IconRemove from 'assets/icons/icon-remove';
+import { ButtonClose } from 'renderer/components/ui/button/button-styles.css';
+import Button from 'renderer/components/ui/button/button';
 
 interface CodeBlockEditProps {
   position: number;
@@ -19,11 +22,13 @@ interface CodeBlockEditProps {
     value: string,
     language?: string
   ) => void;
+  removeBlock: (position: number) => void
 }
 
 const CodeBlockEdit = ({
   position,
   updateDynamicBlock,
+  removeBlock,
 }: CodeBlockEditProps) => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>('javascript');
@@ -64,6 +69,11 @@ const CodeBlockEdit = ({
           Code
           <span className={CodeBlockTitle}>(block: {position})</span>
         </label>
+        <div className={ButtonClose.base}>
+          <Button variant="reset" type="button" onClick={() => removeBlock(position)}>
+            <IconRemove variant="small"/>
+          </Button>
+        </div>
       </div>
       <div className={CodeBlockContainer}>
         <Editor
