@@ -7,20 +7,17 @@ import { User } from '../db/entities/user.entity';
 import { AddTagDto } from './dto/add-tag.dto';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
-import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
 export class QuestionsService {
   constructor(
     @InjectRepository(Question)
     private repo: Repository<Question>,
-    private eventEmitter: EventEmitter2
   ) {}
 
   async create(createQuestionDto: CreateQuestionDto, user: User) {
     let question = this.repo.create({ ...createQuestionDto, userId: user.id });
     await question.save();
-    this.eventEmitter.emit('new-question', {question: question, user: user});
     return this.fetchQuestion(question.id);
   }
 
