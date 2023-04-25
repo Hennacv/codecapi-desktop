@@ -1,4 +1,4 @@
-import { Block, isCodeBlock, isTextBlock } from 'renderer/utils/types';
+import { Block, isCodeBlock } from 'renderer/utils/types';
 import { DynamicBlocksContainer } from '../dynamic-blocks-styles.css';
 import CodeBlockRead from '../../code-block/code-block-read/code-block-read';
 import TextBlockRead from '../../text-block/text-block-read/text-block-read';
@@ -19,9 +19,9 @@ const DynamicBlocksRead = ({ blocks }: DynamicBlocksReadProps) => {
                 language={block.language}
                 value={block.value}
               />
-            ) : isTextBlock(block) ? (
+            ) : (
               <TextBlockRead key={index} value={block.value} />
-            ) : null
+            )
           )}
         </div>
       )}

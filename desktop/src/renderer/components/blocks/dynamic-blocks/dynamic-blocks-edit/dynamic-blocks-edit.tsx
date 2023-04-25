@@ -1,4 +1,4 @@
-import { Block, isCodeBlock, isTextBlock, TextBlock, CodeBlock } from 'renderer/utils/types';
+import { Block, isCodeBlock, TextBlock, CodeBlock } from 'renderer/utils/types';
 import { DynamicBlocksContainer } from '../dynamic-blocks-styles.css';
 import TextBlockEdit from 'renderer/components/blocks/text-block/text-block-edit/text-block-edit';
 import CodeBlockEdit from '../../code-block/code-block-edit/code-block-edit';
@@ -54,7 +54,7 @@ const DynamicBlocksEdit = ({
                 removeBlock={removeBlock}
                 language={(blocks[block.position] as CodeBlock).language}
               />
-            ) : isTextBlock(block) ? (
+            ) : (
               <TextBlockEdit
                 value={blocks[block.position].value}
                 key={block.position}
@@ -64,7 +64,7 @@ const DynamicBlocksEdit = ({
                 }
                 removeBlock={removeBlock}
               />
-            ) : null
+            )
           )}
         </div>
       )}
