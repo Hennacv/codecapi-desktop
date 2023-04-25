@@ -20,3 +20,10 @@ export const QuestionDetailsAnswerContainer = style({
   color: vars.color['text-white-300'],
   fontSize: vars.fontSize.small
 });
+
+export const QuestionDetailsButtonContainer = style({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  
+})

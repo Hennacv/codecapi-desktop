@@ -46,6 +46,7 @@ export interface User {
   id: number;
   email: string;
   name: string;
+  uid: string;
 }
 
 export interface Tag {
