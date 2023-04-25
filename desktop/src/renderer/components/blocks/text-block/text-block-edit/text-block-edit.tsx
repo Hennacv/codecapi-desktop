@@ -16,6 +16,7 @@ interface TextBlockEditProps {
   position: number;
   updateFormBlock: (position: number, value: string, contents: string) => void;
   removeBlock: (position: number) => void
+  value:string;
 }
 
 Quill.register('modules/emoji', Emoji);
@@ -27,7 +28,7 @@ const toolbarOptions = [
   ['emoji'],
 ];
 
-const TextBlockEdit = ({ position, updateFormBlock, removeBlock }: TextBlockEditProps) => {
+const TextBlockEdit = ({ position, updateFormBlock, removeBlock ,value}: TextBlockEditProps) => {
   function updateParent(position: number, value: string, contents: string) {
     updateFormBlock(position, value, contents);
   }
@@ -39,7 +40,6 @@ const TextBlockEdit = ({ position, updateFormBlock, removeBlock }: TextBlockEdit
           Description
           <span className={TextBlockTitle}>(block: {position})</span>
         </label>
-        {/* close btn here triggers func with current id */}
         <div className={ButtonClose.base}>
           <Button variant="reset" type="button" onClick={() => removeBlock(position)}>
             <IconRemove variant="small"/>
@@ -50,6 +50,7 @@ const TextBlockEdit = ({ position, updateFormBlock, removeBlock }: TextBlockEdit
         theme="snow"
         className={ContainerStyles}
         placeholder="Start writing..."
+        value={value}
         onChange={(content, delta, source, editor) => {
           updateParent(position, editor.getHTML(), JSON.stringify(editor.getContents()));
         }}

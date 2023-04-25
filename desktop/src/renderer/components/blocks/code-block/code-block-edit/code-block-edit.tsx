@@ -20,26 +20,24 @@ interface CodeBlockEditProps {
   updateDynamicBlock: (
     position: number,
     value: string,
-    language?: string
+    language: string
   ) => void;
   removeBlock: (position: number) => void
+  value: string;
+  language: string;
 }
 
 const CodeBlockEdit = ({
   position,
   updateDynamicBlock,
   removeBlock,
+  value,
+  language,
 }: CodeBlockEditProps) => {
-  const [selectedLanguage, setSelectedLanguage] =
-    useState<string>('javascript');
 
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
 
-  useEffect(() => {
-    updateParent(position);
-  }, [selectedLanguage]);
-
-  function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
+  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
 
     editor.layout({
@@ -55,10 +53,10 @@ const CodeBlockEdit = ({
     });
   }
 
-  function updateParent(position: number) {
+  const updateParent = (position: number, language: string) => {
     if (editorRef.current) {
       const value = editorRef.current.getValue();
-      updateDynamicBlock(position, value, selectedLanguage);
+      updateDynamicBlock(position, value, language);
     }
   }
 
@@ -79,7 +77,8 @@ const CodeBlockEdit = ({
         <Editor
           className={CodeBlockVariants['edit']}
           theme="vs-dark"
-          language={selectedLanguage}
+          language={language}
+          value={value}
           defaultValue="// paste your code here"
           options={{
             scrollBeyondLastLine: false,
@@ -94,7 +93,7 @@ const CodeBlockEdit = ({
             },
           }}
           onChange={() => {
-            updateParent(position);
+            updateParent(position, language);
           }}
           onMount={handleEditorDidMount}
         />
@@ -105,8 +104,9 @@ const CodeBlockEdit = ({
             })}
             variant="small"
             onChange={(event) => {
-              setSelectedLanguage(event.target.value);
+              updateParent(position, event.target.value);
             }}
+            language={language}
           />
         </div>
       </div>
