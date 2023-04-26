@@ -37,21 +37,32 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
     questionId: id,
   });
 
-  function updateFormValue(field: string, value: Block[]) {
+  const updateFormValue = (field: string, value: any) => {
     setForm({
       ...form,
       [field]: value,
     });
   }
 
-  function addBlock(type: 'text' | 'code') {
+  const addBlock = (type: 'text' | 'code' ) => {
     updateFormValue('blocks', [
       ...form.blocks,
-      { position: form.blocks.length + 1, type: type, value: '', language: '' },
+      { position: form.blocks.length, type: type, value: '', language: 'javascript' },
     ]);
   }
 
-  function onSubmit(newAnswer: AddAnswerDto) {
+  const removeBlock = (position: number) => {
+    const newBlocks = form.blocks.filter(block => block.position !== position);
+
+    newBlocks.forEach((block, index) => {
+      block.position = index
+    })
+    updateFormValue('blocks', [
+      ...newBlocks
+    ]);
+  }
+
+  const onSubmit = (newAnswer: AddAnswerDto) => {
     addAnswer.mutate(newAnswer);
     setFormIsActive(false);
   }
@@ -71,6 +82,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
               field="blocks"
               blocks={form.blocks}
               updateFormValue={(field, value) => updateFormValue(field, value)}
+              removeBlock={removeBlock}
             />
             <div className={NewAnswerFormItem}>
               <div className={NewAnswerBlocks}>

@@ -1,8 +1,10 @@
 import { Tag, Filter } from "renderer/utils/types";
 import { useSelectedTags } from "renderer/hooks/use-selected-tags";
-import { ModalStyles, ModalClose, ModalContent, ModalTag, ModalTitle, Reset } from "./filter-styles.css";
+import { ModalStyles, ModalContent, ModalTag, ModalTitle } from "./filter-styles.css";
 import TagButton from "renderer/components/tags/tag-button/tag-button";
 import IconRemove from "assets/icons/icon-remove";
+import { ButtonClose } from "../button/button-styles.css";
+import Button from "../button/button";
 
 const Filter = ({tags, setTags, isShown, onClose}:Filter) => {
   let selectedTags = useSelectedTags();
@@ -45,10 +47,10 @@ const Filter = ({tags, setTags, isShown, onClose}:Filter) => {
             />
           ))}
         </div>
-        <div className={ModalClose}>
-          <button className={Reset} onClick={onClose} >
+        <div className={ButtonClose.filter}>
+          <Button variant="reset" type="button" onClick={onClose} >
             <IconRemove variant="small"/>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -2,12 +2,30 @@ export interface AddTagDto {
   title: string;
 }
 
-export interface Block {
+interface BaseBlock {
   position: number;
-  type: 'code' | 'text';
   value: string;
-  contents?: string;
-  language?: string;
+}
+
+export interface CodeBlock extends BaseBlock{
+  type: 'code'
+  language: string;
+}
+
+export interface TextBlock extends BaseBlock {
+  type: 'text'
+  contents: string
+}
+
+export type Block = CodeBlock | TextBlock;
+
+// typeguard
+export const isTextBlock = (block: Block): block is TextBlock => {
+  return block.type === 'text'
+}
+
+export const isCodeBlock = (block: Block): block is CodeBlock => {
+  return block.type === 'code'
 }
 
 export interface AddQuestionDto {

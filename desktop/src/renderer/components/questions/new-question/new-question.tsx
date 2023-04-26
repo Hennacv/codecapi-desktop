@@ -50,33 +50,44 @@ function NewQuestion() {
 
   let formTags = useSelectedTags();
 
-  function addTag(tag: Tag) {
+  const addTag = (tag: Tag) => {
     formTags.addTag(tag);
     updateFormValue('tags', [...form.tags, { id: tag.id }]);
   }
 
-  function deleteTag(tag: Tag) {
+  const deleteTag = (tag: Tag) => {
     formTags.deleteTag(tag);
 
     const tempTag = form.tags.filter((formTag) => formTag.id !== tag.id);
     updateFormValue('tags', tempTag);
   }
 
-  function updateFormValue(field: string, value: any) {
+  const updateFormValue = (field: string, value: any) => {
     setForm({
       ...form,
       [field]: value,
     });
   }
 
-  function addBlock(type: 'text' | 'code') {
+  const addBlock = (type: 'text' | 'code' ) => {
     updateFormValue('blocks', [
       ...form.blocks,
-      { position: form.blocks.length + 1, type: type, value: '', language: '' },
+      { position: form.blocks.length, type: type, value: '', language: 'javascript' },
     ]);
   }
 
-  function onSubmit(newQuestion: AddQuestionDto) {
+  const removeBlock = (position: number) => {
+    const newBlocks = form.blocks.filter(block => block.position !== position);
+
+    newBlocks.forEach((block, index) => {
+      block.position = index
+    })
+    updateFormValue('blocks', [
+      ...newBlocks
+    ]);
+  }
+
+  const onSubmit = (newQuestion: AddQuestionDto) => {
     addQuestion.mutate(newQuestion);
   }
 
@@ -96,6 +107,7 @@ function NewQuestion() {
           <InputText
             type="text"
             id="title"
+            value={form.title}
             variant={!form.title ? 'default' : 'defaultValidated'}
             onChange={(e) => updateFormValue('title', e.target.value)}
           />
@@ -104,6 +116,7 @@ function NewQuestion() {
           field="blocks"
           blocks={form.blocks}
           updateFormValue={(field, value) => updateFormValue(field, value)}
+          removeBlock={removeBlock}
         />
         <div className={NewQuestionFormItem}>
           <div className={NewQuestionBlocks}>

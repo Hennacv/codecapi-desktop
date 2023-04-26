@@ -1,10 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "renderer/vars.css";
 
-export const Reset = style({
-  all: 'unset',
-})
-
 const Modal = style({
   backgroundColor: vars.color['dark-opaque'],
   position: 'absolute',
@@ -48,20 +44,4 @@ export const ModalTag = style({
   gap: vars.spacing['0.75x'],
 })
 
-export const ModalClose = style({
-  borderRadius: vars.borderRadius.large,
-  height: vars.spacing['1.5x'],
-  width: vars.spacing['1.5x'],
-  display: 'inline-flex',
-  alignItems:'center',
-  justifyContent: 'center',
-  position: 'absolute',
-  top: vars.spacing['1x'],
-  right: vars.spacing['1x'],
-
-  ':hover': {
-    backgroundColor: vars.color['dark-400'],
-    transition: vars.transition.defaultHover,
-  },
-})
 
