@@ -15,8 +15,8 @@ import IconQuestionsGrey from 'assets/icons/icon-question-grey';
 import IconRemove from 'assets/icons/icon-remove';
 import { useContext, useState } from 'react';
 import { AuthContext } from 'renderer/root';
-import { useGetQuestions } from 'renderer/hooks/use-get-questions';
 import { useDeletePost } from 'renderer/hooks/use-delete-question';
+import IconText from 'assets/icons/icon-text';
 
 const QuestionDetail = () => {
   const { id } = useParams();
@@ -46,26 +46,10 @@ const QuestionDetail = () => {
   const deleteQuestion = (id) => {
     mutate(id)
   }
-  // const deleteQuestionMutation = useMutation((id) => {
-  //   return axios.delete(`/questions/${id}`);
-  // }, {
-  //   onSuccess: (newQuestions, id) => {
-  //     queryClient.setQueryData('questions', (questions) => {
-  //       return questions.filter((question) => question.id !== id);
-  //     })
-  //   },
-  // })
-
-  // const deleteQuestion = (id) => {
-  //   deleteQuestionMutation.mutate(id);
-  // }
-
-
-
 
   return (
     <div className={QuestionDetailsContainer}>
-      <div className={QuestionDetailsButtonContainer}>
+      <div className={QuestionDetailsButtonContainer.main}>
         <Button
           text="Back"
           type="button"
@@ -74,6 +58,15 @@ const QuestionDetail = () => {
           />
 
         {isAuthor() ? (
+        <div className={QuestionDetailsButtonContainer.side}>
+          <Button
+            type="button"
+            variant="smallSquare"
+            onClick={() => navigate(`/questions/edit/${id}`)}
+          >
+            <IconText variant="default"/>
+            {/* Change to pencil icon */}
+          </Button>
           <Button
             type="button"
             variant="smallSquare"
@@ -82,6 +75,7 @@ const QuestionDetail = () => {
             <IconRemove variant="default"/>
             {/* change to trash can icon */}
           </Button>
+        </div>
           ) : null}
       </div>
       <QuestionCard question={question} showText />

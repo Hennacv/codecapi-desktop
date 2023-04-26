@@ -5,6 +5,7 @@ import QuestionDetail from './components/questions/question-details/question-det
 import QuestionList from './components/questions/question-list/question-list';
 import UserList from './components/users/user-list';
 import Root from './root';
+import QuestionEdit from './components/questions/question-edit/question-edit';
 
 const router = createMemoryRouter([
   {
@@ -26,6 +27,10 @@ const router = createMemoryRouter([
             path: 'new',
             element: <NewQuestion />,
           },
+          {
+            path: 'edit/:id',
+            element: <QuestionEdit />
+          }
         ],
       },
       {

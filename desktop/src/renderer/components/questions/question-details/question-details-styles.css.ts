@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 export const QuestionDetailsContainer = style({
@@ -21,9 +21,17 @@ export const QuestionDetailsAnswerContainer = style({
   fontSize: vars.fontSize.small
 });
 
-export const QuestionDetailsButtonContainer = style({
+const QuestionDetailsAllButtons = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
-  
+})
+
+const QuestionDetailsSideButtons = style({
+  gap: vars.spacing['0.75x'],
+})
+
+export const QuestionDetailsButtonContainer = styleVariants({
+  main: [QuestionDetailsAllButtons],
+  side: [QuestionDetailsAllButtons, QuestionDetailsSideButtons]
 })
