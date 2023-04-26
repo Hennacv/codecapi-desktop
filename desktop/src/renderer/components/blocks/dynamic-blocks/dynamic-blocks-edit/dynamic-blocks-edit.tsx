@@ -14,28 +14,22 @@ const DynamicBlocksEdit = ({
   blocks,
   removeBlock
 }: DynamicBlocksEditProps) => {
-  const updateCodeBlock = (
+  const updateDynamicBlock = (
     position: number,
     value: string,
-    language: string
+    fieldToUpdate: string
   ) => {
     const indexSelectedBlock = blocks.findIndex(
       (block) => block.position === position
     );
-    blocks[indexSelectedBlock].value = value;
-    (blocks[indexSelectedBlock] as CodeBlock).language = language;
-  };
+    const block = blocks[indexSelectedBlock]
 
-  const updateTextBlock = (
-    position: number,
-    value: string,
-    contents: string
-    ) => {
-    const indexSelectedBlock = blocks.findIndex(
-      (block) => block.position === position
-    );
-    blocks[indexSelectedBlock].value = value;
-    (blocks[indexSelectedBlock] as TextBlock).contents = contents;
+    block.value = value;
+    if(isCodeBlock(block) ){
+      block.language = fieldToUpdate;
+    }else{
+      block.contents = fieldToUpdate;
+    }
   };
 
   return (
@@ -49,10 +43,10 @@ const DynamicBlocksEdit = ({
                 key={block.position}
                 position={block.position}
                 updateDynamicBlock={(position, value, language) =>
-                  updateCodeBlock(position, value, language)
+                  updateDynamicBlock(position, value, language)
                 }
                 removeBlock={removeBlock}
-                language={(blocks[block.position] as CodeBlock).language}
+                language={block.language}
               />
             ) : (
               <TextBlockEdit
@@ -60,7 +54,7 @@ const DynamicBlocksEdit = ({
                 key={block.position}
                 position={block.position}
                 updateFormBlock={(position, value, contents) =>
-                  updateTextBlock(position, value, contents)
+                  updateDynamicBlock(position, value, contents)
                 }
                 removeBlock={removeBlock}
               />
