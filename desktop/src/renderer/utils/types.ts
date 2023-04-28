@@ -82,3 +82,21 @@ export interface Searched {
   searchTerm: string;
   setSearchTerm: (str: string) => void;
 }
+export interface BaseMessageEvent {
+  type: string;
+  title: string;
+  message: string;
+}
+
+interface QuestionMessageEvent extends BaseMessageEvent {
+  type: 'new-question';
+  userId: number;
+}
+
+interface AnswerMessageEvent extends BaseMessageEvent {
+  type: 'new-answer';
+  answerId: number;
+}
+
+export type MessageEvent = QuestionMessageEvent | AnswerMessageEvent;
+

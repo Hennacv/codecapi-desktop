@@ -2,21 +2,29 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Answer } from '../db/entities/answer.entity';
-import { Question } from '../db/entities/question.entity';
 import { User } from '../db/entities/user.entity';
 import { CreateAnswerDto } from './dto/create-answer.dto';
 import { UpdateAnswerDto } from './dto/update-answer.dto';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable()
 export class AnswerService {
   constructor(
     @InjectRepository(Answer)
     private repo: Repository<Answer>,
+    private notificationService: NotificationsService,
   ) {}
 
   async create(createAnswerDto: CreateAnswerDto, user: User) {
     let answer = this.repo.create({ ...createAnswerDto, userId: user.id });
-    await answer.save();
+    await answer.save().then(() => {
+      this.notificationService.sentNotification({
+        type: 'new-answer',
+        answerId: answer.id,
+        title: 'Melding',
+        message: `${user.name} heeft antwoord gegeven op je vraag.`,
+      });
+    });
     return this.fetchAnswer(answer.id);
   }
 
