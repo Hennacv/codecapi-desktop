@@ -12,7 +12,7 @@ export class NotificationsController {
     const newQuestionObservable = new Observable((observer) => {
       const listener = (data: QuestionMessageEvent) => observer.next(data);
       this.eventEmitter.on(newQuestionEvent, listener);
-      return () => this.eventEmitter.off(newAnswerEvent, listener);
+      return () => this.eventEmitter.off(newQuestionEvent, listener);
     });
 
     const newAnswerEvent = 'new-answer';
@@ -22,6 +22,12 @@ export class NotificationsController {
       return () => this.eventEmitter.off(newAnswerEvent, listener);
     });
 
-    return merge(newQuestionObservable, newAnswerObservable);
+    const keepConnectionAlive = new Observable((observer) => {
+      setInterval(() => {
+        observer.next({ping: 'ping message'});
+      }, 40000)
+    });
+
+    return merge(newQuestionObservable, newAnswerObservable, keepConnectionAlive);
   }
 }
