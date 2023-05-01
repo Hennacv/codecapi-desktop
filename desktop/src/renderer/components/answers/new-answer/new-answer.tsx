@@ -112,7 +112,8 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
               <Button
                 text="Post"
                 type="button"
-                variant="default"
+                variant="defaultDisabled"
+                disabled={addAnswer.isLoading}
                 onClick={() => onSubmit(form)}
               />
             )}
