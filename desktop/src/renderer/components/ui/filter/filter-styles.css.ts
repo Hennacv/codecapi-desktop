@@ -41,6 +41,7 @@ export const ModalTag = style({
   margin: `${vars.spacing['0.75x']} 0`,
   display: 'flex',
   flexDirection: 'row',
+  flexWrap: 'wrap',
   gap: vars.spacing['0.75x'],
 })
 
