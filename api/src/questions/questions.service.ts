@@ -7,17 +7,26 @@ import { User } from '../db/entities/user.entity';
 import { AddTagDto } from './dto/add-tag.dto';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable()
 export class QuestionsService {
   constructor(
     @InjectRepository(Question)
     private repo: Repository<Question>,
+    private notificationService: NotificationsService,
   ) {}
 
   async create(createQuestionDto: CreateQuestionDto, user: User) {
     let question = this.repo.create({ ...createQuestionDto, userId: user.id });
-    await question.save();
+    await question.save().then(() => {
+      this.notificationService.sentNotification({
+        type: 'new-question',
+        userId: user.id,
+        title: 'Notification',
+        message: `${user.name} has posted a new question.`,
+      });
+    });
     return this.fetchQuestion(question.id);
   }
 

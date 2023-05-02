@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'send-token';
+export type Channels = 'send-token' | 'new-message' | 'increment-badge-count';
 
 const electronHandler = {
   ipcRenderer: {
