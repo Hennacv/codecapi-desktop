@@ -100,6 +100,8 @@ const createWindow = async () => {
     },
   });
 
+  // Corrects AppUserModelId for windows
+  // removing this will cause notifications to display the wrong app name (windows only).
   if (process.platform === 'win32') {
     app.setAppUserModelId(app.name);
   }
