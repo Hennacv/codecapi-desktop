@@ -21,8 +21,8 @@ export class AnswerService {
       this.notificationService.sentNotification({
         type: 'new-answer',
         answerId: answer.id,
-        title: 'Melding',
-        message: `${user.name} heeft antwoord gegeven op je vraag.`,
+        title: 'Notification',
+        message: `${user.name} has answered your question.`,
       });
     });
     return this.fetchAnswer(answer.id);

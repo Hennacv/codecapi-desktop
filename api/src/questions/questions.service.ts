@@ -23,8 +23,8 @@ export class QuestionsService {
       this.notificationService.sentNotification({
         type: 'new-question',
         userId: user.id,
-        title: 'Melding',
-        message: `${user.name} heeft een nieuwe vraag gesteld.`,
+        title: 'Notification',
+        message: `${user.name} has posted a new question.`,
       });
     });
     return this.fetchQuestion(question.id);
