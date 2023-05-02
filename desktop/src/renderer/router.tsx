@@ -1,6 +1,6 @@
 import { createMemoryRouter } from 'react-router-dom';
 import Login from './components/auth/login';
-import NewQuestion from './components/questions/new-question/new-question';
+import QuestionForm from './components/questions/question-form/question-form';
 import QuestionDetail from './components/questions/question-details/question-detail';
 import QuestionList from './components/questions/question-list/question-list';
 import UserList from './components/users/user-list';
@@ -25,7 +25,7 @@ const router = createMemoryRouter([
           },
           {
             path: 'new',
-            element: <NewQuestion />,
+            element: <QuestionForm />,
           },
           {
             path: 'edit/:id',

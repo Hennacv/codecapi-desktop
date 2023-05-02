@@ -30,19 +30,6 @@ const QuestionDetail = () => {
     return null;
   }
 
-  const isAuthor = (): boolean => {
-
-    let userId
-    if(user) {
-      userId = user.uid
-    }
-
-    if(question?.user.uid == userId){
-      return true;
-    }
-    return false
-  }
-
   const deleteQuestion = (id) => {
     mutate(id)
   }
@@ -57,7 +44,7 @@ const QuestionDetail = () => {
           onClick={() => navigate('/questions')}
           />
 
-        {isAuthor() ? (
+        {question?.user.uid == user?.uid && (
         <div className={QuestionDetailsButtonContainer.side}>
           <Button
             type="button"
@@ -76,7 +63,7 @@ const QuestionDetail = () => {
             {/* change to trash can icon */}
           </Button>
         </div>
-          ) : null}
+          ) }
       </div>
       <QuestionCard question={question} showText />
       <div className={QuestionDetailsAnswerContainer}>

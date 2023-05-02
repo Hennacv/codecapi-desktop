@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Question, Tag } from 'renderer/utils/types';
 import { useGetQuestions } from 'renderer/hooks/use-get-questions';
 import { SFContainer } from 'renderer/components/ui/search/search-styles.css';
-import { NewQuestionButtonPosition } from '../new-question/new-question-styles.css';
+import { NewQuestionButtonPosition } from '../question-form/question-form-styles.css';
 import QuestionCard from '../question-card/question-card';
 import Button from 'renderer/components/ui/button/button';
 import Filter from 'renderer/components/ui/filter/filter';
