@@ -49,7 +49,6 @@ ipcMain.on('new-message', async (event, arg) => {
       mainWindow?.focus();
     }
   });
-
   notification.show();
   ipcMain.emit('increment-badge-count');
 });
