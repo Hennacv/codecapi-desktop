@@ -1,11 +1,11 @@
 import { createMemoryRouter } from 'react-router-dom';
 import Login from './components/auth/login';
-import QuestionForm from './components/questions/question-form/question-form';
-import QuestionDetail from './components/questions/question-details/question-detail';
 import QuestionList from './components/questions/question-list/question-list';
+import QuestionDetail from './components/questions/question-details/question-detail';
+import NewQuestion from './components/questions/question-new/question-new';
+import QuestionEdit from './components/questions/question-edit/question-edit';
 import UserList from './components/users/user-list';
 import Root from './root';
-import QuestionEdit from './components/questions/question-edit/question-edit';
 
 const router = createMemoryRouter([
   {
@@ -25,12 +25,12 @@ const router = createMemoryRouter([
           },
           {
             path: 'new',
-            element: <QuestionForm />,
+            element: <NewQuestion />,
           },
           {
             path: 'edit/:id',
             element: <QuestionEdit />
-          }
+          },
         ],
       },
       {

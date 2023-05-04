@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 export const QuestionFormContainer = style({
@@ -9,11 +9,16 @@ export const QuestionFormContainer = style({
   gap: vars.spacing['3x'],
 });
 
-export const QuestionFormHeader = style({
+const QuestionFormHeaderBase = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['1.25x'],
 });
+
+export const QuestionFormHeader = styleVariants({
+  basic: [QuestionFormHeaderBase],
+  spacing: [QuestionFormHeaderBase, { paddingTop: vars.spacing['0.75x'] }],
+})
 
 export const QuestionFormSection = style({
   display: 'flex',
