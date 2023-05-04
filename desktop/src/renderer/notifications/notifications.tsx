@@ -9,7 +9,7 @@ const Notifications = () => {
     navigate(route);
   });
 
-  return <></>;
+  return;
 }
 
 export default Notifications;
