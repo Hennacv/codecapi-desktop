@@ -37,15 +37,15 @@ app.on('browser-window-focus', (event, win) => {
   app.setBadgeCount(0);
 });
 
-ipcMain.on('new-message', async (event, arg) => {
+ipcMain.on('new-message', async (event, [title, body, link]) => {
   const notification = new Notification({
-    title: arg[0],
-    body: arg[1],
+    title: title,
+    body: body,
     icon: 'assets/icon.png',
   });
   notification.addListener('click', () => {
-    if (arg[2] != null) {
-      event.reply('new-message', arg[2]);
+    if (link != null) {
+      event.reply('new-message', link);
       mainWindow?.focus();
     }
   });
