@@ -8,12 +8,14 @@ import { contentContainer, mainContainer } from './root-styles.css';
 
 import Loader from './components/shared/loader';
 import Sidebar from './components/sidebar/sidebar/sidebar';
+import Notifications from './notifications/notifications';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 
 function Root() {
   return (
     <AuthProvider>
+      <Notifications />
       <div className={mainContainer}>
         <Sidebar />
         <div className={contentContainer} id='main'>

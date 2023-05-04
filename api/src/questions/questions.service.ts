@@ -22,9 +22,11 @@ export class QuestionsService {
     await question.save().then(() => {
       this.notificationService.sentNotification({
         type: 'new-question',
-        userId: user.id,
-        title: 'Notification',
-        message: `${user.name} has posted a new question.`,
+        user: {
+          userId: user.id,
+          userName: user.name,
+        },
+        questionId: question.id,
       });
     });
     return this.fetchQuestion(question.id);

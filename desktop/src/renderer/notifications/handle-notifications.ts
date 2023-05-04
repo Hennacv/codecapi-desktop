@@ -14,10 +14,10 @@ auth.onAuthStateChanged(async (user) => {
       const data: MessageEvent = JSON.parse(event.data);
       switch (data.type) {
         case 'new-question':
-          sendNotification(data.title, data.message); 
+          sendNotification(data.user.userName, "Asked a new question.", `/questions/${data.questionId}`); 
           break;
         case 'new-answer':
-          sendNotification(data.title, data.message);
+          sendNotification(data.user.userName, "Replied to your question.", `/questions/${data.questionId}`);
           break;
         default:
           break;

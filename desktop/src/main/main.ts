@@ -38,11 +38,19 @@ app.on('browser-window-focus', (event, win) => {
 });
 
 ipcMain.on('new-message', async (event, arg) => {
-  new Notification({
+  const notification = new Notification({
     title: arg[0],
     body: arg[1],
     icon: 'assets/icon.png',
-  }).show();
+  });
+  notification.addListener('click', () => {
+    if (arg[2] != null) {
+      event.reply('new-message', arg[2]);
+      mainWindow?.focus();
+    }
+  });
+
+  notification.show();
   ipcMain.emit('increment-badge-count');
 });
 
