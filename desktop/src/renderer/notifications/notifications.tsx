@@ -4,7 +4,6 @@ const Notifications = () => {
   const navigate = useNavigate();
 
   window.electron.ipcRenderer.on("new-message", (route) => {
-    console.log(route);
     // @ts-ignore
     navigate(route);
   });
