@@ -1,10 +1,15 @@
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider, useNavigate } from 'react-router-dom';
 import router from './router';
 import { queryClient } from './utils/react-query';
+import { bootsTrapNotifications } from './notifications/bootstrap-notifications';
 
 export default function App() {
+  const navigate = useNavigate();
+
+  bootsTrapNotifications(navigate);
+  console.log('RENDER IK VAAK?');
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />

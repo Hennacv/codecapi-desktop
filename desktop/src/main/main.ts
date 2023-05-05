@@ -33,30 +33,6 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
-app.on('browser-window-focus', (event, win) => {
-  app.setBadgeCount(0);
-});
-
-ipcMain.on('new-message', async (event, [title, body, link]) => {
-  const notification = new Notification({
-    title: title,
-    body: body,
-    icon: 'assets/icon.png',
-  });
-  notification.addListener('click', () => {
-    if (link != null) {
-      event.reply('new-message', link);
-      mainWindow?.focus();
-    }
-  });
-  notification.show();
-  ipcMain.emit('increment-badge-count');
-});
-
-ipcMain.on('increment-badge-count', async (event, arg) => {
-  app.setBadgeCount(app.getBadgeCount() + 1);
-});
-
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();
