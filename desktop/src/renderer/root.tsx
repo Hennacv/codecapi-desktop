@@ -1,21 +1,23 @@
 import { createContext } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import AuthProvider, {
   AuthContextData,
   defaultAuthContext,
 } from './context/auth-provider';
 import { contentContainer, mainContainer } from './root-styles.css';
+import { bootstrapServerSentEvents } from './server-events/bootstrap-server-sent-events';
 
 import Loader from './components/shared/loader';
 import Sidebar from './components/sidebar/sidebar/sidebar';
-import Notifications from './notifications/notifications';
 
 export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
 
 function Root() {
+  const navigate = useNavigate();
+  bootstrapServerSentEvents(navigate);
+
   return (
     <AuthProvider>
-      <Notifications />
       <div className={mainContainer}>
         <Sidebar />
         <div className={contentContainer} id='main'>

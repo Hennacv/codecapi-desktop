@@ -33,6 +33,14 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
+ipcMain.on('increment-badge-count', () => {
+  app.setBadgeCount(app.getBadgeCount() + 1);
+}); 
+
+ipcMain.on('set-badge-count', (event, count) => {
+  app.setBadgeCount(count);
+}); 
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();
@@ -129,6 +137,10 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+app.on('browser-window-focus', (event, win) => {
+  app.setBadgeCount(0);
 });
 
 const protocol = isDev ? 'codecapi' : 'codecapi';

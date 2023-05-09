@@ -1,3 +1,5 @@
+import { NavigateFunction } from 'react-router-dom';
+
 export interface AddTagDto {
   title: string;
 }
@@ -7,26 +9,26 @@ interface BaseBlock {
   value: string;
 }
 
-export interface CodeBlock extends BaseBlock{
-  type: 'code'
+export interface CodeBlock extends BaseBlock {
+  type: 'code';
   language: string;
 }
 
 export interface TextBlock extends BaseBlock {
-  type: 'text'
-  contents: string
+  type: 'text';
+  contents: string;
 }
 
 export type Block = CodeBlock | TextBlock;
 
 // typeguard
 export const isTextBlock = (block: Block): block is TextBlock => {
-  return block.type === 'text'
-}
+  return block.type === 'text';
+};
 
 export const isCodeBlock = (block: Block): block is CodeBlock => {
-  return block.type === 'code'
-}
+  return block.type === 'code';
+};
 
 export interface AddQuestionDto {
   title: string;
@@ -73,9 +75,9 @@ export interface Answer {
 
 export interface Filter {
   tags: Tag[];
-  setTags: (tags:Tag[])=>void;
+  setTags: (tags: Tag[]) => void;
   isShown: boolean;
-  onClose: ()=>void;
+  onClose: () => void;
 }
 
 export interface Searched {
@@ -105,3 +107,13 @@ interface AnswerMessageEvent extends BaseMessageEvent {
 
 export type MessageEvent = QuestionMessageEvent | AnswerMessageEvent;
 
+export interface showNotificationData {
+  title: string;
+  message: string;
+  navigate: NavigateFunction;
+  link?: string;
+}
+
+export interface setBadgeCountData {
+  count: number;
+}

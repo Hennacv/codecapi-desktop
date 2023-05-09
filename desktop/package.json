@@ -97,7 +97,6 @@
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
     "@monaco-editor/react": "^4.4.6",
-    "@types/event-source-polyfill": "^1.0.1",
     "@vanilla-extract/css": "^1.9.5",
     "@vanilla-extract/sprinkles": "^1.5.1",
     "autoprefixer": "^10.4.13",
@@ -128,6 +127,7 @@
     "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
+    "@types/event-source-polyfill": "^1.0.1",
     "@types/jest": "^28.1.7",
     "@types/node": "18.7.6",
     "@types/react": "^18.0.17",
