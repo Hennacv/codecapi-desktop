@@ -1,6 +1,6 @@
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { RouterProvider, useNavigate } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import router from './router';
 import { queryClient } from './utils/react-query';
 
