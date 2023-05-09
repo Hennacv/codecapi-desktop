@@ -20,9 +20,11 @@ export class AnswerService {
     await answer.save().then(() => {
       this.notificationService.sentNotification({
         type: 'new-answer',
-        answerId: answer.id,
-        title: 'Notification',
-        message: `${user.name} has answered your question.`,
+        user: {
+          userId: user.id,
+          userName: user.name,
+        },
+        questionId: answer.questionId,
       });
     });
     return this.fetchAnswer(answer.id);

@@ -1,4 +1,4 @@
-import { useGetUsers } from 'renderer/hooks/user-get-users';
+import { useGetUsers } from 'renderer/hooks/use-get-users';
 import { User } from 'renderer/utils/types';
 
 const UserList = () => {

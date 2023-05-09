@@ -6,19 +6,24 @@ interface Block {
   language?: string;
 }
 
+interface MessageUser {
+  userId: number;
+  userName: string;
+}
+
 interface BaseMessageEvent {
-  title: string;
-  message: string;
+  type: string;
+  user: MessageUser;
 }
 
 interface QuestionMessageEvent extends BaseMessageEvent {
   type: 'new-question';
-  userId: number;
+  questionId: number;
 }
 
 interface AnswerMessageEvent extends BaseMessageEvent {
   type: 'new-answer';
-  answerId: number;
+  questionId: number;
 }
 
 type MessageEvent = QuestionMessageEvent | AnswerMessageEvent;

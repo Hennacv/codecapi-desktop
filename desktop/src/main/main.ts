@@ -33,22 +33,13 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
-app.on('browser-window-focus', (event, win) => {
-  app.setBadgeCount(0);
-});
-
-ipcMain.on('new-message', async (event, arg) => {
-  new Notification({
-    title: arg[0],
-    body: arg[1],
-    icon: 'assets/icon.png',
-  }).show();
-  ipcMain.emit('increment-badge-count');
-});
-
-ipcMain.on('increment-badge-count', async (event, arg) => {
+ipcMain.on('increment-badge-count', () => {
   app.setBadgeCount(app.getBadgeCount() + 1);
-});
+}); 
+
+ipcMain.on('set-badge-count', (event, count) => {
+  app.setBadgeCount(count);
+}); 
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -146,6 +137,10 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+app.on('browser-window-focus', (event, win) => {
+  app.setBadgeCount(0);
 });
 
 const protocol = isDev ? 'codecapi' : 'codecapi';

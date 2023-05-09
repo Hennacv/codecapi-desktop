@@ -3,10 +3,10 @@ import api from 'renderer/utils/api';
 import { User } from 'renderer/utils/types';
 
 async function fetchUsers(): Promise<User[]> {
-    const res = await api.get('users');
-    return res.data;
+  const res = await api.get('users');
+  return res.data;
 }
-  
+
 export function useGetUsers() {
-    return useQuery('users', fetchUsers);
+  return useQuery('users', fetchUsers);
 }
