@@ -1,7 +1,7 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
-export const NewQuestionContainer = style({
+export const QuestionFormContainer = style({
   width: vars.width.full,
   height: vars.height.full,
   display: 'flex',
@@ -9,37 +9,42 @@ export const NewQuestionContainer = style({
   gap: vars.spacing['3x'],
 });
 
-export const NewQuestionHeader = style({
+const QuestionFormHeaderBase = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['1.25x'],
 });
 
-export const NewQuestionSection = style({
+export const QuestionFormHeader = styleVariants({
+  basic: [QuestionFormHeaderBase],
+  spacing: [QuestionFormHeaderBase, { paddingTop: vars.spacing['0.75x'] }],
+})
+
+export const QuestionFormSection = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['2x'],
 });
 
-export const NewQuestionTitle = style({
+export const QuestionFormTitle = style({
   fontSize: vars.fontSize.extraLarge,
   fontWeight: vars.fontWeight.medium,
 });
 
-export const NewQuestionDescription = style({
+export const QuestionFormDescription = style({
   fontSize: vars.fontSize.small,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-300'],
 });
 
-export const NewQuestionFormItem = style({
+export const QuestionFormItem = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   gap: vars.spacing['1.25x'],
 });
 
-export const NewQuestionLabel = style({
+export const QuestionFormLabel = style({
   fontSize: vars.fontSize.base,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-100'],
@@ -49,13 +54,13 @@ export const NewQuestionLabel = style({
   gap: vars.spacing['0.5x'],
 });
 
-export const NewQuestionParagraph = style({
+export const QuestionFormParagraph = style({
   fontSize: vars.fontSize.extraSmall,
   fontWeight: vars.fontWeight.light,
   color: vars.color['text-white-300'],
 });
 
-export const NewQuestionTagList = style({
+export const QuestionFormTagList = style({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -65,7 +70,7 @@ export const NewQuestionTagList = style({
   backgroundColor: 'transparent',
 });
 
-export const NewQuestionTagContainer = style({
+export const QuestionFormTagContainer = style({
   padding: vars.spacing['1x'],
   backgroundColor: vars.color['dark-200'],
   border: `2px solid ${vars.color['dark-300']}`,
@@ -73,7 +78,7 @@ export const NewQuestionTagContainer = style({
   minHeight: '4.5rem',
 });
 
-export const NewQuestionBlocks = style({
+export const QuestionFormBlocks = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['1x'],
@@ -82,7 +87,7 @@ export const NewQuestionBlocks = style({
   color: vars.color['text-white-300'],
 });
 
-export const NewQuestionBlocksOptions = style({
+export const QuestionFormBlocksOptions = style({
   display: 'flex',
   flexDirection: 'row',
   gap: vars.spacing['1x'],
@@ -93,3 +98,7 @@ export const NewQuestionButtonPosition = style({
   justifyContent: 'flex-end',
   marginBottom: vars.spacing['1.25x'],
 });
+
+export const QuestionHidden = style({
+  visibility: 'hidden',
+})

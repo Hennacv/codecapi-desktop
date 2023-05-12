@@ -7,7 +7,7 @@ import { ButtonClose } from "../button/button-styles.css";
 import Button from "../button/button";
 
 const Filter = ({tags, setTags, isShown, onClose}:Filter) => {
-  let selectedTags = useSelectedTags();
+  let selectedTags = useSelectedTags(tags);
 
   const addTag= (tag: Tag) => {
     selectedTags.addTag(tag);

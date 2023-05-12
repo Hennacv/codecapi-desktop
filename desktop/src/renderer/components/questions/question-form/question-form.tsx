@@ -1,23 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
-import { AddQuestionDto, Tag } from 'renderer/utils/types';
+import { useEditQuestion } from 'renderer/hooks/use-edit-question';
 import { useSelectedTags } from '../../../hooks/use-selected-tags';
-import { Block } from '../../../utils/types';
+import { QuestionDto, Tag, Block } from 'renderer/utils/types';
 import {
-  NewQuestionBlocks,
-  NewQuestionBlocksOptions,
-  NewQuestionContainer,
-  NewQuestionDescription,
-  NewQuestionFormItem,
-  NewQuestionHeader,
-  NewQuestionLabel,
-  NewQuestionSection,
-  NewQuestionTagContainer,
-  NewQuestionTagList,
-  NewQuestionTitle,
-} from './new-question-styles.css';
-
+  QuestionFormBlocks,
+  QuestionFormBlocksOptions,
+  QuestionFormDescription,
+  QuestionFormItem,
+  QuestionFormLabel,
+  QuestionFormSection,
+  QuestionFormTagContainer,
+  QuestionFormTagList,
+  QuestionHidden,
+} from './question-form-styles.css';
 import TagButton from '../../tags/tag-button/tag-button';
 import InputText from '../../ui/input-text/input-text';
 import Button from '../../ui/button/button';
@@ -29,26 +26,23 @@ import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic
 
 interface AddQuestionForm {
   title: string;
-  text: string;
   blocks: Block[];
-  tags: Pick<Tag, 'id'>[];
+  tags: Tag[];
+  id?:number
+  isEditing?:boolean
 }
 
-function NewQuestion() {
+const QuestionForm = ({ title, blocks, tags, id, isEditing = false }: AddQuestionForm ) => {
   const navigate = useNavigate();
-
   const addQuestion = useAddQuestion({
     onSuccess: () => navigate('/questions'),
   });
+  const editQuestion = useEditQuestion(id);
 
-  const [form, setForm] = useState<AddQuestionForm>({
-    title: '',
-    text: '',
-    blocks: [],
-    tags: [],
-  });
+  let [form, setForm] = useState<AddQuestionForm>({ title, blocks, tags, id, isEditing });
 
-  let formTags = useSelectedTags();
+  const currentTags = tags
+  let formTags = useSelectedTags(currentTags);
 
   const addTag = (tag: Tag) => {
     formTags.addTag(tag);
@@ -85,29 +79,29 @@ function NewQuestion() {
     updateFormValue('blocks', [
       ...newBlocks
     ]);
+    blocks = form.blocks
   }
 
-  const onSubmit = (newQuestion: AddQuestionDto) => {
+  const onSubmit = (newQuestion: QuestionDto) => {
     addQuestion.mutate(newQuestion);
   }
 
+  const onEdit = (form: QuestionDto) => {
+    if(editQuestion){
+    editQuestion.mutate(form);
+    }
+  }
+
   return (
-    <div className={NewQuestionContainer}>
-      <header className={NewQuestionHeader}>
-        <h1 className={NewQuestionTitle}>New question</h1>
-        <p className={NewQuestionDescription}>
-          Use the form below to submit a question to all CodeCapi employees.
-        </p>
-      </header>
-      <form className={NewQuestionSection}>
-        <div className={NewQuestionFormItem}>
-          <label className={NewQuestionLabel} htmlFor="title">
+      <form className={QuestionFormSection}>
+        <div className={QuestionFormItem}>
+          <label className={QuestionFormLabel} htmlFor="title">
             Title *
           </label>
           <InputText
             type="text"
             id="title"
-            value={form.title}
+            defaultValue={form.title}
             variant={!form.title ? 'default' : 'defaultValidated'}
             onChange={(e) => updateFormValue('title', e.target.value)}
           />
@@ -118,13 +112,13 @@ function NewQuestion() {
           updateFormValue={(field, value) => updateFormValue(field, value)}
           removeBlock={removeBlock}
         />
-        <div className={NewQuestionFormItem}>
-          <div className={NewQuestionBlocks}>
+        <div className={QuestionFormItem}>
+          <div className={QuestionFormBlocks}>
             <p>
               The buttons below allow you to add a text or code field to your
               question.
             </p>
-            <div className={NewQuestionBlocksOptions}>
+            <div className={QuestionFormBlocksOptions}>
               <Button
                 type={'button'}
                 variant={'smallSquare'}
@@ -142,11 +136,11 @@ function NewQuestion() {
             </div>
           </div>
         </div>
-        <div className={NewQuestionFormItem}>
-          <label className={NewQuestionLabel}>Labels</label>
+        <div className={QuestionFormItem}>
+          <label className={QuestionFormLabel}>Labels</label>
           <div
             className={
-              formTags.tags ? NewQuestionTagList : 'visibility: hidden'
+              formTags.tags ? QuestionFormTagList : QuestionHidden
             }
           >
             {formTags.tags.map((tag: Tag) => (
@@ -161,9 +155,9 @@ function NewQuestion() {
               </TagButton>
             ))}
           </div>
-          <label className={NewQuestionDescription}>Selected labels:</label>
-          <div className={NewQuestionTagContainer}>
-            <div className={NewQuestionTagList}>
+          <label className={QuestionFormDescription}>Selected labels:</label>
+          <div className={QuestionFormTagContainer}>
+            <div className={QuestionFormTagList}>
               {formTags.selectedTags.map((tag: Tag) => (
                 <TagButton
                   key={tag.id}
@@ -178,18 +172,28 @@ function NewQuestion() {
             </div>
           </div>
         </div>
-        <div className={NewQuestionFormItem}>
-          <Button
-            text="Save"
-            type="submit"
-            variant="defaultDisabled"
-            disabled={addQuestion.isLoading || !form.title}
-            onClick={() => onSubmit(form)}
-          />
-        </div>
+        {!isEditing ?
+          <div className={QuestionFormItem}>
+            <Button
+              text="Save"
+              type="submit"
+              variant="defaultDisabled"
+              disabled={addQuestion.isLoading || !form.title}
+              onClick={() => onSubmit(form)}
+            />
+          </div>
+        :
+          <div className={QuestionFormItem}>
+            <Button
+              text="Edit"
+              type="submit"
+              variant="defaultDisabled"
+              onClick={() => onEdit(form)}
+            />
+          </div>
+        }
       </form>
-    </div>
   );
 }
 
-export default NewQuestion;
+export default QuestionForm;

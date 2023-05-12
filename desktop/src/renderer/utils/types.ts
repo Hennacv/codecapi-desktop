@@ -30,9 +30,8 @@ export const isCodeBlock = (block: Block): block is CodeBlock => {
   return block.type === 'code';
 };
 
-export interface AddQuestionDto {
+export interface QuestionDto {
   title: string;
-  text: string;
   blocks: Block[];
   tags?: { id: number }[];
 }
@@ -46,6 +45,7 @@ export interface User {
   id: number;
   email: string;
   name: string;
+  uid: string;
 }
 
 export interface Tag {
