@@ -6,7 +6,7 @@ import { QuestionFormContainer, QuestionFormDescription, QuestionFormHeader, Que
 
 const QuestionEdit = () => {
   const { id } = useParams();
-  let { data,  isLoading } = useGetQuestion(+id!);
+  const { data,  isLoading } = useGetQuestion(Number(id));
   const navigate = useNavigate();
   if(!data){ return null}
 
@@ -15,7 +15,7 @@ const QuestionEdit = () => {
       <Button
         text="Back"
         type="button"
-        variant="small" 
+        variant="small"
         onClick={() => navigate(`/questions/${id}`)}
       />
       {isLoading ? (

@@ -98,3 +98,7 @@ export const NewQuestionButtonPosition = style({
   justifyContent: 'flex-end',
   marginBottom: vars.spacing['1.25x'],
 });
+
+export const QuestionHidden = style({
+  visibility: 'hidden',
+})

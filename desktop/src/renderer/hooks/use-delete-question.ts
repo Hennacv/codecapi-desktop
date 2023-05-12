@@ -6,7 +6,7 @@ export const useDeletePost = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation(
-    (id) => {
+    (id: string | undefined) => {
       return api.delete(`http://localhost:3000/questions/${id}`);
     },
     {
@@ -14,9 +14,6 @@ export const useDeletePost = () => {
         queryClient.invalidateQueries(["questions"]);
         navigate("/questions");
       },
-      // onError: ({ message }) => {
-      //   setDeletionError(message);
-      // },
     }
   );
 };

@@ -13,6 +13,7 @@ import {
   QuestionFormSection,
   QuestionFormTagContainer,
   QuestionFormTagList,
+  QuestionHidden,
 } from './question-form-styles.css';
 import TagButton from '../../tags/tag-button/tag-button';
 import InputText from '../../ui/input-text/input-text';
@@ -139,7 +140,7 @@ const QuestionForm = ({ title, blocks, tags, id, isEditing = false }: AddQuestio
           <label className={QuestionFormLabel}>Labels</label>
           <div
             className={
-              formTags.tags ? QuestionFormTagList : 'visibility: hidden'
+              formTags.tags ? QuestionFormTagList : QuestionHidden
             }
           >
             {formTags.tags.map((tag: Tag) => (

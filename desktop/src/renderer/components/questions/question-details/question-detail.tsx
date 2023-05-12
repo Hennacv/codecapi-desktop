@@ -22,15 +22,14 @@ const QuestionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  let { data: question, refetch } = useGetQuestion(+id!);
-  // const [deletionError, setDeletionError] = useState(null);
+  const { data: question, refetch } = useGetQuestion(Number(id));
   const { mutate } = useDeletePost();
 
   if (!question) {
     return null;
   }
 
-  const deleteQuestion = (id) => {
+  const deleteQuestion = (id: string | undefined) => {
     mutate(id)
   }
 
@@ -44,7 +43,7 @@ const QuestionDetail = () => {
           onClick={() => navigate('/questions')}
           />
 
-        {question?.user.uid == user?.uid && (
+        {question?.user.uid === user?.uid && (
         <div className={QuestionDetailsButtonContainer.side}>
           <Button
             type="button"
