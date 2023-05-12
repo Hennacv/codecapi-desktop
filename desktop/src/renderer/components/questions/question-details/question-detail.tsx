@@ -12,11 +12,11 @@ import AnswerList from '../../answers/answer-list/answer-list';
 import NewAnswer from '../../answers/new-answer/new-answer';
 import Button from '../../ui/button/button';
 import IconQuestionsGrey from 'assets/icons/icon-question-grey';
-import IconRemove from 'assets/icons/icon-remove';
-import { useContext, useState } from 'react';
+import IconEdit from 'assets/icons/icon-edit';
+import IconDelete from 'assets/icons/icon-delete';
+import { useContext } from 'react';
 import { AuthContext } from 'renderer/root';
 import { useDeletePost } from 'renderer/hooks/use-delete-question';
-import IconText from 'assets/icons/icon-text';
 
 const QuestionDetail = () => {
   const { id } = useParams();
@@ -50,16 +50,14 @@ const QuestionDetail = () => {
             variant="smallSquare"
             onClick={() => navigate(`/questions/edit/${id}`)}
           >
-            <IconText variant="default"/>
-            {/* Change to pencil icon */}
+            <IconEdit variant="default"/>
           </Button>
           <Button
             type="button"
             variant="smallSquare"
             onClick={() => deleteQuestion(id)}
           >
-            <IconRemove variant="default"/>
-            {/* change to trash can icon */}
+            <IconDelete variant="default"/>
           </Button>
         </div>
           ) }
