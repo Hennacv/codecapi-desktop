@@ -41,6 +41,21 @@ export interface AddAnswerDto {
   questionId: number;
 }
 
+interface BaseVoteDto {
+  type: "upvote";
+  users?: { id: number }[];
+}
+
+export interface AddAnswerVoteDto extends BaseVoteDto {
+  answerId?: number;
+}
+
+export interface AddQuestionVoteDto extends BaseVoteDto {
+  questionId?: number;
+}
+
+export type AddVoteDto = AddAnswerVoteDto | AddQuestionVoteDto;
+
 export interface User {
   id: number;
   email: string;
@@ -71,6 +86,20 @@ export interface Answer {
   blocks: Block[];
   createdAt: string;
   user: User;
+}
+
+interface BaseVote {
+  id: number;
+  type: string;
+  users: User[];
+}
+
+export interface AnswerVote extends BaseVote {
+  answerId: number;
+}
+
+export interface QuestionVote extends BaseVote {
+  questionId: number;
 }
 
 export interface Filter {
