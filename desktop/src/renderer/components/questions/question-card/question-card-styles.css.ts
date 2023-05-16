@@ -1,6 +1,10 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
+export const QuestionCardWrapper = style({
+  position: 'relative',
+});
+
 const QuestionCardContainer = style({
   padding: vars.spacing['1.5x'],
   marginBottom: vars.spacing['1.25x'],
@@ -18,18 +22,16 @@ const QuestionCardHover = style({
   },
 });
 
-
-
 export const QuestionCardHeader = style({
   width: vars.width.full,
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  flexWrap: 'wrap',
-  gap: vars.spacing['0.5x'],
   fontSize: vars.fontSize.small,
-  color: vars.color['text-white-300'],
   marginBottom: vars.spacing['1x'],
+  gap: vars.spacing['0.5x'],
+  color: vars.color['text-white-300'],
+  marginRight: vars.spacing['4.75x'],
 });
 
 export const QuestionCardIconContainer = style({
@@ -64,4 +66,10 @@ export const QuestionCardParagraph = style({
 export const QuestionCardVariants = styleVariants({
   default: [QuestionCardContainer],
   defaultHover: [QuestionCardContainer, QuestionCardHover],
+});
+
+export const QuestionCardVotes = style({
+  position: 'absolute',
+  top: vars.spacing['1.25x'],
+  right: vars.spacing['1.25x']
 });

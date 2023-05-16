@@ -79,6 +79,7 @@ export interface Question {
   tags: Tag[];
   createdAt: string;
   user: User;
+  votes: Vote[],
 }
 
 export interface Answer {
@@ -86,6 +87,7 @@ export interface Answer {
   blocks: Block[];
   createdAt: string;
   user: User;
+  votes: Vote[],
 }
 
 interface BaseVote {
