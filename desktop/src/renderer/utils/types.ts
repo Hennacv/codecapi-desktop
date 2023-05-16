@@ -102,6 +102,8 @@ export interface QuestionVote extends BaseVote {
   questionId: number;
 }
 
+export type Vote = AnswerVote | QuestionVote;
+
 export interface Filter {
   tags: Tag[];
   setTags: (tags: Tag[]) => void;
