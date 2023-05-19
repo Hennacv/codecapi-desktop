@@ -10,7 +10,7 @@ const AnswerList = ({ answers, refetch }: AnswerListProps) => {
   return (
     <div className={AnswerListContainer}>
       {answers.map((answer: Answer) => (
-        <AnswerCard answer={answer} refetch={refetch} />
+        <AnswerCard key={answer.id} answer={answer} refetch={refetch} />
       ))}
     </div>
   );
