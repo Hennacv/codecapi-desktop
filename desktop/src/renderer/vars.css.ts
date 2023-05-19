@@ -37,27 +37,29 @@ export const vars = createGlobalTheme(':root', {
         default: 'Inter, sans-serif'
     },
     fontSize: {
-        'extraSmall': '0.75em',     
-        'small': '0.875em',      
-        'base': '1em',          
-        'large': '1.25em',      
-        'extraLarge': '1.5em'    
+        'extraSmall': '0.75em',
+        'small': '0.875em',
+        'medium': '0.95em',
+        'base': '1em',
+        'large': '1.25em',
+        'extraLarge': '1.5em',
+        'xxLarge': '2em',
     },
     fontWeight: {
-        'extraLight': '200', 
-        'light': '300', 
-        'regular': '400', 
-        'medium': '500', 
-        'semiBold': '600', 
+        'extraLight': '200',
+        'light': '300',
+        'regular': '400',
+        'medium': '500',
+        'semiBold': '600',
         'bold': '700',
         'extraBold': '800'
     },
     spacing: {
-        '0x': '0rem',           
-        '0.25x': '0.25rem',     
-        '0.5x': '0.5rem',       
-        '0.75x': '0.75rem',     
-        '1x': '1rem',           
+        '0x': '0rem',
+        '0.25x': '0.25rem',
+        '0.5x': '0.5rem',
+        '0.75x': '0.75rem',
+        '1x': '1rem',
         '1.25x': '1.25rem',
         '1.5x': '1.5rem',
         '2x': '2rem',
@@ -74,5 +76,5 @@ export const vars = createGlobalTheme(':root', {
     },
     transition: {
         'defaultHover': 'all 50ms ease-in-out'
-    }
+    },
 });

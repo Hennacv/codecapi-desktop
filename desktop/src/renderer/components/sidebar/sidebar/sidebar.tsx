@@ -14,6 +14,7 @@ import UserInfo from '../../users/user-info/user-info';
 import Logo from '../../../../assets/logo/logo';
 import SidebarLink from '../sidebar-link/sidebar-link';
 import IconQuestions from 'assets/icons/icon-questions';
+import IconUser from 'assets/icons/icon-users';
 import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const Sidebar = () => {
@@ -33,18 +34,26 @@ const Sidebar = () => {
         <RiArrowDropLeftLine className={SideToggle} onClick={toggleSideBar} />
       </div>
       <aside className={AsideStyles}>
-        <ul className={SideList}>
-          <SidebarLink to="/questions">
-            <IconQuestions variant="default" />
-            <span className={SideText}>Questions</span>
-          </SidebarLink>
-        </ul>
+        <div>
+          <ul className={SideList}>
+            <SidebarLink to="/questions">
+              <IconQuestions variant="default" />
+              <span className={SideText}>Questions</span>
+            </SidebarLink>
+          </ul>
         <ul className={SideList}>
           <SidebarLink to="/users">
             <IconQuestions variant="default" />
             <span className={SideText}>Users</span>
           </SidebarLink>
         </ul>
+          <ul className={SideList}>
+            <SidebarLink to={`users/${user.uid}`}>
+              <IconUser variant="default" />
+              <span className={SideText}>Profile</span>
+            </SidebarLink>
+          </ul>
+        </div>
         <div>
           <ul className={SideList}>
           </ul>
