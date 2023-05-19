@@ -112,6 +112,8 @@ export interface Answer {
 export interface Comment {
   id: number;
   comment: string;
+  user: User;
+  createdAt: string;
 }
 
 interface BaseVote {
