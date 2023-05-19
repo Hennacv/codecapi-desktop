@@ -1,14 +1,19 @@
 import { UserCounter, UserCounterContainer, UserCounterTitle, UserProfileContainer, UserProfileEmail, UserProfileFunction, UserProfileHeader, UserProfileImage, UserProfileInfoContainer, UserProfileName, UserProfileTextContainer } from "./user-profile-styles.css";
 import { useContext } from "react";
+import { useGetQuestions } from "renderer/hooks/use-get-questions";
 import { AuthContext } from "renderer/root";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
+  const { data = [] } = useGetQuestions();
+
   if (!user) {
     return null;
   }
 
-  console.log(user)
+  const answers = data.map(question => question.answer).flat();
+  const questionCounter = data.filter(question => question.user.uid === user.uid).length;
+  const answerCounter = answers.filter(answer => answer.user.uid === user.uid).length;
 
   return (
     <div>
@@ -34,11 +39,11 @@ const UserProfile = () => {
         <div className={UserCounterContainer}>
           <div>
             <label className={UserCounterTitle}>Questions</label>
-            <p className={UserCounter}>21</p>
+            <p className={UserCounter}>{questionCounter}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>Answers</label>
-            <p className={UserCounter}>13</p>
+            <p className={UserCounter}>{answerCounter}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>Accepted</label>
