@@ -1,48 +1,64 @@
 import Button from 'renderer/components/ui/button/button';
 import IconUpvote from 'assets/icons/icon-upvote';
 import { Vote } from 'renderer/utils/types';
-import { useEditVote } from 'renderer/hooks/use-edit-vote';
 import { useEffect, useState } from 'react';
-import { VotesUpvoteBarCount, VotesUpvoteContainer } from './votes-upvote-styles.css';
+import {
+  VotesUpvoteBarCount,
+  VotesUpvoteContainer,
+} from './votes-upvote-styles.css';
+import { useAddVote } from 'renderer/hooks/use-add-vote';
+import { useDeleteVote } from 'renderer/hooks/use-delete-vote';
 
 interface VotesUpvoteProps {
-  vote: Vote;
+  upvotes: Vote[];
   userId: number;
   questionId?: number;
   answerId?: number;
+  refetchVotes: () => void;
 }
 
 const VotesUpvote = ({
-  vote,
+  upvotes,
   userId,
   questionId,
   answerId,
+  refetchVotes,
 }: VotesUpvoteProps) => {
   const [isActive, setIsActive] = useState(false);
-  const editVote = useEditVote({
-    voteId: vote.id,
-    userId: userId,
-    onSuccess: () => updateIsActive(),
+
+  const addVote = useAddVote({
+    onSuccess: () => refetchVotes(),
+  });
+
+  const deleteVote = useDeleteVote({
+    onSuccess: () => refetchVotes(),
   });
 
   useEffect(() => {
     updateIsActive();
-  }, [vote]);
+  }, [upvotes]);
 
   const handleUpvote = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
-    editVote.mutate({
-      type: 'upvote',
-      users: vote.users,
-      questionId: questionId,
-      answerId: answerId,
-    });
+    if (upvotes.some((upvote) => upvote.userId === userId)) {
+      const votetoDelete = upvotes.find((upvote) => upvote.userId === userId);
+      if (votetoDelete) {
+        deleteVote.mutate(votetoDelete.id);
+      }
+    } else {
+      addVote.mutate({
+        type: 'upvote',
+        userId: userId,
+        questionId: questionId,
+        answerId: answerId,
+      });
+    }
   };
 
   const updateIsActive = () => {
-    if (vote.users.some((voteUser) => voteUser.id === userId)) {
+    if (upvotes.some((upvote) => upvote.userId === userId)) {
       setIsActive(true);
     } else {
       setIsActive(false);
@@ -57,8 +73,12 @@ const VotesUpvote = ({
         onClick={(event) => handleUpvote(event)}
       >
         <IconUpvote variant="base" isActive={isActive} />
-        <span className={isActive ? VotesUpvoteBarCount.active : VotesUpvoteBarCount.default}>
-          {vote.users.length}
+        <span
+          className={
+            isActive ? VotesUpvoteBarCount.active : VotesUpvoteBarCount.default
+          }
+        >
+          {upvotes.length}
         </span>
       </Button>
     </div>

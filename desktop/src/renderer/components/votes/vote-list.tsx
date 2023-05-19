@@ -7,34 +7,35 @@ interface VoteListProps {
   votes: Vote[];
   questionId?: number;
   answerId?: number;
+  refetch: () => void;
 }
 
-const VoteList = ({ votes, questionId, answerId }: VoteListProps) => {
+const VoteList = ({ votes, questionId, answerId, refetch }: VoteListProps) => {
   const { user } = useUserContext();
   const { data: fetchedUser } = useGetUser(user!.uid);
+
+  const upvotes = votes.filter((vote) => vote.type === 'upvote');
 
   if (!user && !fetchedUser) {
     return null;
   }
 
+  const refetchVotes = () => {
+    refetch();
+  };
+
   const RenderVotes = (): JSX.Element | null => {
     let componentToRender: JSX.Element | null = null;
     if (fetchedUser) {
-      votes.map((vote, index) => {
-        if (vote.type === 'upvote') {
-          componentToRender = (
-            <VotesUpvote
-              key={index}
-              vote={vote}
-              userId={fetchedUser.id}
-              questionId={questionId}
-              answerId={answerId}
-            />
-          );
-        } else {
-          componentToRender = null;
-        }
-      });
+      return (
+        <VotesUpvote
+          upvotes={upvotes}
+          userId={fetchedUser.id}
+          questionId={questionId}
+          answerId={answerId}
+          refetchVotes={refetchVotes}
+        />
+      );
     }
     return componentToRender;
   };

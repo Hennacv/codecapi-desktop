@@ -43,7 +43,7 @@ export interface AddAnswerDto {
 
 interface BaseVoteDto {
   type: "upvote";
-  users?: { id: number }[];
+  userId: number;
 }
 
 export interface AddAnswerVoteDto extends BaseVoteDto {
@@ -93,7 +93,8 @@ export interface Answer {
 interface BaseVote {
   id: number;
   type: string;
-  users: User[];
+  userId: number;
+  user: User;
 }
 
 export interface AnswerVote extends BaseVote {

@@ -13,15 +13,16 @@ import VoteList from 'renderer/components/votes/vote-list';
 
 interface AnswerCardProps {
   answer: Answer;
+  refetch: () => void;
 }
 
-const AnswerCard = ({ answer }: AnswerCardProps) => {
+const AnswerCard = ({ answer, refetch }: AnswerCardProps) => {
   const { user } = useUserContext();
   const { data: fetchedUser } = useGetUser(user!.uid);
+
   if (!user && !fetchedUser) {
     return null;
-  }
-  if (fetchedUser) {
+  } else {
     return (
       <div className={AnswerCardContainer}>
         <div className={AnswerCardHeader}>
@@ -30,7 +31,11 @@ const AnswerCard = ({ answer }: AnswerCardProps) => {
             <span>-</span>
             {dayjs(answer.createdAt).fromNow()}
           </div>
-          <VoteList votes={answer.votes} />
+          <VoteList
+            votes={answer.votes}
+            answerId={answer.id}
+            refetch={refetch}
+          />
         </div>
         {answer.blocks && <DynamicBlocksRead blocks={answer.blocks} />}
       </div>

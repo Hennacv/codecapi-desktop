@@ -19,9 +19,14 @@ import VoteList from 'renderer/components/votes/vote-list';
 interface QuestionCardProps {
   question: Question;
   showText?: boolean;
+  refetch: () => void;
 }
 
-const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
+const QuestionCard = ({
+  question,
+  showText = false,
+  refetch,
+}: QuestionCardProps) => {
   const navigate = useNavigate();
 
   function onPressCard(question: Question) {
@@ -62,7 +67,11 @@ const QuestionCard = ({ question, showText = false }: QuestionCardProps) => {
             </>
           )}
         </div>
-        <VoteList votes={question.votes} />
+        <VoteList
+          votes={question.votes}
+          questionId={question.id}
+          refetch={refetch}
+        />
       </div>
       <div className={QuestionCardContent}>
         <span className={QuestionCardTitle}>{question.title}</span>

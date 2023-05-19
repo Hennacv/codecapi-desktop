@@ -11,7 +11,7 @@ import Search from 'renderer/components/ui/search/search';
 
 const QuestionList = () => {
   const navigate = useNavigate();
-  const { data = [] } = useGetQuestions();
+  const { data = [], refetch } = useGetQuestions();
   const [searchTerm, setSearchTerm] = useState('');
   const [tags, setTags] = useState<Tag[]>([]);
   const [isShown, setIsShown] = useState(false);
@@ -29,9 +29,9 @@ const QuestionList = () => {
   }
 
   useEffect(() => {
-    const scrollableElement = document.getElementById('main')
+    const scrollableElement = document.getElementById('main');
 
-    if(scrollableElement){
+    if (scrollableElement) {
       scrollableElement.style.overflowY = isShown ? 'hidden' : 'visible';
     }
   }, [isShown]);
@@ -45,12 +45,17 @@ const QuestionList = () => {
       <div className={SFContainer}>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <Button
-            text="Filter"
-            variant="small"
-            type="button"
-            onClick={() => setIsShown(true)}
-          />
-        <Filter tags={tags} setTags={setTags} isShown={isShown} onClose={() => setIsShown(false)}/>
+          text="Filter"
+          variant="small"
+          type="button"
+          onClick={() => setIsShown(true)}
+        />
+        <Filter
+          tags={tags}
+          setTags={setTags}
+          isShown={isShown}
+          onClose={() => setIsShown(false)}
+        />
       </div>
       <div className={NewQuestionButtonPosition}>
         <Button
@@ -62,7 +67,7 @@ const QuestionList = () => {
       </div>
 
       {result.map((question: Question) => (
-        <QuestionCard key={question.id} question={question} />
+        <QuestionCard key={question.id} question={question} refetch={refetch} />
       ))}
     </div>
   );
