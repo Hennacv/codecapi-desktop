@@ -25,4 +25,5 @@ export const IconVariants = styleVariants({
   extraSmall: [IconBase, IconExtraSmall],
   small: [IconBase, IconSmall],
   default: [IconBase, IconDefault],
+  base: [IconBase],
 });

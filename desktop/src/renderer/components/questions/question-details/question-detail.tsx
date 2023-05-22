@@ -62,7 +62,7 @@ const QuestionDetail = () => {
         </div>
           ) }
       </div>
-      <QuestionCard question={question} showText />
+      <QuestionCard question={question} showText refetch={refetch} />
       <div className={QuestionDetailsAnswerContainer}>
         <p>Number of answers:</p>
         <div className={QuestionDetailsIconContainer}>
@@ -71,7 +71,7 @@ const QuestionDetail = () => {
         </div>
       </div>
       {!!question.answer.length &&
-        <AnswerList answers={question.answer} />
+        <AnswerList answers={question.answer} refetch={refetch} />
       }
       <NewAnswer id={question.id} refetch={refetch} />
     </div>

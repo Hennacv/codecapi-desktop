@@ -9,7 +9,7 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain, Notification } from 'electron';
+import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -39,6 +39,10 @@ ipcMain.on('increment-badge-count', () => {
 
 ipcMain.on('set-badge-count', (event, count) => {
   app.setBadgeCount(count);
+}); 
+
+ipcMain.on('focus-on-app', () => {
+  app.focus();
 }); 
 
 if (process.env.NODE_ENV === 'production') {

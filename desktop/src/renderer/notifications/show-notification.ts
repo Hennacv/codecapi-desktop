@@ -9,7 +9,7 @@ export const showNotification = ({title, message, navigate, link}: showNotificat
   }).onclick = () => {
     if (link) {
       navigate(link);
-      window.focus();
+      window.electron.ipcRenderer.sendMessage("focus-on-app", []);
       setBadgeCount(0);
     }
   };

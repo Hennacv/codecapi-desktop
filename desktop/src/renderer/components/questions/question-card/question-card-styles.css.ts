@@ -18,18 +18,23 @@ const QuestionCardHover = style({
   },
 });
 
-
-
 export const QuestionCardHeader = style({
   width: vars.width.full,
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'space-between',
+  fontSize: vars.fontSize.small,
+  marginBottom: vars.spacing['1x'],
+  color: vars.color['text-white-300'],
+});
+
+export const QuestionCardHeaderInfo = style({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
   flexWrap: 'wrap',
   gap: vars.spacing['0.5x'],
-  fontSize: vars.fontSize.small,
-  color: vars.color['text-white-300'],
-  marginBottom: vars.spacing['1x'],
 });
 
 export const QuestionCardIconContainer = style({

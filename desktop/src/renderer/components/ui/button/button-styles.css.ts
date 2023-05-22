@@ -13,6 +13,10 @@ const ButtonBase = style({
     backgroundColor: vars.color['dark-400'],
     transition: vars.transition.defaultHover,
   },
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: vars.spacing['0.25x'],
 });
 
 const ButtonSmall = style({
@@ -46,6 +50,13 @@ const Reset = style({
   all: 'unset',
 });
 
+const ButtonVote = style({
+  padding: `${vars.spacing['0.25x']} ${vars.spacing['0.75x']}`,
+  fontSize: vars.fontSize.small,
+  fontWeight: vars.fontWeight.bold,
+  color: vars.color['text-white-300'],
+  borderRadius: vars.borderRadius.small,
+});
 const ButtonSmallText = style({
   padding: vars.spacing['0.5x'] + vars.spacing['1.5x'],
   fontSize: vars.fontSize.extraSmall,
@@ -55,6 +66,7 @@ export const ButtonVariants = styleVariants({
   small: [ButtonBase, ButtonSmall],
   smallText: [ButtonBase, ButtonSmallText],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
+  vote: [ButtonBase, ButtonVote],
   default: [ButtonBase, ButtonDefault],
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
