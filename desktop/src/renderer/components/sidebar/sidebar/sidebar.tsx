@@ -44,6 +44,12 @@ const Sidebar = () => {
             <span className={SideText}>Questions</span>
           </SidebarLink>
         </ul>
+        <ul className={SideList}>
+          <SidebarLink to="/users">
+            <IconQuestions variant="default" />
+            <span className={SideText}>Users</span>
+          </SidebarLink>
+        </ul>
         <div>
           <ul className={SideList}>
           </ul>

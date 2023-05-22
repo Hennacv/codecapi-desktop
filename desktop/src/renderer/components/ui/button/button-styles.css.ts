@@ -57,9 +57,14 @@ const ButtonVote = style({
   color: vars.color['text-white-300'],
   borderRadius: vars.borderRadius.small,
 });
+const ButtonSmallText = style({
+  padding: vars.spacing['0.5x'] + vars.spacing['1.5x'],
+  fontSize: vars.fontSize.extraSmall,
+})
 
 export const ButtonVariants = styleVariants({
   small: [ButtonBase, ButtonSmall],
+  smallText: [ButtonBase, ButtonSmallText],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
   vote: [ButtonBase, ButtonVote],
   default: [ButtonBase, ButtonDefault],
