@@ -46,8 +46,14 @@ const Reset = style({
   all: 'unset',
 });
 
+const ButtonSmallText = style({
+  padding: vars.spacing['0.5x'] + vars.spacing['1.5x'],
+  fontSize: vars.fontSize.extraSmall,
+})
+
 export const ButtonVariants = styleVariants({
   small: [ButtonBase, ButtonSmall],
+  smallText: [ButtonBase, ButtonSmallText],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
   default: [ButtonBase, ButtonDefault],
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],

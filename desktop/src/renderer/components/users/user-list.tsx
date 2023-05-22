@@ -1,5 +1,6 @@
 import { useGetUsers } from 'renderer/hooks/use-get-users';
 import { User } from 'renderer/utils/types';
+import UserCard from './user-card/user-card';
 
 const UserList = () => {
   const { data: users = [] } = useGetUsers();
@@ -7,7 +8,7 @@ const UserList = () => {
   return (
     <div>
       {users.map((user: User) => (
-        <div key={user.id}>{user.name}</div>
+        <UserCard user={user}/>
       ))}
     </div>
   );
