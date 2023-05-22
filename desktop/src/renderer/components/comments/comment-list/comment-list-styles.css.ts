@@ -6,6 +6,7 @@ export const CommentListContainer = style({
   flexDirection: "column",
   gap: vars.spacing['1x'],
   listStyle: "none",
+  marginLeft: vars.spacing['1x'],
   padding: 0,
 });
 
@@ -16,4 +17,5 @@ export const CommentListNewContainer = style({
   gap: vars.spacing['0.5x'],
   fontSize: vars.fontSize.small,
   color: vars.color["text-white-100"],
+  marginLeft: vars.spacing['1x'],
 });

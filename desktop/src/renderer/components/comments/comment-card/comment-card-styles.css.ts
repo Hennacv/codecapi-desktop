@@ -1,4 +1,4 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "renderer/vars.css";
 
 export const CommentCardContainer = style({
@@ -14,7 +14,7 @@ export const CommentCardUserContainer = style({
   position: "relative",
   width: vars.spacing["1.75x"],
   height: vars.spacing["1.75x"],
-  backgroundColor: "#8C5962",
+  backgroundColor: vars.color["dark-300"],
   borderRadius: vars.borderRadius.small,
   display: "flex",
   alignItems: "center",
@@ -22,19 +22,30 @@ export const CommentCardUserContainer = style({
   color: vars.color["text-white-100"],
   fontSize: vars.fontSize.extraSmall,
   margin: 0,
-  paddingBottom: "1em",
-  paddingLeft: "20px",
 });
 
-export const CommentCardLine = style({
-  backgroundColor: vars.color["primary-400"],
-  width: "1px",
+const CommentLineBase = style({
+  backgroundColor:vars.color["dark-300"],
+  width: "2px",
   content: '',
   position: "absolute",
-  top: "0px",
-  bottom: "0px",
   left: "50%",
   transform: "translateX(-50%)",
+});
+
+const CommentLineTop = style({
+  top: "-1rem",
+  bottom: "1.75rem",
+});
+
+const CommentLineBottom = style({
+  top: "1.75rem",
+  bottom: "-1rem",
+});
+
+export const CommentCardLineVariants = styleVariants({
+  CommentLineTop: [CommentLineBase, CommentLineTop],
+  CommentLineBottom: [CommentLineBase, CommentLineBottom]
 });
 
 

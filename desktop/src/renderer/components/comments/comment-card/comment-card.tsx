@@ -1,5 +1,5 @@
 import { Comment } from 'renderer/utils/types';
-import { CommentCardContainer, CommentCardLine, CommentCardUserContainer, CommentCardValue } from './comment-card-styles.css';
+import { CommentCardContainer, CommentCardLineVariants, CommentCardUserContainer, CommentCardValue } from './comment-card-styles.css';
 import dayjs from 'dayjs';
 
 interface CommentCardProps {
@@ -11,8 +11,9 @@ const CommentCard = ({ comment }: CommentCardProps) => {
   return (
     <div className={CommentCardContainer}>
       <div className={CommentCardUserContainer}>
-        {comment.user.name.substring(0, 1)}
-        <span className={CommentCardLine}></span>
+        {comment.user.name.substring(0, 1).toUpperCase()}
+        <span className={CommentCardLineVariants.CommentLineTop}></span>
+        <span className={CommentCardLineVariants.CommentLineBottom}></span>
       </div>
       <span>{comment.user.name}</span>
       <span>-</span>
