@@ -61,6 +61,7 @@ export interface User {
   email: string;
   name: string;
   uid: string;
+  tags: Tag[];
 }
 
 export interface Tag {
