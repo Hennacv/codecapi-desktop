@@ -1,14 +1,20 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "renderer/vars.css";
 
+export const UserCardsContainer = style({
+  display: 'flex',
+  flexFlow: 'row wrap',
+  gap: vars.spacing["1.25x"],
+})
+
 export const UserCardContainer = style({
   padding: vars.spacing['1.5x'],
   width: 200,
   backgroundColor: vars.color['dark-200'],
   borderRadius: vars.borderRadius.large,
   display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
   gap: 10,
 })
 
