@@ -7,7 +7,6 @@ interface SkillsProp {
 }
 
 const UserSkills = ( {skills}: SkillsProp ) => {
-  console.log(skills)
   return(
     <div className={UserSkillsContainer}>
       <label className={UserSkillsHeader}>Skills</label>

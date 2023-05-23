@@ -64,6 +64,12 @@ export interface User {
   tags: Tag[];
 }
 
+export interface Profile {
+ user: User,
+ questionCount: number,
+ answerCount: number,
+}
+
 export interface Tag {
   id: number;
   title: string;

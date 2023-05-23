@@ -4,7 +4,7 @@ import { vars } from "renderer/vars.css";
 export const UserCardsContainer = style({
   display: 'flex',
   flexFlow: 'row wrap',
-  gap: vars.spacing["1.25x"],
+  gap: vars.spacing['1x'],
 })
 
 export const UserCardContainer = style({
@@ -48,5 +48,5 @@ export const UserCardFunction = style({
 })
 
 export const UserCardButtonContainer = style({
-  marginTop: vars.spacing["2x"],
+  marginTop: vars.spacing['1x'],
 })

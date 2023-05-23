@@ -16,6 +16,7 @@ import SidebarLink from '../sidebar-link/sidebar-link';
 import IconQuestions from 'assets/icons/icon-questions';
 import IconUser from 'assets/icons/icon-users';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const Sidebar = () => {
   const { toggleSideBar, isExpanded } = useSidebar();
@@ -30,7 +31,7 @@ const Sidebar = () => {
         className={
           isExpanded ? ToggleContainer.basic : ToggleContainer.collapsed
         }
-      >
+        >
         <RiArrowDropLeftLine className={SideToggle} onClick={toggleSideBar} />
       </div>
       <aside className={AsideStyles}>
@@ -41,18 +42,18 @@ const Sidebar = () => {
               <span className={SideText}>Questions</span>
             </SidebarLink>
           </ul>
-        <ul className={SideList}>
-          <SidebarLink to="/users">
-            <IconQuestions variant="default" />
-            <span className={SideText}>Users</span>
-          </SidebarLink>
-        </ul>
           <ul className={SideList}>
-            <SidebarLink to={`users/${user.uid}`}>
+            <SidebarLink to="/users">
+              <IconQuestions variant="default" />
+              <span className={SideText}>Users</span>
+            </SidebarLink>
+          </ul>
+          {/* <ul className={SideList}>
+            <SidebarLink to={`users/${user!.id}`}>
               <IconUser variant="default" />
               <span className={SideText}>Profile</span>
             </SidebarLink>
-          </ul>
+          </ul> */}
         </div>
         <div>
           <ul className={SideList}>

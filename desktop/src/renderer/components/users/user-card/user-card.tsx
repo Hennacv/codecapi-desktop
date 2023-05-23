@@ -10,8 +10,7 @@ interface UserCard {
 const UserCard = ({user}: UserCard) => {
   const navigate = useNavigate();
 const goToProfile = () => {
-  // navigate('/users/.....');
-  // Once the profile ticket is approved I can add a redirect here
+  navigate(`/users/${user.id}`);
 };
 
   return (

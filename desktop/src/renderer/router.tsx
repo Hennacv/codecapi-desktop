@@ -51,7 +51,7 @@ const router = createMemoryRouter([
             element: <UserList />,
           },
           {
-            path: ':uid',
+            path: ':id',
             element: <UserProfile />,
           },
         ],

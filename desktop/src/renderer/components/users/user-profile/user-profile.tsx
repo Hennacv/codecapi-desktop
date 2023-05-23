@@ -3,47 +3,42 @@ import { UserCounter, UserCounterContainer, UserCounterTitle, UserProfileContain
 import { useGetQuestions } from "renderer/hooks/use-get-questions";
 import { useGetUser } from "renderer/hooks/use-get-user";
 import UserSkills from "../user-skills/user-skills";
+import { useGetProfile } from "renderer/hooks/use-get-profile";
 
 const UserProfile = () => {
-  const { uid } = useParams();
-  const { data: fetchedUser } = useGetUser(uid as string);
-  const { data = [] } = useGetQuestions();
+  const { id } = useParams();
+  const { data: profile } = useGetProfile(parseInt(id!))
+  // const { data = [] } = useGetQuestions();
 
-  if (!fetchedUser) {
+  if (!profile) {
     return null;
   }
-
-  console.log(fetchedUser);
-
-  const answers = data.map(question => question.answer).flat();
-  const questionCounter = data.filter(question => question.user.uid === fetchedUser.uid).length;
-  const answerCounter = answers.filter(answer => answer.user.uid === fetchedUser.uid).length;
 
   return (
     <div>
       <div className={UserProfileContainer}>
         <div className={UserProfileInfoContainer}>
-            <p className={UserProfileImage}>{fetchedUser.name?.substring(0, 1)}</p>
+            <p className={UserProfileImage}>{profile.user.name?.substring(0, 1)}</p>
           <div className={UserProfileTextContainer}>
             <label className={UserProfileName}>
-              {fetchedUser.name}
+              {profile.user.name}
             </label>
             <label className={UserProfileFunction}>
               JavaScript Developer
             </label>
             <label className={UserProfileEmail}>
-              {fetchedUser.email}
+              {profile.user.email}
             </label>
           </div>
         </div>
         <div className={UserCounterContainer}>
           <div>
             <label className={UserCounterTitle}>Questions</label>
-            <p className={UserCounter}>{questionCounter}</p>
+            <p className={UserCounter}>{profile.questionCount}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>Answers</label>
-            <p className={UserCounter}>{answerCounter}</p>
+            <p className={UserCounter}>{profile.answerCount}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>Accepted</label>
@@ -51,7 +46,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-        <UserSkills skills={fetchedUser.tags}/>
+        <UserSkills skills={profile.user.tags}/>
       </div>
 
   );
