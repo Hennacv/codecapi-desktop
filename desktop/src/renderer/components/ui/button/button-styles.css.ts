@@ -74,11 +74,11 @@ const ButtonSmallText = style({
 });
 
 const ButtonComment = style({
-  width: vars.spacing["1.75x"],
-  height: vars.spacing["1.75x"],
+  width: vars.spacing['1.75x'],
+  height: vars.spacing['1.75x'],
   borderRadius: vars.borderRadius.small,
   display: 'inline-flex',
-  alignItems:'center',
+  alignItems: 'center',
   justifyContent: 'center',
 });
 
@@ -92,7 +92,7 @@ export const ButtonVariants = styleVariants({
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
   reset: [Reset],
-  comment: [ButtonBase, ButtonComment],
+  comment: [ButtonBase, ButtonComment, ButtonDisabled],
 });
 
 const Close = style({

@@ -9,7 +9,7 @@ interface AddCommentProps {
 export function useAddComment({ onSuccess }: AddCommentProps) {
 	return useMutation(
 		(data: AddCommentDto) => {
-				return api.post('/comment', data);
+				return api.post('/comments', data);
 		},
 		{ onSuccess }
 	);

@@ -35,6 +35,8 @@ const InputInline = style({
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-200'],
   outline: 'none',
+  width: vars.width.full,
+  padding: `${vars.spacing['0.25x']} 0`,
 });
 
 export const InputTextVariants = styleVariants({

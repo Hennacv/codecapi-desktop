@@ -1,29 +1,64 @@
 import { Comment } from 'renderer/utils/types';
-import { CommentCardContainer, CommentCardLineVariants, CommentCardUserContainer, CommentCardValue } from './comment-card-styles.css';
+import { useDeleteComment } from 'renderer/hooks/use-delete-comment';
+import {
+  CommentCardCommentDate,
+  CommentCardCommentInfo,
+  CommentCardContainer,
+  CommentCardDelete,
+  CommentCardUser,
+  CommentCardValue,
+} from './comment-card-styles.css';
+
 import dayjs from 'dayjs';
+import Button from 'renderer/components/ui/button/button';
+import IconDelete from 'assets/icons/icon-delete';
+import classNames from 'classnames';
 
 interface CommentCardProps {
   comment: Comment;
+  userUid: string | undefined;
+  refetch: () => void;
+  drawLine?: () => void;
 }
 
-const CommentCard = ({ comment }: CommentCardProps) => {
-  
+const CommentCard = ({ comment, userUid, refetch }: CommentCardProps) => {
+  const deleteComment = useDeleteComment({
+    onSuccess: () => refetch(),
+  });
+
+  const handleDeleteComment = () => {
+    deleteComment.mutate(comment.id);
+  };
+
   return (
-    <div className={CommentCardContainer}>
-      <div className={CommentCardUserContainer}>
+    <div
+      className={classNames(CommentCardContainer.default, {
+        [CommentCardContainer.defaultHover]: comment.user.uid === userUid,
+      })}
+    >
+      <div className={CommentCardUser}>
         {comment.user.name.substring(0, 1).toUpperCase()}
-        <span className={CommentCardLineVariants.CommentLineTop}></span>
-        <span className={CommentCardLineVariants.CommentLineBottom}></span>
       </div>
-      <span>{comment.user.name}</span>
-      <span>-</span>
-      <span>{dayjs(comment.createdAt).fromNow()}</span>
-      <span>-</span>
+      <div className={CommentCardCommentInfo}>
+        <span>{comment.user.name}</span>
+        <span>-</span>
+        <div className={CommentCardCommentDate}>
+          <span>{dayjs(comment.createdAt).fromNow()}</span>
+          <span>-</span>
+        </div>
+      </div>
       <div className={CommentCardValue}>
         <p>{comment.comment}</p>
       </div>
+      {comment.user.uid === userUid ? (
+        <div className={CommentCardDelete}>
+          <Button type="button" variant="comment" onClick={handleDeleteComment}>
+            <IconDelete variant="small" />
+          </Button>
+        </div>
+      ) : null}
     </div>
-  )
-}
+  );
+};
 
 export default CommentCard;
