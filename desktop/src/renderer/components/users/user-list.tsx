@@ -8,8 +8,8 @@ const UserList = () => {
 
   return (
     <div className={UserCardsContainer}>
-      {users.map((user: User) => (
-        <UserCard user={user}/>
+      {users.map((user: User, index) => (
+        <UserCard user={user} key={index}/>
       ))}
     </div>
   );
