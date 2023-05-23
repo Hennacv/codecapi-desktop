@@ -107,11 +107,17 @@ export interface QuestionVote extends BaseVote {
 
 export type Vote = AnswerVote | QuestionVote;
 
+export interface Modal {
+  children: string | JSX.Element | JSX.Element[]
+  isShown: boolean;
+  onClose: () => void;
+}
+
 export interface Filter {
   tags: Tag[];
   setTags: (tags: Tag[]) => void;
   isShown: boolean;
-  onClose: () => void;
+  onClose: (arg0:boolean) => void ;
 }
 
 export interface Searched {
