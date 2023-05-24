@@ -14,14 +14,13 @@ import Button from '../../ui/button/button';
 import IconQuestionsGrey from 'assets/icons/icon-question-grey';
 import IconEdit from 'assets/icons/icon-edit';
 import IconDelete from 'assets/icons/icon-delete';
-import { useContext } from 'react';
-import { AuthContext } from 'renderer/root';
 import { useDeletePost } from 'renderer/hooks/use-delete-question';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const QuestionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user } = useUserContext();
   const { data: question, refetch } = useGetQuestion(Number(id));
   const { mutate } = useDeletePost();
 

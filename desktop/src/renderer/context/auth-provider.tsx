@@ -1,8 +1,11 @@
-import { User } from 'firebase/auth';
+import { User as FirebaseUser } from 'firebase/auth';
 import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'renderer/firebase';
+import { useGetUser } from 'renderer/hooks/use-get-user';
 import { AuthContext } from 'renderer/root';
+import { User } from '../utils/types';
+
 import api from 'renderer/utils/api';
 
 interface Props {
@@ -10,24 +13,28 @@ interface Props {
 }
 
 export interface AuthContextData {
-  user: User | null;
+  firebaseUser: FirebaseUser;
+  user: User;
   signIn: () => void;
   signOut: () => void;
 }
 
 export const defaultAuthContext = {
+  firebaseUser: null,
   user: null,
   signIn: () => {},
   signOut: () => {},
 };
 
 function AuthProvider(props: Props) {
-  const [user, setUser] = useState(auth.currentUser);
+  const [firebaseUser, setFirebaseUser] = useState(auth.currentUser);
+
+  const { data: user = null } = useGetUser(firebaseUser?.uid);
   const navigate = useNavigate();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      setUser(user);
+      setFirebaseUser(user);
       if (user) {
         navigate('/questions');
       } else {
@@ -35,18 +42,11 @@ function AuthProvider(props: Props) {
       }
     });
   }, []);
-
-  async function signIn() {
-    const res = await api.get('/auth');
-    const { url } = res.data;
-    window.open(url, '_blank');
-  }
-
-  async function signOut() {
-    await auth.signOut();
-  }
+  
+  if(!user || !firebaseUser) return null;
 
   const value = {
+    firebaseUser,
     user,
     signIn,
     signOut,
@@ -58,3 +58,13 @@ function AuthProvider(props: Props) {
 }
 
 export default AuthProvider;
+
+async function signIn() {
+  const res = await api.get('/auth');
+  const { url } = res.data;
+  window.open(url, '_blank');
+}
+
+async function signOut() {
+  await auth.signOut();
+}

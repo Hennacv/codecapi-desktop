@@ -10,7 +10,7 @@ import Loader from './components/shared/loader';
 import Sidebar from './components/sidebar/sidebar/sidebar';
 import ServerSideEventHandler from './server-events/server-sent-event-handler';
 
-export const AuthContext = createContext<AuthContextData>(defaultAuthContext);
+export const AuthContext = createContext<AuthContextData|undefined>(undefined);
 
 function Root() {
   return (
