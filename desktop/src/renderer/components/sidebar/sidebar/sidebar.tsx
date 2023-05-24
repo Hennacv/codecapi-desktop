@@ -1,5 +1,3 @@
-import { useContext, useState } from 'react';
-import { AuthContext } from 'renderer/root';
 import { LogoStyle } from 'assets/logo/logo-styles.css';
 import { useSidebar } from './use-sidebar';
 import { RiArrowDropLeftLine } from 'react-icons/ri';
@@ -16,14 +14,11 @@ import UserInfo from '../../users/user-info/user-info';
 import Logo from '../../../../assets/logo/logo';
 import SidebarLink from '../sidebar-link/sidebar-link';
 import IconQuestions from 'assets/icons/icon-questions';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const Sidebar = () => {
   const { toggleSideBar, isExpanded } = useSidebar();
-
-  const { user } = useContext(AuthContext);
-  if (!user) {
-    return null;
-  }
+  const { user } = useUserContext();
 
   return (
     <div className={isExpanded ? SideStyles.basic : SideStyles.collapsed}>

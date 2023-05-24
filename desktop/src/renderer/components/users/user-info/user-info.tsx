@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import { AuthContext } from 'renderer/root';
 import {
   UserInfoCard,
   UserInfoStyle,
@@ -7,22 +5,23 @@ import {
   UserInfoSection,
   UserText,
 } from './user-info-styles.css';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 interface UserInfoProps {
   isExpanded: boolean;
 }
 
 const UserInfo = ({ isExpanded }: UserInfoProps) => {
-  const { user } = useContext(AuthContext);
+  const { user } = useUserContext();
 
   return (
     <div className={UserInfoSection}>
       <div className={UserInfoCard}>
         <div className={UserInfoImage}>
-          <p>{user?.displayName?.substring(0, 1)}</p>
+          <p>{user.name.substring(0, 1)}</p>
         </div>
         <div className={isExpanded ? UserInfoStyle.basic : UserInfoStyle.collapsed}>
-          <p className={UserText.name}>{user?.displayName}</p>
+          <p className={UserText.name}>{user.name}</p>
         </div>
       </div>
     </div>
