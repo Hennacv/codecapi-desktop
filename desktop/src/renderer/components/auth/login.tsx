@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { AuthContext } from 'renderer/root';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useUserContext()
 
   return (
     <div className="columns is-centered">

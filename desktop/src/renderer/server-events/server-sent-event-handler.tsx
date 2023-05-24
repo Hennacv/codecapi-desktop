@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router-dom"
 import { bootstrapServerSentEvents } from "./bootstrap-server-sent-events"
 import { useUserContext } from "renderer/hooks/use-user-context";
-import { User } from "firebase/auth";
+import { User as FirebaseUser } from "firebase/auth";
 import { useEffect } from "react";
 
 const ServerSideEventHandler = () => {
   const navigate = useNavigate()
-  const { user } = useUserContext();
+  const { firebaseUser } = useUserContext();
 
   useEffect(() => {
-    if (user) {
-      getUserToken(user);
+    if (firebaseUser) {
+      getUserToken(firebaseUser);
     }
-  }, [user]);
+  }, [firebaseUser]);
 
-  const getUserToken = async (user: User) => {
-    const token = await user.getIdToken();
+  const getUserToken = async (firebaseUser: FirebaseUser) => {
+    const token = await firebaseUser.getIdToken();
     bootstrapServerSentEvents(navigate, token);
   }
 
