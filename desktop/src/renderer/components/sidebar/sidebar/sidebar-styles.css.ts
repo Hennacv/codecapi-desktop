@@ -65,7 +65,7 @@ export const SideText = style({
 export const SideList = style({
   listStyleType: 'none',
   padding: 0,
-  marginTop: 0,
+  margin: 0,
 });
 
 globalStyle(`${SideStyles.collapsed} span`, {

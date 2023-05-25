@@ -61,6 +61,13 @@ export interface User {
   email: string;
   name: string;
   uid: string;
+  tags: Tag[];
+}
+
+export interface Profile {
+ user: User,
+ questionCount: number,
+ answerCount: number,
 }
 
 export interface Tag {
