@@ -57,6 +57,17 @@ const ButtonVote = style({
   color: vars.color['text-white-300'],
   borderRadius: vars.borderRadius.small,
 });
+
+const ButtonDelete = style({
+  backgroundColor: vars.color['delete-100'],
+  border: `2px solid ${vars.color['delete-200']}`,
+  color: vars.color['delete-300'],
+  ':hover': {
+    backgroundColor: vars.color['delete-200'],
+    transition: vars.transition.defaultHover,
+  },
+})
+
 const ButtonSmallText = style({
   padding: vars.spacing['0.5x'] + vars.spacing['1.5x'],
   fontSize: vars.fontSize.extraSmall,
@@ -67,6 +78,7 @@ export const ButtonVariants = styleVariants({
   smallText: [ButtonBase, ButtonSmallText],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
   vote: [ButtonBase, ButtonVote],
+  delete: [ButtonBase, ButtonSmall, ButtonDelete],
   default: [ButtonBase, ButtonDefault],
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
