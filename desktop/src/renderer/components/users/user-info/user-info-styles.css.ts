@@ -7,9 +7,9 @@ export const UserInfoSection = style({
   alignItems: 'center',
   justifyContent: 'center',
   height: '5.5rem',
-  width: vars.width.full, 
+  width: vars.width.full,
   userSelect: 'none',
-  padding: vars.spacing['0x'] + vars.spacing['1x']
+  padding: vars.spacing['0x'] + vars.spacing['1x'],
 });
 
 export const UserInfoCard = style({
@@ -18,6 +18,10 @@ export const UserInfoCard = style({
   backgroundColor: vars.color['dark-400'],
   borderRadius: vars.borderRadius.small,
   width: vars.width.full,
+  textDecoration: 'none',
+  ':hover': {
+		backgroundColor: vars.color['dark-500'],
+	},
 });
 
 export const UserInfoImage = style({
@@ -25,6 +29,7 @@ export const UserInfoImage = style({
   height: '3rem',
   borderRadius: vars.borderRadius.small,
   backgroundColor: vars.color['dark-500'],
+  color: vars.color['text-white-100'],
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -57,7 +62,6 @@ export const UserText = styleVariants({
     {
       fontSize: '0.75em',
       color: vars.color['text-white-100'],
-
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',

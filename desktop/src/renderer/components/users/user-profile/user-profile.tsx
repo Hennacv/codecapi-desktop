@@ -1,14 +1,22 @@
-import { useParams } from "react-router-dom";
-import { UserCounter, UserCounterContainer, UserCounterTitle, UserProfileContainer, UserProfileEmail, UserProfileFunction, UserProfileHeader, UserProfileImage, UserProfileInfoContainer, UserProfileName, UserProfileTextContainer } from "./user-profile-styles.css";
-import { useGetQuestions } from "renderer/hooks/use-get-questions";
-import { useGetUser } from "renderer/hooks/use-get-user";
-import UserSkills from "../user-skills/user-skills";
-import { useGetProfile } from "renderer/hooks/use-get-profile";
+import { useParams } from 'react-router-dom';
+import {
+  UserCounter,
+  UserCounterContainer,
+  UserCounterTitle,
+  UserProfileContainer,
+  UserProfileEmail,
+  UserProfileFunction,
+  UserProfileImage,
+  UserProfileInfoContainer,
+  UserProfileName,
+  UserProfileTextContainer,
+} from './user-profile-styles.css';
+import UserSkills from '../user-skills/user-skills';
+import { useGetProfile } from 'renderer/hooks/use-get-profile';
 
 const UserProfile = () => {
   const { id } = useParams();
-  const { data: profile } = useGetProfile(parseInt(id!))
-  // const { data = [] } = useGetQuestions();
+  const { data: profile } = useGetProfile(parseInt(id!));
 
   if (!profile) {
     return null;
@@ -18,17 +26,13 @@ const UserProfile = () => {
     <div>
       <div className={UserProfileContainer}>
         <div className={UserProfileInfoContainer}>
-            <p className={UserProfileImage}>{profile.user.name?.substring(0, 1)}</p>
+          <p className={UserProfileImage}>
+            {profile.user.name?.substring(0, 1)}
+          </p>
           <div className={UserProfileTextContainer}>
-            <label className={UserProfileName}>
-              {profile.user.name}
-            </label>
-            <label className={UserProfileFunction}>
-              JavaScript Developer
-            </label>
-            <label className={UserProfileEmail}>
-              {profile.user.email}
-            </label>
+            <label className={UserProfileName}>{profile.user.name}</label>
+            <label className={UserProfileFunction}>JavaScript Developer</label>
+            <label className={UserProfileEmail}>{profile.user.email}</label>
           </div>
         </div>
         <div className={UserCounterContainer}>
@@ -46,10 +50,9 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-        <UserSkills skills={profile.user.tags}/>
-      </div>
-
+      <UserSkills skills={profile.user.tags} />
+    </div>
   );
-}
+};
 
-export default UserProfile
+export default UserProfile;

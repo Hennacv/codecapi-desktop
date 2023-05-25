@@ -25,4 +25,4 @@ const UserSkills = ( {skills}: SkillsProp ) => {
     )
 }
 
-export default UserSkills
+export default UserSkills;
