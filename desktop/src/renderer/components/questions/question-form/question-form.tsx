@@ -75,17 +75,20 @@ const QuestionForm = ({
     });
   };
 
-  const addBlock = (type: 'text' | 'code') => {
-    updateFormValue('blocks', [
-      ...form.blocks,
-      {
-        position: form.blocks.length,
-        type: type,
-        value: '',
-        language: 'javascript',
-      },
-    ]);
-  };
+  const addBlock = (type: 'text' | 'code' ) => { 
+    if (type === 'text') {
+      updateFormValue('blocks', [
+        ...form.blocks,
+        { position: form.blocks.length, type: type, value: ''},
+      ]);
+    }
+    if (type === 'code') {
+      updateFormValue('blocks', [
+        ...form.blocks,
+        { position: form.blocks.length, type: type, value: '', language: 'javascript' },
+      ]);
+    }
+  }
 
   const removeBlock = (position: number) => {
     const newBlocks = form.blocks.filter(

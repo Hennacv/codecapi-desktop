@@ -12,15 +12,9 @@ interface SelectProps {
 
 const Select = ({ options, variant, onChange, language }: SelectProps) => {
   return (
-    <select className={SelectVariants[variant]} onChange={onChange}>
+    <select className={SelectVariants[variant]} onChange={onChange} value={language}>
       {options.map((option, index) => (
-        <option
-          key={index}
-          value={option.value as string}
-          selected={option.value === language}
-        >
-          {option.label.charAt(0).toUpperCase() + option.label.slice(1)}
-        </option>
+        <option key={index} value={option.value as string}>{option.label.charAt(0).toUpperCase() + option.label.slice(1)}</option>
       ))}
     </select>
   );

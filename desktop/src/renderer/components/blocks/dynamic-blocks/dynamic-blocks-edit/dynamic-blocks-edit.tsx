@@ -1,4 +1,4 @@
-import { Block, isCodeBlock } from 'renderer/utils/types';
+import { Block, isCodeBlock, isTextBlock } from 'renderer/utils/types';
 import { DynamicBlocksContainer } from '../dynamic-blocks-styles.css';
 import TextBlockEdit from 'renderer/components/blocks/text-block/text-block-edit/text-block-edit';
 import CodeBlockEdit from '../../code-block/code-block-edit/code-block-edit';
@@ -10,23 +10,28 @@ interface DynamicBlocksEditProps {
   removeBlock: (position: number) => void;
 }
 
-const DynamicBlocksEdit = ({ blocks, removeBlock }: DynamicBlocksEditProps) => {
+const DynamicBlocksEdit = ({ blocks, removeBlock, updateFormValue }: DynamicBlocksEditProps) => {
   const updateDynamicBlock = (
     position: number,
     value: string,
-    fieldToUpdate: string
+    optionalValue: { 
+      contents?: string, 
+      language?: string 
+    }
   ) => {
     const indexSelectedBlock = blocks.findIndex(
       (block) => block.position === position
     );
     const block = blocks[indexSelectedBlock];
+    blocks[indexSelectedBlock].value = value;
 
-    block.value = value;
-    if (isCodeBlock(block)) {
-      block.language = fieldToUpdate;
-    } else {
-      block.contents = fieldToUpdate;
+    if (isCodeBlock(block) && optionalValue.language) {
+      block.language = optionalValue.language;
     }
+    if (isTextBlock(block) && optionalValue.contents) {
+      block.contents = optionalValue.contents;
+    } 
+    updateFormValue('blocks', blocks);
   };
 
   return (
@@ -40,7 +45,7 @@ const DynamicBlocksEdit = ({ blocks, removeBlock }: DynamicBlocksEditProps) => {
                 key={block.position}
                 position={block.position}
                 updateDynamicBlock={(position, value, language) =>
-                  updateDynamicBlock(position, value, language)
+                  updateDynamicBlock(position, value, {language: language})
                 }
                 removeBlock={removeBlock}
                 language={block.language}
@@ -51,7 +56,7 @@ const DynamicBlocksEdit = ({ blocks, removeBlock }: DynamicBlocksEditProps) => {
                 key={block.position}
                 position={block.position}
                 updateFormBlock={(position, value, contents) =>
-                  updateDynamicBlock(position, value, contents)
+                  updateDynamicBlock(position, value, {contents: contents})
                 }
                 removeBlock={removeBlock}
               />
