@@ -34,7 +34,7 @@ const CodeBlockEdit = ({
   value,
   language,
 }: CodeBlockEditProps) => {
-
+  
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
 
   const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
@@ -55,7 +55,7 @@ const CodeBlockEdit = ({
 
   const updateParent = (position: number, language: string) => {
     if (editorRef.current) {
-      const value = editorRef.current.getValue();
+      const value = editorRef.current.getValue();     
       updateDynamicBlock(position, value, language);
     }
   }
@@ -82,6 +82,7 @@ const CodeBlockEdit = ({
           defaultValue="// paste your code here"
           options={{
             scrollBeyondLastLine: false,
+            fixedOverflowWidgets: true,
             wordWrap: 'on',
             wrappingStrategy: 'advanced',
             overviewRulerLanes: 0,
