@@ -41,6 +41,11 @@ export interface AddAnswerDto {
   questionId: number;
 }
 
+export interface EditProfileDto {
+  name: string;
+  tags: { id: number }[];
+}
+
 interface BaseVoteDto {
   type: "upvote";
   userId: number;

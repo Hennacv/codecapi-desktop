@@ -92,3 +92,7 @@ export const UserCounter = style({
   padding: vars.spacing['0.5x'],
   textAlign: 'center',
 })
+
+export const UserProfileEditButton = style({
+  marginTop: vars.spacing['1.25x'],
+})

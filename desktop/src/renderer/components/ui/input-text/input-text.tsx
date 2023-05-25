@@ -5,7 +5,7 @@ interface InputTextProps {
   type: 'text' | 'email' | 'search' | 'url';
   id: string;
   value?: string;
-  defaultValue: string;
+  defaultValue?: string;
   variant: keyof typeof InputTextVariants;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

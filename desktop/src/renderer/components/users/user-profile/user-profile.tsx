@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   UserCounter,
   UserCounterContainer,
   UserCounterTitle,
   UserProfileContainer,
+  UserProfileEditButton,
   UserProfileEmail,
   UserProfileFunction,
   UserProfileImage,
@@ -13,10 +14,15 @@ import {
 } from './user-profile-styles.css';
 import UserSkills from '../user-skills/user-skills';
 import { useGetProfile } from 'renderer/hooks/use-get-profile';
+import Button from 'renderer/components/ui/button/button';
+import IconEdit from 'assets/icons/icon-edit';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const UserProfile = () => {
   const { id } = useParams();
   const { data: profile } = useGetProfile(parseInt(id!));
+  const { user } = useUserContext();
+  const navigate = useNavigate();
 
   if (!profile) {
     return null;
@@ -46,11 +52,23 @@ const UserProfile = () => {
           </div>
           <div>
             <label className={UserCounterTitle}>Accepted</label>
-            <p className={UserCounter}>5</p>
+            <p className={UserCounter}>0</p>
           </div>
         </div>
       </div>
       <UserSkills skills={profile.user.tags} />
+      {profile?.user.uid === user?.uid && (
+        <div className={UserProfileEditButton}>
+          <Button
+            type="button"
+            variant="smallSquare"
+            onClick={() => navigate(`/users/edit/${id}`)}
+            >
+            <IconEdit variant="default"/>
+            <p>Edit Profile</p>
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
