@@ -14,22 +14,19 @@ import Button from '../../ui/button/button';
 import IconQuestionsGrey from 'assets/icons/icon-question-grey';
 import IconEdit from 'assets/icons/icon-edit';
 import IconDelete from 'assets/icons/icon-delete';
-import { useDeletePost } from 'renderer/hooks/use-delete-question';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useState } from 'react';
+import QuestionDelete from '../question-delete/question-delete';
 
 const QuestionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUserContext();
   const { data: question, refetch } = useGetQuestion(Number(id));
-  const { mutate } = useDeletePost();
+  const [isShown, setIsShown] = useState(false);
 
   if (!question) {
     return null;
-  }
-
-  const deleteQuestion = (id: string | undefined) => {
-    mutate(id)
   }
 
   return (
@@ -54,10 +51,11 @@ const QuestionDetail = () => {
           <Button
             type="button"
             variant="smallSquare"
-            onClick={() => deleteQuestion(id)}
+            onClick={() => setIsShown(true)}
           >
             <IconDelete variant="default"/>
           </Button>
+          <QuestionDelete id={id} isShown={isShown} onClose={() => setIsShown(false)}/>
         </div>
           ) }
       </div>
