@@ -29,10 +29,21 @@ export const InputTextValidated = style({
   border: '2px solid ' + vars.color['primary-400'],
 });
 
+const InputInline = style({
+  backgroundColor: 'transparent',
+  border: 'none',
+  fontWeight: vars.fontWeight.regular,
+  color: vars.color['text-white-200'],
+  outline: 'none',
+  width: vars.width.full,
+  padding: `${vars.spacing['0.25x']} 0`,
+});
+
 export const InputTextVariants = styleVariants({
   extraSmall: [InputTextBase, InputTextExtraSmall],
   small: [InputTextBase, InputTextSmall],
   smallValidated: [InputTextBase, InputTextSmall, InputTextValidated],
   default: [InputTextBase, InputTextDefault],
   defaultValidated: [InputTextBase, InputTextDefault, InputTextValidated],
+  inline: [InputInline],
 });

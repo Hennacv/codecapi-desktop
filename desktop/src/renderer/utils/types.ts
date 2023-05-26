@@ -61,6 +61,12 @@ export interface AddQuestionVoteDto extends BaseVoteDto {
 
 export type AddVoteDto = AddAnswerVoteDto | AddQuestionVoteDto;
 
+export interface AddCommentDto {
+  comment: string;
+  userId: number;
+  answerId: number;
+}
+
 export interface User {
   id: number;
   email: string;
@@ -99,7 +105,15 @@ export interface Answer {
   blocks: Block[];
   createdAt: string;
   user: User;
-  votes: Vote[];
+  votes: Vote[],
+  comments: Comment[];
+}
+
+export interface Comment {
+  id: number;
+  comment: string;
+  user: User;
+  createdAt: string;
 }
 
 interface BaseVote {

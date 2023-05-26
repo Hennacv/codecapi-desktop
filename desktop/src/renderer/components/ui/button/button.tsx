@@ -7,7 +7,7 @@ interface ButtonProps {
   type: 'button' | 'submit' | 'reset';
   variant: keyof typeof ButtonVariants;
   disabled?: boolean;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({

@@ -8,6 +8,7 @@ import QuestionCard from '../question-card/question-card';
 import Button from 'renderer/components/ui/button/button';
 import Filter from 'renderer/components/ui/filter/filter';
 import Search from 'renderer/components/ui/search/search';
+import { QuestionListContainer } from './question-list-styles.css';
 
 const QuestionList = () => {
   const navigate = useNavigate();
@@ -65,10 +66,11 @@ const QuestionList = () => {
           onClick={() => onNewQuestion()}
         />
       </div>
-
-      {result.map((question: Question) => (
-        <QuestionCard key={question.id} question={question} refetch={refetch} />
-      ))}
+      <div className={QuestionListContainer}>
+        {result.map((question: Question) => (
+          <QuestionCard key={question.id} question={question} refetch={refetch} />
+        ))}
+      </div>
     </div>
   );
 };

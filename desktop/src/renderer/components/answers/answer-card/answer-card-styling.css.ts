@@ -1,6 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
+export const AnswerContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
 export const AnswerCardContainer = style({
   padding: vars.spacing['1.5x'],
   width: vars.width.full,
