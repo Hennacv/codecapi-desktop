@@ -63,19 +63,23 @@ const QuestionForm = ({ title, blocks, tags, id, isEditing = false }: AddQuestio
     });
   }
 
-  const addBlock = (type: 'text' | 'code' ) => { 
-    if (type === 'text') {
-      updateFormValue('blocks', [
-        ...form.blocks,
-        { position: form.blocks.length, type: type, value: ''},
-      ]);
-    }
-    if (type === 'code') {
-      updateFormValue('blocks', [
-        ...form.blocks,
-        { position: form.blocks.length, type: type, value: '', language: 'javascript' },
-      ]);
-    }
+  const addBlock = (type: 'text' | 'code' ) => {
+    switch (type) {
+      case 'text':
+        updateFormValue('blocks', [
+          ...form.blocks,
+          { position: form.blocks.length, type: type, value: ''},
+        ]);
+        break;
+      case 'code':
+        updateFormValue('blocks', [
+          ...form.blocks,
+          { position: form.blocks.length, type: type, value: '', language: 'javascript' },
+        ]);
+        break;
+      default:
+        break;
+    } 
   }
 
   const removeBlock = (position: number) => {
