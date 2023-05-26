@@ -32,7 +32,7 @@ const AnswerCard = ({ answer, refetch }: AnswerCardProps) => {
             refetch={refetch}
           />
         </div>
-        {answer.blocks && <DynamicBlocksRead blocks={answer.blocks} />}
+        {!!answer.blocks.length && <DynamicBlocksRead blocks={answer.blocks} />}
       </div>
       <CommentList comments={answer.comments} answerId={answer.id}  refetch={refetch} />
     </div>
