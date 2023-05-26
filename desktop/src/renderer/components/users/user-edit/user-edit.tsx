@@ -13,7 +13,7 @@ import {
 } from './user-edit-styles.css';
 import InputText from 'renderer/components/ui/input-text/input-text';
 import { useState } from 'react';
-import { EditProfileDto, Tag } from 'renderer/utils/types';
+import { EditProfileDto, Tag, User } from 'renderer/utils/types';
 import { useSelectedTags } from 'renderer/hooks/use-selected-tags';
 import { useEditProfile } from 'renderer/hooks/use-edit-profile';
 import Button from 'renderer/components/ui/button/button';
@@ -21,26 +21,33 @@ import TagButton from 'renderer/components/tags/tag-button/tag-button';
 import IconRemove from 'assets/icons/icon-remove';
 import IconAdd from 'assets/icons/icon-add';
 
-const UserEdit = () => {
+const UserEditWrapper = () => {
   const { id } = useParams();
-  const { data: profile, isLoading } = useGetProfile(parseInt(id!));
+  const { data: profile } = useGetProfile(parseInt(id!));
+
+  return (
+    <>{!profile ? <p>loading</p> : <UserEdit user={profile.user} id={id!} />}</>
+  );
+};
+
+interface EditProfileProps {
+  user: User;
+  id: string;
+}
+
+const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
   const editProfile = useEditProfile(parseInt(id!));
+  const [userProfile, setUserProfile] = useState<EditProfileDto>(user);
 
-  if (!profile) {
-    return null;
-  }
+  const { addTag, deleteTag, tags, selectedTags } = useSelectedTags(user.tags);
 
-  const [userProfile, setUserProfile] = useState<EditProfileDto>(profile.user);
-  const currentTags = profile.user.tags;
-  let skills = useSelectedTags(currentTags);
-
-  const addTag = (tag: Tag) => {
-    skills.addTag(tag);
-    updateProfileValue('tags', [...userProfile.tags, { id: tag.id }]);
+  const addSkill = (tag: Tag) => {
+    addTag(tag);
+    updateProfileValue('tags', [...user.tags, { id: tag.id }]);
   };
 
-  const deleteTag = (tag: Tag) => {
-    skills.deleteTag(tag);
+  const deleteSkill = (tag: Tag) => {
+    deleteTag(tag);
 
     const tempTag = userProfile.tags.filter((skill) => skill.id !== tag.id);
     updateProfileValue('tags', tempTag);
@@ -64,73 +71,67 @@ const UserEdit = () => {
   };
 
   return (
-    <div>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <form className={ProfileFormContainer}>
-          <header className={ProfileFormHeader}>
-            <h1 className={ProfileFormTitle}>Edit Profile</h1>
-            <p className={ProfileFormDescription}>
-              Use the form below to edit your profile.
-            </p>
-          </header>
-          <div className={ProfileFormItem}>
-            <label className={ProfileFormLabel} htmlFor="title">
-              Name *
-            </label>
-            <InputText
-              type="text"
-              id="name"
-              defaultValue={userProfile.name}
-              variant={!userProfile.name ? 'default' : 'defaultValidated'}
-              onChange={(e) => updateProfileValue('name', e.target.value)}
-            />
+    <form className={ProfileFormContainer}>
+      <header className={ProfileFormHeader}>
+        <h1 className={ProfileFormTitle}>Edit Profile</h1>
+        <p className={ProfileFormDescription}>
+          Use the form below to edit your profile.
+        </p>
+      </header>
+      <div className={ProfileFormItem}>
+        <label className={ProfileFormLabel} htmlFor="title">
+          Name *
+        </label>
+        <InputText
+          type="text"
+          id="name"
+          defaultValue={userProfile.name}
+          variant={!userProfile.name ? 'default' : 'defaultValidated'}
+          onChange={(e) => updateProfileValue('name', e.target.value)}
+        />
+      </div>
+      <div className={ProfileFormItem}>
+        <label className={ProfileFormLabel}>Skills</label>
+        <div className={tags ? SkillsList : SkillHidden}>
+          {tags.map((tag: Tag) => (
+            <TagButton
+              key={tag.id}
+              title={tag.title}
+              color={tag.color}
+              variant="defaultAdd"
+              onClick={() => addSkill(tag)}
+            >
+              <IconAdd variant="small" />
+            </TagButton>
+          ))}
+        </div>
+        <label className={ProfileFormDescription}>Selected skills:</label>
+        <div className={SkillsContainer}>
+          <div className={SkillsList}>
+            {selectedTags.map((tag: Tag) => (
+              <TagButton
+                key={tag.id}
+                title={tag.title}
+                color={tag.color}
+                variant="defaultRemove"
+                onClick={() => deleteSkill(tag)}
+              >
+                <IconRemove variant="small" />
+              </TagButton>
+            ))}
           </div>
-          <div className={ProfileFormItem}>
-            <label className={ProfileFormLabel}>Skills</label>
-            <div className={skills.tags ? SkillsList : SkillHidden}>
-              {skills.tags.map((tag: Tag) => (
-                <TagButton
-                  key={tag.id}
-                  title={tag.title}
-                  color={tag.color}
-                  variant="defaultAdd"
-                  onClick={() => addTag(tag)}
-                >
-                  <IconAdd variant="small" />
-                </TagButton>
-              ))}
-            </div>
-            <label className={ProfileFormDescription}>Selected skills:</label>
-            <div className={SkillsContainer}>
-              <div className={SkillsList}>
-                {skills.selectedTags.map((tag: Tag) => (
-                  <TagButton
-                    key={tag.id}
-                    title={tag.title}
-                    color={tag.color}
-                    variant="defaultRemove"
-                    onClick={() => deleteTag(tag)}
-                  >
-                    <IconRemove variant="small" />
-                  </TagButton>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={ProfileFormItem}>
-            <Button
-              text="Edit"
-              type="submit"
-              variant="defaultDisabled"
-              onClick={(event) => onEdit(userProfile, event)}
-            />
-          </div>
-        </form>
-      )}
-    </div>
+        </div>
+      </div>
+      <div className={ProfileFormItem}>
+        <Button
+          text="Edit"
+          type="submit"
+          variant="defaultDisabled"
+          onClick={(event) => onEdit(userProfile, event)}
+        />
+      </div>
+    </form>
   );
 };
 
-export default UserEdit;
+export default UserEditWrapper;

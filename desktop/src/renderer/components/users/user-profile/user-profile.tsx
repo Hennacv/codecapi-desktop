@@ -63,8 +63,8 @@ const UserProfile = () => {
             type="button"
             variant="smallSquare"
             onClick={() => navigate(`/users/edit/${id}`)}
-            >
-            <IconEdit variant="default"/>
+          >
+            <IconEdit variant="default" />
             <p>Edit Profile</p>
           </Button>
         </div>

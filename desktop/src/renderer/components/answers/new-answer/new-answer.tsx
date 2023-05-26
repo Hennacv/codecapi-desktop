@@ -42,30 +42,35 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
       ...form,
       [field]: value,
     });
-  }
+  };
 
-  const addBlock = (type: 'text' | 'code' ) => {
+  const addBlock = (type: 'text' | 'code') => {
     updateFormValue('blocks', [
       ...form.blocks,
-      { position: form.blocks.length, type: type, value: '', language: 'javascript' },
+      {
+        position: form.blocks.length,
+        type: type,
+        value: '',
+        language: 'javascript',
+      },
     ]);
-  }
+  };
 
   const removeBlock = (position: number) => {
-    const newBlocks = form.blocks.filter(block => block.position !== position);
+    const newBlocks = form.blocks.filter(
+      (block) => block.position !== position
+    );
 
     newBlocks.forEach((block, index) => {
-      block.position = index
-    })
-    updateFormValue('blocks', [
-      ...newBlocks
-    ]);
-  }
+      block.position = index;
+    });
+    updateFormValue('blocks', [...newBlocks]);
+  };
 
   const onSubmit = (newAnswer: AddAnswerDto) => {
     addAnswer.mutate(newAnswer);
     setFormIsActive(false);
-  }
+  };
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { useUserContext } from 'renderer/hooks/use-user-context';
 
 const Login = () => {
-  const { signIn } = useUserContext()
+  const { signIn } = useUserContext();
 
   return (
     <div className="columns is-centered">
@@ -16,6 +16,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

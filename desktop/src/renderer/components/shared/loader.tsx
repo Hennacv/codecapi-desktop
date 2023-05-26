@@ -14,6 +14,6 @@ const Loader = () => {
       <img className={LoaderImage} src={image} />
     </div>
   );
-}
+};
 
 export default Loader;

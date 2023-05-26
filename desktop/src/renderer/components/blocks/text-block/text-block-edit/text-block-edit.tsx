@@ -15,8 +15,8 @@ import Button from 'renderer/components/ui/button/button';
 interface TextBlockEditProps {
   position: number;
   updateFormBlock: (position: number, value: string, contents: string) => void;
-  removeBlock: (position: number) => void
-  value:string;
+  removeBlock: (position: number) => void;
+  value: string;
 }
 
 Quill.register('modules/emoji', Emoji);
@@ -28,7 +28,12 @@ const toolbarOptions = [
   ['emoji'],
 ];
 
-const TextBlockEdit = ({ position, updateFormBlock, removeBlock ,value}: TextBlockEditProps) => {
+const TextBlockEdit = ({
+  position,
+  updateFormBlock,
+  removeBlock,
+  value,
+}: TextBlockEditProps) => {
   function updateParent(position: number, value: string, contents: string) {
     updateFormBlock(position, value, contents);
   }
@@ -41,8 +46,12 @@ const TextBlockEdit = ({ position, updateFormBlock, removeBlock ,value}: TextBlo
           <span className={TextBlockTitle}>(block: {position})</span>
         </label>
         <div className={ButtonClose.base}>
-          <Button variant="reset" type="button" onClick={() => removeBlock(position)}>
-            <IconRemove variant="small"/>
+          <Button
+            variant="reset"
+            type="button"
+            onClick={() => removeBlock(position)}
+          >
+            <IconRemove variant="small" />
           </Button>
         </div>
       </div>
@@ -52,7 +61,11 @@ const TextBlockEdit = ({ position, updateFormBlock, removeBlock ,value}: TextBlo
         placeholder="Start writing..."
         value={value}
         onChange={(content, delta, source, editor) => {
-          updateParent(position, editor.getHTML(), JSON.stringify(editor.getContents()));
+          updateParent(
+            position,
+            editor.getHTML(),
+            JSON.stringify(editor.getContents())
+          );
         }}
         modules={{
           toolbar: {

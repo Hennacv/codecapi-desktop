@@ -1,17 +1,23 @@
-import { User } from "renderer/utils/types";
-import { UserCardButtonContainer, UserCardContainer, UserCardFunction, UserCardImage, UserCardName } from "./user-card-styles.css";
-import Button from "renderer/components/ui/button/button";
-import { useNavigate } from "react-router-dom";
+import { User } from 'renderer/utils/types';
+import {
+  UserCardButtonContainer,
+  UserCardContainer,
+  UserCardFunction,
+  UserCardImage,
+  UserCardName,
+} from './user-card-styles.css';
+import Button from 'renderer/components/ui/button/button';
+import { useNavigate } from 'react-router-dom';
 
 interface UserCard {
   user: User;
 }
 
-const UserCard = ({user}: UserCard) => {
+const UserCard = ({ user }: UserCard) => {
   const navigate = useNavigate();
-const goToProfile = () => {
-  navigate(`/users/${user.id}`);
-};
+  const goToProfile = () => {
+    navigate(`/users/${user.id}`);
+  };
 
   return (
     <div key={user.id} className={UserCardContainer}>
@@ -25,11 +31,11 @@ const goToProfile = () => {
           text="More Information"
           type="button"
           variant="smallText"
-          onClick= {() => goToProfile()}
+          onClick={() => goToProfile()}
         />
       </div>
     </div>
   );
-}
+};
 
 export default UserCard;

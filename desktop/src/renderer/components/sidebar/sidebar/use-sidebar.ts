@@ -16,4 +16,4 @@ export function useSidebar() {
   };
 
   return { isExpanded, toggleSideBar };
-};
+}

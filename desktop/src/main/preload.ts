@@ -1,6 +1,10 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'send-token' | 'set-badge-count' | 'increment-badge-count' | 'focus-on-app';
+export type Channels =
+  | 'send-token'
+  | 'set-badge-count'
+  | 'increment-badge-count'
+  | 'focus-on-app';
 
 const electronHandler = {
   ipcRenderer: {

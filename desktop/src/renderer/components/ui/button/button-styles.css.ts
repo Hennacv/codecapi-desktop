@@ -66,12 +66,12 @@ const ButtonDelete = style({
     backgroundColor: vars.color['delete-200'],
     transition: vars.transition.defaultHover,
   },
-})
+});
 
 const ButtonSmallText = style({
   padding: vars.spacing['0.5x'] + vars.spacing['1.5x'],
   fontSize: vars.fontSize.extraSmall,
-})
+});
 
 export const ButtonVariants = styleVariants({
   small: [ButtonBase, ButtonSmall],
@@ -90,7 +90,7 @@ const Close = style({
   height: vars.spacing['1.5x'],
   width: vars.spacing['1.5x'],
   display: 'inline-flex',
-  alignItems:'center',
+  alignItems: 'center',
   justifyContent: 'center',
   position: 'absolute',
 
@@ -101,8 +101,6 @@ const Close = style({
 });
 
 export const ButtonClose = styleVariants({
-  base: [Close, {right: vars.spacing['1x']}],
-  filter: [Close, {  top: vars.spacing['1x'], right: vars.spacing['1x']}],
-
+  base: [Close, { right: vars.spacing['1x'] }],
+  filter: [Close, { top: vars.spacing['1x'], right: vars.spacing['1x'] }],
 });
-

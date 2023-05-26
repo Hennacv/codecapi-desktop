@@ -8,7 +8,7 @@ async function fetchUser(uid?: string): Promise<User> {
 }
 
 export function useGetUser(uid?: string) {
-  return useQuery(['users', uid], () => fetchUser(uid),{
+  return useQuery(['users', uid], () => fetchUser(uid), {
     enabled: !!uid,
   });
 }

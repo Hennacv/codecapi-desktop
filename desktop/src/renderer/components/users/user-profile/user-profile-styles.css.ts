@@ -1,5 +1,5 @@
-import { style } from "@vanilla-extract/css";
-import { vars } from "renderer/vars.css";
+import { style } from '@vanilla-extract/css';
+import { vars } from 'renderer/vars.css';
 
 export const UserProfileContainer = style({
   padding: vars.spacing['1.5x'],
@@ -11,7 +11,7 @@ export const UserProfileContainer = style({
   flexFlow: 'row wrap',
   alignItems: 'center',
   gap: vars.spacing['0.75x'],
-})
+});
 
 export const UserProfileInfoContainer = style({
   display: 'flex',
@@ -23,14 +23,14 @@ export const UserProfileInfoContainer = style({
       margin: '0 auto',
     },
   },
-})
+});
 
 export const UserProfileTextContainer = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['0.25x'],
   width: vars.width.fit,
-})
+});
 
 export const UserProfileImage = style({
   width: '6rem',
@@ -41,49 +41,49 @@ export const UserProfileImage = style({
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: vars.fontSize.extraLarge,
-})
+});
 
 export const UserProfileName = style({
   fontSize: vars.fontSize.large,
   fontWeight: vars.fontWeight.medium,
   color: vars.color['text-white-100'],
-})
+});
 
 export const UserProfileFunction = style({
   fontSize: vars.fontSize.medium,
   fontWeight: vars.fontWeight.light,
   color: vars.color['text-white-100'],
-})
+});
 
 export const UserProfileEmail = style({
   fontSize: vars.fontSize.small,
   fontWeight: vars.fontWeight.light,
   color: vars.color['text-white-300'],
-})
+});
 
 export const UserProfileHeader = style({
   fontSize: vars.fontSize.base,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-100'],
-})
+});
 
 export const UserCounterContainer = style({
   display: 'flex',
   flexDirection: 'row',
-  gap: vars.spacing["2x"],
+  gap: vars.spacing['2x'],
   '@media': {
     'screen and (max-width: 882px)': {
       margin: '0 auto',
     },
   },
   marginLeft: 'auto',
-})
+});
 
 export const UserCounterTitle = style({
   fontSize: vars.fontSize.base,
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-300'],
-})
+});
 
 export const UserCounter = style({
   fontSize: vars.fontSize.xxLarge,
@@ -91,8 +91,8 @@ export const UserCounter = style({
   color: vars.color['text-white-100'],
   padding: vars.spacing['0.5x'],
   textAlign: 'center',
-})
+});
 
 export const UserProfileEditButton = style({
   marginTop: vars.spacing['1.25x'],
-})
+});

@@ -22,12 +22,14 @@ const UserInfo = ({ isExpanded, to }: UserInfoProps) => {
         <div className={UserInfoImage}>
           <p>{user.name.substring(0, 1)}</p>
         </div>
-        <div className={isExpanded ? UserInfoStyle.basic : UserInfoStyle.collapsed}>
+        <div
+          className={isExpanded ? UserInfoStyle.basic : UserInfoStyle.collapsed}
+        >
           <p className={UserText.name}>{user.name}</p>
         </div>
       </Link>
     </div>
   );
-}
+};
 
 export default UserInfo;

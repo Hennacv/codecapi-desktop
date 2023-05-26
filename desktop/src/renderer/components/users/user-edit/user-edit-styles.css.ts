@@ -1,5 +1,5 @@
-import { style } from "@vanilla-extract/css";
-import { vars } from "renderer/vars.css";
+import { style } from '@vanilla-extract/css';
+import { vars } from 'renderer/vars.css';
 
 export const ProfileFormContainer = style({
   width: vars.width.full,
@@ -34,13 +34,13 @@ export const ProfileFormItem = style({
 });
 
 export const ProfileFormLabel = style({
-    fontSize: vars.fontSize.base,
-    fontWeight: vars.fontWeight.regular,
-    color: vars.color['text-white-100'],
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: vars.spacing['0.5x'],
+  fontSize: vars.fontSize.base,
+  fontWeight: vars.fontWeight.regular,
+  color: vars.color['text-white-100'],
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: vars.spacing['0.5x'],
 });
 
 export const SkillsContainer = style({
@@ -63,4 +63,4 @@ export const SkillsList = style({
 
 export const SkillHidden = style({
   visibility: 'hidden',
-})
+});

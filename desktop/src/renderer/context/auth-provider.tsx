@@ -42,8 +42,8 @@ function AuthProvider(props: Props) {
       }
     });
   }, []);
-  
-  if(!user || !firebaseUser) return null;
+
+  if (!user || !firebaseUser) return null;
 
   const value = {
     firebaseUser,

@@ -31,7 +31,7 @@ const router = createMemoryRouter([
           },
           {
             path: 'edit/:id',
-            element: <QuestionEdit />
+            element: <QuestionEdit />,
           },
         ],
       },

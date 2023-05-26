@@ -8,7 +8,7 @@ async function fetchProfile(id: number): Promise<Profile> {
 }
 
 export function useGetProfile(id: number) {
-  return useQuery(['profile', id], () => fetchProfile(id),{
+  return useQuery(['profile', id], () => fetchProfile(id), {
     enabled: !!id,
   });
 }

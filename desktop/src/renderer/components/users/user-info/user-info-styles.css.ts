@@ -20,8 +20,8 @@ export const UserInfoCard = style({
   width: vars.width.full,
   textDecoration: 'none',
   ':hover': {
-		backgroundColor: vars.color['dark-500'],
-	},
+    backgroundColor: vars.color['dark-500'],
+  },
 });
 
 export const UserInfoImage = style({

@@ -18,7 +18,7 @@ const QuestionFormHeaderBase = style({
 export const QuestionFormHeader = styleVariants({
   basic: [QuestionFormHeaderBase],
   spacing: [QuestionFormHeaderBase, { paddingTop: vars.spacing['0.75x'] }],
-})
+});
 
 export const QuestionFormSection = style({
   display: 'flex',
@@ -101,4 +101,4 @@ export const NewQuestionButtonPosition = style({
 
 export const QuestionHidden = style({
   visibility: 'hidden',
-})
+});

@@ -45,12 +45,17 @@ const QuestionList = () => {
       <div className={SFContainer}>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <Button
-            text="Filter"
-            variant="small"
-            type="button"
-            onClick={() => setIsShown(true)}
-          />
-        <Filter tags={tags} setTags={setTags} isShown={isShown} onClose={() => setIsShown(false)}/>
+          text="Filter"
+          variant="small"
+          type="button"
+          onClick={() => setIsShown(true)}
+        />
+        <Filter
+          tags={tags}
+          setTags={setTags}
+          isShown={isShown}
+          onClose={() => setIsShown(false)}
+        />
       </div>
       <div className={NewQuestionButtonPosition}>
         <Button

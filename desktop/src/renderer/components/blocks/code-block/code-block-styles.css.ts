@@ -27,7 +27,7 @@ const CodeBlockInputRead = style({
 export const CodeBlockVariants = styleVariants({
   edit: [CodeBlockInput],
   read: [CodeBlockInput, CodeBlockInputRead],
-})
+});
 
 export const CodeBlockHeader = style({
   display: 'flex',
