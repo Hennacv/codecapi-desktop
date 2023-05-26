@@ -69,7 +69,7 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
 
   return (
     <>
-      {comments.length > 0 ? (
+      {!!comments.length && (
         <ul className={CommentListContainer} ref={listRef}>
           {comments.sort((a, b) => a.id - b.id).map((comment, index) => (
             <li key={index} className={CommentListItem}>
@@ -80,15 +80,15 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
               />
             </li>
           ))}
-          <canvas
+          <span
             className={CommentListLine}
             ref={lineRef}
             style={{
               height: lineHeight !== null ? `${lineHeight + 32}px` : '0',
             }}
-          ></canvas>
+          ></span>
         </ul>
-      ) : null}
+      )}
       {!newCommentActive ? (
         <div
           className={classNames(CommentListNewVariants.default, {
@@ -103,12 +103,12 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
             <IconAdd variant="small" />
           </Button>
           <p>New comment</p>
-          {comments.length === 0 ? (
-            <canvas
+          {comments.length === 0 && (
+            <span
               className={CommentListLine}
               style={{ height: '1rem' }}
-            ></canvas>
-          ) : null}
+            ></span>
+          )}
         </div>
       ) : (
         <form
@@ -135,12 +135,12 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
             variant="inline"
             onChange={(event) => setNewCommentValue(event.target.value)}
           />
-          {comments.length === 0 ? (
-            <canvas
+          {comments.length === 0 && (
+            <span
               className={CommentListLine}
               style={{ height: '1rem' }}
-            ></canvas>
-          ) : null}
+            ></span>
+          )}
         </form>
       )}
     </>

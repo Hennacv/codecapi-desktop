@@ -50,13 +50,13 @@ const CommentCard = ({ comment, userUid, refetch }: CommentCardProps) => {
       <div className={CommentCardValue}>
         <p>{comment.comment}</p>
       </div>
-      {comment.user.uid === userUid ? (
+      {comment.user.uid === userUid && (
         <div className={CommentCardDelete}>
           <Button type="button" variant="comment" onClick={handleDeleteComment}>
             <IconDelete variant="small" />
           </Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
