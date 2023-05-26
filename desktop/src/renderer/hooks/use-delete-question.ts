@@ -1,19 +1,15 @@
-import { useMutation, useQueryClient } from 'react-query';
-import { useNavigate } from 'react-router-dom';
-import api from 'renderer/utils/api';
+import { useMutation, useQueryClient } from "react-query"
+import api from "renderer/utils/api";
 
-export const useDeletePost = () => {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
+interface DeleteQuestionProps {
+  onSuccess: () => void;
+}
+
+export function useDeleteQuestion({ onSuccess }: DeleteQuestionProps) {
   return useMutation(
     (id: string | undefined) => {
-      return api.delete(`http://localhost:3000/questions/${id}`);
+      return api.delete(`/questions/${id}`);
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['questions']);
-        navigate('/questions');
-      },
-    }
+    { onSuccess }
   );
-};
+}
