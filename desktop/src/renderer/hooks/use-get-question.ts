@@ -8,7 +8,7 @@ async function fetchQuestion(id: number): Promise<Question> {
 }
 
 export function useGetQuestion(id: number) {
-  return useQuery(['questions', id], () => fetchQuestion(id),{
+  return useQuery(['questions', id], () => fetchQuestion(id), {
     enabled: !!id,
   });
 }

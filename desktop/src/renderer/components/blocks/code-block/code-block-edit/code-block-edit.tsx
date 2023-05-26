@@ -22,7 +22,7 @@ interface CodeBlockEditProps {
     value: string,
     language: string
   ) => void;
-  removeBlock: (position: number) => void
+  removeBlock: (position: number) => void;
   value: string;
   language: string;
 }
@@ -34,10 +34,11 @@ const CodeBlockEdit = ({
   value,
   language,
 }: CodeBlockEditProps) => {
-
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
 
-  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
+  const handleEditorDidMount = (
+    editor: monaco.editor.IStandaloneCodeEditor
+  ) => {
     editorRef.current = editor;
 
     editor.layout({
@@ -51,14 +52,14 @@ const CodeBlockEdit = ({
         height: Math.min(1000, editorRef.current.getContentHeight()),
       });
     });
-  }
+  };
 
   const updateParent = (position: number, language: string) => {
     if (editorRef.current) {
       const value = editorRef.current.getValue();
       updateDynamicBlock(position, value, language);
     }
-  }
+  };
 
   return (
     <>
@@ -68,8 +69,12 @@ const CodeBlockEdit = ({
           <span className={CodeBlockTitle}>(block: {position})</span>
         </label>
         <div className={ButtonClose.base}>
-          <Button variant="reset" type="button" onClick={() => removeBlock(position)}>
-            <IconRemove variant="small"/>
+          <Button
+            variant="reset"
+            type="button"
+            onClick={() => removeBlock(position)}
+          >
+            <IconRemove variant="small" />
           </Button>
         </div>
       </div>

@@ -10,7 +10,9 @@ import Loader from './components/shared/loader';
 import Sidebar from './components/sidebar/sidebar/sidebar';
 import ServerSideEventHandler from './server-events/server-sent-event-handler';
 
-export const AuthContext = createContext<AuthContextData|undefined>(undefined);
+export const AuthContext = createContext<AuthContextData | undefined>(
+  undefined
+);
 
 function Root() {
   return (
@@ -18,7 +20,7 @@ function Root() {
       <ServerSideEventHandler />
       <div className={mainContainer}>
         <Sidebar />
-        <div className={contentContainer} id='main'>
+        <div className={contentContainer} id="main">
           <Loader />
           <div>
             <Outlet />

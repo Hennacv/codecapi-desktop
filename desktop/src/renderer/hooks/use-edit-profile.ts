@@ -1,20 +1,20 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import api from 'renderer/utils/api';
-import { QuestionDto } from 'renderer/utils/types';
+import { EditProfileDto } from 'renderer/utils/types';
 
-export const useEditQuestion = (id?: number) => {
+export const useEditProfile = (id?: number) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   if (!id) return;
   return useMutation(
-    (questionData: QuestionDto) => {
-      return api.patch(`/questions/${id}`, questionData);
+    (userData: EditProfileDto) => {
+      return api.patch(`/users/${id}`, userData);
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(['questions']);
-        navigate('/');
+        queryClient.invalidateQueries(['users']);
+        navigate(`/users/${id}`);
       },
     }
   );

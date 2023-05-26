@@ -35,15 +35,15 @@ ipcMain.on('ipc-example', async (event, arg) => {
 
 ipcMain.on('increment-badge-count', () => {
   app.setBadgeCount(app.getBadgeCount() + 1);
-}); 
+});
 
 ipcMain.on('set-badge-count', (event, count) => {
   app.setBadgeCount(count);
-}); 
+});
 
 ipcMain.on('focus-on-app', () => {
   app.focus();
-}); 
+});
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');

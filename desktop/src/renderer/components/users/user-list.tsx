@@ -9,11 +9,13 @@ const UserList = () => {
 
   return (
     <div className={UserCardsContainer}>
-      {users.map((user: User, index) => (
-        <UserCard user={user} key={index}/>
-      ))}
+      {users
+        .sort((a, b) => a.id - b.id)
+        .map((user: User, index) => (
+          <UserCard user={user} key={index} />
+        ))}
     </div>
   );
-}
+};
 
 export default UserList;

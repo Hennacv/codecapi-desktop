@@ -1,5 +1,5 @@
-import { style, styleVariants } from "@vanilla-extract/css";
-import { vars } from "renderer/vars.css";
+import { style, styleVariants } from '@vanilla-extract/css';
+import { vars } from 'renderer/vars.css';
 
 export const InputTextBase = style({
   backgroundColor: vars.color['dark-200'],
@@ -12,12 +12,12 @@ export const InputTextExtraSmall = style({
   height: 37,
   width: '70%',
   padding: vars.spacing['0.5x'],
-  fontSize: vars.fontSize.small
-})
+  fontSize: vars.fontSize.small,
+});
 
 export const InputTextSmall = style({
-  padding: vars.spacing["0.75x"],
-  fontSize: vars.fontSize.small
+  padding: vars.spacing['0.75x'],
+  fontSize: vars.fontSize.small,
 });
 
 export const InputTextDefault = style({

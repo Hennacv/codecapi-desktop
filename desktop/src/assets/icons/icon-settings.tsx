@@ -31,8 +31,7 @@ const IconSettings = ({ variant }: IconSettingsProps) => {
           >
             <stop stopColor="#FDFDFD" />
             <stop offset="1" stopColor="#929292" />
-            <stop offset="1" stopColor
-            ="#A4A4A4" />
+            <stop offset="1" stopColor="#A4A4A4" />
           </linearGradient>
         </defs>
       </svg>

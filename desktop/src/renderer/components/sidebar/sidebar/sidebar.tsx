@@ -30,7 +30,7 @@ const Sidebar = () => {
         className={
           isExpanded ? ToggleContainer.basic : ToggleContainer.collapsed
         }
-        >
+      >
         <RiArrowDropLeftLine className={SideToggle} onClick={toggleSideBar} />
       </div>
       <aside className={AsideStyles}>
@@ -49,7 +49,7 @@ const Sidebar = () => {
           </ul>
         </div>
         <div>
-          <UserInfo isExpanded={isExpanded} to={`users/${user!.id}`}/>
+          <UserInfo isExpanded={isExpanded} to={`users/${user!.id}`} />
         </div>
       </aside>
     </div>

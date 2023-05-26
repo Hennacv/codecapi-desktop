@@ -1,5 +1,11 @@
-import QuestionForm from "../question-form/question-form"
-import { QuestionFormContainer, QuestionFormDescription, QuestionFormHeader, QuestionFormItem, QuestionFormTitle } from "../question-form/question-form-styles.css"
+import QuestionForm from '../question-form/question-form';
+import {
+  QuestionFormContainer,
+  QuestionFormDescription,
+  QuestionFormHeader,
+  QuestionFormItem,
+  QuestionFormTitle,
+} from '../question-form/question-form-styles.css';
 
 const NewQuestion = () => {
   return (
@@ -10,9 +16,9 @@ const NewQuestion = () => {
           Use the form below to submit a question to all CodeCapi employees.
         </p>
       </header>
-      <QuestionForm blocks={[]} title="" tags={[]}/>
+      <QuestionForm blocks={[]} title="" tags={[]} />
     </div>
-  )
-}
+  );
+};
 
 export default NewQuestion;

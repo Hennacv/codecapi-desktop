@@ -1,7 +1,12 @@
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SideItem, SideItemSelected, SideLink, SideLinkContent } from './sidebar-link-styles.css';
+import {
+  SideItem,
+  SideItemSelected,
+  SideLink,
+  SideLinkContent,
+} from './sidebar-link-styles.css';
 
 interface SidebarLinkProps {
   to: string;
@@ -17,12 +22,10 @@ const SidebarLink = ({ to, children }: SidebarLinkProps) => {
   return (
     <li className={sideItem}>
       <Link className={SideLink} to={to}>
-        <div className={SideLinkContent}>
-          {children}
-        </div>
+        <div className={SideLinkContent}>{children}</div>
       </Link>
     </li>
   );
-}
+};
 
 export default SidebarLink;

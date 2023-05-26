@@ -7,14 +7,20 @@ interface SelectProps {
   options: Option[];
   variant: keyof typeof SelectVariants;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  language: string
+  language: string;
 }
 
 const Select = ({ options, variant, onChange, language }: SelectProps) => {
   return (
     <select className={SelectVariants[variant]} onChange={onChange}>
       {options.map((option, index) => (
-        <option key={index} value={option.value as string} selected={option.value === language}>{option.label.charAt(0).toUpperCase() + option.label.slice(1)}</option>
+        <option
+          key={index}
+          value={option.value as string}
+          selected={option.value === language}
+        >
+          {option.label.charAt(0).toUpperCase() + option.label.slice(1)}
+        </option>
       ))}
     </select>
   );

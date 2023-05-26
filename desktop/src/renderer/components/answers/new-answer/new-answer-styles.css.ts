@@ -15,7 +15,7 @@ export const NewAnswerForm = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['2x'],
-})
+});
 
 export const NewAnswerTitle = style({
   fontSize: vars.fontSize.extraLarge,

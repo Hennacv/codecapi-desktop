@@ -37,27 +37,31 @@ const QuestionDetail = () => {
           type="button"
           variant="small"
           onClick={() => navigate('/questions')}
-          />
+        />
 
         {question?.user.uid === user?.uid && (
-        <div className={QuestionDetailsButtonContainer.side}>
-          <Button
-            type="button"
-            variant="smallSquare"
-            onClick={() => navigate(`/questions/edit/${id}`)}
-          >
-            <IconEdit variant="default"/>
-          </Button>
-          <Button
-            type="button"
-            variant="smallSquare"
-            onClick={() => setIsShown(true)}
-          >
-            <IconDelete variant="default"/>
-          </Button>
-          <QuestionDelete id={id} isShown={isShown} onClose={() => setIsShown(false)}/>
-        </div>
-          ) }
+          <div className={QuestionDetailsButtonContainer.side}>
+            <Button
+              type="button"
+              variant="smallSquare"
+              onClick={() => navigate(`/questions/edit/${id}`)}
+            >
+              <IconEdit variant="default" />
+            </Button>
+            <Button
+              type="button"
+              variant="smallSquare"
+              onClick={() => setIsShown(true)}
+            >
+              <IconDelete variant="default" />
+            </Button>
+            <QuestionDelete
+              id={id}
+              isShown={isShown}
+              onClose={() => setIsShown(false)}
+            />
+          </div>
+        )}
       </div>
       <QuestionCard question={question} showText refetch={refetch} />
       <div className={QuestionDetailsAnswerContainer}>
@@ -67,9 +71,9 @@ const QuestionDetail = () => {
           {question.answer.length}
         </div>
       </div>
-      {!!question.answer.length &&
+      {!!question.answer.length && (
         <AnswerList answers={question.answer} refetch={refetch} />
-      }
+      )}
       <NewAnswer id={question.id} refetch={refetch} />
     </div>
   );

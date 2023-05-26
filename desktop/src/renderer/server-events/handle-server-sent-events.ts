@@ -3,7 +3,10 @@ import { NavigateFunction } from 'react-router';
 import { MessageEvent } from 'renderer/utils/types';
 import { showNotification } from 'renderer/notifications/show-notification';
 
-export const initializeServerSentEventsHandler = (navigate: NavigateFunction, token: string) => {
+export const initializeServerSentEventsHandler = (
+  navigate: NavigateFunction,
+  token: string
+) => {
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -27,7 +30,7 @@ export const initializeServerSentEventsHandler = (navigate: NavigateFunction, to
           title: data.user.userName,
           message: 'Replied to your question.',
           navigate: navigate,
-          link: `/questions/${data.questionId}`
+          link: `/questions/${data.questionId}`,
         });
         break;
       default:

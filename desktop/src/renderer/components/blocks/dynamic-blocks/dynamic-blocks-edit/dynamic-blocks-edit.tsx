@@ -7,13 +7,10 @@ interface DynamicBlocksEditProps {
   field: string;
   blocks: Block[];
   updateFormValue: (field: string, value: any) => void;
-  removeBlock: (position: number) => void
+  removeBlock: (position: number) => void;
 }
 
-const DynamicBlocksEdit = ({
-  blocks,
-  removeBlock
-}: DynamicBlocksEditProps) => {
+const DynamicBlocksEdit = ({ blocks, removeBlock }: DynamicBlocksEditProps) => {
   const updateDynamicBlock = (
     position: number,
     value: string,
@@ -22,12 +19,12 @@ const DynamicBlocksEdit = ({
     const indexSelectedBlock = blocks.findIndex(
       (block) => block.position === position
     );
-    const block = blocks[indexSelectedBlock]
+    const block = blocks[indexSelectedBlock];
 
     block.value = value;
-    if(isCodeBlock(block) ){
+    if (isCodeBlock(block)) {
       block.language = fieldToUpdate;
-    }else{
+    } else {
       block.contents = fieldToUpdate;
     }
   };

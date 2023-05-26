@@ -7,11 +7,7 @@ interface IconQuestionsGreyProps {
 const IconQuestionsGrey = ({ variant }: IconQuestionsGreyProps) => {
   return (
     <div className={IconVariants[variant]}>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

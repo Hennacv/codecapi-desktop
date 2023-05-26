@@ -1,14 +1,21 @@
-import { useNavigate, useParams } from "react-router-dom";
-import Button from "renderer/components/ui/button/button";
-import { useGetQuestion } from "renderer/hooks/use-get-question";
-import QuestionForm from "../question-form/question-form";
-import { QuestionFormContainer, QuestionFormDescription, QuestionFormHeader, QuestionFormTitle } from "../question-form/question-form-styles.css";
+import { useNavigate, useParams } from 'react-router-dom';
+import Button from 'renderer/components/ui/button/button';
+import { useGetQuestion } from 'renderer/hooks/use-get-question';
+import QuestionForm from '../question-form/question-form';
+import {
+  QuestionFormContainer,
+  QuestionFormDescription,
+  QuestionFormHeader,
+  QuestionFormTitle,
+} from '../question-form/question-form-styles.css';
 
 const QuestionEdit = () => {
   const { id } = useParams();
-  const { data,  isLoading } = useGetQuestion(Number(id));
+  const { data, isLoading } = useGetQuestion(Number(id));
   const navigate = useNavigate();
-  if(!data){ return null}
+  if (!data) {
+    return null;
+  }
 
   return (
     <div>
@@ -28,12 +35,17 @@ const QuestionEdit = () => {
               Use the form below to edit your question.
             </p>
           </header>
-          <QuestionForm title={data.title} blocks={data.blocks} tags={data.tags} id={data.id} isEditing={true}/>
+          <QuestionForm
+            title={data.title}
+            blocks={data.blocks}
+            tags={data.tags}
+            id={data.id}
+            isEditing={true}
+          />
         </div>
       )}
     </div>
-  )
-
+  );
 };
 
 export default QuestionEdit;

@@ -69,6 +69,6 @@ export const SideList = style({
 });
 
 globalStyle(`${SideStyles.collapsed} span`, {
-	display: 'none',
-	overflow: 'hidden',
+  display: 'none',
+  overflow: 'hidden',
 });
