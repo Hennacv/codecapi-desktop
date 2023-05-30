@@ -95,7 +95,7 @@ export const QuestionFormBlocksOptions = style({
 
 export const NewQuestionButtonPosition = style({
   display: 'flex',
-  justifyContent: 'flex-end',
+  justifyContent: 'space-between',
   marginBottom: vars.spacing['1.25x'],
 });
 

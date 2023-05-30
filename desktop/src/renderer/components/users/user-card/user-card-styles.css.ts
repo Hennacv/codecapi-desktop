@@ -5,6 +5,7 @@ export const UserCardsContainer = style({
   display: 'flex',
   flexFlow: 'row wrap',
   gap: vars.spacing['1x'],
+  marginTop: vars.spacing['1.25x'],
 });
 
 export const UserCardContainer = style({

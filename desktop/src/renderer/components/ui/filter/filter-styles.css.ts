@@ -4,10 +4,9 @@ import { vars } from 'renderer/vars.css';
 export const FilterTermContainer = style({
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center',
   flexWrap: 'wrap',
   gap: vars.spacing['0.5x'],
-  marginBottom: vars.spacing['1.25x'],
+  minHeight: 33,
 })
 
 export const FilterTitle = style({
