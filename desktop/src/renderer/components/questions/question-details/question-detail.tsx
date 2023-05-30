@@ -72,7 +72,7 @@ const QuestionDetail = () => {
         </div>
       </div>
       {!!question.answer.length && (
-        <AnswerList answers={question.answer} refetch={refetch} />
+        <AnswerList answers={question.answer} refetch={refetch} userId={question.user.id}/>
       )}
       <NewAnswer id={question.id} refetch={refetch} />
     </div>

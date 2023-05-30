@@ -39,6 +39,8 @@ export interface QuestionDto {
 export interface AddAnswerDto {
   blocks: Block[];
   questionId: number;
+  accepted: boolean;
+  answerId?: number;
 }
 
 export interface EditProfileDto {
@@ -107,6 +109,8 @@ export interface Answer {
   user: User;
   votes: Vote[],
   comments: Comment[];
+  accepted: boolean;
+  questionId: number;
 }
 
 export interface Comment {

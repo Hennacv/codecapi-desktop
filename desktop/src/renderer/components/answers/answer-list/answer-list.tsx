@@ -4,13 +4,14 @@ import AnswerCard from '../answer-card/answer-card';
 interface AnswerListProps {
   answers: Answer[];
   refetch: () => void;
+  userId: number;
 }
 
-const AnswerList = ({ answers, refetch }: AnswerListProps) => {
+const AnswerList = ({ answers, refetch, userId }: AnswerListProps) => {
   return (
     <div className={AnswerListContainer}>
       {answers.map((answer: Answer) => (
-        <AnswerCard key={answer.id} answer={answer} refetch={refetch} />
+        <AnswerCard key={answer.id} answer={answer} refetch={refetch} userId={userId}/>
       ))}
     </div>
   );

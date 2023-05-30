@@ -4,33 +4,45 @@ import {
   AnswerCardHeader,
   AnswerCardHeaderInfo,
   AnswerContainer,
+  AnswerCardButtonContainer,
 } from './answer-card-styling.css';
 
 import dayjs from 'renderer/utils/dayjs';
 import DynamicBlocksRead from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-read/dynamic-blocks-read';
 import VoteList from 'renderer/components/votes/vote-list';
 import CommentList from 'renderer/components/comments/comment-list/comment-list';
+import AnswerAccept from '../answer-accepted/answer-accepted';
 
 interface AnswerCardProps {
   answer: Answer;
   refetch: () => void;
+  userId: number;
 }
 
-const AnswerCard = ({ answer, refetch }: AnswerCardProps) => {
+const AnswerCard = ({ answer, refetch, userId }: AnswerCardProps) => {
   return (
     <div className={AnswerContainer}>
-      <div className={AnswerCardContainer}>
+      <div className={
+            answer.accepted ? AnswerCardContainer.active : AnswerCardContainer.default
+          }>
         <div className={AnswerCardHeader}>
           <div className={AnswerCardHeaderInfo}>
             {answer.user.name}
             <span>-</span>
             {dayjs(answer.createdAt).fromNow()}
           </div>
-          <VoteList
-            votes={answer.votes}
-            answerId={answer.id}
-            refetch={refetch}
-          />
+          <div className={AnswerCardButtonContainer}>
+            <AnswerAccept
+              userId={userId}
+              answer={answer}
+              refetch={refetch}
+              />
+            <VoteList
+              votes={answer.votes}
+              answerId={answer.id}
+              refetch={refetch}
+              />
+          </div>
         </div>
         {!!answer.blocks.length && <DynamicBlocksRead blocks={answer.blocks} />}
       </div>
