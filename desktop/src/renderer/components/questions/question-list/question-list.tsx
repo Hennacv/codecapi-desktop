@@ -9,6 +9,8 @@ import Button from 'renderer/components/ui/button/button';
 import Filter from 'renderer/components/ui/filter/filter';
 import Search from 'renderer/components/ui/search/search';
 import { QuestionListContainer } from './question-list-styles.css';
+import { FilterTermContainer } from 'renderer/components/ui/filter/filter-styles.css';
+import TagCard from 'renderer/components/tags/tag-card/tag-card';
 
 const QuestionList = () => {
   const navigate = useNavigate();
@@ -59,6 +61,20 @@ const QuestionList = () => {
         />
       </div>
       <div className={NewQuestionButtonPosition}>
+        <div className={FilterTermContainer}>
+          {!!tags.length && (
+            <>
+              {tags.map((tag) => (
+                <TagCard
+                  key={tag.id}
+                  title={tag.title}
+                  color={tag.color}
+                  variant="small"
+                />
+              ))}
+            </>
+          )}
+        </div>
         <Button
           text="+ New Question"
           type="button"
