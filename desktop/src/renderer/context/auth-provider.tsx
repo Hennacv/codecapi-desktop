@@ -7,6 +7,7 @@ import { AuthContext } from 'renderer/root';
 import { User } from '../utils/types';
 
 import api from 'renderer/utils/api';
+import Login from 'renderer/components/auth/login';
 
 interface Props {
   children: ReactNode;
@@ -37,13 +38,9 @@ function AuthProvider(props: Props) {
       setFirebaseUser(user);
       if (user) {
         navigate('/questions');
-      } else {
-        navigate('/auth/login');
       }
     });
-  }, []);
-
-  if (!user || !firebaseUser) return null;
+  }, [navigate]);
 
   const value = {
     firebaseUser,
@@ -51,6 +48,12 @@ function AuthProvider(props: Props) {
     signIn,
     signOut,
   };
+  if (!user || !firebaseUser)
+    return (
+      <AuthContext.Provider value={value}>
+        <Login />
+      </AuthContext.Provider>
+    );
 
   return (
     <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
