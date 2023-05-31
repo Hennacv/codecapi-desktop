@@ -206,6 +206,7 @@
     ],
     "afterSign": ".erb/scripts/notarize.js",
     "mac": {
+      "notarize": false,
       "target": {
         "target": "DMG",
         "arch": [
