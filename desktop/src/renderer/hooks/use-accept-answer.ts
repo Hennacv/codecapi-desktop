@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 import api from 'renderer/utils/api';
-import { AddAnswerDto } from 'renderer/utils/types';
+import { UpdateAnswerDto } from 'renderer/utils/types';
 
 interface AddAcceptedProps {
   onSuccess: () => void;
@@ -9,7 +9,7 @@ interface AddAcceptedProps {
 
 export function useAcceptAnswer({ onSuccess, answerId }: AddAcceptedProps) {
   return useMutation(
-    (data: AddAnswerDto) => {
+    (data: UpdateAnswerDto) => {
       return api.patch(`/answer/${answerId}`, data);
     },
     { onSuccess }

@@ -8,9 +8,13 @@ interface AnswerListProps {
 }
 
 const AnswerList = ({ answers, refetch, userId }: AnswerListProps) => {
+
+
   return (
     <div className={AnswerListContainer}>
-      {answers.map((answer: Answer) => (
+      {answers
+        .sort((a, b) => (a.accepted === b.accepted) ? 0 : a.accepted === true ? -1 : 1)
+        .map((answer: Answer) => (
         <AnswerCard key={answer.id} answer={answer} refetch={refetch} userId={userId}/>
       ))}
     </div>

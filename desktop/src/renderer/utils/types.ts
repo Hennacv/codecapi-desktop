@@ -39,10 +39,12 @@ export interface QuestionDto {
 export interface AddAnswerDto {
   blocks: Block[];
   questionId: number;
+}
+
+export interface UpdateAnswerDto extends AddAnswerDto {
   accepted: boolean;
   answerId?: number;
 }
-
 export interface EditProfileDto {
   name: string;
   tags: { id: number }[];

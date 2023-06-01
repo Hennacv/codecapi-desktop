@@ -24,6 +24,7 @@ interface NewAnswerProps {
 interface AddAnswerForm {
   blocks: Block[];
   questionId: number;
+  accepted: boolean;
 }
 
 const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
@@ -35,6 +36,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
   const [form, setForm] = useState<AddAnswerForm>({
     blocks: [],
     questionId: id,
+    accepted: false
   });
 
   const updateFormValue = (field: string, value: any) => {
