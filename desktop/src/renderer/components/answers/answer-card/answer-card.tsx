@@ -17,14 +17,26 @@ interface AnswerCardProps {
   answer: Answer;
   refetch: () => void;
   userId: number;
+  acceptedCheck: () => void;
+  acceptedAnswer: boolean;
 }
 
-const AnswerCard = ({ answer, refetch, userId }: AnswerCardProps) => {
+const AnswerCard = ({
+  answer,
+  refetch,
+  userId,
+  acceptedCheck,
+  acceptedAnswer,
+}: AnswerCardProps) => {
   return (
     <div className={AnswerContainer}>
-      <div className={
-            answer.accepted ? AnswerCardContainer.active : AnswerCardContainer.default
-          }>
+      <div
+        className={
+          answer.accepted
+            ? AnswerCardContainer.active
+            : AnswerCardContainer.default
+        }
+      >
         <div className={AnswerCardHeader}>
           <div className={AnswerCardHeaderInfo}>
             {answer.user.name}
@@ -36,17 +48,23 @@ const AnswerCard = ({ answer, refetch, userId }: AnswerCardProps) => {
               userId={userId}
               answer={answer}
               refetch={refetch}
-              />
+              acceptedCheck={acceptedCheck}
+              acceptedAnswer={acceptedAnswer}
+            />
             <VoteList
               votes={answer.votes}
               answerId={answer.id}
               refetch={refetch}
-              />
+            />
           </div>
         </div>
         {!!answer.blocks.length && <DynamicBlocksRead blocks={answer.blocks} />}
       </div>
-      <CommentList comments={answer.comments} answerId={answer.id}  refetch={refetch} />
+      <CommentList
+        comments={answer.comments}
+        answerId={answer.id}
+        refetch={refetch}
+      />
     </div>
   );
 };
