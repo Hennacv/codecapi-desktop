@@ -8,6 +8,7 @@ const Modal = style({
   opacity: 0,
   transition: `all 0.3s ease-in-out`,
   pointerEvents: 'none',
+  zIndex: 5,
 });
 
 const Show = style({

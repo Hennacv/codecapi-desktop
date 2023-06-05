@@ -5,13 +5,13 @@ export const DeleteQuestionMessage = style({
   display: 'flex',
   flexFlow: 'row wrap',
   justifyContent: 'center',
-  marginTop: vars.spacing['1.25x'],
+  marginTop: vars.spacing['0.75x'],
 });
 
 export const DeleteButtonContainer = style({
   display: 'flex',
   flexDirection: 'row',
-  gap: vars.spacing['0.25x'],
+  gap: vars.spacing['1x'],
   justifyContent: 'center',
-  marginTop: vars.spacing['1x'],
+  marginTop: vars.spacing['0.5x'],
 });

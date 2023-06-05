@@ -4,9 +4,6 @@ import { vars } from 'renderer/vars.css';
 export const SideItem = style({
   height: vars.spacing['3x'],
   margin: vars.spacing['0x'] + vars.spacing['1x'],
-  borderStyle: 'solid',
-  borderWidth: 'thin',
-  borderColor: 'transparent',
   borderRadius: 10,
   overflow: 'hidden',
   display: 'flex',
@@ -17,7 +14,6 @@ export const SideItem = style({
 });
 
 export const SideItemSelected = style({
-  borderColor: vars.color['dark-600'],
   backgroundColor: vars.color['dark-400'],
 });
 
