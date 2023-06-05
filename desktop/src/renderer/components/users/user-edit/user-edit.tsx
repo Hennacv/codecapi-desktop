@@ -20,6 +20,7 @@ import Button from 'renderer/components/ui/button/button';
 import TagButton from 'renderer/components/tags/tag-button/tag-button';
 import IconRemove from 'assets/icons/icon-remove';
 import IconAdd from 'assets/icons/icon-add';
+import { useTranslation } from 'react-i18next';
 
 const UserEditWrapper = () => {
   const { id } = useParams();
@@ -36,6 +37,7 @@ interface EditProfileProps {
 }
 
 const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
+  const {t} = useTranslation();
   const editProfile = useEditProfile(parseInt(id!));
   const [userProfile, setUserProfile] = useState<EditProfileDto>(user);
 
@@ -73,14 +75,12 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
   return (
     <form className={ProfileFormContainer}>
       <header className={ProfileFormHeader}>
-        <h1 className={ProfileFormTitle}>Edit Profile</h1>
-        <p className={ProfileFormDescription}>
-          Use the form below to edit your profile.
-        </p>
+        <h1 className={ProfileFormTitle}>{t('userEdit.pageTitle')}</h1>
+        <p className={ProfileFormDescription}>{t('userEdit.pageDescription')}</p>
       </header>
       <div className={ProfileFormItem}>
         <label className={ProfileFormLabel} htmlFor="title">
-          Name *
+          {t('userEdit.titleName')}
         </label>
         <InputText
           type="text"
@@ -103,7 +103,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
         />
       </div>
       <div className={ProfileFormItem}>
-        <label className={ProfileFormLabel}>Skills</label>
+        <label className={ProfileFormLabel}>{t('userEdit.titleTags')}</label>
         <div className={tags ? SkillsList : SkillHidden}>
           {tags.map((tag: Tag) => (
             <TagButton
@@ -117,7 +117,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
             </TagButton>
           ))}
         </div>
-        <label className={ProfileFormDescription}>Selected skills:</label>
+        <label className={ProfileFormDescription}>{t('userEdit.subtitleTags')}</label>
         <div className={SkillsContainer}>
           <div className={SkillsList}>
             {selectedTags.map((tag: Tag) => (
@@ -136,7 +136,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
       </div>
       <div className={ProfileFormItem}>
         <Button
-          text="Edit"
+          text={t('userEdit.buttonSubmit')}
           type="submit"
           variant="defaultDisabled"
           onClick={(event) => onEdit(userProfile, event)}

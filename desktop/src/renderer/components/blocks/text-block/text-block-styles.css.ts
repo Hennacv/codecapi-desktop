@@ -8,7 +8,6 @@ export const ContainerStyles = style({
 globalStyle(`${ContainerStyles} .ql-toolbar`, {
   borderTopLeftRadius: vars.borderRadius.medium,
   borderTopRightRadius: vars.borderRadius.medium,
-  border: `2px solid ${vars.color['dark-300']}`,
   backgroundColor: vars.color['dark-300'],
 });
 
@@ -33,6 +32,14 @@ globalStyle(`${ContainerStyles} .ql-toolbar .ql-formats button`, {
   borderRadius: vars.borderRadius.small,
 });
 
+globalStyle(`${ContainerStyles} .ql-toolbar.ql-snow`, {
+  border: `2px solid ${vars.color['dark-300']}`,
+});
+
+globalStyle(`${ContainerStyles} .ql-container.ql-snow`, {
+  border: `2px solid ${vars.color['dark-300']}`,
+});
+
 globalStyle(`${ContainerStyles} .ql-container`, {
   fontSize: vars.fontSize.base,
   borderBottomLeftRadius: vars.borderRadius.medium,
@@ -44,6 +51,7 @@ globalStyle(`${ContainerStyles} .ql-container`, {
 globalStyle(`${ContainerStyles} .ql-container .ql-editor.ql-blank::before`, {
   color: vars.color['text-white-300'],
   paddingLeft: vars.spacing['0.5x'],
+  fontStyle: 'normal',
 });
 
 export const TextBlockHeader = style({

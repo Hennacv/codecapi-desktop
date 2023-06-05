@@ -5,15 +5,17 @@ import {
   UserSkillsTags,
 } from './user-skills-styles.css';
 import TagButton from 'renderer/components/tags/tag-button/tag-button';
+import { useTranslation } from 'react-i18next';
 
 interface SkillsProp {
   skills: Tag[];
 }
 
 const UserSkills = ({ skills }: SkillsProp) => {
+  const {t} = useTranslation();
   return (
     <div className={UserSkillsContainer}>
-      <label className={UserSkillsHeader}>Skills</label>
+      <label className={UserSkillsHeader}>{t('userProfile.information.tags')}:</label>
       <div className={UserSkillsTags}>
         {skills.map((tag: Tag) => (
           <TagButton

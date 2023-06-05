@@ -17,8 +17,10 @@ import IconDelete from 'assets/icons/icon-delete';
 import { useUserContext } from 'renderer/hooks/use-user-context';
 import { useState } from 'react';
 import QuestionDelete from '../question-delete/question-delete';
+import { useTranslation } from 'react-i18next';
 
 const QuestionDetail = () => {
+  const {t} = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUserContext();
@@ -34,7 +36,7 @@ const QuestionDetail = () => {
     <div className={QuestionDetailsContainer}>
       <div className={QuestionDetailsButtonContainer.main}>
         <Button
-          text="Back"
+          text={t('generalButton.back')}
           type="button"
           variant="small"
           onClick={() => navigate('/questions')}
@@ -66,11 +68,11 @@ const QuestionDetail = () => {
       </div>
       <QuestionCard question={question} showText refetch={refetch} />
       <div className={QuestionDetailsAnswerContainer}>
-        <p>Number of answers:</p>
-        <div className={QuestionDetailsIconContainer}>
+        <p>{t('answerList.numberOfAnswers')}:</p>
+        <span className={QuestionDetailsIconContainer}>
           <IconQuestionsGrey variant="small" />
           {question.answer.length}
-        </div>
+        </span>
       </div>
       {!!question.answer.length && (
         <AnswerList

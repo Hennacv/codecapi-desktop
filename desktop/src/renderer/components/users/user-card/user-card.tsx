@@ -8,12 +8,14 @@ import {
 } from './user-card-styles.css';
 import Button from 'renderer/components/ui/button/button';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface UserCard {
   user: User;
 }
 
 const UserCard = ({ user }: UserCard) => {
+  const {t} = useTranslation();
   const navigate = useNavigate();
   const goToProfile = () => {
     navigate(`/users/${user.id}`);
@@ -28,7 +30,7 @@ const UserCard = ({ user }: UserCard) => {
       <p className={UserCardFunction}>JavaScript Developer</p>
       <div className={UserCardButtonContainer}>
         <Button
-          text="More Information"
+          text={t('userCard.buttonNavigate')}
           type="button"
           variant="smallText"
           onClick={() => goToProfile()}

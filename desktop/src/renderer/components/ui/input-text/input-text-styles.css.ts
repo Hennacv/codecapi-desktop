@@ -6,6 +6,7 @@ export const InputTextBase = style({
   border: '2px solid ' + vars.color['dark-300'],
   borderRadius: vars.borderRadius.medium,
   fontWeight: vars.fontWeight.regular,
+  width: vars.width.full
 });
 
 export const InputTextExtraSmall = style({

@@ -21,8 +21,10 @@ import { useGetProfile } from 'renderer/hooks/use-get-profile';
 import Button from 'renderer/components/ui/button/button';
 import IconEdit from 'assets/icons/icon-edit';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = () => {
+  const {t} = useTranslation();
   const { id } = useParams();
   const { data: profile } = useGetProfile(parseInt(id!));
   const { user } = useUserContext();
@@ -49,15 +51,15 @@ const UserProfile = () => {
         </div>
         <div className={UserCounterContainer}>
           <div>
-            <label className={UserCounterTitle}>Questions</label>
-            <p className={UserCounter}>{questionCount}</p>
+            <label className={UserCounterTitle}>{t('userProfile.stats.questions')}</label>
+            <p className={UserCounter}>{profile.questionCount}</p>
           </div>
           <div>
-            <label className={UserCounterTitle}>Answers</label>
-            <p className={UserCounter}>{answerCount}</p>
+            <label className={UserCounterTitle}>{t('userProfile.stats.answers')}</label>
+            <p className={UserCounter}>{profile.answerCount}</p>
           </div>
           <div>
-            <label className={UserCounterTitle}>Accepted</label>
+            <label className={UserCounterTitle}>{t('userProfile.stats.accepted')}</label>
             <p className={UserCounter}>0</p>
           </div>
         </div>
@@ -74,11 +76,11 @@ const UserProfile = () => {
         <div className={UserProfileEditButton}>
           <Button
             type="button"
-            variant="smallSquare"
+            variant="small"
             onClick={() => navigate(`/users/edit/${id}`)}
           >
+            <p>{t('userProfile.buttonEdit')}</p>
             <IconEdit variant="default" />
-            <p>Edit Profile</p>
           </Button>
         </div>
       )}

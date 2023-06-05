@@ -16,8 +16,10 @@ import SidebarLink from '../sidebar-link/sidebar-link';
 import IconQuestions from 'assets/icons/icon-questions';
 import IconUsers from 'assets/icons/icon-users';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
+  const {t} = useTranslation();
   const { toggleSideBar, isExpanded } = useSidebar();
   const { user } = useUserContext();
 
@@ -38,13 +40,13 @@ const Sidebar = () => {
           <ul className={SideList}>
             <SidebarLink to="/questions">
               <IconQuestions variant="default" />
-              <span className={SideText}>Questions</span>
+              <span className={SideText}>{t('sideMenuItem.questions')}</span>
             </SidebarLink>
           </ul>
           <ul className={SideList}>
             <SidebarLink to="/users">
               <IconUsers variant="default" />
-              <span className={SideText}>Users</span>
+              <span className={SideText}>{t('sideMenuItem.users')}</span>
             </SidebarLink>
           </ul>
         </div>

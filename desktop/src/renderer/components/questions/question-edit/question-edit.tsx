@@ -8,8 +8,11 @@ import {
   QuestionFormHeader,
   QuestionFormTitle,
 } from '../question-form/question-form-styles.css';
+import { useTranslation } from 'react-i18next';
+import { QuestionEditAllButtons, QuestionEditContainer } from './question-edit-styles.css';
 
 const QuestionEdit = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const { data, isLoading } = useGetQuestion(Number(id));
   const navigate = useNavigate();
@@ -18,21 +21,24 @@ const QuestionEdit = () => {
   }
 
   return (
-    <div>
-      <Button
-        text="Back"
-        type="button"
-        variant="small"
-        onClick={() => navigate(`/questions/${id}`)}
-      />
+    <div className={QuestionEditContainer}>
+      <div className={QuestionEditAllButtons}>
+        <Button
+          text={t('generalButton.back')}
+          type="button"
+          variant="small"
+          onClick={() => navigate(`/questions/${id}`)}
+        />
+      </div>
+
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <div className={QuestionFormContainer}>
           <header className={QuestionFormHeader.spacing}>
-            <h1 className={QuestionFormTitle}>Edit question</h1>
+            <h1 className={QuestionFormTitle}>{t('questionEdit.pageTitle')}</h1>
             <p className={QuestionFormDescription}>
-              Use the form below to edit your question.
+              {t('questionEdit.pageDescription')}
             </p>
           </header>
           <QuestionForm
