@@ -7,25 +7,16 @@ import { useEffect } from 'react';
 import IconRemove from 'assets/icons/icon-remove';
 
 interface AcceptedAnswerProp {
-  userId: number;
   answer: Answer;
   refetch: () => void;
-  acceptedCheck: () => void;
-  acceptedAnswer: boolean;
+  acceptedAnswer: Answer | undefined;
 }
 
 const AnswerAccept = ({
-  userId,
   answer,
   refetch,
-  acceptedCheck,
   acceptedAnswer,
 }: AcceptedAnswerProp) => {
-  const { user } = useUserContext();
-
-  useEffect(() => {
-    acceptedCheck();
-  }, [answer.accepted]);
 
   const acceptAnswer = useAcceptAnswer({
     onSuccess: () => refetch(),
@@ -36,25 +27,17 @@ const AnswerAccept = ({
     event.preventDefault();
     event.stopPropagation();
 
-    if (answer.accepted === false) {
-      acceptAnswer.mutate({
-        accepted: true,
-        blocks: answer.blocks,
-        questionId: answer.questionId,
-      });
-    } else {
-      acceptAnswer.mutate({
-        accepted: false,
-        blocks: answer.blocks,
-        questionId: answer.questionId,
-      });
-    }
+    acceptAnswer.mutate({
+      accepted: !answer.accepted,
+      blocks: answer.blocks,
+      questionId: answer.questionId,
+    });
   };
 
-  if (acceptedAnswer == true) {
+  if (acceptedAnswer) {
     return (
       <div>
-        {user.id === userId && answer.accepted == true && (
+        {answer.accepted == true && (
           <Button
             type="button"
             variant="vote"
@@ -69,13 +52,13 @@ const AnswerAccept = ({
   } else {
     return (
       <div>
-        {user.id === userId && (
+        {answer.accepted == false && (
           <Button
             type="button"
             variant="vote"
             onClick={(event) => handleAccept(event)}
           >
-            {answer.accepted == false && <p> Accept </p>}
+            <p> Accept </p>
           </Button>
         )}
       </div>

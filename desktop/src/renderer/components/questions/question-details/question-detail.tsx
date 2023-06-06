@@ -24,17 +24,7 @@ const QuestionDetail = () => {
   const { user } = useUserContext();
   const { data: question, refetch } = useGetQuestion(Number(id));
   const [isShown, setIsShown] = useState(false);
-  const [acceptedAnswer, setAcceptedAnswer] = useState(false);
-
-  const acceptedCheck = () => {
-    const answers = question?.answer;
-    if (answers) {
-      const accepted = answers.some((answer) => answer.accepted === true);
-      setAcceptedAnswer(accepted);
-    } else {
-      setAcceptedAnswer(false);
-    }
-  };
+  const acceptedAnswer = question?.answer.find(answer => answer.accepted)
 
   if (!question) {
     return null;
@@ -86,8 +76,7 @@ const QuestionDetail = () => {
         <AnswerList
           answers={question.answer}
           refetch={refetch}
-          userId={question.user.id}
-          acceptedCheck={acceptedCheck}
+          QuestionUserId={question.user.id}
           acceptedAnswer={acceptedAnswer}
         />
       )}

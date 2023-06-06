@@ -12,22 +12,22 @@ import DynamicBlocksRead from 'renderer/components/blocks/dynamic-blocks/dynamic
 import VoteList from 'renderer/components/votes/vote-list';
 import CommentList from 'renderer/components/comments/comment-list/comment-list';
 import AnswerAccept from '../answer-accepted/answer-accepted';
+import { useUserContext } from 'renderer/hooks/use-user-context';
 
 interface AnswerCardProps {
   answer: Answer;
   refetch: () => void;
-  userId: number;
-  acceptedCheck: () => void;
-  acceptedAnswer: boolean;
+  QuestionUserId: number;
+  acceptedAnswer: Answer | undefined;
 }
 
 const AnswerCard = ({
   answer,
   refetch,
-  userId,
-  acceptedCheck,
+  QuestionUserId,
   acceptedAnswer,
 }: AnswerCardProps) => {
+  const { user } = useUserContext();
   return (
     <div className={AnswerContainer}>
       <div
@@ -44,13 +44,13 @@ const AnswerCard = ({
             {dayjs(answer.createdAt).fromNow()}
           </div>
           <div className={AnswerCardButtonContainer}>
+          {user.id === QuestionUserId &&
             <AnswerAccept
-              userId={userId}
               answer={answer}
               refetch={refetch}
-              acceptedCheck={acceptedCheck}
               acceptedAnswer={acceptedAnswer}
             />
+          }
             <VoteList
               votes={answer.votes}
               answerId={answer.id}
