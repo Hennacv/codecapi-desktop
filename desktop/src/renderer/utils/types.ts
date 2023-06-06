@@ -43,6 +43,7 @@ export interface AddAnswerDto {
 
 export interface EditProfileDto {
   name: string;
+  description: string;
   tags: { id: number }[];
 }
 
@@ -73,6 +74,7 @@ export interface User {
   name: string;
   uid: string;
   tags: Tag[];
+  description: string;
 }
 
 export interface Profile {

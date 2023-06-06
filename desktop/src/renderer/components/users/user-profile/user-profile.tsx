@@ -4,12 +4,16 @@ import {
   UserCounterContainer,
   UserCounterTitle,
   UserProfileContainer,
+  UserProfileDescription,
+  UserProfileDescriptionContainer,
   UserProfileEditButton,
   UserProfileEmail,
   UserProfileFunction,
+  UserProfileHeader,
   UserProfileImage,
   UserProfileInfoContainer,
   UserProfileName,
+  UserProfileSeparator,
   UserProfileTextContainer,
 } from './user-profile-styles.css';
 import UserSkills from '../user-skills/user-skills';
@@ -55,6 +59,15 @@ const UserProfile = () => {
             <p className={UserCounter}>0</p>
           </div>
         </div>
+        {profile.user.description && (
+          <div className={UserProfileDescriptionContainer}>
+            <hr className={UserProfileSeparator}/>
+            <label className={UserProfileHeader}>Description</label>
+            <p className={UserProfileDescription}>
+              {profile.user.description}
+            </p>
+          </div>
+        )}
       </div>
       <UserSkills skills={profile.user.tags} />
       {profile?.user.uid === user?.uid && (

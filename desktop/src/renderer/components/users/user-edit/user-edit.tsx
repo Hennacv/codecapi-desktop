@@ -91,6 +91,18 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
         />
       </div>
       <div className={ProfileFormItem}>
+        <label className={ProfileFormLabel} htmlFor="description">
+          Description
+        </label>
+        <InputText
+          type="text"
+          id="description"
+          defaultValue={userProfile.description}
+          variant='default'
+          onChange={(e) => updateProfileValue('description', e.target.value)}
+        />
+      </div>
+      <div className={ProfileFormItem}>
         <label className={ProfileFormLabel}>Skills</label>
         <div className={tags ? SkillsList : SkillHidden}>
           {tags.map((tag: Tag) => (
