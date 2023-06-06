@@ -123,7 +123,7 @@ const QuestionForm = ({
     <form className={QuestionFormSection}>
       <div className={QuestionFormItem}>
         <label className={QuestionFormLabel} htmlFor="title">
-          {t('question.form.input.title.title')} *
+          {t('common.title')} *
         </label>
         <InputText
           type="text"
@@ -161,7 +161,7 @@ const QuestionForm = ({
         </div>
       </div>
       <div className={QuestionFormItem}>
-        <label className={QuestionFormLabel}>{t('question.form.input.title.tags')}</label>
+        <label className={QuestionFormLabel}>{t('common.tags')}</label>
         <div className={formTags.tags ? QuestionFormTagList : QuestionHidden}>
           {formTags.tags.map((tag: Tag) => (
             <TagButton
@@ -205,7 +205,7 @@ const QuestionForm = ({
       ) : (
         <div className={QuestionFormItem}>
           <Button
-            text={t('common.button.save')}
+            text={t('button.save')}
             type="submit"
             variant="defaultDisabled"
             onClick={(event) => onEdit(form, event)}

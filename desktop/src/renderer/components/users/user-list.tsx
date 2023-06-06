@@ -33,7 +33,7 @@ const UserList = () => {
   return (
     <>
       <div className={SFContainer}>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('search.placeholder.search')}/>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('common.search')}/>
         <Button
           text="Filter"
           variant="small"

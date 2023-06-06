@@ -24,7 +24,7 @@ const QuestionEdit = () => {
     <div className={QuestionEditContainer}>
       <div className={QuestionEditAllButtons}>
         <Button
-          text={t('common.button.back')}
+          text={t('button.back')}
           type="button"
           variant="small"
           onClick={() => navigate(`/questions/${id}`)}

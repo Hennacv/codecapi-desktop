@@ -50,9 +50,9 @@ const QuestionList = () => {
   return (
     <div>
       <div className={SFContainer}>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('search.placeholder.search')} />
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('common.search')} />
         <Button
-          text={t('common.button.filter')}
+          text={t('button.filter')}
           variant="small"
           type="button"
           onClick={() => setIsShown(true)}

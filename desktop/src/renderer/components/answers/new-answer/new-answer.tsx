@@ -83,7 +83,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
       {formIsActive ? (
         <div className={NewAnswerContainer}>
           <Button
-            text={t("common.button.close")}
+            text={t("button.close")}
             type="button"
             variant="small"
             onClick={() => setFormIsActive(!formIsActive)}

@@ -26,13 +26,13 @@ const QuestionDelete = ({id, isShown, onClose}: DeleteProps) => {
       </div>
       <div className={DeleteButtonContainer}>
       <Button
-       text={t('common.button.cancel')}
+       text={t('button.cancel')}
        variant="small"
        type="button"
        onClick={() => onClose(false)}
        />
       <Button
-       text={t('common.button.delete')}
+       text={t('button.delete')}
        variant="delete"
        type="button"
        onClick={() => deleteQuestion.mutate(id)}

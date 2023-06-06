@@ -36,7 +36,7 @@ const QuestionDetail = () => {
     <div className={QuestionDetailsContainer}>
       <div className={QuestionDetailsButtonContainer.main}>
         <Button
-          text={t('common.button.back')}
+          text={t('button.back')}
           type="button"
           variant="small"
           onClick={() => navigate('/questions')}

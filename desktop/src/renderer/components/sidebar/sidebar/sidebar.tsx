@@ -41,13 +41,13 @@ const Sidebar = () => {
           <div className={SideListItem}>
             <SidebarLink to="/questions">
               <IconQuestions variant="default" />
-              <span className={SideText}>{t('sidemenu.title.questions')}</span>
+              <span className={SideText}>{t('common.questions')}</span>
             </SidebarLink>
           </div>
           <div className={SideListItem}>
             <SidebarLink to="/users">
               <IconUsers variant="default" />
-              <span className={SideText}>{t('sidemenu.title.users')}</span>
+              <span className={SideText}>{t('common.users')}</span>
             </SidebarLink>
           </div>
         </div>

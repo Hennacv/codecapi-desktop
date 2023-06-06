@@ -24,7 +24,7 @@ const Filter = ({ tags, setTags, isShown, onClose }: Filter) => {
 
   return (
     <Modal isShown={isShown} onClose={() => onClose(false)}>
-      <h4 className={FilterTitle}>{t('filter.title.tags')}</h4>
+      <h4 className={FilterTitle}>{t('common.tags')}</h4>
       <div className={FilterTag}>
         {selectedTags.tags.map((tag: Tag) => (
           <TagButton

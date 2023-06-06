@@ -1,13 +1,21 @@
 {
+  "button": {
+    "save": "Opslaan",
+    "back": "Terug",
+    "close": "Sluiten",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "filter": "Filter"
+  },
   "common": {
-    "button": {
-      "save": "Opslaan",
-      "back": "Terug",
-      "close": "Sluiten",
-      "cancel": "Annuleren",
-      "delete": "Verwijderen",
-      "filter": "Filter"
-    }
+    "title": "Titel",
+    "description": "Beschrijving",
+    "code": "Code",
+    "tags": "Labels",
+    "questions": "Vragen",
+    "users": "Capi's",
+    "name": "Naam",
+    "search": "Zoeken"
   },
   "question": {
     "new": {
@@ -29,11 +37,7 @@
     "form": {
       "input": {
         "title": {
-          "title": "Titel",
-          "description": "Beschrijving",
-          "code": "Code",
-          "selected": "Geselecteerde labels",
-          "tags": "Labels"
+          "selected": "Geselecteerde labels"
         },
         "instruction": {
           "code": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
@@ -82,8 +86,6 @@
         "description": "Gebruik het onderstaande formulier om je profiel te bewerken."
       },
       "title": {
-        "name": "Naam",
-        "tags": "Labels",
         "selected": "Geselecteerde labels"
       }
     },
@@ -93,20 +95,8 @@
       }
     }
   },
-  "sidemenu": {
-    "title": {
-      "users": "Capi's",
-      "questions": "Vragen"
-    }
-  },
-  "search": {
-    "placeholder": {
-      "search": "Zoeken"
-    }
-  },
   "filter": {
     "title": {
-      "tags": "Labels",
       "selected": "Geselecteerde filter labels"
     }
   },

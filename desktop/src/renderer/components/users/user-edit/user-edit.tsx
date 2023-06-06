@@ -80,7 +80,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
       </header>
       <div className={ProfileFormItem}>
         <label className={ProfileFormLabel} htmlFor="title">
-          {t('user.edit.title.name')}
+          {t('common.name')}
         </label>
         <InputText
           type="text"
@@ -103,7 +103,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
         />
       </div>
       <div className={ProfileFormItem}>
-        <label className={ProfileFormLabel}>{t('user.edit.title.tags')}</label>
+        <label className={ProfileFormLabel}>{t('common.tags')}</label>
         <div className={tags ? SkillsList : SkillHidden}>
           {tags.map((tag: Tag) => (
             <TagButton
@@ -136,7 +136,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
       </div>
       <div className={ProfileFormItem}>
         <Button
-          text={t('common.button.save')}
+          text={t('button.save')}
           type="submit"
           variant="defaultDisabled"
           disabled={!userProfile.name}
