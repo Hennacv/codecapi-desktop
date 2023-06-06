@@ -70,6 +70,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
   const onSubmit = (newAnswer: AddAnswerDto) => {
     addAnswer.mutate(newAnswer);
     setFormIsActive(false);
+    updateFormValue('blocks', []);
   };
 
   return (
