@@ -32,44 +32,44 @@ const UserProfile = () => {
     return null;
   }
 
+  const { user: { name, email, description, tags, uid }, questionCount, answerCount } = profile;
+
   return (
     <div>
       <div className={UserProfileContainer}>
         <div className={UserProfileInfoContainer}>
           <p className={UserProfileImage}>
-            {profile.user.name?.substring(0, 1)}
+            {name?.substring(0, 1)}
           </p>
           <div className={UserProfileTextContainer}>
-            <label className={UserProfileName}>{profile.user.name}</label>
+            <label className={UserProfileName}>{name}</label>
             <label className={UserProfileFunction}>JavaScript Developer</label>
-            <label className={UserProfileEmail}>{profile.user.email}</label>
+            <label className={UserProfileEmail}>{email}</label>
           </div>
         </div>
         <div className={UserCounterContainer}>
           <div>
             <label className={UserCounterTitle}>Questions</label>
-            <p className={UserCounter}>{profile.questionCount}</p>
+            <p className={UserCounter}>{questionCount}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>Answers</label>
-            <p className={UserCounter}>{profile.answerCount}</p>
+            <p className={UserCounter}>{answerCount}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>Accepted</label>
             <p className={UserCounter}>0</p>
           </div>
         </div>
-        {profile.user.description && (
           <div className={UserProfileDescriptionContainer}>
             <hr className={UserProfileSeparator}/>
             <label className={UserProfileHeader}>Description</label>
             <p className={UserProfileDescription}>
-              {profile.user.description}
+              {description || "This user has not added their description yet."}
             </p>
           </div>
-        )}
       </div>
-      <UserSkills skills={profile.user.tags} />
+      <UserSkills skills={tags} />
       {profile?.user.uid === user?.uid && (
         <div className={UserProfileEditButton}>
           <Button
