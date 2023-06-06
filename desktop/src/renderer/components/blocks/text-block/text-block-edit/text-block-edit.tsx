@@ -45,7 +45,7 @@ const TextBlockEdit = ({
     <>
       <div className={TextBlockHeader}>
         <label className={TextBlockLabel}>
-          {t('questionForm.inputTitle.description')}
+          {t('question.form.input.title.description')}
         </label>
         <div className={ButtonClose.base}>
           <Button

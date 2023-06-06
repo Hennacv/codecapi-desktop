@@ -13,8 +13,8 @@ const NewQuestion = () => {
   return (
     <div className={QuestionFormContainer}>
       <header className={QuestionFormHeader.basic}>
-        <h1 className={QuestionFormTitle}>{t('questionNew.pageTitle')}</h1>
-        <p className={QuestionFormDescription}>{t('questionNew.pageDescription')}</p>
+        <h1 className={QuestionFormTitle}>{t('question.new.page.title')}</h1>
+        <p className={QuestionFormDescription}>{t('question.new.page.description')}</p>
       </header>
       <QuestionForm blocks={[]} title="" tags={[]} />
     </div>

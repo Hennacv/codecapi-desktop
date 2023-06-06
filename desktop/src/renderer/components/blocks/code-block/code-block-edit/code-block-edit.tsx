@@ -67,7 +67,7 @@ const CodeBlockEdit = ({
     <>
       <div className={CodeBlockHeader}>
         <label className={CodeBlockLabel}>
-          {t('questionForm.inputTitle.code')}
+          {t('question.form.input.title.code')}
         </label>
         <div className={ButtonClose.base}>
           <Button

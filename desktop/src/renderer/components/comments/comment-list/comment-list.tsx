@@ -105,7 +105,7 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
           >
             <IconAdd variant="small" />
           </Button>
-          <p>{t('commentNew.buttonNew')}</p>
+          <p>{t('comment.new.button.open')}</p>
           {comments.length === 0 && (
             <span
               className={CommentListLine}
@@ -134,7 +134,7 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
             type="text"
             value={newCommentValue}
             id="newCommentInput"
-            placeholder={t('commentNew.input.placeholder')}
+            placeholder={t('comment.new.input.placeholder')}
             variant="inline"
             onChange={(event) => setNewCommentValue(event.target.value)}
           />

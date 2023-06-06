@@ -24,7 +24,7 @@ const QuestionEdit = () => {
     <div className={QuestionEditContainer}>
       <div className={QuestionEditAllButtons}>
         <Button
-          text={t('generalButton.back')}
+          text={t('common.button.back')}
           type="button"
           variant="small"
           onClick={() => navigate(`/questions/${id}`)}
@@ -36,9 +36,9 @@ const QuestionEdit = () => {
       ) : (
         <div className={QuestionFormContainer}>
           <header className={QuestionFormHeader.spacing}>
-            <h1 className={QuestionFormTitle}>{t('questionEdit.pageTitle')}</h1>
+            <h1 className={QuestionFormTitle}>{t('question.edit.page.title')}</h1>
             <p className={QuestionFormDescription}>
-              {t('questionEdit.pageDescription')}
+              {t('question.edit.page.description')}
             </p>
           </header>
           <QuestionForm

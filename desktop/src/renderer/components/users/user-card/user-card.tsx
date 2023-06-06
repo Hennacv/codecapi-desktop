@@ -30,7 +30,7 @@ const UserCard = ({ user }: UserCard) => {
       <p className={UserCardFunction}>JavaScript Developer</p>
       <div className={UserCardButtonContainer}>
         <Button
-          text={t('userCard.buttonNavigate')}
+          text={t('user.card.button.navigate')}
           type="button"
           variant="smallText"
           onClick={() => goToProfile()}

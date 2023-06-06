@@ -38,7 +38,7 @@ const Filter = ({ tags, setTags, isShown, onClose }: Filter) => {
           </TagButton>
         ))}
       </div>
-      <h4 className={FilterTitle}>{t('filter.subtitle.tags')}</h4>
+      <h4 className={FilterTitle}>{t('filter.title.selected')}</h4>
       <div className={FilterTag}>
         {selectedTags.selectedTags.map((tag) => (
           <TagButton

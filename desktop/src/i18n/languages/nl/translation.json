@@ -1,43 +1,120 @@
 {
-  "answerNew.buttonNew": "Geef antwoord",
-  "answerNew.buttonSubmit": "Deel antwoord",
-  "answerList.numberOfAnswers": "Aantal antwoorden",
-  "commentNew.buttonNew": "Geef commentaar",
-  "commentNew.input.placeholder": "Schrijf hier je commentaar",
-  "filter.title.tags": "Labels",
-  "filter.subtitle.tags": "Geselecteerde filter labels",
-  "generalButton.filter": "Filter",
-  "generalButton.back": "Terug",
-  "generalButton.close": "Sluiten",
-  "modal.title.deleteQuestion": "Weet je zeker dat je deze vraag wilt verwijderen?",
-  "modal.buttonCancel": "Annuleren",
-  "modal.buttonDelete": "Verwijderen",
-  "questionNew.buttonNew": "Stel een vraag",
-  "questionNew.buttonSubmit": "Deel je vraag",
-  "questionNew.pageTitle": "Vraag stellen",
-  "questionNew.pageDescription": "Gebruik het onderstaande formulier om een vraag te stellen aan alle medewerkers van CodeCapi.",
-  "questionEdit.pageTitle": "Vraag bewerken",
-  "questionEdit.pageDescription": "Gebruik het onderstaande formulier om je vraag te bewerken.",
-  "questionEdit.buttonEdit": "Opslaan",
-  "questionForm.inputTitle.title": "Titel",
-  "questionForm.inputTitle.description": "Beschrijving",
-  "questionForm.inputTitle.code": "Code",
-  "questionForm.inputTitle.tags": "Labels",
-  "questionForm.inputSelected.tags": "Geselecteerde labels",
-  "questionForm.blocksInstruction": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag.",
-  "sideMenuItem.users": "Gebruikers",
-  "sideMenuItem.questions": "Vragen",
-  "search.placeholder": "Zoeken",
-  "userCard.buttonNavigate": "Meer informatie",
-  "userProfile.stats.questions": "Vragen",
-  "userProfile.stats.answers": "Antwoorden",
-  "userProfile.stats.accepted": "Geaccepteerd",
-  "userProfile.information.tags": "Heeft kennis van",
-  "userProfile.buttonEdit": "Profiel bewerken",
-  "userEdit.pageTitle": "Profiel bewerken",
-  "userEdit.pageDescription": "Gebruik het onderstaande formulier om je profiel te bewerken.",
-  "userEdit.titleName": "Naam",
-  "userEdit.titleTags": "Labels",
-  "userEdit.subtitleTags": "Geselecteerde labels",
-  "userEdit.buttonSubmit": "Opslaan"
+  "common": {
+    "button": {
+      "save": "Opslaan",
+      "back": "Terug",
+      "close": "Sluiten",
+      "cancel": "Annuleren",
+      "delete": "Verwijderen",
+      "filter": "Filter"
+    }
+  },
+  "question": {
+    "new": {
+      "button": {
+        "navigate": "Stel een vraag",
+        "submit": "Deel je vraag"
+      },
+      "page": {
+        "title": "Vraag stellen",
+        "description": "Gebruik het onderstaande formulier om een vraag te stellen aan alle medewerkers van CodeCapi."
+      }
+    },
+    "edit": {
+      "page": {
+        "title": "Vraag bewerken",
+        "description": "Gebruik het onderstaande formulier om je vraag te bewerken."
+      }
+    },
+    "form": {
+      "input": {
+        "title": {
+          "title": "Titel",
+          "description": "Beschrijving",
+          "code": "Code",
+          "selected": "Geselecteerde labels",
+          "tags": "Labels"
+        },
+        "instruction": {
+          "code": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
+        }
+      }
+    }
+  },
+  "answer": {
+    "new": {
+      "button": {
+        "open": "Geef antwoord",
+        "submit": "Deel antwoord"
+      }
+    },
+    "title": {
+      "number": "Aantal antwoorden"
+    }
+  },
+  "comment": {
+    "new": {
+      "button": {
+        "open": "Geef commentaar"
+      },
+      "input": {
+        "placeholder": "Schrijf hier je commentaar"
+      }
+    }
+  },
+  "user": {
+    "profile": {
+      "button": {
+        "navigate": "Profiel bewerken"
+      },
+      "title": {
+        "tags": "Heeft kennis van"
+      },
+      "statistic": {
+        "question": "Vragen",
+        "answer": "Antwoorden",
+        "accepted": "Geaccepteerd"
+      }
+    },
+    "edit": {
+      "page": {
+        "title": "Profiel bewerken",
+        "description": "Gebruik het onderstaande formulier om je profiel te bewerken."
+      },
+      "title": {
+        "name": "Naam",
+        "tags": "Labels",
+        "selected": "Geselecteerde labels"
+      }
+    },
+    "card": {
+      "button": {
+        "navigate": "Meer informatie"
+      }
+    }
+  },
+  "sidemenu": {
+    "title": {
+      "users": "Capi's",
+      "questions": "Vragen"
+    }
+  },
+  "search": {
+    "placeholder": {
+      "search": "Zoeken"
+    }
+  },
+  "filter": {
+    "title": {
+      "tags": "Labels",
+      "selected": "Geselecteerde filter labels"
+    }
+  },
+  "modal": {
+    "title": {
+      "question": {
+        "delete": "Weet je zeker dat je deze vraag wilt verwijderen?"
+      }
+    }
+  }
 }

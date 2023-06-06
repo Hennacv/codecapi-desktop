@@ -75,12 +75,12 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
   return (
     <form className={ProfileFormContainer}>
       <header className={ProfileFormHeader}>
-        <h1 className={ProfileFormTitle}>{t('userEdit.pageTitle')}</h1>
-        <p className={ProfileFormDescription}>{t('userEdit.pageDescription')}</p>
+        <h1 className={ProfileFormTitle}>{t('user.edit.page.title')}</h1>
+        <p className={ProfileFormDescription}>{t('user.edit.page.description')}</p>
       </header>
       <div className={ProfileFormItem}>
         <label className={ProfileFormLabel} htmlFor="title">
-          {t('userEdit.titleName')}
+          {t('user.edit.title.name')}
         </label>
         <InputText
           type="text"
@@ -103,7 +103,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
         />
       </div>
       <div className={ProfileFormItem}>
-        <label className={ProfileFormLabel}>{t('userEdit.titleTags')}</label>
+        <label className={ProfileFormLabel}>{t('user.edit.title.tags')}</label>
         <div className={tags ? SkillsList : SkillHidden}>
           {tags.map((tag: Tag) => (
             <TagButton
@@ -117,7 +117,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
             </TagButton>
           ))}
         </div>
-        <label className={ProfileFormDescription}>{t('userEdit.subtitleTags')}</label>
+        <label className={ProfileFormDescription}>{t('user.edit.title.selected')}</label>
         <div className={SkillsContainer}>
           <div className={SkillsList}>
             {selectedTags.map((tag: Tag) => (
@@ -136,9 +136,10 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
       </div>
       <div className={ProfileFormItem}>
         <Button
-          text={t('userEdit.buttonSubmit')}
+          text={t('common.button.save')}
           type="submit"
           variant="defaultDisabled"
+          disabled={!userProfile.name}
           onClick={(event) => onEdit(userProfile, event)}
         />
       </div>

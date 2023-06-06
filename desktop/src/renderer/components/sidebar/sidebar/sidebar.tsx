@@ -4,6 +4,7 @@ import { RiArrowDropLeftLine } from 'react-icons/ri';
 import {
   AsideStyles,
   SideList,
+  SideListItem,
   SideStyles,
   SideText,
   SideToggle,
@@ -36,19 +37,19 @@ const Sidebar = () => {
         <RiArrowDropLeftLine className={SideToggle} onClick={toggleSideBar} />
       </div>
       <aside className={AsideStyles}>
-        <div>
-          <ul className={SideList}>
+        <div className={SideList}>
+          <div className={SideListItem}>
             <SidebarLink to="/questions">
               <IconQuestions variant="default" />
-              <span className={SideText}>{t('sideMenuItem.questions')}</span>
+              <span className={SideText}>{t('sidemenu.title.questions')}</span>
             </SidebarLink>
-          </ul>
-          <ul className={SideList}>
+          </div>
+          <div className={SideListItem}>
             <SidebarLink to="/users">
               <IconUsers variant="default" />
-              <span className={SideText}>{t('sideMenuItem.users')}</span>
+              <span className={SideText}>{t('sidemenu.title.users')}</span>
             </SidebarLink>
-          </ul>
+          </div>
         </div>
         <div>
           <UserInfo isExpanded={isExpanded} to={`users/${user!.id}`} />

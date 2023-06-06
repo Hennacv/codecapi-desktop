@@ -15,7 +15,7 @@ const UserSkills = ({ skills }: SkillsProp) => {
   const {t} = useTranslation();
   return (
     <div className={UserSkillsContainer}>
-      <label className={UserSkillsHeader}>{t('userProfile.information.tags')}:</label>
+      <label className={UserSkillsHeader}>{t('user.profile.title.tags')}:</label>
       <div className={UserSkillsTags}>
         {skills.map((tag: Tag) => (
           <TagCard

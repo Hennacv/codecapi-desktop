@@ -50,9 +50,9 @@ const QuestionList = () => {
   return (
     <div>
       <div className={SFContainer}>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('search.placeholder')} />
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('search.placeholder.search')} />
         <Button
-          text={t('generalButton.filter')}
+          text={t('common.button.filter')}
           variant="small"
           type="button"
           onClick={() => setIsShown(true)}
@@ -84,7 +84,7 @@ const QuestionList = () => {
           variant="small"
           onClick={() => onNewQuestion()}
         >
-          {t('questionNew.buttonNew')}
+          {t('question.new.button.navigate')}
           <IconAdd variant={'small'} />
         </Button>
       </div>

@@ -22,17 +22,17 @@ const QuestionDelete = ({id, isShown, onClose}: DeleteProps) => {
   return (
     <Modal isShown={isShown} onClose={() => onClose(false)}>
       <div className={DeleteQuestionMessage}>
-        <p>{t('modal.title.deleteQuestion')}</p>
+        <p>{t('modal.title.question.delete')}</p>
       </div>
       <div className={DeleteButtonContainer}>
       <Button
-       text={t('modal.buttonCancel')}
+       text={t('common.button.cancel')}
        variant="small"
        type="button"
        onClick={() => onClose(false)}
        />
       <Button
-       text={t('modal.buttonDelete')}
+       text={t('common.button.delete')}
        variant="delete"
        type="button"
        onClick={() => deleteQuestion.mutate(id)}

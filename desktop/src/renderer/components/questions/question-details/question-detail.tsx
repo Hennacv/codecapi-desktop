@@ -36,7 +36,7 @@ const QuestionDetail = () => {
     <div className={QuestionDetailsContainer}>
       <div className={QuestionDetailsButtonContainer.main}>
         <Button
-          text={t('generalButton.back')}
+          text={t('common.button.back')}
           type="button"
           variant="small"
           onClick={() => navigate('/questions')}
@@ -68,7 +68,7 @@ const QuestionDetail = () => {
       </div>
       <QuestionCard question={question} showText refetch={refetch} />
       <div className={QuestionDetailsAnswerContainer}>
-        <p>{t('answerList.numberOfAnswers')}:</p>
+        <p>{t('answer.title.number')}:</p>
         <span className={QuestionDetailsIconContainer}>
           <IconQuestionsGrey variant="small" />
           {question.answer.length}

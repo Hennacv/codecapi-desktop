@@ -51,15 +51,15 @@ const UserProfile = () => {
         </div>
         <div className={UserCounterContainer}>
           <div>
-            <label className={UserCounterTitle}>{t('userProfile.stats.questions')}</label>
+            <label className={UserCounterTitle}>{t('user.profile.statistic.question')}</label>
             <p className={UserCounter}>{profile.questionCount}</p>
           </div>
           <div>
-            <label className={UserCounterTitle}>{t('userProfile.stats.answers')}</label>
+            <label className={UserCounterTitle}>{t('user.profile.statistic.answer')}</label>
             <p className={UserCounter}>{profile.answerCount}</p>
           </div>
           <div>
-            <label className={UserCounterTitle}>{t('userProfile.stats.accepted')}</label>
+            <label className={UserCounterTitle}>{t('user.profile.statistic.accepted')}</label>
             <p className={UserCounter}>0</p>
           </div>
         </div>
@@ -79,7 +79,7 @@ const UserProfile = () => {
             variant="small"
             onClick={() => navigate(`/users/edit/${id}`)}
           >
-            <p>{t('userProfile.buttonEdit')}</p>
+            <p>{t('user.profile.button.navigate')}</p>
             <IconEdit variant="default" />
           </Button>
         </div>

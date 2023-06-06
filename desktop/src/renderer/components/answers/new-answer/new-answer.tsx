@@ -83,7 +83,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
       {formIsActive ? (
         <div className={NewAnswerContainer}>
           <Button
-            text={t("generalButton.close")}
+            text={t("common.button.close")}
             type="button"
             variant="small"
             onClick={() => setFormIsActive(!formIsActive)}
@@ -121,7 +121,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
             </div>
             {form.blocks.length > 0 && (
               <Button
-                text={t('answerNew.buttonSubmit')}
+                text={t('answer.new.button.submit')}
                 type="button"
                 variant="defaultDisabled"
                 disabled={addAnswer.isLoading}
@@ -139,7 +139,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
           >
             <IconAdd variant="default" />
           </Button>
-          <p>{t('answerNew.buttonNew')}</p>
+          <p>{t('answer.new.button.open')}</p>
         </div>
       )}
     </>

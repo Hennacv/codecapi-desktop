@@ -112,7 +112,8 @@ const QuestionForm = ({
     addQuestion.mutate(newQuestion);
   };
 
-  const onEdit = (form: QuestionDto) => {
+  const onEdit = (form: QuestionDto, event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     if (editQuestion) {
       editQuestion.mutate(form);
     }
@@ -122,7 +123,7 @@ const QuestionForm = ({
     <form className={QuestionFormSection}>
       <div className={QuestionFormItem}>
         <label className={QuestionFormLabel} htmlFor="title">
-          {t('questionForm.inputTitle.title')} *
+          {t('question.form.input.title.title')} *
         </label>
         <InputText
           type="text"
@@ -140,7 +141,7 @@ const QuestionForm = ({
       />
       <div className={QuestionFormItem}>
         <div className={QuestionFormBlocks}>
-          <p>{t('questionForm.blocksInstruction')}</p>
+          <p>{t('question.form.input.instruction.code')}</p>
           <div className={QuestionFormBlocksOptions}>
             <Button
               type={'button'}
@@ -160,7 +161,7 @@ const QuestionForm = ({
         </div>
       </div>
       <div className={QuestionFormItem}>
-        <label className={QuestionFormLabel}>{t('questionForm.inputTitle.tags')}</label>
+        <label className={QuestionFormLabel}>{t('question.form.input.title.tags')}</label>
         <div className={formTags.tags ? QuestionFormTagList : QuestionHidden}>
           {formTags.tags.map((tag: Tag) => (
             <TagButton
@@ -174,7 +175,7 @@ const QuestionForm = ({
             </TagButton>
           ))}
         </div>
-        <label className={QuestionFormDescription}>{t('questionForm.inputSelected.tags')}:</label>
+        <label className={QuestionFormDescription}>{t('question.form.input.title.selected')}:</label>
         <div className={QuestionFormTagContainer}>
           <div className={QuestionFormTagList}>
             {formTags.selectedTags.map((tag: Tag) => (
@@ -194,7 +195,7 @@ const QuestionForm = ({
       {!isEditing ? (
         <div className={QuestionFormItem}>
           <Button
-            text={t('questionNew.buttonSubmit')}
+            text={t('question.new.button.submit')}
             type="submit"
             variant="defaultDisabled"
             disabled={addQuestion.isLoading || !form.title}
@@ -204,10 +205,10 @@ const QuestionForm = ({
       ) : (
         <div className={QuestionFormItem}>
           <Button
-            text={t('questionEdit.buttonEdit')}
+            text={t('common.button.save')}
             type="submit"
             variant="defaultDisabled"
-            onClick={() => onEdit(form)}
+            onClick={(event) => onEdit(form, event)}
           />
         </div>
       )}
