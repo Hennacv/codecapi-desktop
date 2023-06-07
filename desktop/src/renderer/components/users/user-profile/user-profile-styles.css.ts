@@ -25,6 +25,13 @@ export const UserProfileInfoContainer = style({
   },
 });
 
+export const UserSkillsContainer = style({
+  padding: vars.spacing['1.5x'],
+  width: vars.width.full,
+  backgroundColor: vars.color['dark-200'],
+  borderRadius: vars.borderRadius.large,
+});
+
 export const UserProfileTextContainer = style({
   display: 'flex',
   flexDirection: 'column',
@@ -66,6 +73,26 @@ export const UserProfileHeader = style({
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-100'],
 });
+
+export const UserProfileSeparator = style({
+  width: vars.width.full,
+  height: 1,
+  borderWidth: 0,
+  backgroundColor: vars.color['text-white-200'],
+})
+
+export const UserProfileDescriptionContainer = style({
+  width: vars.width.full,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing['0.5x'],
+});
+
+export const UserProfileDescription = style({
+  fontSize: vars.fontSize.medium,
+  fontWeight: vars.fontWeight.light,
+  color: vars.color['text-white-300'],
+})
 
 export const UserCounterContainer = style({
   display: 'flex',
