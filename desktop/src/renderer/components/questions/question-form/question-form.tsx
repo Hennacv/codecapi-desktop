@@ -141,7 +141,7 @@ const QuestionForm = ({
       />
       <div className={QuestionFormItem}>
         <div className={QuestionFormBlocks}>
-          <p>{t('question.form.input.instruction.code')}</p>
+          <p>{t('instruction.blocks')}</p>
           <div className={QuestionFormBlocksOptions}>
             <Button
               type={'button'}

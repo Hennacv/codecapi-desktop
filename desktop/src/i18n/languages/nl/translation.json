@@ -17,6 +17,9 @@
     "name": "Naam",
     "search": "Zoeken"
   },
+  "instruction": {
+    "blocks": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
+  },
   "question": {
     "new": {
       "button": {
@@ -38,9 +41,6 @@
       "input": {
         "title": {
           "selected": "Geselecteerde labels"
-        },
-        "instruction": {
-          "code": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
         }
       }
     }
@@ -53,7 +53,8 @@
       }
     },
     "title": {
-      "number": "Aantal antwoorden"
+      "number": "Aantal antwoorden",
+      "accepted": "Accepteer"
     }
   },
   "comment": {
@@ -87,6 +88,9 @@
       },
       "title": {
         "selected": "Geselecteerde labels"
+      },
+      "placeholder": {
+        "description": "Deze gebruiker heeft nog geen beschrijving toegevoegd."
       }
     },
     "card": {

@@ -27,7 +27,7 @@ const UserCard = ({ user }: UserCard) => {
         <p>{user?.name?.substring(0, 1)}</p>
       </div>
       <p className={UserCardName}>{user.name}</p>
-      <p className={UserCardFunction}>JavaScript Developer</p>
+      {/* <p className={UserCardFunction}>JavaScript Developer</p> */}
       <div className={UserCardButtonContainer}>
         <Button
           text={t('user.card.button.navigate')}

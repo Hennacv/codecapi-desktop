@@ -92,7 +92,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
       </div>
       <div className={ProfileFormItem}>
         <label className={ProfileFormLabel} htmlFor="description">
-          Description
+          {t('common.description')}
         </label>
         <InputText
           type="text"
@@ -128,7 +128,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
                 variant="defaultRemove"
                 onClick={() => deleteSkill(tag)}
               >
-                <IconRemove variant="small" />
+                <IconRemove variant="small"/>
               </TagButton>
             ))}
           </div>

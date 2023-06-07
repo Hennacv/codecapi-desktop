@@ -45,7 +45,7 @@ const UserProfile = () => {
           </p>
           <div className={UserProfileTextContainer}>
             <label className={UserProfileName}>{name}</label>
-            <label className={UserProfileFunction}>JavaScript Developer</label>
+            {/* <label className={UserProfileFunction}>JavaScript Developer</label> */}
             <label className={UserProfileEmail}>{email}</label>
           </div>
         </div>
@@ -65,9 +65,9 @@ const UserProfile = () => {
         </div>
           <div className={UserProfileDescriptionContainer}>
             <hr className={UserProfileSeparator}/>
-            <label className={UserProfileHeader}>Description</label>
+            <label className={UserProfileHeader}>{t('common.description')}</label>
             <p className={UserProfileDescription}>
-              {description || "This user has not added their description yet."}
+              {description || t('user.edit.placeholder.description')}
             </p>
           </div>
       </div>

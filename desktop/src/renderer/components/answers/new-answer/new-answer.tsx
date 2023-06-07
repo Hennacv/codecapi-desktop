@@ -97,10 +97,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
             />
             <div className={NewAnswerFormItem}>
               <div className={NewAnswerBlocks}>
-                <p>
-                  The buttons below allow you to add a text or code field to
-                  your answer.
-                </p>
+                <p>{t('instruction.blocks')}</p>
                 <div className={NewAnswerBlocksOptions}>
                   <Button
                     type="button"
