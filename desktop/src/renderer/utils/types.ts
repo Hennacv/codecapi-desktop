@@ -41,6 +41,10 @@ export interface AddAnswerDto {
   questionId: number;
 }
 
+export interface UpdateAnswerDto extends AddAnswerDto {
+  accepted: boolean;
+  answerId?: number;
+}
 export interface EditProfileDto {
   name: string;
   description: string;
@@ -109,6 +113,8 @@ export interface Answer {
   user: User;
   votes: Vote[],
   comments: Comment[];
+  accepted: boolean;
+  questionId: number;
 }
 
 export interface Comment {

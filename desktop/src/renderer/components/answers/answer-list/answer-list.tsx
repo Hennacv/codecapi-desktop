@@ -4,14 +4,31 @@ import AnswerCard from '../answer-card/answer-card';
 interface AnswerListProps {
   answers: Answer[];
   refetch: () => void;
+  questionUserId: number;
+  acceptedAnswer: Answer|undefined;
 }
 
-const AnswerList = ({ answers, refetch }: AnswerListProps) => {
+const AnswerList = ({
+  answers,
+  refetch,
+  questionUserId,
+  acceptedAnswer,
+}: AnswerListProps) => {
   return (
     <div className={AnswerListContainer}>
-      {answers.map((answer: Answer) => (
-        <AnswerCard key={answer.id} answer={answer} refetch={refetch} />
-      ))}
+      {answers
+        .sort((a, b) =>
+          a.accepted === b.accepted ? 0 : a.accepted === true ? -1 : 1
+        )
+        .map((answer: Answer) => (
+          <AnswerCard
+            key={answer.id}
+            answer={answer}
+            refetch={refetch}
+            questionUserId={questionUserId}
+            acceptedAnswer={acceptedAnswer}
+          />
+        ))}
     </div>
   );
 };
