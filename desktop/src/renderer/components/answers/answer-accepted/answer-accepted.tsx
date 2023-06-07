@@ -1,10 +1,9 @@
 import Button from 'renderer/components/ui/button/button';
 import { useAcceptAnswer } from 'renderer/hooks/use-accept-answer';
-import { useUserContext } from 'renderer/hooks/use-user-context';
 import { Answer } from 'renderer/utils/types';
 import { AnswerAccepted } from './answer-accepted.css';
-import { useEffect } from 'react';
 import IconRemove from 'assets/icons/icon-remove';
+import { useTranslation } from 'react-i18next';
 
 interface AcceptedAnswerProp {
   answer: Answer;
@@ -17,6 +16,8 @@ const AnswerAccept = ({
   refetch,
   acceptedAnswer,
 }: AcceptedAnswerProp) => {
+
+  const {t} = useTranslation();
 
   const acceptAnswer = useAcceptAnswer({
     onSuccess: () => refetch(),
@@ -42,7 +43,7 @@ const AnswerAccept = ({
             variant="vote"
             onClick={(event) => handleAccept(event)}
           >
-            <p> Accept </p>
+            <p>{t('answer.title.accepted')}</p>
           </Button>
       </div>
     );
@@ -55,8 +56,8 @@ const AnswerAccept = ({
             variant="vote"
             onClick={(event) => handleAccept(event)}
           >
-            <p className={AnswerAccepted}> Accepted </p>
-            <IconRemove variant="extraSmall" />
+            <p className={AnswerAccepted}>{t('answer.title.accepted')}</p>
+            <IconRemove variant="small" isActive={true} />
           </Button>
       </div>
     );

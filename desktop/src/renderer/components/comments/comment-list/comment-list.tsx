@@ -16,6 +16,7 @@ import IconAdd from 'assets/icons/icon-add';
 import InputText from 'renderer/components/ui/input-text/input-text';
 import IconRemove from 'assets/icons/icon-remove';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface CommentListProps {
   comments: Comment[];
@@ -24,6 +25,8 @@ interface CommentListProps {
 }
 
 const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
+  const {t} = useTranslation();
+  
   const [newCommentActive, setNewCommentActive] = useState<boolean>(false);
   const [newCommentValue, setNewCommentValue] = useState<string>('');
 
@@ -102,7 +105,7 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
           >
             <IconAdd variant="small" />
           </Button>
-          <p>New comment</p>
+          <p>{t('comment.new.button.open')}</p>
           {comments.length === 0 && (
             <span
               className={CommentListLine}
@@ -131,7 +134,7 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
             type="text"
             value={newCommentValue}
             id="newCommentInput"
-            placeholder="Write your comment here."
+            placeholder={t('comment.new.input.placeholder')}
             variant="inline"
             onChange={(event) => setNewCommentValue(event.target.value)}
           />

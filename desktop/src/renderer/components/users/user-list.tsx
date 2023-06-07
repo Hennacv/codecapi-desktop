@@ -9,8 +9,10 @@ import Button from '../ui/button/button';
 import Filter from '../ui/filter/filter';
 import TagCard from '../tags/tag-card/tag-card';
 import { FilterTermContainer } from '../ui/filter/filter-styles.css';
+import { useTranslation } from 'react-i18next';
 
 const UserList = () => {
+  const {t} = useTranslation();
   const { data: users = [] } = useGetUsers();
   const [searchTerm, setSearchTerm] = useState('');
   const [tags, setTags] = useState<Tag[]>([]);
@@ -31,7 +33,7 @@ const UserList = () => {
   return (
     <>
       <div className={SFContainer}>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('common.search')}/>
         <Button
           text="Filter"
           variant="small"

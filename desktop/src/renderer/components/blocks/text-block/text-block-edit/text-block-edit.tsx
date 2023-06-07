@@ -11,6 +11,7 @@ import {
 import IconRemove from 'assets/icons/icon-remove';
 import { ButtonClose } from 'renderer/components/ui/button/button-styles.css';
 import Button from 'renderer/components/ui/button/button';
+import { useTranslation } from 'react-i18next';
 
 interface TextBlockEditProps {
   position: number;
@@ -34,6 +35,8 @@ const TextBlockEdit = ({
   removeBlock,
   value,
 }: TextBlockEditProps) => {
+  const {t} = useTranslation();
+  
   function updateParent(position: number, value: string, contents: string) {
     updateFormBlock(position, value, contents);
   }
@@ -42,8 +45,7 @@ const TextBlockEdit = ({
     <>
       <div className={TextBlockHeader}>
         <label className={TextBlockLabel}>
-          Description
-          <span className={TextBlockTitle}>(block: {position})</span>
+          {t('common.description')}
         </label>
         <div className={ButtonClose.base}>
           <Button
@@ -58,7 +60,6 @@ const TextBlockEdit = ({
       <ReactQuill
         theme="snow"
         className={ContainerStyles}
-        placeholder="Start writing..."
         value={value}
         onChange={(content, delta, source, editor) => {
           updateParent(

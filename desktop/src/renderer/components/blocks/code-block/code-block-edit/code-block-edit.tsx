@@ -14,6 +14,7 @@ import Select from 'renderer/components/ui/select/select';
 import IconRemove from 'assets/icons/icon-remove';
 import { ButtonClose } from 'renderer/components/ui/button/button-styles.css';
 import Button from 'renderer/components/ui/button/button';
+import { useTranslation } from 'react-i18next';
 
 interface CodeBlockEditProps {
   position: number;
@@ -34,7 +35,7 @@ const CodeBlockEdit = ({
   value,
   language,
 }: CodeBlockEditProps) => {
-  
+  const {t} = useTranslation();
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
 
   const handleEditorDidMount = (
@@ -66,8 +67,7 @@ const CodeBlockEdit = ({
     <>
       <div className={CodeBlockHeader}>
         <label className={CodeBlockLabel}>
-          Code
-          <span className={CodeBlockTitle}>(block: {position})</span>
+          {t('common.code')}
         </label>
         <div className={ButtonClose.base}>
           <Button
@@ -85,7 +85,6 @@ const CodeBlockEdit = ({
           theme="vs-dark"
           language={language}
           value={value}
-          defaultValue="// paste your code here"
           options={{
             scrollBeyondLastLine: false,
             fixedOverflowWidgets: true,

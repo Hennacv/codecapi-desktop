@@ -4,6 +4,7 @@ import { RiArrowDropLeftLine } from 'react-icons/ri';
 import {
   AsideStyles,
   SideList,
+  SideListItem,
   SideStyles,
   SideText,
   SideToggle,
@@ -16,8 +17,10 @@ import SidebarLink from '../sidebar-link/sidebar-link';
 import IconQuestions from 'assets/icons/icon-questions';
 import IconUsers from 'assets/icons/icon-users';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
+  const {t} = useTranslation();
   const { toggleSideBar, isExpanded } = useSidebar();
   const { user } = useUserContext();
 
@@ -34,19 +37,19 @@ const Sidebar = () => {
         <RiArrowDropLeftLine className={SideToggle} onClick={toggleSideBar} />
       </div>
       <aside className={AsideStyles}>
-        <div>
-          <ul className={SideList}>
+        <div className={SideList}>
+          <div className={SideListItem}>
             <SidebarLink to="/questions">
               <IconQuestions variant="default" />
-              <span className={SideText}>Questions</span>
+              <span className={SideText}>{t('common.questions')}</span>
             </SidebarLink>
-          </ul>
-          <ul className={SideList}>
+          </div>
+          <div className={SideListItem}>
             <SidebarLink to="/users">
               <IconUsers variant="default" />
-              <span className={SideText}>Users</span>
+              <span className={SideText}>{t('common.users')}</span>
             </SidebarLink>
-          </ul>
+          </div>
         </div>
         <div>
           <UserInfo isExpanded={isExpanded} to={`users/${user!.id}`} />

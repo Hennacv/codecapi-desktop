@@ -1,0 +1,114 @@
+{
+  "button": {
+    "save": "Opslaan",
+    "back": "Terug",
+    "close": "Sluiten",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "filter": "Filter"
+  },
+  "common": {
+    "title": "Titel",
+    "description": "Beschrijving",
+    "code": "Code",
+    "tags": "Labels",
+    "questions": "Vragen",
+    "users": "Capi's",
+    "name": "Naam",
+    "search": "Zoeken"
+  },
+  "instruction": {
+    "blocks": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
+  },
+  "question": {
+    "new": {
+      "button": {
+        "navigate": "Stel een vraag",
+        "submit": "Deel je vraag"
+      },
+      "page": {
+        "title": "Vraag stellen",
+        "description": "Gebruik het onderstaande formulier om een vraag te stellen aan alle medewerkers van CodeCapi."
+      }
+    },
+    "edit": {
+      "page": {
+        "title": "Vraag bewerken",
+        "description": "Gebruik het onderstaande formulier om je vraag te bewerken."
+      }
+    },
+    "form": {
+      "input": {
+        "title": {
+          "selected": "Geselecteerde labels"
+        }
+      }
+    }
+  },
+  "answer": {
+    "new": {
+      "button": {
+        "open": "Geef antwoord",
+        "submit": "Deel antwoord"
+      }
+    },
+    "title": {
+      "number": "Aantal antwoorden",
+      "accepted": "Accepteer"
+    }
+  },
+  "comment": {
+    "new": {
+      "button": {
+        "open": "Geef commentaar"
+      },
+      "input": {
+        "placeholder": "Schrijf hier je commentaar"
+      }
+    }
+  },
+  "user": {
+    "profile": {
+      "button": {
+        "navigate": "Profiel bewerken"
+      },
+      "title": {
+        "tags": "Heeft kennis van"
+      },
+      "statistic": {
+        "question": "Vragen",
+        "answer": "Antwoorden",
+        "accepted": "Geaccepteerd"
+      }
+    },
+    "edit": {
+      "page": {
+        "title": "Profiel bewerken",
+        "description": "Gebruik het onderstaande formulier om je profiel te bewerken."
+      },
+      "title": {
+        "selected": "Geselecteerde labels"
+      },
+      "placeholder": {
+        "description": "Deze gebruiker heeft nog geen beschrijving toegevoegd."
+      }
+    },
+    "card": {
+      "button": {
+        "navigate": "Meer informatie"
+      }
+    }
+  },
+  "filter": {
+    "title": {
+      "selected": "Geselecteerde filter labels"
+    }
+  },
+  "modal": {
+    "title": {
+      "question": {
+        "delete": "Weet je zeker dat je deze vraag wilt verwijderen?"
+      }
+    }
+  }
+}

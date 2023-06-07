@@ -15,6 +15,7 @@ import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
 import IconAdd from 'assets/icons/icon-add';
 import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
+import { useTranslation } from 'react-i18next';
 
 interface NewAnswerProps {
   id: number;
@@ -28,6 +29,8 @@ interface AddAnswerForm {
 }
 
 const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
+  const {t} = useTranslation();
+  
   const addAnswer = useAddAnswer({
     onSuccess: () => refetch(),
   });
@@ -80,9 +83,9 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
       {formIsActive ? (
         <div className={NewAnswerContainer}>
           <Button
-            text="Close"
-            type={'button'}
-            variant={'small'}
+            text={t("button.close")}
+            type="button"
+            variant="small"
             onClick={() => setFormIsActive(!formIsActive)}
           ></Button>
           <form className={NewAnswerForm}>
@@ -94,10 +97,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
             />
             <div className={NewAnswerFormItem}>
               <div className={NewAnswerBlocks}>
-                <p>
-                  The buttons below allow you to add a text or code field to
-                  your answer.
-                </p>
+                <p>{t('instruction.blocks')}</p>
                 <div className={NewAnswerBlocksOptions}>
                   <Button
                     type="button"
@@ -118,7 +118,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
             </div>
             {form.blocks.length > 0 && (
               <Button
-                text="Post"
+                text={t('answer.new.button.submit')}
                 type="button"
                 variant="defaultDisabled"
                 disabled={addAnswer.isLoading}
@@ -136,7 +136,7 @@ const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
           >
             <IconAdd variant="default" />
           </Button>
-          <p>New answer</p>
+          <p>{t('answer.new.button.open')}</p>
         </div>
       )}
     </>

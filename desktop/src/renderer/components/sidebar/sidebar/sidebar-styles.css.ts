@@ -63,6 +63,13 @@ export const SideText = style({
 });
 
 export const SideList = style({
+  padding: `${vars.spacing['0.5x']} ${vars.spacing['0x']}`,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing['0.5x']
+});
+
+export const SideListItem = style({
   listStyleType: 'none',
   padding: 0,
   margin: 0,

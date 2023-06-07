@@ -8,6 +8,7 @@ const Modal = style({
   opacity: 0,
   transition: `all 0.3s ease-in-out`,
   pointerEvents: 'none',
+  zIndex: 5,
 });
 
 const Show = style({
@@ -24,8 +25,11 @@ export const ModalContent = style({
   backgroundColor: vars.color['dark-200'],
   position: 'absolute',
   borderRadius: vars.borderRadius.large,
-  padding: vars.spacing['1.25x'],
-  width: '90%',
+  padding: vars.spacing['1.5x'],
   right: vars.spacing['2x'],
-  top: vars.spacing['4.75x'],
+  left: vars.spacing['2x'],
+  top: '6.45rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing['1.5x'],
 });

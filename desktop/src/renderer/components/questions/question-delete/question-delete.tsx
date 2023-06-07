@@ -3,6 +3,7 @@ import Modal from "renderer/components/ui/modal/modal";
 import Button from 'renderer/components/ui/button/button';
 import { DeleteButtonContainer, DeleteQuestionMessage } from './question-delete-styles.css';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface DeleteProps {
   id: string | undefined;
@@ -11,6 +12,7 @@ interface DeleteProps {
 }
 
 const QuestionDelete = ({id, isShown, onClose}: DeleteProps) => {
+  const {t} = useTranslation();
   const navigate = useNavigate();
 
   const deleteQuestion = useDeleteQuestion({
@@ -20,17 +22,17 @@ const QuestionDelete = ({id, isShown, onClose}: DeleteProps) => {
   return (
     <Modal isShown={isShown} onClose={() => onClose(false)}>
       <div className={DeleteQuestionMessage}>
-        <p> Are you sure you want to delete this question?</p>
+        <p>{t('modal.title.question.delete')}</p>
       </div>
       <div className={DeleteButtonContainer}>
       <Button
-       text="Cancel"
+       text={t('button.cancel')}
        variant="small"
        type="button"
        onClick={() => onClose(false)}
        />
       <Button
-       text="Delete"
+       text={t('button.delete')}
        variant="delete"
        type="button"
        onClick={() => deleteQuestion.mutate(id)}

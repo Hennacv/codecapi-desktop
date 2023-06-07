@@ -155,6 +155,7 @@ export interface Filter {
 }
 
 export interface Searched {
+  placeholder?: string,
   searchTerm: string;
   setSearchTerm: (str: string) => void;
 }

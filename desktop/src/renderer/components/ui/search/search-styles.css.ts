@@ -5,6 +5,7 @@ export const SFContainer = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  gap: vars.spacing['1x'],
   marginBottom: vars.spacing['1.25x'],
 });
 

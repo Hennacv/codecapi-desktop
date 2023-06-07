@@ -7,7 +7,6 @@ interface AnswerListProps {
   questionUserId: number;
   acceptedAnswer: Answer|undefined;
 }
-
 const AnswerList = ({
   answers,
   refetch,
@@ -16,11 +15,15 @@ const AnswerList = ({
 }: AnswerListProps) => {
   return (
     <div className={AnswerListContainer}>
-      {answers
-        .sort((a, b) =>
-          a.accepted === b.accepted ? 0 : a.accepted === true ? -1 : 1
-        )
-        .map((answer: Answer) => (
+      {answers.sort((a, b) => {
+        if (a.accepted && !b.accepted) {
+          return -1;
+        } else if (!a.accepted && b.accepted) {
+          return 1;
+        } else {
+          return a.id - b.id;
+        }
+      }).map((answer: Answer) => (
           <AnswerCard
             key={answer.id}
             answer={answer}

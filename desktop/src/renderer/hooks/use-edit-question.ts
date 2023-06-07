@@ -14,7 +14,7 @@ export const useEditQuestion = (id?: number) => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['questions']);
-        navigate('/');
+        navigate(`/questions/${id}`);
       },
     }
   );

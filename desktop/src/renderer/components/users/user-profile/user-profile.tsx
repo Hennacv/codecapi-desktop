@@ -21,8 +21,10 @@ import { useGetProfile } from 'renderer/hooks/use-get-profile';
 import Button from 'renderer/components/ui/button/button';
 import IconEdit from 'assets/icons/icon-edit';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = () => {
+  const {t} = useTranslation();
   const { id } = useParams();
   const { data: profile } = useGetProfile(parseInt(id!));
   const { user } = useUserContext();
@@ -43,29 +45,29 @@ const UserProfile = () => {
           </p>
           <div className={UserProfileTextContainer}>
             <label className={UserProfileName}>{name}</label>
-            <label className={UserProfileFunction}>JavaScript Developer</label>
+            {/* <label className={UserProfileFunction}>JavaScript Developer</label> */}
             <label className={UserProfileEmail}>{email}</label>
           </div>
         </div>
         <div className={UserCounterContainer}>
           <div>
-            <label className={UserCounterTitle}>Questions</label>
-            <p className={UserCounter}>{questionCount}</p>
+            <label className={UserCounterTitle}>{t('user.profile.statistic.question')}</label>
+            <p className={UserCounter}>{profile.questionCount}</p>
           </div>
           <div>
-            <label className={UserCounterTitle}>Answers</label>
-            <p className={UserCounter}>{answerCount}</p>
+            <label className={UserCounterTitle}>{t('user.profile.statistic.answer')}</label>
+            <p className={UserCounter}>{profile.answerCount}</p>
           </div>
           <div>
-            <label className={UserCounterTitle}>Accepted</label>
+            <label className={UserCounterTitle}>{t('user.profile.statistic.accepted')}</label>
             <p className={UserCounter}>0</p>
           </div>
         </div>
           <div className={UserProfileDescriptionContainer}>
             <hr className={UserProfileSeparator}/>
-            <label className={UserProfileHeader}>Description</label>
+            <label className={UserProfileHeader}>{t('common.description')}</label>
             <p className={UserProfileDescription}>
-              {description || "This user has not added their description yet."}
+              {description || t('user.edit.placeholder.description')}
             </p>
           </div>
       </div>
@@ -74,11 +76,11 @@ const UserProfile = () => {
         <div className={UserProfileEditButton}>
           <Button
             type="button"
-            variant="smallSquare"
+            variant="small"
             onClick={() => navigate(`/users/edit/${id}`)}
           >
+            <p>{t('user.profile.button.navigate')}</p>
             <IconEdit variant="default" />
-            <p>Edit Profile</p>
           </Button>
         </div>
       )}

@@ -1,10 +1,11 @@
 import { IconVariants } from './icon-styles.css';
 
 interface IconRemoveProps {
+  isActive?: boolean;
   variant: keyof typeof IconVariants;
 }
 
-const IconRemove = ({ variant }: IconRemoveProps) => {
+const IconRemove = ({ variant, isActive }: IconRemoveProps) => {
   return (
     <div className={IconVariants[variant]}>
       <svg
@@ -16,13 +17,13 @@ const IconRemove = ({ variant }: IconRemoveProps) => {
       >
         <path
           d="M5.75781 5.75739L14.2431 14.2427"
-          stroke="#FDFDFD"
+          stroke={isActive ? '#989898' : '#FDFDFD'}
           strokeWidth="2"
           strokeMiterlimit="10"
         />
         <path
           d="M14.2431 5.75733L5.75781 14.2426"
-          stroke="#FDFDFD"
+          stroke={isActive ? '#989898' : '#FDFDFD'}
           strokeWidth="2"
           strokeMiterlimit="10"
         />

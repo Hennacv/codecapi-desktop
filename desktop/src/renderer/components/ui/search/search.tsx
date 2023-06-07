@@ -1,14 +1,14 @@
 import InputText from '../input-text/input-text';
 import { Searched } from 'renderer/utils/types';
 
-const Search = ({ searchTerm, setSearchTerm }: Searched) => {
+const Search = ({ searchTerm, setSearchTerm, placeholder }: Searched) => {
   return (
     <InputText
-      placeholder="Search"
+      placeholder={placeholder}
       type="search"
       id="question-search"
       value={searchTerm}
-      variant="extraSmall"
+      variant="default"
       onChange={(searchTerm) =>
         setSearchTerm(searchTerm.target.value.toLowerCase())
       }

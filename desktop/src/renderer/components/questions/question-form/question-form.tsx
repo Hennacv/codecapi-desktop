@@ -23,6 +23,7 @@ import IconRemove from 'assets/icons/icon-remove';
 import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
 import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
+import { useTranslation } from 'react-i18next';
 
 interface AddQuestionForm {
   title: string;
@@ -39,6 +40,7 @@ const QuestionForm = ({
   id,
   isEditing = false,
 }: AddQuestionForm) => {
+  const {t} = useTranslation();
   const navigate = useNavigate();
   const addQuestion = useAddQuestion({
     onSuccess: () => navigate('/questions'),
@@ -110,7 +112,8 @@ const QuestionForm = ({
     addQuestion.mutate(newQuestion);
   };
 
-  const onEdit = (form: QuestionDto) => {
+  const onEdit = (form: QuestionDto, event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     if (editQuestion) {
       editQuestion.mutate(form);
     }
@@ -120,7 +123,7 @@ const QuestionForm = ({
     <form className={QuestionFormSection}>
       <div className={QuestionFormItem}>
         <label className={QuestionFormLabel} htmlFor="title">
-          Title *
+          {t('common.title')} *
         </label>
         <InputText
           type="text"
@@ -138,10 +141,7 @@ const QuestionForm = ({
       />
       <div className={QuestionFormItem}>
         <div className={QuestionFormBlocks}>
-          <p>
-            The buttons below allow you to add a text or code field to your
-            question.
-          </p>
+          <p>{t('instruction.blocks')}</p>
           <div className={QuestionFormBlocksOptions}>
             <Button
               type={'button'}
@@ -161,7 +161,7 @@ const QuestionForm = ({
         </div>
       </div>
       <div className={QuestionFormItem}>
-        <label className={QuestionFormLabel}>Labels</label>
+        <label className={QuestionFormLabel}>{t('common.tags')}</label>
         <div className={formTags.tags ? QuestionFormTagList : QuestionHidden}>
           {formTags.tags.map((tag: Tag) => (
             <TagButton
@@ -175,7 +175,7 @@ const QuestionForm = ({
             </TagButton>
           ))}
         </div>
-        <label className={QuestionFormDescription}>Selected labels:</label>
+        <label className={QuestionFormDescription}>{t('question.form.input.title.selected')}:</label>
         <div className={QuestionFormTagContainer}>
           <div className={QuestionFormTagList}>
             {formTags.selectedTags.map((tag: Tag) => (
@@ -195,7 +195,7 @@ const QuestionForm = ({
       {!isEditing ? (
         <div className={QuestionFormItem}>
           <Button
-            text="Save"
+            text={t('question.new.button.submit')}
             type="submit"
             variant="defaultDisabled"
             disabled={addQuestion.isLoading || !form.title}
@@ -205,10 +205,10 @@ const QuestionForm = ({
       ) : (
         <div className={QuestionFormItem}>
           <Button
-            text="Edit"
+            text={t('button.save')}
             type="submit"
             variant="defaultDisabled"
-            onClick={() => onEdit(form)}
+            onClick={(event) => onEdit(form, event)}
           />
         </div>
       )}

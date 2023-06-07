@@ -12,13 +12,14 @@ export const FilterTermContainer = style({
 export const FilterTitle = style({
   textTransform: 'uppercase',
   fontSize: vars.fontSize.extraSmall,
+  fontWeight: vars.fontWeight.medium,
   color: vars.color['text-white-200'],
 });
 
 export const FilterTag = style({
-  margin: `${vars.spacing['0.75x']} 0`,
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
   gap: vars.spacing['0.75x'],
+  minHeight: '2.0625rem',
 });

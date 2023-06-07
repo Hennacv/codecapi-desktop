@@ -12,7 +12,11 @@ import { QuestionListContainer } from './question-list-styles.css';
 import { FilterTermContainer } from 'renderer/components/ui/filter/filter-styles.css';
 import TagCard from 'renderer/components/tags/tag-card/tag-card';
 
+import { useTranslation } from 'react-i18next';
+import IconAdd from 'assets/icons/icon-add';
+
 const QuestionList = () => {
+  const {t} = useTranslation();
   const navigate = useNavigate();
   const { data = [], refetch } = useGetQuestions();
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,9 +50,9 @@ const QuestionList = () => {
   return (
     <div>
       <div className={SFContainer}>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('common.search')} />
         <Button
-          text="Filter"
+          text={t('button.filter')}
           variant="small"
           type="button"
           onClick={() => setIsShown(true)}
@@ -76,11 +80,13 @@ const QuestionList = () => {
           )}
         </div>
         <Button
-          text="+ New Question"
           type="button"
-          variant="smallSquare"
+          variant="small"
           onClick={() => onNewQuestion()}
-        />
+        >
+          {t('question.new.button.navigate')}
+          <IconAdd variant={'small'} />
+        </Button>
       </div>
       <div className={QuestionListContainer}>
         {result.map((question: Question) => (
