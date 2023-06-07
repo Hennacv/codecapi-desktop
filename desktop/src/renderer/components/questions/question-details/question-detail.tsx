@@ -76,7 +76,7 @@ const QuestionDetail = () => {
         <AnswerList
           answers={question.answer}
           refetch={refetch}
-          QuestionUserId={question.user.id}
+          questionUserId={question.user.id}
           acceptedAnswer={acceptedAnswer}
         />
       )}

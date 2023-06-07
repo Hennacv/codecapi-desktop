@@ -34,10 +34,22 @@ const AnswerAccept = ({
     });
   };
 
-  if (acceptedAnswer) {
+  if (!acceptedAnswer) {
     return (
       <div>
-        {answer.accepted == true && (
+          <Button
+            type="button"
+            variant="vote"
+            onClick={(event) => handleAccept(event)}
+          >
+            <p> Accept </p>
+          </Button>
+      </div>
+    );
+  }
+  if(answer.accepted == true) {
+    return (
+      <div>
           <Button
             type="button"
             variant="vote"
@@ -46,24 +58,10 @@ const AnswerAccept = ({
             <p className={AnswerAccepted}> Accepted </p>
             <IconRemove variant="extraSmall" />
           </Button>
-        )}
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        {answer.accepted == false && (
-          <Button
-            type="button"
-            variant="vote"
-            onClick={(event) => handleAccept(event)}
-          >
-            <p> Accept </p>
-          </Button>
-        )}
       </div>
     );
   }
+  return null
 };
 
 export default AnswerAccept;

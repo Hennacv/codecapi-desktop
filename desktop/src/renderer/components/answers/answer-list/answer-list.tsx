@@ -4,14 +4,14 @@ import AnswerCard from '../answer-card/answer-card';
 interface AnswerListProps {
   answers: Answer[];
   refetch: () => void;
-  QuestionUserId: number;
+  questionUserId: number;
   acceptedAnswer: Answer|undefined;
 }
 
 const AnswerList = ({
   answers,
   refetch,
-  QuestionUserId,
+  questionUserId,
   acceptedAnswer,
 }: AnswerListProps) => {
   return (
@@ -25,7 +25,7 @@ const AnswerList = ({
             key={answer.id}
             answer={answer}
             refetch={refetch}
-            QuestionUserId={QuestionUserId}
+            questionUserId={questionUserId}
             acceptedAnswer={acceptedAnswer}
           />
         ))}

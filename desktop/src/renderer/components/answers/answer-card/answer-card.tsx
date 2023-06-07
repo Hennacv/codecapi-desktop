@@ -17,14 +17,14 @@ import { useUserContext } from 'renderer/hooks/use-user-context';
 interface AnswerCardProps {
   answer: Answer;
   refetch: () => void;
-  QuestionUserId: number;
+  questionUserId: number;
   acceptedAnswer: Answer | undefined;
 }
 
 const AnswerCard = ({
   answer,
   refetch,
-  QuestionUserId,
+  questionUserId,
   acceptedAnswer,
 }: AnswerCardProps) => {
   const { user } = useUserContext();
@@ -44,7 +44,7 @@ const AnswerCard = ({
             {dayjs(answer.createdAt).fromNow()}
           </div>
           <div className={AnswerCardButtonContainer}>
-          {user.id === QuestionUserId &&
+          {user.id === questionUserId &&
             <AnswerAccept
               answer={answer}
               refetch={refetch}
