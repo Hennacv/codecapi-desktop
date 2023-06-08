@@ -38,7 +38,6 @@ const QuestionCard = ({
     navigate(`/questions/${question.id}`);
   }
 
-  console.log(question)
   return (
     <div
       className={classNames(QuestionCardVariants.default, {
