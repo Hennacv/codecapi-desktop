@@ -85,6 +85,7 @@ export interface Profile {
   user: User;
   questionCount: number;
   answerCount: number;
+  acceptedAnswerCount: number;
 }
 
 export interface Tag {

@@ -34,7 +34,7 @@ const UserProfile = () => {
     return null;
   }
 
-  const { user: { name, email, description, tags, uid }, questionCount, answerCount } = profile;
+  const { user: { name, email, description, tags, uid }, questionCount, answerCount, acceptedAnswerCount } = profile;
 
   return (
     <div>
@@ -52,15 +52,15 @@ const UserProfile = () => {
         <div className={UserCounterContainer}>
           <div>
             <label className={UserCounterTitle}>{t('user.profile.statistic.question')}</label>
-            <p className={UserCounter}>{profile.questionCount}</p>
+            <p className={UserCounter}>{questionCount}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>{t('user.profile.statistic.answer')}</label>
-            <p className={UserCounter}>{profile.answerCount}</p>
+            <p className={UserCounter}>{answerCount}</p>
           </div>
           <div>
             <label className={UserCounterTitle}>{t('user.profile.statistic.accepted')}</label>
-            <p className={UserCounter}>0</p>
+            <p className={UserCounter}>{acceptedAnswerCount}</p>
           </div>
         </div>
           <div className={UserProfileDescriptionContainer}>
