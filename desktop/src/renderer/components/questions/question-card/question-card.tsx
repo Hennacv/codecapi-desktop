@@ -7,6 +7,8 @@ import {
   QuestionCardIconContainer,
   QuestionCardTitle,
   QuestionCardHeaderInfo,
+  QuestionSolvedContainer,
+  QuestionSolvedTag,
 } from './question-card-styles.css';
 
 import dayjs from 'renderer/utils/dayjs';
@@ -15,6 +17,8 @@ import TagCard from 'renderer/components/tags/tag-card/tag-card';
 import IconQuestions from 'assets/icons/icon-questions';
 import DynamicBlocksRead from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-read/dynamic-blocks-read';
 import VoteList from 'renderer/components/votes/vote-list';
+import { useTranslation } from 'react-i18next';
+import IconCheckmark from 'assets/icons/icon-checkmark';
 
 interface QuestionCardProps {
   question: Question;
@@ -28,10 +32,13 @@ const QuestionCard = ({
   refetch,
 }: QuestionCardProps) => {
   const navigate = useNavigate();
+  const {t} = useTranslation();
 
   function onPressCard(question: Question) {
     navigate(`/questions/${question.id}`);
   }
+
+  console.log(question)
   return (
     <div
       className={classNames(QuestionCardVariants.default, {
@@ -52,6 +59,15 @@ const QuestionCard = ({
                 {question.answer.length}
               </div>
             </>
+          )}
+          {question?.answer.find(answer => answer.accepted) && (
+          <div className={QuestionSolvedContainer}>
+            <span>-</span>
+            <div className={QuestionSolvedTag}>
+              <IconCheckmark isSolved variant='extraSmall'/>
+              {t('common.solved')}
+            </div>
+          </div>
           )}
           {!!question.tags.length && (
             <>

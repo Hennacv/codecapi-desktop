@@ -15,7 +15,8 @@
     "questions": "Vragen",
     "users": "Capi's",
     "name": "Naam",
-    "search": "Zoeken"
+    "search": "Zoeken",
+    "solved": "Opgelost"
   },
   "instruction": {
     "blocks": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
