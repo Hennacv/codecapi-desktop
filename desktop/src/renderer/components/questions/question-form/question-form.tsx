@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { useEditQuestion } from 'renderer/hooks/use-edit-question';
 import { useSelectedTags } from '../../../hooks/use-selected-tags';
-import { QuestionDto, Tag, Block } from 'renderer/utils/types';
+import { QuestionDto, Tag, Block, AddQuestionForm } from 'renderer/utils/types';
 import {
   QuestionFormBlocks,
   QuestionFormBlocksOptions,
@@ -25,14 +25,7 @@ import IconCode from 'assets/icons/icon-code';
 import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
 import { useTranslation } from 'react-i18next';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
-
-interface AddQuestionForm {
-  title: string;
-  blocks: Block[];
-  tags: Tag[];
-  id?: number;
-  isEditing?: boolean;
-}
+import QuestionPreview from '../question-preview/question-preview';
 
 const QuestionForm = ({
   title,
@@ -41,7 +34,7 @@ const QuestionForm = ({
   id,
   isEditing = false,
 }: AddQuestionForm) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const addQuestion = useAddQuestion({
     onSuccess: () => {
@@ -50,6 +43,7 @@ const QuestionForm = ({
     }
   });
   const editQuestion = useEditQuestion(id);
+  const [isShown, setIsShown] = useState(false);
 
   let [form, setForm] = useState<AddQuestionForm>({
     title,
@@ -64,7 +58,7 @@ const QuestionForm = ({
 
   const addTag = (tag: Tag) => {
     formTags.addTag(tag);
-    updateFormValue('tags', [...form.tags, { id: tag.id }]);
+    updateFormValue('tags', [...form.tags, { id: tag.id, title: tag.title, color: tag.color  }]);
   };
 
   const deleteTag = (tag: Tag) => {
@@ -81,24 +75,29 @@ const QuestionForm = ({
     });
   };
 
-  const addBlock = (type: 'text' | 'code' ) => {
+  const addBlock = (type: 'text' | 'code') => {
     switch (type) {
       case 'text':
         updateFormValue('blocks', [
           ...form.blocks,
-          { position: form.blocks.length, type: type, value: ''},
+          { position: form.blocks.length, type: type, value: '' },
         ]);
         break;
       case 'code':
         updateFormValue('blocks', [
           ...form.blocks,
-          { position: form.blocks.length, type: type, value: '', language: 'javascript' },
+          {
+            position: form.blocks.length,
+            type: type,
+            value: '',
+            language: 'javascript',
+          },
         ]);
         break;
       default:
         break;
-    } 
-  }
+    }
+  };
 
   const removeBlock = (position: number) => {
     const newBlocks = form.blocks.filter(
@@ -112,11 +111,10 @@ const QuestionForm = ({
     blocks = form.blocks;
   };
 
-  const onSubmit = (newQuestion: QuestionDto) => {
-    addQuestion.mutate(newQuestion);
-  };
-
-  const onEdit = (form: QuestionDto, event: React.MouseEvent<HTMLButtonElement>) => {
+  const onEdit = (
+    form: QuestionDto,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
     if (editQuestion) {
       editQuestion.mutate(form);
@@ -124,99 +122,108 @@ const QuestionForm = ({
   };
 
   return (
-    <form className={QuestionFormSection}>
-      <div className={QuestionFormItem}>
-        <label className={QuestionFormLabel} htmlFor="title">
-          {t('common.title')} *
-        </label>
-        <InputText
-          type="text"
-          id="title"
-          defaultValue={form.title}
-          variant={!form.title ? 'default' : 'defaultValidated'}
-          onChange={(e) => updateFormValue('title', e.target.value)}
-        />
-      </div>
-      <DynamicBlocksEdit
-        field="blocks"
-        blocks={form.blocks}
-        updateFormValue={(field, value) => updateFormValue(field, value)}
-        removeBlock={removeBlock}
+    <>
+      <QuestionPreview
+        question={form}
+        isShown={isShown}
+        onClose={() => setIsShown(false)}
       />
-      <div className={QuestionFormItem}>
-        <div className={QuestionFormBlocks}>
-          <p>{t('instruction.blocks')}</p>
-          <div className={QuestionFormBlocksOptions}>
-            <Button
-              type={'button'}
-              variant={'smallSquare'}
-              onClick={() => addBlock('text')}
-            >
-              <IconText variant={'small'} />
-            </Button>
-            <Button
-              type={'button'}
-              variant={'smallSquare'}
-              onClick={() => addBlock('code')}
-            >
-              <IconCode variant={'small'} />
-            </Button>
+      <form className={QuestionFormSection}>
+        <div className={QuestionFormItem}>
+          <label className={QuestionFormLabel} htmlFor="title">
+            {t('common.title')} *
+          </label>
+          <InputText
+            type="text"
+            id="title"
+            defaultValue={form.title}
+            variant={!form.title ? 'default' : 'defaultValidated'}
+            onChange={(e) => updateFormValue('title', e.target.value)}
+          />
+        </div>
+        <DynamicBlocksEdit
+          field="blocks"
+          blocks={form.blocks}
+          updateFormValue={(field, value) => updateFormValue(field, value)}
+          removeBlock={removeBlock}
+        />
+        <div className={QuestionFormItem}>
+          <div className={QuestionFormBlocks}>
+            <p>{t('instruction.blocks')}</p>
+            <div className={QuestionFormBlocksOptions}>
+              <Button
+                type={'button'}
+                variant={'smallSquare'}
+                onClick={() => addBlock('text')}
+              >
+                <IconText variant={'small'} />
+              </Button>
+              <Button
+                type={'button'}
+                variant={'smallSquare'}
+                onClick={() => addBlock('code')}
+              >
+                <IconCode variant={'small'} />
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={QuestionFormItem}>
-        <label className={QuestionFormLabel}>{t('common.tags')}</label>
-        <div className={formTags.tags ? QuestionFormTagList : QuestionHidden}>
-          {formTags.tags.map((tag: Tag) => (
-            <TagButton
-              key={tag.id}
-              title={tag.title}
-              color={tag.color}
-              variant="defaultAdd"
-              onClick={() => addTag(tag)}
-            >
-              <IconAdd variant="small" />
-            </TagButton>
-          ))}
-        </div>
-        <label className={QuestionFormDescription}>{t('question.form.input.title.selected')}:</label>
-        <div className={QuestionFormTagContainer}>
-          <div className={QuestionFormTagList}>
-            {formTags.selectedTags.map((tag: Tag) => (
+        <div className={QuestionFormItem}>
+          <label className={QuestionFormLabel}>{t('common.tags')}</label>
+          <div className={formTags.tags ? QuestionFormTagList : QuestionHidden}>
+            {formTags.tags.map((tag: Tag) => (
               <TagButton
                 key={tag.id}
                 title={tag.title}
                 color={tag.color}
-                variant="defaultRemove"
-                onClick={() => deleteTag(tag)}
+                variant="defaultAdd"
+                onClick={() => addTag(tag)}
               >
-                <IconRemove variant="small" />
+                <IconAdd variant="small" />
               </TagButton>
             ))}
           </div>
+          <label className={QuestionFormDescription}>
+            {t('question.form.input.title.selected')}:
+          </label>
+          <div className={QuestionFormTagContainer}>
+            <div className={QuestionFormTagList}>
+              {formTags.selectedTags.map((tag: Tag) => (
+                <TagButton
+                  key={tag.id}
+                  title={tag.title}
+                  color={tag.color}
+                  variant="defaultRemove"
+                  onClick={() => deleteTag(tag)}
+                >
+                  <IconRemove variant="small" />
+                </TagButton>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-      {!isEditing ? (
-        <div className={QuestionFormItem}>
-          <Button
-            text={t('question.new.button.submit')}
-            type="submit"
-            variant="defaultDisabled"
-            disabled={addQuestion.isLoading || !form.title}
-            onClick={() => onSubmit(form)}
-          />
-        </div>
-      ) : (
-        <div className={QuestionFormItem}>
-          <Button
-            text={t('button.save')}
-            type="submit"
-            variant="defaultDisabled"
-            onClick={(event) => onEdit(form, event)}
-          />
-        </div>
-      )}
-    </form>
+        {!isEditing ? (
+          <div className={QuestionFormItem}>
+            <Button
+              text={t('question.new.button.preview')}
+              type="button"
+              variant="defaultDisabled"
+              disabled={addQuestion.isLoading || !form.title}
+              onClick={() => setIsShown(true)}
+            />
+          </div>
+        ) : (
+          <div className={QuestionFormItem}>
+            <Button
+              text={t('button.save')}
+              type="submit"
+              variant="defaultDisabled"
+              onClick={(event) => onEdit(form, event)}
+            />
+          </div>
+        )}
+      </form>
+    </>
   );
 };
 

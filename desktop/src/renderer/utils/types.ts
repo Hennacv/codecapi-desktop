@@ -193,3 +193,12 @@ export interface showNotificationData {
 export interface setBadgeCountData {
   count: number;
 }
+
+export interface AddQuestionForm {
+  title: string;
+  blocks: Block[];
+  tags: Tag[];
+  id?: number;
+  isEditing?: boolean;
+  createdAt?: string;
+}
