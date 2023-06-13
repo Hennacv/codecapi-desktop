@@ -30,14 +30,13 @@ interface AddAnswerForm {
 
 const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
   const {t} = useTranslation();
-  
   const addAnswer = useAddAnswer({
     onSuccess: () => refetch(),
   });
 
   const [formIsActive, setFormIsActive] = useState(false);
   const [form, setForm] = useState<AddAnswerForm>({
-    blocks: [],
+    blocks: [{ position: 0, type: 'text', value: '', contents: ''}],
     questionId: id,
     accepted: false
   });
