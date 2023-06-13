@@ -8,6 +8,7 @@ import UserList from './components/users/user-list';
 import Root from './root';
 import UserProfile from './components/users/user-profile/user-profile';
 import UserEdit from './components/users/user-edit/user-edit';
+import Tricks from './components/tricks/tricks-list';
 
 const router = createMemoryRouter([
   {
@@ -60,6 +61,15 @@ const router = createMemoryRouter([
             element: <UserEdit />,
           },
         ],
+      },
+      {
+        path: 'tricks',
+        children: [
+          {
+            path: '',
+            element: <Tricks />,
+          },
+        ]
       },
     ],
   },
