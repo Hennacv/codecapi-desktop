@@ -49,7 +49,7 @@ const QuestionForm = ({
 
   let [form, setForm] = useState<AddQuestionForm>({
     title,
-    blocks,
+    blocks: [{ position: 0, type: 'text', value: '', contents: ''}],
     tags,
     id,
     isEditing,
