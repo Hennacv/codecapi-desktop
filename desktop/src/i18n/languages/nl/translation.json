@@ -20,19 +20,19 @@
   "toast": {
     "success": {
       "question": {
-        "add": "Vraag succesvol gedeeld",
-        "delete": "Vraag succesvol verwijdert",
-        "edit": "Vraag succesvol bijgewerkt"
+        "add": "Vraag gedeeld",
+        "delete": "Vraag verwijdert",
+        "edit": "Vraag bijgewerkt"
       },
       "comment": {
-        "add": "Commentaar succesvol gedeeld",
-        "delete": "Commentaar succesvol verwijdert"
+        "add": "Comment gedeeld",
+        "delete": "Comment verwijdert"
       },
       "answer": {
-        "add": "Antwoord succesvol gedeeld"
+        "add": "Antwoord gedeeld"
       },
       "user": {
-        "edit": "Profiel succesvol bijgewerkt"
+        "edit": "Profiel bijgewerkt"
       }
     },
     "copy": {
@@ -85,7 +85,7 @@
         "open": "Geef commentaar"
       },
       "input": {
-        "placeholder": "Schrijf hier je commentaar"
+        "placeholder": "Schrijf hier je comment"
       }
     }
   },
