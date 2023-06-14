@@ -55,8 +55,6 @@ const QuestionForm = ({
     isEditing,
   });
 
-  console.log(form)
-
   const currentTags = tags;
   let formTags = useSelectedTags(currentTags);
 
