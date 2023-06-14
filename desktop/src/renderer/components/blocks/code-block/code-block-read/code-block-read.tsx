@@ -10,6 +10,8 @@ import Editor from '@monaco-editor/react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import Button from 'renderer/components/ui/button/button';
 import IconCopy from 'assets/icons/icon-copy';
+import { toastInfo } from 'renderer/notifications/toast/show-toast-notification';
+import { useTranslation } from 'react-i18next';
 
 interface CodeBlockReadProps {
   language?: string;
@@ -17,6 +19,7 @@ interface CodeBlockReadProps {
 }
 
 const CodeBlockRead = ({ language, value }: CodeBlockReadProps) => {
+  const {t} = useTranslation();
   let editorRef = useRef<monaco.editor.IStandaloneCodeEditor>().current;
 
   function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
@@ -29,6 +32,7 @@ const CodeBlockRead = ({ language, value }: CodeBlockReadProps) => {
   }
 
   function copytoClipboard() {
+    toastInfo(t('toast.copy.code'));
     navigator.clipboard.writeText(value);
   }
 

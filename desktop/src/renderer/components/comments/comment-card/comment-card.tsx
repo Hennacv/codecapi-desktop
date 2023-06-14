@@ -13,6 +13,8 @@ import dayjs from 'dayjs';
 import Button from 'renderer/components/ui/button/button';
 import IconDelete from 'assets/icons/icon-delete';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface CommentCardProps {
   comment: Comment;
@@ -22,8 +24,13 @@ interface CommentCardProps {
 }
 
 const CommentCard = ({ comment, userUid, refetch }: CommentCardProps) => {
+  const {t} = useTranslation();
+  
   const deleteComment = useDeleteComment({
-    onSuccess: () => refetch(),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.comment.delete'));
+      refetch();
+    }
   });
 
   const handleDeleteComment = () => {

@@ -17,6 +17,28 @@
     "name": "Naam",
     "search": "Zoeken"
   },
+  "toast": {
+    "success": {
+      "question": {
+        "add": "Vraag succesvol gedeeld",
+        "delete": "Vraag succesvol verwijdert",
+        "edit": "Vraag succesvol bijgewerkt"
+      },
+      "comment": {
+        "add": "Commentaar succesvol gedeeld",
+        "delete": "Commentaar succesvol verwijdert"
+      },
+      "answer": {
+        "add": "Antwoord succesvol gedeeld"
+      },
+      "user": {
+        "edit": "Profiel succesvol bijgewerkt"
+      }
+    },
+    "copy": {
+      "code": "Code gekopieerd"
+    }
+  },
   "instruction": {
     "blocks": "Gebruik onderstaande knoppen om een tekst- en/of codeveld toe te voegen aan je vraag."
   },

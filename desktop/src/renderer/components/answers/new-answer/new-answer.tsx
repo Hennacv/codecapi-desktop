@@ -16,6 +16,7 @@ import IconCode from 'assets/icons/icon-code';
 import IconAdd from 'assets/icons/icon-add';
 import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
 import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface NewAnswerProps {
   id: number;
@@ -31,7 +32,10 @@ interface AddAnswerForm {
 const NewAnswer = ({ id, refetch }: NewAnswerProps) => {
   const {t} = useTranslation();
   const addAnswer = useAddAnswer({
-    onSuccess: () => refetch(),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.answer.add'))
+      refetch();
+    }
   });
 
   const [formIsActive, setFormIsActive] = useState(false);
