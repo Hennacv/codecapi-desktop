@@ -3,12 +3,13 @@ import { toastStylesVariants } from "./toast-notification-styles.css";
 import IconToastSuccess from "assets/icons/icon-toast-success";
 import IconToastInfo from "assets/icons/icon-toast-info";
 import IconToastWarning from "assets/icons/icon-toast-warning";
+import IconToastError from "assets/icons/icon-toast-error";
 
 export const toastSuccess = (message: string) => {
   toast.success(message, {
     className: toastStylesVariants.succes,
     theme: "dark",
-    autoClose: 25000,
+    autoClose: 2500,
     hideProgressBar: true,
     pauseOnHover: false,
     icon: IconToastSuccess
@@ -22,6 +23,7 @@ export const toastError = (message: string) => {
     autoClose: 2500,
     hideProgressBar: true,
     pauseOnHover: false,
+    icon: IconToastError
   });
 };
 
