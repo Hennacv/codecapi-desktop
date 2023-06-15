@@ -47,7 +47,8 @@
     "new": {
       "button": {
         "navigate": "Stel een vraag",
-        "submit": "Deel je vraag"
+        "submit": "Deel je vraag",
+        "preview": "Vraag voorvertonen"
       },
       "page": {
         "title": "Vraag stellen",

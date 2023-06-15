@@ -3,8 +3,11 @@ import Button from '../button/button';
 import { ButtonClose } from '../button/button-styles.css';
 import { ModalContent, ModalStyles } from './modal-styles.css';
 import { Modal } from 'renderer/utils/types';
+import { useScrollLock } from 'renderer/hooks/use-scroll-lock';
 
 const Modal = ({ children, isShown, onClose }: Modal) => {
+useScrollLock(isShown)
+
   return (
     <div
       className={isShown ? ModalStyles.show : ModalStyles.basic}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Question, Tag } from 'renderer/utils/types';
 import { useGetQuestions } from 'renderer/hooks/use-get-questions';
@@ -34,14 +34,6 @@ const QuestionList = () => {
       });
     });
   }
-
-  useEffect(() => {
-    const scrollableElement = document.getElementById('main');
-
-    if (scrollableElement) {
-      scrollableElement.style.overflowY = isShown ? 'hidden' : 'visible';
-    }
-  }, [isShown]);
 
   const onNewQuestion = () => {
     navigate('/questions/new');
