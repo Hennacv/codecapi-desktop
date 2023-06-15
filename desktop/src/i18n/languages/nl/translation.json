@@ -15,7 +15,8 @@
     "questions": "Vragen",
     "users": "Capi's",
     "name": "Naam",
-    "search": "Zoeken"
+    "search": "Zoeken",
+    "solved": "Opgelost"
   },
   "toast": {
     "success": {

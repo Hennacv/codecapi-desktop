@@ -2,9 +2,9 @@ import { TagColorBlob, TagCardVariants } from './tag-card-styles.css';
 import { ReactNode } from 'react';
 
 interface TagCardProps {
-  title: string;
+  title?: string;
   children?: ReactNode;
-  color: string;
+  color?: string;
   variant: keyof typeof TagCardVariants;
 }
 

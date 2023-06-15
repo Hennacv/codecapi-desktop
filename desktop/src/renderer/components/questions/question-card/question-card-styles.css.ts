@@ -69,3 +69,23 @@ export const QuestionCardVariants = styleVariants({
   default: [QuestionCardContainer],
   defaultHover: [QuestionCardContainer, QuestionCardHover],
 });
+
+export const QuestionSolvedContainer = style({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: vars.spacing['0.5x'],
+})
+
+export const QuestionSolvedTag = style({
+  width: vars.width.fit,
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: vars.color['dark-300'],
+  color: vars.color['primary-100'],
+  gap: vars.spacing['0.5x'],
+  padding: vars.spacing['0.25x'] + vars.spacing['0.5x'],
+  borderRadius: vars.borderRadius.small,
+  fontSize: vars.fontSize.extraSmall,
+})
