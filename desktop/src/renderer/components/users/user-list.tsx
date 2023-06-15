@@ -30,8 +30,6 @@ const UserList = () => {
     });
   }
 
-  console.log(result);
-
   return (
     <>
       <div className={SFContainer}>
@@ -70,7 +68,7 @@ const UserList = () => {
       <div className={UserCardsContainer}>
         {result
           .sort(function (a, b) {
-            var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+            const nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
             if (nameA < nameB) { return -1; }
             if (nameA > nameB) { return 1; }
             return 0;
