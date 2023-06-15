@@ -12,7 +12,7 @@ import { FilterTermContainer } from '../ui/filter/filter-styles.css';
 import { useTranslation } from 'react-i18next';
 
 const UserList = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { data: users = [] } = useGetUsers();
   const [searchTerm, setSearchTerm] = useState('');
   const [tags, setTags] = useState<Tag[]>([]);
@@ -33,7 +33,11 @@ const UserList = () => {
   return (
     <>
       <div className={SFContainer}>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder={t('common.search')}/>
+        <Search
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          placeholder={t('common.search')}
+        />
         <Button
           text="Filter"
           variant="small"
@@ -48,25 +52,30 @@ const UserList = () => {
         />
       </div>
       <div className={FilterTermContainer}>
-      {!!tags.length && (
-            <>
-              {tags.map((tag) => (
-                <TagCard
-                  key={tag.id}
-                  title={tag.title}
-                  color={tag.color}
-                  variant="small"
-                />
-              ))}
-            </>
-          )}
+        {!!tags.length && (
+          <>
+            {tags.map((tag) => (
+              <TagCard
+                key={tag.id}
+                title={tag.title}
+                color={tag.color}
+                variant="small"
+              />
+            ))}
+          </>
+        )}
       </div>
       <div className={UserCardsContainer}>
         {result
-          .sort((a, b) => a.id - b.id)
+          .sort(function (a, b) {
+            const nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+            if (nameA < nameB) { return -1; }
+            if (nameA > nameB) { return 1; }
+            return 0;
+          })
           .map((user: User, index) => (
             <UserCard user={user} key={index} />
-            ))}
+          ))}
       </div>
     </>
   );
