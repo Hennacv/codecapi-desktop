@@ -34,7 +34,7 @@ const UserProfile = () => {
     return null;
   }
 
-  const { user: { name, email, description, tags, uid }, questionCount, answerCount, acceptedAnswerCount } = profile;
+  const { user: { name, jobtitle, email, description, tags, uid }, questionCount, answerCount, acceptedAnswerCount } = profile;
 
   return (
     <div>
@@ -45,7 +45,7 @@ const UserProfile = () => {
           </p>
           <div className={UserProfileTextContainer}>
             <label className={UserProfileName}>{name}</label>
-            {/* <label className={UserProfileFunction}>JavaScript Developer</label> */}
+            <label className={UserProfileFunction}>{jobtitle}</label>
             <label className={UserProfileEmail}>{email}</label>
           </div>
         </div>

@@ -46,6 +46,7 @@ export interface UpdateAnswerDto extends AddAnswerDto {
   answerId?: number;
 }
 export interface EditProfileDto {
+  jobtitle: string;
   name: string;
   description: string;
   tags: { id: number }[];
@@ -79,6 +80,7 @@ export interface User {
   uid: string;
   tags: Tag[];
   description: string;
+  jobtitle: string;
 }
 
 export interface Profile {
