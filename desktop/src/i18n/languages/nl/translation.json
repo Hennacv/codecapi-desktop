@@ -136,5 +136,17 @@
         "delete": "Weet je zeker dat je deze vraag wilt verwijderen?"
       }
     }
+  },
+  "trick": {
+    "new": {
+      "button": {
+        "navigate": "Nieuwe Trick",
+        "submit": "Deel je trick"
+      },
+      "page": {
+        "title": "Tip/Trick/Tool Toevoegen",
+        "description": "Gebruik het onderstaande formulier om een nieuwe tip, trick of tool te delen met alle medewerkers van CodeCapi."
+      }
+    }
   }
 }

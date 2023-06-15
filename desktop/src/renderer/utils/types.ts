@@ -36,6 +36,11 @@ export interface QuestionDto {
   tags?: { id: number }[];
 }
 
+export interface TrickDto {
+  title: string;
+  blocks: Block[];
+}
+
 export interface AddAnswerDto {
   blocks: Block[];
   questionId: number;
