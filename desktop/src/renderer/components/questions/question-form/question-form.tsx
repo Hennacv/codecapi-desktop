@@ -24,6 +24,7 @@ import IconText from 'assets/icons/icon-text';
 import IconCode from 'assets/icons/icon-code';
 import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
 import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface AddQuestionForm {
   title: string;
@@ -43,7 +44,10 @@ const QuestionForm = ({
   const {t} = useTranslation();
   const navigate = useNavigate();
   const addQuestion = useAddQuestion({
-    onSuccess: () => navigate('/questions'),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.question.add'));
+      navigate('/questions');
+    }
   });
   const editQuestion = useEditQuestion(id);
 

@@ -17,6 +17,7 @@ import InputText from 'renderer/components/ui/input-text/input-text';
 import IconRemove from 'assets/icons/icon-remove';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface CommentListProps {
   comments: Comment[];
@@ -40,6 +41,7 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
   const addComment = useAddComment({
     onSuccess: () => {
       refetch();
+      toastSuccess(t('toast.success.comment.add'));
       setNewCommentActive(false);
       setNewCommentValue('');
     },

@@ -4,6 +4,7 @@ import Button from 'renderer/components/ui/button/button';
 import { DeleteButtonContainer, DeleteQuestionMessage } from './question-delete-styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface DeleteProps {
   id: string | undefined;
@@ -16,7 +17,10 @@ const QuestionDelete = ({id, isShown, onClose}: DeleteProps) => {
   const navigate = useNavigate();
 
   const deleteQuestion = useDeleteQuestion({
-    onSuccess: () => navigate("/questions"),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.question.delete'));
+      navigate("/questions");
+    }
   });
 
   return (

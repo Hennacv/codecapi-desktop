@@ -1,7 +1,7 @@
 import { EventSourcePolyfill } from 'event-source-polyfill';
 import { NavigateFunction } from 'react-router';
 import { MessageEvent } from 'renderer/utils/types';
-import { showNotification } from 'renderer/notifications/show-notification';
+import { showNotification } from 'renderer/notifications/system/show-notification';
 
 export const initializeServerSentEventsHandler = (
   navigate: NavigateFunction,
