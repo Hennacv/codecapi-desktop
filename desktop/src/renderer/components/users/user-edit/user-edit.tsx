@@ -44,15 +44,14 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
   const { addTag, deleteTag, tags, selectedTags } = useSelectedTags(user.tags);
 
   const addSkill = (tag: Tag) => {
-    addTag(tag);
-    updateProfileValue('tags', [...user.tags, { id: tag.id }]);
+    addTag(tag);    
+    updateProfileValue('tags', [...userProfile.tags, { id: tag.id }]);
   };
 
   const deleteSkill = (tag: Tag) => {
     deleteTag(tag);
-
-    const tempTag = userProfile.tags.filter((skill) => skill.id !== tag.id);
-    updateProfileValue('tags', tempTag);
+    const tempTags = userProfile.tags.filter((userTag) => userTag.id !== tag.id);
+    updateProfileValue('tags', tempTags);
   };
 
   const updateProfileValue = (field: string, value: any) => {
@@ -67,7 +66,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    if (editProfile) {
+    if (editProfile) {        
       editProfile?.mutate(userProfile);
     }
   };
