@@ -16,7 +16,6 @@ import { useUserContext } from 'renderer/hooks/use-user-context';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 
 interface QuestionPreview {
   question: AddQuestionForm;
@@ -31,15 +30,6 @@ const QuestionPreview = ({ question, isShown, onClose }: QuestionPreview) => {
   const addQuestion = useAddQuestion({
     onSuccess: () => navigate('/questions'),
   });
-
-  useEffect(() => {
-    const scrollableElement = document.getElementById('main');
-
-    if (scrollableElement) {
-      scrollableElement.scrollTo({ top: 0, behavior: 'smooth' });
-      scrollableElement.style.overflowY = isShown ? 'hidden' : 'visible';
-    }
-  }, [isShown]);
 
   const onSubmit = (newQuestion: QuestionDto) => {
     addQuestion.mutate(newQuestion);
