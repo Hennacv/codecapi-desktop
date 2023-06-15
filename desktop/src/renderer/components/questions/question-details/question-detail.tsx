@@ -53,7 +53,7 @@ const QuestionDetail = () => {
             </Button>
             <Button
               type="button"
-              variant="smallSquare"
+              variant="smallSquareDelete"
               onClick={() => setIsShown(true)}
             >
               <IconDelete variant="default" />

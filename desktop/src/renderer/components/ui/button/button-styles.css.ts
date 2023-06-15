@@ -82,11 +82,18 @@ const ButtonComment = style({
   justifyContent: 'center',
 });
 
+const ButtonVoteSquare = style({
+  padding: vars.spacing['0.25x'],
+  borderColor: vars.color['delete-200']
+});
+
 export const ButtonVariants = styleVariants({
   small: [ButtonBase, ButtonSmall],
   smallText: [ButtonBase, ButtonSmallText],
   smallSquare: [ButtonBase, ButtonSmall, ButtonSmallSquare],
+  smallSquareDelete: [ButtonBase, ButtonSmall, ButtonSmallSquare, {borderColor: vars.color['delete-200']}],
   vote: [ButtonBase, ButtonVote],
+  voteSquare: [ButtonBase, ButtonVote, ButtonVoteSquare],
   delete: [ButtonBase, ButtonSmall, ButtonDelete],
   default: [ButtonBase, ButtonDefault],
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
