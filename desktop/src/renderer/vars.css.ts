@@ -69,11 +69,13 @@ export const vars = createGlobalTheme(':root', {
     },
     width: {
         'full': '100%',
-        'fit': 'fit-content'
+        'fit': 'fit-content',
+        'card': '12.5rem'
     },
     height: {
         'page': '100vh',
-        'full': '100%'
+        'full': '100%',
+        'card': '12.5rem'
     },
     transition: {
         'defaultHover': 'all 50ms ease-in-out'
