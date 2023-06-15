@@ -18,8 +18,8 @@ const IconCheckmark = ({ isSolved, variant }: IconAddProps) => {
         <path
           d="m4.66699 9.66665 4 3.99995 7.33331-7.33329"
           stroke={isSolved ? "#13CB90" : "#FDFDFD"}
-          stroke-miterlimit="10"
-          stroke-width="2"
+          strokeMiterlimit="10"
+          strokeWidth="2"
         />
       </svg>
     </div>
