@@ -5,7 +5,7 @@ interface DeleteVoteProps {
   onSuccess: () => void;
 }
 
-export function useDeleteVote({ onSuccess }: DeleteVoteProps) {
+export const useDeleteVote = ({ onSuccess }: DeleteVoteProps) => {
   return useMutation(
     (id: number) => {
       return api.delete(`/votes/${id}`);

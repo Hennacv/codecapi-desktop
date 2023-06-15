@@ -6,7 +6,7 @@ interface AddVoteProps {
   onSuccess: () => void;
 }
 
-export function useAddVote({ onSuccess }: AddVoteProps) {
+export const useAddVote = ({ onSuccess }: AddVoteProps) => {
   return useMutation(
     (data: AddVoteDto) => {
       return api.post('/votes', data);

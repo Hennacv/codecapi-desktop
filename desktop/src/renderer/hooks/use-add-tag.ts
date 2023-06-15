@@ -6,7 +6,7 @@ interface AddTagProps {
   onSuccess: () => void;
 }
 
-export function useAddTag({ onSuccess }: AddTagProps) {
+export const useAddTag = ({ onSuccess }: AddTagProps) => {
   return useMutation(
     (data: AddTagDto) => {
       return api.post('/tags', data);

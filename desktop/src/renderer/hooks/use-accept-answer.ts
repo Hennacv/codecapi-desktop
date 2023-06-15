@@ -7,7 +7,7 @@ interface AddAcceptedProps {
   answerId: number;
 }
 
-export function useAcceptAnswer({ onSuccess, answerId }: AddAcceptedProps) {
+export const useAcceptAnswer = ({ onSuccess, answerId }: AddAcceptedProps) => {
   return useMutation(
     (data: UpdateAnswerDto) => {
       return api.patch(`/answer/${answerId}`, data);
