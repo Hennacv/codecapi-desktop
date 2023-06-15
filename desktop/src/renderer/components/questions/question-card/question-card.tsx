@@ -36,11 +36,11 @@ const QuestionCard = ({
   const navigate = useNavigate();
   const {t} = useTranslation();
 
-  function onPressCard(question: Question) {
+  const onPressCard = (question: Question) => {
     navigate(`/questions/${question.id}`);
   }
 
-  isSolved = question.answer.some((answer) => answer.accepted === true)
+  isSolved = question.answer.some((answer) => answer.accepted)
 
   return (
     <div
