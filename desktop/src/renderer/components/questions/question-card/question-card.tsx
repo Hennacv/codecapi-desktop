@@ -24,12 +24,14 @@ interface QuestionCardProps {
   question: Question;
   showText?: boolean;
   refetch: () => void;
+  isSolved?: boolean;
 }
 
 const QuestionCard = ({
   question,
   showText = false,
   refetch,
+  isSolved,
 }: QuestionCardProps) => {
   const navigate = useNavigate();
   const {t} = useTranslation();
@@ -37,6 +39,8 @@ const QuestionCard = ({
   function onPressCard(question: Question) {
     navigate(`/questions/${question.id}`);
   }
+
+  isSolved = question.answer.some((answer) => answer.accepted === true)
 
   return (
     <div
@@ -59,7 +63,7 @@ const QuestionCard = ({
               </div>
             </>
           )}
-          {question?.answer.find(answer => answer.accepted) && (
+          {isSolved && (
           <div className={QuestionSolvedContainer}>
             <span>-</span>
             <div className={QuestionSolvedTag}>
