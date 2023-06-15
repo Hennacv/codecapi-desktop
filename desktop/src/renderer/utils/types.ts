@@ -70,7 +70,11 @@ export interface AddQuestionVoteDto extends BaseVoteDto {
   questionId?: number;
 }
 
-export type AddVoteDto = AddAnswerVoteDto | AddQuestionVoteDto;
+export interface AddTrickVoteDto extends BaseVoteDto {
+  trickId?: number;
+}
+
+export type AddVoteDto = AddAnswerVoteDto | AddQuestionVoteDto | AddTrickVoteDto;
 
 export interface AddCommentDto {
   comment: string;
@@ -109,6 +113,15 @@ export interface Question {
   title: string;
   blocks: Block[];
   tags: Tag[];
+  createdAt: string;
+  user: User;
+  votes: Vote[];
+}
+
+export interface Trick {
+  id: number;
+  title: string;
+  blocks: Block[];
   createdAt: string;
   user: User;
   votes: Vote[];

@@ -14,6 +14,7 @@ interface VotesUpvoteProps {
   userId: number;
   questionId?: number;
   answerId?: number;
+  trickId?: number;
   refetchVotes: () => void;
 }
 
@@ -22,6 +23,7 @@ const VotesUpvote = ({
   userId,
   questionId,
   answerId,
+  trickId,
   refetchVotes,
 }: VotesUpvoteProps) => {
   const [isActive, setIsActive] = useState(false);
@@ -53,6 +55,7 @@ const VotesUpvote = ({
         userId: userId,
         questionId: questionId,
         answerId: answerId,
+        trickId: trickId,
       });
     }
   };

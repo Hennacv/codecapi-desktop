@@ -7,10 +7,11 @@ interface VoteListProps {
   votes: Vote[];
   questionId?: number;
   answerId?: number;
+  trickId?: number;
   refetch: () => void;
 }
 
-const VoteList = ({ votes, questionId, answerId, refetch }: VoteListProps) => {
+const VoteList = ({ votes, questionId, answerId, trickId, refetch }: VoteListProps) => {
   const { user } = useUserContext();
   const upvotes = votes.filter((vote) => vote.type === 'upvote');
 
@@ -24,6 +25,7 @@ const VoteList = ({ votes, questionId, answerId, refetch }: VoteListProps) => {
       userId={user.id}
       questionId={questionId}
       answerId={answerId}
+      trickId={trickId}
       refetchVotes={refetchVotes}
     />
   );
