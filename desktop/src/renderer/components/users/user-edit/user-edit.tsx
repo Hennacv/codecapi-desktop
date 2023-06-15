@@ -90,6 +90,18 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
         />
       </div>
       <div className={ProfileFormItem}>
+        <label className={ProfileFormLabel} htmlFor="jobtitle">
+          {t('common.jobtitle')}
+        </label>
+        <InputText
+          type="text"
+          id="jobtitle"
+          defaultValue={userProfile.jobtitle}
+          variant='default'
+          onChange={(e) => updateProfileValue('jobtitle', e.target.value)}
+        />
+      </div>
+      <div className={ProfileFormItem}>
         <label className={ProfileFormLabel} htmlFor="description">
           {t('common.description')}
         </label>

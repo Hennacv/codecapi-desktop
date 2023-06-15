@@ -16,7 +16,8 @@
     "users": "Capi's",
     "name": "Naam",
     "search": "Zoeken",
-    "solved": "Opgelost"
+    "solved": "Opgelost",
+    "jobtitle": "Functie"
   },
   "toast": {
     "success": {
