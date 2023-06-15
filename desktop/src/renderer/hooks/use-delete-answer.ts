@@ -5,7 +5,7 @@ interface DeleteAnswerProps {
   onSuccess: () => void;
 }
 
-export function useDeleteAnswer({ onSuccess }: DeleteAnswerProps) {
+export const useDeleteAnswer = ({ onSuccess }: DeleteAnswerProps) => {
   return useMutation(
     (id: number) => {
       return api.delete(`/answer/${id}`);

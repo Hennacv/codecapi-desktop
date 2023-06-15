@@ -6,7 +6,7 @@ interface AddAnswerProps {
   onSuccess: () => void;
 }
 
-export function useAddAnswer({ onSuccess }: AddAnswerProps) {
+export const useAddAnswer = ({ onSuccess }: AddAnswerProps) => {
   return useMutation(
     (data: AddAnswerDto) => {
       return api.post('/answer', data);

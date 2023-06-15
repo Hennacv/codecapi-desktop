@@ -6,7 +6,7 @@ interface AddQuestionProps {
   onSuccess: () => void;
 }
 
-export function useAddQuestion({ onSuccess }: AddQuestionProps) {
+export const useAddQuestion = ({ onSuccess }: AddQuestionProps) => {
   return useMutation(
     (data: QuestionDto) => {
       return api.post('/questions', data);

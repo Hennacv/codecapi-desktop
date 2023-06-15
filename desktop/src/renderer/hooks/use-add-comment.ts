@@ -6,7 +6,7 @@ interface AddCommentProps {
     onSuccess: () => void;
 }
 
-export function useAddComment({ onSuccess }: AddCommentProps) {
+export const useAddComment = ({ onSuccess }: AddCommentProps) => {
 	return useMutation(
 		(data: AddCommentDto) => {
 				return api.post('/comments', data);
