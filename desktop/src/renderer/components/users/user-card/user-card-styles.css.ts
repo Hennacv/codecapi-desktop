@@ -10,13 +10,18 @@ export const UserCardsContainer = style({
 
 export const UserCardContainer = style({
   padding: vars.spacing['1.5x'],
-  width: 200,
+  width: vars.width.card,
   backgroundColor: vars.color['dark-200'],
   borderRadius: vars.borderRadius.large,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: 10,
+  minHeight: vars.height.card,
+  ':hover': {
+    backgroundColor: vars.color['dark-300'],
+    cursor: 'pointer',
+  },
 });
 
 export const UserCardImage = style({
@@ -46,8 +51,4 @@ export const UserCardFunction = style({
   fontWeight: vars.fontWeight.regular,
   fontSize: vars.fontSize.extraSmall,
   width: vars.width.fit,
-});
-
-export const UserCardButtonContainer = style({
-  marginTop: vars.spacing['1x'],
 });
