@@ -20,7 +20,10 @@ export const vars = createGlobalTheme(':root', {
         'primary-600': '#AEE9CD',
         'text-white-100': '#FDFDFD',
         'text-white-200': '#CBCBCB',
-        'text-white-300': '#989898'
+        'text-white-300': '#989898',
+        'team-blue': '#2779D9',
+        'team-red': '#F24D41',
+        'team-yellow': '#FFFA61',
     },
     borderRadius: {
         'small': '0.5rem',

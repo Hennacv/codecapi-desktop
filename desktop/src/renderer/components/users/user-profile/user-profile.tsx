@@ -34,13 +34,26 @@ const UserProfile = () => {
     return null;
   }
 
-  const { user: { name, jobtitle, email, description, tags, uid }, questionCount, answerCount, acceptedAnswerCount } = profile;
+  const { user: { name, jobtitle, email, description, tags, uid, team }, questionCount, answerCount, acceptedAnswerCount } = profile;
+
+  const assignedTeam = (team: string) => {
+    if(team === 'blue') {
+     return UserProfileImage.blue
+    }
+    if(team === 'red') {
+    return UserProfileImage.red
+    }
+    if(team === 'yellow') {
+    return UserProfileImage.yellow
+    }
+    return UserProfileImage.base
+  }
 
   return (
     <div>
       <div className={UserProfileContainer}>
         <div className={UserProfileInfoContainer}>
-          <p className={UserProfileImage}>
+          <p className={assignedTeam(team)}>
             {name?.substring(0, 1)}
           </p>
           <div className={UserProfileTextContainer}>

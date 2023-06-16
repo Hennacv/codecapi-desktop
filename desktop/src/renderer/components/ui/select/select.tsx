@@ -7,7 +7,7 @@ interface SelectProps {
   options: Option[];
   variant: keyof typeof SelectVariants;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  language: string;
+  language?: string;
 }
 
 const Select = ({ options, variant, onChange, language }: SelectProps) => {

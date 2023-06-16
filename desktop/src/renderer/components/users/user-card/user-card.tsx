@@ -17,9 +17,22 @@ const UserCard = ({ user }: UserCard) => {
     navigate(`/users/${user.id}`);
   };
 
+  const assignedTeam = (team: string) => {
+    if(team === 'blue') {
+     return UserCardImage.blue
+    }
+    if(team === 'red') {
+    return UserCardImage.red
+    }
+    if(team === 'yellow') {
+    return UserCardImage.yellow
+    }
+    return UserCardImage.base
+  }
+
   return (
     <div key={user.id} className={UserCardContainer} onClick={() => goToProfile()}>
-      <div className={UserCardImage}>
+      <div className={assignedTeam(user.team)}>
         <p>{user?.name?.substring(0, 1)}</p>
       </div>
       <p className={UserCardName}>{user.name}</p>

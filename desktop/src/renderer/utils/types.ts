@@ -81,6 +81,7 @@ export interface User {
   tags: Tag[];
   description: string;
   jobtitle: string;
+  team: string;
 }
 
 export interface Profile {

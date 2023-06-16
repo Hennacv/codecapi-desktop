@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from 'renderer/vars.css';
 
 export const UserCardsContainer = style({
@@ -24,7 +24,7 @@ export const UserCardContainer = style({
   },
 });
 
-export const UserCardImage = style({
+const UserCardImageBase = style({
   width: '4rem',
   height: '4rem',
   marginTop: vars.spacing['0.5x'],
@@ -36,6 +36,14 @@ export const UserCardImage = style({
   justifyContent: 'center',
   fontSize: vars.fontSize.large,
 });
+
+export const UserCardImage = styleVariants({
+  base: [UserCardImageBase],
+  blue: [UserCardImageBase, { border: `solid ${vars.color['team-blue']}`}],
+  red: [UserCardImageBase, {border: `solid ${vars.color['team-red']}`}],
+  yellow: [UserCardImageBase, {border: `solid ${vars.color['team-yellow']}`}],
+
+})
 
 export const UserCardName = style({
   color: vars.color['text-white-100'],
