@@ -1,18 +1,45 @@
-import InputText from '../input-text/input-text';
 import { Searched } from 'renderer/utils/types';
+import { SearchContainer, SearchFilterContainer } from './search-styles.css';
 
-const Search = ({ searchTerm, setSearchTerm, placeholder }: Searched) => {
+import InputText from '../input-text/input-text';
+import TagButton from 'renderer/components/tags/tag-button/tag-button';
+import IconAdd from 'assets/icons/icon-add';
+
+const Search = ({
+  searchTerm,
+  setSearchTerm,
+  placeholder,
+  searchTags,
+  addTag,
+}: Searched) => {
   return (
-    <InputText
-      placeholder={placeholder}
-      type="search"
-      id="question-search"
-      value={searchTerm}
-      variant="default"
-      onChange={(searchTerm) =>
-        setSearchTerm(searchTerm.target.value.toLowerCase())
-      }
-    />
+    <div className={SearchContainer}>
+      <InputText
+        placeholder={placeholder}
+        type="text"
+        id="question-search"
+        value={searchTerm}
+        variant="default"
+        onChange={(searchTerm) =>
+          setSearchTerm(searchTerm.target.value.toLowerCase())
+        }
+      />
+      {!!searchTags && (
+        <span className={SearchFilterContainer}>
+          {searchTags.map((tag) => (
+            <TagButton
+              title={tag.title}
+              color={tag.color}
+              variant="defaultAdd"
+              onClick={() => addTag(tag)}
+              key={tag.id}
+            >
+              <IconAdd variant="small" />
+            </TagButton>
+          ))}
+        </span>
+      )}
+    </div>
   );
 };
 

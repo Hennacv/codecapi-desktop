@@ -100,6 +100,7 @@ export const ButtonVariants = styleVariants({
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
   reset: [Reset],
   comment: [ButtonBase, ButtonComment, ButtonDisabled],
+  commentDelete: [ButtonBase, ButtonComment, ButtonDisabled, {borderColor: vars.color['delete-200']}],
 });
 
 const Close = style({

@@ -32,7 +32,8 @@
         "delete": "Comment verwijdert"
       },
       "answer": {
-        "add": "Antwoord gedeeld"
+        "add": "Antwoord gedeeld",
+        "delete": "Antwoord verwijdert"
       },
       "user": {
         "edit": "Profiel bijgewerkt"

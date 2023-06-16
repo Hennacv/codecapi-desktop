@@ -1,4 +1,3 @@
-import { Answer } from 'renderer/utils/types';
 import {
   AnswerCardContainer,
   AnswerCardHeader,
@@ -6,14 +5,17 @@ import {
   AnswerContainer,
   AnswerCardButtonContainer,
 } from './answer-card-styling.css';
+import { Answer } from 'renderer/utils/types';
+import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useDeleteAnswer } from 'renderer/hooks/use-delete-answer';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
+import { useTranslation } from 'react-i18next';
 
 import dayjs from 'renderer/utils/dayjs';
 import DynamicBlocksRead from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-read/dynamic-blocks-read';
 import VoteList from 'renderer/components/votes/vote-list';
 import CommentList from 'renderer/components/comments/comment-list/comment-list';
 import AnswerAccept from '../answer-accepted/answer-accepted';
-import { useUserContext } from 'renderer/hooks/use-user-context';
-import { useDeleteAnswer } from 'renderer/hooks/use-delete-answer';
 import Button from 'renderer/components/ui/button/button';
 import IconDelete from 'assets/icons/icon-delete';
 
@@ -30,10 +32,14 @@ const AnswerCard = ({
   questionUserId,
   acceptedAnswer,
 }: AnswerCardProps) => {
+  const {t} = useTranslation();
   const { user } = useUserContext();
 
   const deleteAnswer = useDeleteAnswer({
-    onSuccess: () => refetch(),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.answer.delete'));
+      refetch();
+    }
   });
 
   const handleDeleteAnswer = () => {

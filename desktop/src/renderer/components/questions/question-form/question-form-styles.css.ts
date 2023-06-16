@@ -95,10 +95,17 @@ export const QuestionFormBlocksOptions = style({
 
 export const NewQuestionButtonPosition = style({
   display: 'flex',
+  alignItems: 'flex-end',
   justifyContent: 'space-between',
   marginBottom: vars.spacing['1.25x'],
 });
 
 export const QuestionHidden = style({
   visibility: 'hidden',
+});
+
+export const QuestionListTitle = style({
+  fontWeight: vars.fontWeight.medium,
+  fontSize: vars.fontSize.medium,
+  color: vars.color['text-white-300']
 });

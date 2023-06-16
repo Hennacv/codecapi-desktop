@@ -169,16 +169,21 @@ export interface Modal {
 }
 
 export interface Filter {
-  tags: Tag[];
-  setTags: (tags: Tag[]) => void;
+  selectedTags: Tag[];
+  remainingTags: Tag[];
+  addTag: (tag: Tag) => void;
+  deleteTag: (tag: Tag) => void;
   isShown: boolean;
   onClose: (arg0: boolean) => void;
 }
 
 export interface Searched {
   placeholder?: string,
+  tags?: Tag[],
+  searchTags?: Tag[],
   searchTerm: string;
   setSearchTerm: (str: string) => void;
+  addTag: (tag: Tag) => void;
 }
 
 interface MessageUser {
