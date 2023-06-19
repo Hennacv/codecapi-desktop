@@ -38,3 +38,9 @@ export const TrickCardContent = style({
 export const TrickCardTitle = style({
   fontWeight: vars.fontWeight.medium,
 });
+
+export const TrickCardButtonsContainer = style({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: vars.spacing['0.25x'],
+});

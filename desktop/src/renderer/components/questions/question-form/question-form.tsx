@@ -45,9 +45,12 @@ const QuestionForm = ({
   const editQuestion = useEditQuestion(id);
   const [isShown, setIsShown] = useState(false);
 
+  if(!blocks.length) { blocks = [{ position: 0, type: 'text', value: '', contents: '' }]; }
+
+
   let [form, setForm] = useState<AddQuestionForm>({
     title,
-    blocks: [{ position: 0, type: 'text', value: '', contents: ''}],
+    blocks,
     tags,
     id,
     isEditing,

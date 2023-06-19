@@ -15,23 +15,30 @@ import {
   TrickFormSection,
 } from './trick-form-styles.css';
 import IconCode from 'assets/icons/icon-code';
+import { useEditTrick } from 'renderer/hooks/use-edit-trick';
 
 interface AddTrickForm {
   title: string;
   blocks: Block[];
   id?: number;
+  isEditing?: boolean;
 }
 
-const TrickForm = ({ title, blocks, id }: AddTrickForm) => {
+const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const addTrick = useAddTrick({
     onSuccess: () => navigate('/tricks'),
   });
+  const editTrick = useEditTrick(id);
+
+  if (!blocks.length) {
+    blocks = [{ position: 0, type: 'text', value: '', contents: '' }];
+  }
 
   let [form, setForm] = useState<AddTrickForm>({
     title,
-    blocks: [{ position: 0, type: 'text', value: '', contents: '' }],
+    blocks,
     id,
   });
 
@@ -63,6 +70,16 @@ const TrickForm = ({ title, blocks, id }: AddTrickForm) => {
 
   const onSubmit = (newTrick: TrickDto) => {
     addTrick.mutate(newTrick);
+  };
+
+  const onEdit = (
+    form: TrickDto,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    if (editTrick) {
+      editTrick.mutate(form);
+    }
   };
 
   return (
@@ -104,15 +121,26 @@ const TrickForm = ({ title, blocks, id }: AddTrickForm) => {
           </Button>
         </div>
       </div>
-      <div className={TrickFormItem}>
-        <Button
-          text={t('trick.new.button.submit')}
-          type="button"
-          variant="defaultDisabled"
-          disabled={addTrick.isLoading || !form.title}
-          onClick={() => onSubmit(form)}
-        />
-      </div>
+      {!isEditing ? (
+        <div className={TrickFormItem}>
+          <Button
+            text={t('trick.new.button.submit')}
+            type="button"
+            variant="defaultDisabled"
+            disabled={addTrick.isLoading || !form.title}
+            onClick={() => onSubmit(form)}
+          />
+        </div>
+      ) : (
+        <div className={TrickFormItem}>
+          <Button
+            text={t('button.save')}
+            type="submit"
+            variant="defaultDisabled"
+            onClick={(event) => onEdit(form, event)}
+          />
+        </div>
+      )}
     </form>
   );
 };

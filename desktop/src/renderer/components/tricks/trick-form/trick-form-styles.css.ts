@@ -7,6 +7,7 @@ export const TrickFormContainer = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['2x'],
+  overflow: 'scroll',
 });
 
 export const TrickFormHeader = style({
