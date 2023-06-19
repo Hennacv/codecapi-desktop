@@ -6,6 +6,16 @@ export const SFContainer = style({
   marginBottom: vars.spacing['2x'],
 });
 
+export const UserListFilters = style({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: vars.spacing['1x'],
+  width: vars.width.full,
+  minHeight: '2rem',
+  marginBottom: vars.spacing['1x']
+});
+
 export const SearchStyles = style({
   width: '70%',
 });

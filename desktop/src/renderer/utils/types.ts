@@ -168,23 +168,19 @@ export interface Modal {
   onClose: () => void;
 }
 
-export interface Filter {
+export type UseSelectedTagsType = {
+  tags: Tag[];
   selectedTags: Tag[];
-  remainingTags: Tag[];
-  addTag: (tag: Tag) => void;
-  deleteTag: (tag: Tag) => void;
-  isShown: boolean;
-  onClose: (arg0: boolean) => void;
-}
+  addTag: (addedTag: Tag) => void;
+  deleteTag: (removedTag: Tag) => void;
+};
 
-export interface Searched {
-  placeholder?: string,
-  tags?: Tag[],
-  searchTags?: Tag[],
-  searchTerm: string;
-  setSearchTerm: (str: string) => void;
-  addTag: (tag: Tag) => void;
-}
+export type UseSelectedUsersType = {
+  users: User[];
+  selectedUsers: User[];
+  addUser: (addedTag: User) => void;
+  deleteUser: (removedTag: User) => void;
+};
 
 interface MessageUser {
   userId: number;

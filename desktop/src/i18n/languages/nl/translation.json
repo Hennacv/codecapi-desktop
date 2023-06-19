@@ -132,8 +132,15 @@
     }
   },
   "filter": {
-    "title": {
-      "selected": "Geselecteerde filter labels"
+    "user": {
+      "title": {
+        "selected": "Geselecteerde capi"
+      }
+    },
+    "tags": {
+      "title": {
+        "selected": "Geselecteerde labels"
+      }
     }
   },
   "modal": {

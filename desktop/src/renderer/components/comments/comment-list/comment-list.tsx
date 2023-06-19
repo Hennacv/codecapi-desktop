@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useAddComment } from 'renderer/hooks/use-add-comment';
 import { useGetUser } from 'renderer/hooks/use-get-user';
 import { useUserContext } from 'renderer/hooks/use-user-context';
+import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 import {
   CommentListContainer,
   CommentListItem,
@@ -16,8 +18,6 @@ import IconAdd from 'assets/icons/icon-add';
 import InputText from 'renderer/components/ui/input-text/input-text';
 import IconRemove from 'assets/icons/icon-remove';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
-import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface CommentListProps {
   comments: Comment[];
