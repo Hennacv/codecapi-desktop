@@ -54,3 +54,9 @@ export const TrickFormBlocks = style({
   fontWeight: vars.fontWeight.regular,
   color: vars.color['text-white-300'],
 });
+
+export const TrickFormBlocksOptions = style({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: vars.spacing['1x'],
+});

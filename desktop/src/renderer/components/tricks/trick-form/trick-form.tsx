@@ -9,10 +9,12 @@ import { useAddTrick } from 'renderer/hooks/use-add-trick';
 import { Block, TrickDto } from 'renderer/utils/types';
 import {
   TrickFormBlocks,
+  TrickFormBlocksOptions,
   TrickFormItem,
   TrickFormLabel,
   TrickFormSection,
 } from './trick-form-styles.css';
+import IconCode from 'assets/icons/icon-code';
 
 interface AddTrickForm {
   title: string;
@@ -85,13 +87,20 @@ const TrickForm = ({ title, blocks, id }: AddTrickForm) => {
       />
       <div className={TrickFormItem}>
         <p className={TrickFormBlocks}>{t('instruction.blocks')}</p>
-        <div>
+        <div className={TrickFormBlocksOptions}>
           <Button
             type={'button'}
             variant={'smallSquare'}
             onClick={() => addBlock('text')}
           >
             <IconText variant={'small'} />
+          </Button>
+          <Button
+            type={'button'}
+            variant={'smallSquare'}
+            onClick={() => addBlock('code')}
+          >
+            <IconCode variant={'small'} />
           </Button>
         </div>
       </div>

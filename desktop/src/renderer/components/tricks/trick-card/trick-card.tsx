@@ -22,11 +22,11 @@ const TrickCard = ({
           <span>-</span>
           {dayjs(trick.createdAt).fromNow()}
         </div>
-        <VoteList
+        {/* <VoteList
           votes={trick.votes}
           trickId={trick.id}
           refetch={refetch}
-        />
+        /> */}
       </div>
       <div className={TrickCardContent}>
         <span className={TrickCardTitle}>{trick.title}</span>

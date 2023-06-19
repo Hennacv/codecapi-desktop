@@ -16,7 +16,6 @@ const Tricks = () => {
     navigate('/tricks/new');
   };
 
-  console.log(data)
   return (
     <>
     <div className={NewTrickButtonPosition}>
