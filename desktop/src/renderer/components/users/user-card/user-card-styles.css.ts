@@ -24,7 +24,7 @@ export const UserCardContainer = style({
   },
 });
 
-const UserCardImageBase = style({
+export const UserCardImage = style({
   width: '4rem',
   height: '4rem',
   marginTop: vars.spacing['0.5x'],
@@ -36,14 +36,6 @@ const UserCardImageBase = style({
   justifyContent: 'center',
   fontSize: vars.fontSize.large,
 });
-
-export const UserCardImage = styleVariants({
-  base: [UserCardImageBase],
-  blue: [UserCardImageBase, { border: `solid ${vars.color['team-blue']}`}],
-  red: [UserCardImageBase, {border: `solid ${vars.color['team-red']}`}],
-  yellow: [UserCardImageBase, {border: `solid ${vars.color['team-yellow']}`}],
-
-})
 
 export const UserCardName = style({
   color: vars.color['text-white-100'],

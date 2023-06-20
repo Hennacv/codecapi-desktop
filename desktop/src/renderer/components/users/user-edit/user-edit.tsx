@@ -42,7 +42,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
   const editProfile = useEditProfile(parseInt(id!));
   const [userProfile, setUserProfile] = useState<EditProfileDto>(user);
 
-  const colors: Array<string> = ['none', 'blue', 'red', 'yellow'];
+  const teams: Array<string> = ['none', 'Capiche', 'Syntax Squad', 'Drop'];
 
   const { addTag, deleteTag, tags, selectedTags } = useSelectedTags(user.tags);
 
@@ -113,8 +113,8 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
           {t('common.team')}
         </label>
         <Select
-          options={colors.map((color) => {
-            return { value: color, label: color };
+          options={teams.map((team) => {
+            return { value: team, label: team };
           })}
           onChange={(e) => updateProfileValue('team', e.target.value)}
           variant="medium"

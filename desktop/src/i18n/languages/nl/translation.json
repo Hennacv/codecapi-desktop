@@ -18,7 +18,8 @@
     "search": "Zoeken",
     "solved": "Opgelost",
     "jobtitle": "Functie",
-    "team": "Team"
+    "team": "Team",
+    "teamless": "Teamloos"
   },
   "toast": {
     "success": {

@@ -39,7 +39,7 @@ export const UserProfileTextContainer = style({
   width: vars.width.fit,
 });
 
-const UserProfileImageBase = style({
+export const UserProfileImage = style({
   width: '6rem',
   height: '6rem',
   borderRadius: vars.borderRadius.small,
@@ -49,14 +49,6 @@ const UserProfileImageBase = style({
   justifyContent: 'center',
   fontSize: vars.fontSize.extraLarge,
 });
-
-export const UserProfileImage = styleVariants({
-  base: [UserProfileImageBase],
-  blue: [UserProfileImageBase, { border: `solid ${vars.color['team-blue']}`}],
-  red: [UserProfileImageBase, {border: `solid ${vars.color['team-red']}`}],
-  yellow: [UserProfileImageBase, {border: `solid ${vars.color['team-yellow']}`}],
-})
-
 
 export const UserProfileName = style({
   fontSize: vars.fontSize.large,
