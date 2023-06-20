@@ -48,7 +48,7 @@ const Search = ({
     }
   };
   const showUsers = (searchTerm: string) => {
-    if (!!searchTerm && !!usersHandler) {
+    if (!!searchTerm && !!usersHandler && usersHandler.selectedUsers.length === 0) {
       setSearchUsers(
         usersHandler.users
           .filter((user) =>
