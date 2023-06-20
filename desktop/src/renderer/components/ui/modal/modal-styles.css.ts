@@ -33,6 +33,6 @@ export const ModalContent = style({
   display: 'flex',
   flexDirection: 'column',
   maxHeight: '80vh',
-  overflow: 'scroll',
+  overflow: 'hidden',
   gap: vars.spacing['2x'],
 });
