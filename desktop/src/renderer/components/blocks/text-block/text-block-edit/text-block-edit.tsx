@@ -2,6 +2,8 @@ import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'quill-emoji/dist/quill-emoji.css';
 import * as Emoji from 'quill-emoji';
+import { ImageDrop } from 'quill-image-drop-module';
+import ImageResize from 'quill-image-resize-module--fix-imports-error';
 import {
   ContainerStyles,
   TextBlockHeader,
@@ -24,6 +26,8 @@ interface TextBlockEditProps {
 }
 
 Quill.register('modules/emoji', Emoji);
+Quill.register('modules/imageDrop', ImageDrop);
+Quill.register('modules/imageResize', ImageResize);
 
 const toolbarOptions = [
   [{ header: [1, 2, 3, false] }],
@@ -42,16 +46,27 @@ const TextBlockEdit = ({
   const quillRef = useRef<ReactQuill | null>(null);
   const modules = useMemo(
     () => ({
-    toolbar: {
-      container: toolbarOptions,
-      handlers: {
-        image: (e: any) => handleImageUpload(e),
+      toolbar: {
+        container: toolbarOptions,
+        handlers: {
+          image: (e: any) => handleImageUpload(e),
+        },
       },
-    },
-    'emoji-toolbar': true,
-    'emoji-textarea': false,
-    'emoji-shortname': true,
-  }), [])
+      'emoji-toolbar': true,
+      'emoji-textarea': false,
+      'emoji-shortname': true,
+      imageDrop: true,
+      imageResize: {
+        displayStyles: {
+          backgroundColor: 'black',
+          border: 'none',
+          color: 'white',
+        },
+        modules: ['Resize', 'DisplaySize', 'Toolbar'],
+      },
+    }),
+    []
+  );
 
   function updateParent(position: number, value: string, contents: string) {
     updateFormBlock(position, value, contents);
