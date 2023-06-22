@@ -1,11 +1,10 @@
 import { IconVariants } from './icon-styles.css';
 
-interface IconAddProps {
-  isSolved?: boolean;
+interface IconAnnouncementProps {
   variant: keyof typeof IconVariants;
 }
 
-const IconAnnouncement = ({ isSolved, variant }: IconAddProps) => {
+const IconAnnouncement = ({ variant }: IconAnnouncementProps) => {
   return (
     <div className={IconVariants[variant]}>
       <svg
@@ -43,9 +42,9 @@ const IconAnnouncement = ({ isSolved, variant }: IconAddProps) => {
             y2="25.3322"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FDFDFD" />
-            <stop offset="1" stop-color="#929292" />
-            <stop offset="1" stop-color="#A4A4A4" />
+            <stop stopColor="#FDFDFD" />
+            <stop offset="1" stopColor="#929292" />
+            <stop offset="1" stopColor="#A4A4A4" />
           </linearGradient>
         </defs>
       </svg>
