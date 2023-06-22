@@ -1,30 +1,20 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "renderer/vars.css";
 
-export const AnnouncementCardContainer = style({
+const AnnouncementCardContainer = style({
   padding: vars.spacing['1.5x'],
   width: vars.width.full,
   backgroundColor: vars.color['dark-200'],
   borderRadius: vars.borderRadius.large,
 });
 
-export const AnnouncementCardHeader = style({
-  width: vars.width.full,
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  fontSize: vars.fontSize.small,
-  marginBottom: vars.spacing['1x'],
-  color: vars.color['text-white-300'],
-});
-
-export const AnnouncementCardHeaderInfo = style({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  flexWrap: 'wrap',
-  gap: vars.spacing['0.5x'],
+const AnnouncementCardHover = style({
+  transition: vars.transition.defaultHover,
+  pointerEvents: 'auto',
+  ':hover': {
+    backgroundColor: vars.color['dark-300'],
+    cursor: 'pointer',
+  },
 });
 
 export const AnnouncementCardContent = style({
@@ -43,4 +33,9 @@ export const AnnouncementCardButtonsContainer = style({
   display: 'flex',
   flexDirection: 'row',
   gap: vars.spacing['0.25x'],
+});
+
+export const AnnouncementCardVariants = styleVariants({
+  default: [AnnouncementCardContainer],
+  defaultHover: [AnnouncementCardContainer, AnnouncementCardHover],
 });

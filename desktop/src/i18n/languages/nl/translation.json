@@ -45,6 +45,11 @@
         "add": "Tip/Trick/Tool gedeeld",
         "delete": "Tip/Trick/Tool verwijderd",
         "edit": "Tip/Trick/Tool bijgewerkt"
+      },
+      "announcement": {
+        "add": "Aankondiging gedeeld",
+        "delete": "Aankondiging verwijdert",
+        "edit": "Aankondiging bijgewerkt"
       }
     },
     "copy": {
@@ -153,6 +158,9 @@
       },
       "trick": {
         "delete": "Weet je zeker dat je deze tip/trick/tool wilt verwijderen?"
+      },
+      "announcement": {
+        "delete": "Weet je zeker dat je deze Aankondiging wilt verwijderen?"
       }
     }
   },
@@ -184,6 +192,12 @@
       "page": {
         "title": "Nieuwe Aankondiging",
         "description": "Gebruik het onderstaande formulier om een aankondiging door te geven aan alle medewerkers van CodeCapi."
+      }
+    },
+    "edit": {
+      "page": {
+        "title": "Aankondiging Bewerken",
+        "description": "Gebruik het onderstaande formulier om je aankondiging te bewerken."
       }
     }
   }

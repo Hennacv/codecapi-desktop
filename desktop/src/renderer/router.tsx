@@ -13,6 +13,8 @@ import NewAnnouncement from './components/announcements/announcement-new/announc
 import Tricks from './components/tricks/trick-list/trick-list';
 import NewTrick from './components/tricks/trick-new/trick-new';
 import TrickEdit from './components/tricks/trick-edit/trick-edit';
+import AnnouncementDetail from './components/announcements/announcement-details/announcment-detail';
+import AnnouncementEdit from './components/announcements/announcement-edit/announcement-edit';
 
 const router = createMemoryRouter([
   {
@@ -76,6 +78,14 @@ const router = createMemoryRouter([
           {
             path: 'new',
             element: <NewAnnouncement />,
+          },
+          {
+            path: ':id',
+            element: <AnnouncementDetail />,
+          },
+          {
+            path: 'edit/:id',
+            element: <AnnouncementEdit />,
           },
         ],
       },

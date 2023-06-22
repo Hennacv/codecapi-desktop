@@ -16,6 +16,7 @@ import {
 } from './trick-form-styles.css';
 import IconCode from 'assets/icons/icon-code';
 import { useEditTrick } from 'renderer/hooks/use-edit-trick';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface AddTrickForm {
   title: string;
@@ -28,7 +29,10 @@ const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const addTrick = useAddTrick({
-    onSuccess: () => navigate('/tricks'),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.trick.add'));
+      navigate('/tricks');
+    },
   });
   const editTrick = useEditTrick(id);
 

@@ -15,19 +15,31 @@ import {
   AnnouncementFormLabel,
   AnnouncementFormSection,
 } from './announcement-form-styles.css';
+import { useEditAnnouncement } from 'renderer/hooks/use-edit-announcement';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface AddAnnouncementForm {
   title: string;
   blocks: Block[];
   id?: number;
+  isEditing?: boolean;
 }
 
-const AnnouncementForm = ({ title, blocks, id }: AddAnnouncementForm) => {
+const AnnouncementForm = ({
+  title,
+  blocks,
+  id,
+  isEditing,
+}: AddAnnouncementForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const addAnnouncement = useAddAnnouncement({
-    onSuccess: () => navigate('/announcements'),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.announcement.add'));
+      navigate('/announcements');
+    },
   });
+  const editAnnouncement = useEditAnnouncement(id);
 
   if (!blocks.length) {
     blocks = [{ position: 0, type: 'text', value: '', contents: '' }];
@@ -69,6 +81,16 @@ const AnnouncementForm = ({ title, blocks, id }: AddAnnouncementForm) => {
     addAnnouncement.mutate(newAnnouncement);
   };
 
+  const onEdit = (
+    form: AnnouncementDto,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    if (editAnnouncement) {
+      editAnnouncement.mutate(form);
+    }
+  };
+
   return (
     <form className={AnnouncementFormSection}>
       <div className={AnnouncementFormItem}>
@@ -108,15 +130,26 @@ const AnnouncementForm = ({ title, blocks, id }: AddAnnouncementForm) => {
           </Button>
         </div>
       </div>
-      <div>
-        <Button
-          text={t('announcement.new.button.submit')}
-          type="button"
-          variant="defaultDisabled"
-          disabled={addAnnouncement.isLoading || !form.title}
-          onClick={() => onSubmit(form)}
-        />
-      </div>
+      {!isEditing ? (
+        <div className={AnnouncementFormItem}>
+          <Button
+            text={t('announcement.new.button.submit')}
+            type="button"
+            variant="defaultDisabled"
+            disabled={addAnnouncement.isLoading || !form.title}
+            onClick={() => onSubmit(form)}
+          />
+        </div>
+      ) : (
+        <div className={AnnouncementFormItem}>
+          <Button
+            text={t('button.save')}
+            type="submit"
+            variant="defaultDisabled"
+            onClick={(event) => onEdit(form, event)}
+          />
+        </div>
+      )}
     </form>
   );
 };

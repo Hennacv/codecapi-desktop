@@ -1,21 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import {
-  NewAnnouncementContainer,
-  NewAnnouncementDescription,
-  NewAnnouncementHeader,
-  NewAnnouncementTitle,
-} from './announcement-new-styles.css';
 import AnnouncementForm from '../announcement-form/announcement-form';
+import { AnnouncementFormContainer, AnnouncementFormDescription, AnnouncementFormHeader, AnnouncementFormTitle } from '../announcement-form/announcement-form-styles.css';
 
 const NewAnnouncement = () => {
   const { t } = useTranslation();
   return (
-    <div className={NewAnnouncementContainer}>
-      <header className={NewAnnouncementHeader}>
-        <h1 className={NewAnnouncementTitle}>
+    <div className={AnnouncementFormContainer}>
+      <header className={AnnouncementFormHeader}>
+        <h1 className={AnnouncementFormTitle}>
           {t('announcement.new.page.title')}
         </h1>
-        <p className={NewAnnouncementDescription}>
+        <p className={AnnouncementFormDescription}>
           {t('announcement.new.page.description')}
         </p>
       </header>
