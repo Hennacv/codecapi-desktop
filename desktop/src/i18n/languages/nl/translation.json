@@ -19,6 +19,7 @@
     "tricks": "Tips/Tricks/Tools",
     "solved": "Opgelost",
     "jobtitle": "Functie",
+    "announcements": "Aankondigingen",
     "team": "Team",
     "teamless": "Teamloos"
   },
@@ -170,6 +171,19 @@
       "page": {
         "title": "Tip/Trick/Tool Bewerken",
         "description": "Gebruik het onderstaande formulier om je tip, trick of tool te bewerken."
+      }
+    }
+  },
+  "announcement": {
+    "new": {
+      "button": {
+        "navigate": "Nieuwe Aankondiging",
+        "submit": "Deel je aankondiging",
+        "preview": "Aankondiging voorvertonen"
+      },
+      "page": {
+        "title": "Nieuwe Aankondiging",
+        "description": "Gebruik het onderstaande formulier om een aankondiging door te geven aan alle medewerkers van CodeCapi."
       }
     }
   }

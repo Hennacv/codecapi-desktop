@@ -8,6 +8,8 @@ import UserList from './components/users/user-list';
 import Root from './root';
 import UserProfile from './components/users/user-profile/user-profile';
 import UserEdit from './components/users/user-edit/user-edit';
+import AnnouncementList from './components/announcements/announcement-list/announcement-list';
+import NewAnnouncement from './components/announcements/announcement-new/announcement-new';
 import Tricks from './components/tricks/trick-list/trick-list';
 import NewTrick from './components/tricks/trick-new/trick-new';
 import TrickEdit from './components/tricks/trick-edit/trick-edit';
@@ -61,6 +63,19 @@ const router = createMemoryRouter([
           {
             path: 'edit/:id',
             element: <UserEdit />,
+          },
+        ],
+      },
+      {
+        path: 'announcements',
+        children: [
+          {
+            path: '',
+            element: <AnnouncementList />,
+          },
+          {
+            path: 'new',
+            element: <NewAnnouncement />,
           },
         ],
       },
