@@ -16,6 +16,7 @@
     "users": "Capi's",
     "name": "Naam",
     "search": "Zoeken",
+    "tricks": "Tips/Tricks/Tools",
     "solved": "Opgelost",
     "jobtitle": "Functie"
   },
@@ -35,6 +36,11 @@
       },
       "user": {
         "edit": "Profiel bijgewerkt"
+      },
+      "trick": {
+        "add": "Tip/Trick/Tool gedeeld",
+        "delete": "Tip/Trick/Tool verwijdert",
+        "edit": "Tip/Trick/Tool bijgewerkt"
       }
     },
     "copy": {
@@ -133,6 +139,27 @@
     "title": {
       "question": {
         "delete": "Weet je zeker dat je deze vraag wilt verwijderen?"
+      },
+      "trick": {
+        "delete": "Weet je zeker dat je deze tip/trick/tool wilt verwijderen?"
+      }
+    }
+  },
+  "trick": {
+    "new": {
+      "button": {
+        "navigate": "Nieuwe Trick",
+        "submit": "Deel je trick"
+      },
+      "page": {
+        "title": "Tip/Trick/Tool Toevoegen",
+        "description": "Gebruik het onderstaande formulier om een nieuwe tip, trick of tool te delen met alle medewerkers van CodeCapi."
+      }
+    },
+    "edit": {
+      "page": {
+        "title": "Tip/Trick/Tool Bewerken",
+        "description": "Gebruik het onderstaande formulier om je tip, trick of tool te bewerken."
       }
     }
   }

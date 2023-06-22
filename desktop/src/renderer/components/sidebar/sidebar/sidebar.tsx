@@ -18,6 +18,7 @@ import IconQuestions from 'assets/icons/icon-questions';
 import IconUsers from 'assets/icons/icon-users';
 import { useUserContext } from 'renderer/hooks/use-user-context';
 import { useTranslation } from 'react-i18next';
+import IconLightbulb from 'assets/icons/icon-lightbulb';
 
 const Sidebar = () => {
   const {t} = useTranslation();
@@ -48,6 +49,12 @@ const Sidebar = () => {
             <SidebarLink to="/users">
               <IconUsers variant="default" />
               <span className={SideText}>{t('common.users')}</span>
+            </SidebarLink>
+          </div>
+          <div className={SideListItem}>
+            <SidebarLink to="/tricks">
+              <IconLightbulb variant="default" />
+              <span className={SideText}>{t('common.tricks')}</span>
             </SidebarLink>
           </div>
         </div>
