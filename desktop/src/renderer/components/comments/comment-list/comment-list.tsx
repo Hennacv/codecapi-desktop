@@ -21,7 +21,7 @@ import classNames from 'classnames';
 interface CommentListProps {
   comments: Comment[];
   id: number;
-  type: 'answer' | 'trick';
+  type: 'answer' | 'trick' | 'announcement';
   refetch: () => void;
 }
 
@@ -66,6 +66,7 @@ const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
         userId: user.id,
         answerId: type === 'answer' ? id : undefined,
         tricksId: type === 'trick' ? id : undefined,
+        announcementsId: type === 'announcement' ? id : undefined,
       });
     }
   };

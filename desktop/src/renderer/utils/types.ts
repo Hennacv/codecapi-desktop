@@ -86,6 +86,7 @@ export interface AddCommentDto {
   userId: number;
   answerId?: number;
   tricksId?: number;
+  announcementsId?: number;
 }
 
 export interface User {
@@ -152,6 +153,7 @@ export interface Announcement {
   blocks: Block[];
   createdAt: string;
   user: User;
+  comments: Comment[];
 }
 
 export interface Comment {

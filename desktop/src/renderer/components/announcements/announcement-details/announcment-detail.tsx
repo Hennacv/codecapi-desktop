@@ -8,6 +8,7 @@ import { useState } from 'react';
 import IconDelete from 'assets/icons/icon-delete';
 import IconEdit from 'assets/icons/icon-edit';
 import { AnnouncementDetailsButtonContainer, AnnouncementDetailsContainer } from './announcement-detail-styles.css';
+import CommentList from 'renderer/components/comments/comment-list/comment-list';
 
 const AnnouncementDetail = () => {
   const {t} = useTranslation();
@@ -51,7 +52,15 @@ const AnnouncementDetail = () => {
             />
           </div>
       </div>
+      <div>
       <AnnouncementCard announcement={announcement} details refetch={refetch} />
+      <CommentList
+        comments={announcement.comments}
+        id={announcement.id}
+        type="announcement"
+        refetch={refetch}
+      />
+      </div>
     </div>
   );
 };
