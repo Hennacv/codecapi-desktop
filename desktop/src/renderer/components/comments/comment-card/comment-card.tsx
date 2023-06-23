@@ -1,5 +1,3 @@
-import { Comment } from 'renderer/utils/types';
-import { useDeleteComment } from 'renderer/hooks/use-delete-comment';
 import {
   CommentCardCommentDate,
   CommentCardCommentInfo,
@@ -8,13 +6,15 @@ import {
   CommentCardUser,
   CommentCardValue,
 } from './comment-card-styles.css';
+import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
+import { Comment } from 'renderer/utils/types';
+import { useDeleteComment } from 'renderer/hooks/use-delete-comment';
 
 import dayjs from 'dayjs';
 import Button from 'renderer/components/ui/button/button';
 import IconDelete from 'assets/icons/icon-delete';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
-import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface CommentCardProps {
   comment: Comment;
@@ -59,7 +59,7 @@ const CommentCard = ({ comment, userUid, refetch }: CommentCardProps) => {
       </div>
       {comment.user.uid === userUid && (
         <div className={CommentCardDelete}>
-          <Button type="button" variant="comment" onClick={handleDeleteComment}>
+          <Button type="button" variant="commentDelete" onClick={handleDeleteComment}>
             <IconDelete variant="small" />
           </Button>
         </div>

@@ -9,6 +9,8 @@ const TagCardBase = style({
   backgroundColor: vars.color['dark-300'],
   color: vars.color['text-white-100'],
   gap: vars.spacing['0.5x'],
+  flexWrap: 'nowrap',
+  whiteSpace: 'nowrap',
 });
 
 const TagCardSmall = style({

@@ -9,6 +9,7 @@ const Modal = style({
   transition: `all 0.3s ease-in-out`,
   pointerEvents: 'none',
   zIndex: 5,
+  backdropFilter: 'brightness(75%)'
 });
 
 const Show = style({
@@ -31,7 +32,7 @@ export const ModalContent = style({
   top: '6.45rem',
   display: 'flex',
   flexDirection: 'column',
-  gap: vars.spacing['1.5x'],
   maxHeight: '80vh',
-  overflow: 'scroll',
+  overflow: 'hidden',
+  gap: vars.spacing['2x'],
 });

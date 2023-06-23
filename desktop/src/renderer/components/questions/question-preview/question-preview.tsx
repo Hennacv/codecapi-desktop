@@ -16,6 +16,7 @@ import { useUserContext } from 'renderer/hooks/use-user-context';
 import { useAddQuestion } from 'renderer/hooks/use-add-questions';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
 interface QuestionPreview {
   question: AddQuestionForm;
@@ -28,7 +29,10 @@ const QuestionPreview = ({ question, isShown, onClose }: QuestionPreview) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const addQuestion = useAddQuestion({
-    onSuccess: () => navigate('/questions'),
+    onSuccess: () => {
+      toastSuccess(t('toast.success.question.add'));
+      navigate('/questions');
+    }  
   });
 
   const onSubmit = (newQuestion: QuestionDto) => {

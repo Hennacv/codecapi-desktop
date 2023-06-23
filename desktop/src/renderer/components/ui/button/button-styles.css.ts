@@ -7,11 +7,11 @@ const ButtonBase = style({
   backgroundColor: vars.color['dark-300'],
   border: `2px solid ${vars.color['dark-400']}`,
   borderRadius: vars.borderRadius.medium,
-  cursor: 'pointer',
   transition: vars.transition.defaultHover,
   ':hover': {
     backgroundColor: vars.color['dark-400'],
     transition: vars.transition.defaultHover,
+    cursor: 'pointer',
   },
   display: 'flex',
   flexDirection: 'row',
@@ -48,6 +48,7 @@ const ButtonDefaultSquare = style({
 
 const Reset = style({
   all: 'unset',
+  cursor: 'pointer'
 });
 
 const ButtonVote = style({
@@ -100,6 +101,7 @@ export const ButtonVariants = styleVariants({
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
   reset: [Reset],
   comment: [ButtonBase, ButtonComment, ButtonDisabled],
+  commentDelete: [ButtonBase, ButtonComment, ButtonDisabled, {borderColor: vars.color['delete-200']}],
 });
 
 const Close = style({

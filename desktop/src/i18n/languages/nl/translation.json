@@ -24,22 +24,23 @@
     "success": {
       "question": {
         "add": "Vraag gedeeld",
-        "delete": "Vraag verwijdert",
+        "delete": "Vraag verwijderd",
         "edit": "Vraag bijgewerkt"
       },
       "comment": {
         "add": "Comment gedeeld",
-        "delete": "Comment verwijdert"
+        "delete": "Comment verwijderd"
       },
       "answer": {
-        "add": "Antwoord gedeeld"
+        "add": "Antwoord gedeeld",
+        "delete": "Antwoord verwijderd"
       },
       "user": {
         "edit": "Profiel bijgewerkt"
       },
       "trick": {
         "add": "Tip/Trick/Tool gedeeld",
-        "delete": "Tip/Trick/Tool verwijdert",
+        "delete": "Tip/Trick/Tool verwijderd",
         "edit": "Tip/Trick/Tool bijgewerkt"
       }
     },
@@ -131,8 +132,15 @@
     }
   },
   "filter": {
-    "title": {
-      "selected": "Geselecteerde filter labels"
+    "user": {
+      "title": {
+        "selected": "Geselecteerde capi"
+      }
+    },
+    "tags": {
+      "title": {
+        "selected": "Geselecteerde labels"
+      }
     }
   },
   "modal": {
