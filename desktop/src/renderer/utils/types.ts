@@ -36,6 +36,11 @@ export interface QuestionDto {
   tags?: { id: number }[];
 }
 
+export interface AnnouncementDto {
+  title: string;
+  blocks: Block[];
+}
+
 export interface TrickDto {
   title: string;
   blocks: Block[];
@@ -137,6 +142,14 @@ export interface Answer {
   comments: Comment[];
   accepted: boolean;
   questionId: number;
+}
+
+export interface Announcement {
+  id: number;
+  title: string;
+  blocks: Block[];
+  createdAt: string;
+  user: User;
 }
 
 export interface Comment {

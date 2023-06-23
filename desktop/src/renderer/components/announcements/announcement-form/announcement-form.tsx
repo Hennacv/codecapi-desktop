@@ -5,42 +5,47 @@ import { useNavigate } from 'react-router-dom';
 import DynamicBlocksEdit from 'renderer/components/blocks/dynamic-blocks/dynamic-blocks-edit/dynamic-blocks-edit';
 import Button from 'renderer/components/ui/button/button';
 import InputText from 'renderer/components/ui/input-text/input-text';
-import { useAddTrick } from 'renderer/hooks/use-add-trick';
-import { Block, TrickDto } from 'renderer/utils/types';
-import {
-  TrickFormBlocks,
-  TrickFormBlocksOptions,
-  TrickFormItem,
-  TrickFormLabel,
-  TrickFormSection,
-} from './trick-form-styles.css';
 import IconCode from 'assets/icons/icon-code';
-import { useEditTrick } from 'renderer/hooks/use-edit-trick';
+import { AnnouncementDto, Block } from 'renderer/utils/types';
+import { useAddAnnouncement } from 'renderer/hooks/use-add-announcement';
+import {
+  AnnouncementFormBlocks,
+  AnnouncementFormBlocksOptions,
+  AnnouncementFormItem,
+  AnnouncementFormLabel,
+  AnnouncementFormSection,
+} from './announcement-form-styles.css';
+import { useEditAnnouncement } from 'renderer/hooks/use-edit-announcement';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 
-interface AddTrickForm {
+interface AddAnnouncementForm {
   title: string;
   blocks: Block[];
   id?: number;
   isEditing?: boolean;
 }
 
-const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
+const AnnouncementForm = ({
+  title,
+  blocks,
+  id,
+  isEditing,
+}: AddAnnouncementForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const addTrick = useAddTrick({
+  const addAnnouncement = useAddAnnouncement({
     onSuccess: () => {
-      toastSuccess(t('toast.success.trick.add'));
-      navigate('/tricks');
+      toastSuccess(t('toast.success.announcement.add'));
+      navigate('/announcements');
     },
   });
-  const editTrick = useEditTrick(id);
+  const editAnnouncement = useEditAnnouncement(id);
 
   if (!blocks.length) {
     blocks = [{ position: 0, type: 'text', value: '', contents: '' }];
   }
 
-  let [form, setForm] = useState<AddTrickForm>({
+  const [form, setForm] = useState<AddAnnouncementForm>({
     title,
     blocks,
     id,
@@ -72,24 +77,24 @@ const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
     blocks = form.blocks;
   };
 
-  const onSubmit = (newTrick: TrickDto) => {
-    addTrick.mutate(newTrick);
+  const onSubmit = (newAnnouncement: AnnouncementDto) => {
+    addAnnouncement.mutate(newAnnouncement);
   };
 
   const onEdit = (
-    form: TrickDto,
+    form: AnnouncementDto,
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    if (editTrick) {
-      editTrick.mutate(form);
+    if (editAnnouncement) {
+      editAnnouncement.mutate(form);
     }
   };
 
   return (
-    <form className={TrickFormSection}>
-      <div className={TrickFormItem}>
-        <label className={TrickFormLabel} htmlFor="title">
+    <form className={AnnouncementFormSection}>
+      <div className={AnnouncementFormItem}>
+        <label className={AnnouncementFormLabel} htmlFor="title">
           {t('common.title')} *
         </label>
         <InputText
@@ -106,9 +111,9 @@ const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
         updateFormValue={(field, value) => updateFormValue(field, value)}
         removeBlock={removeBlock}
       />
-      <div className={TrickFormItem}>
-        <p className={TrickFormBlocks}>{t('instruction.blocks')}</p>
-        <div className={TrickFormBlocksOptions}>
+      <div className={AnnouncementFormItem}>
+        <p className={AnnouncementFormBlocks}>{t('instruction.blocks')}</p>
+        <div className={AnnouncementFormBlocksOptions}>
           <Button
             type={'button'}
             variant={'smallSquare'}
@@ -126,17 +131,17 @@ const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
         </div>
       </div>
       {!isEditing ? (
-        <div className={TrickFormItem}>
+        <div className={AnnouncementFormItem}>
           <Button
-            text={t('trick.new.button.submit')}
+            text={t('announcement.new.button.submit')}
             type="button"
             variant="defaultDisabled"
-            disabled={addTrick.isLoading || !form.title}
+            disabled={addAnnouncement.isLoading || !form.title}
             onClick={() => onSubmit(form)}
           />
         </div>
       ) : (
-        <div className={TrickFormItem}>
+        <div className={AnnouncementFormItem}>
           <Button
             text={t('button.save')}
             type="submit"
@@ -149,4 +154,4 @@ const TrickForm = ({ title, blocks, id, isEditing }: AddTrickForm) => {
   );
 };
 
-export default TrickForm;
+export default AnnouncementForm;

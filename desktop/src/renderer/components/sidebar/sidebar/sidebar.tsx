@@ -18,6 +18,7 @@ import IconQuestions from 'assets/icons/icon-questions';
 import IconUsers from 'assets/icons/icon-users';
 import { useUserContext } from 'renderer/hooks/use-user-context';
 import { useTranslation } from 'react-i18next';
+import IconAnnouncement from 'assets/icons/icon-announcement';
 import IconLightbulb from 'assets/icons/icon-lightbulb';
 
 const Sidebar = () => {
@@ -39,6 +40,12 @@ const Sidebar = () => {
       </div>
       <aside className={AsideStyles}>
         <div className={SideList}>
+        <div className={SideListItem}>
+            <SidebarLink to="/announcements">
+              <IconAnnouncement variant="default" />
+              <span className={SideText}>{t('common.announcements')}</span>
+            </SidebarLink>
+          </div>
           <div className={SideListItem}>
             <SidebarLink to="/questions">
               <IconQuestions variant="default" />
