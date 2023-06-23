@@ -21,6 +21,7 @@ import TagButton from 'renderer/components/tags/tag-button/tag-button';
 import IconRemove from 'assets/icons/icon-remove';
 import IconAdd from 'assets/icons/icon-add';
 import { useTranslation } from 'react-i18next';
+import Select from 'renderer/components/ui/select/select';
 
 const UserEditWrapper = () => {
   const { id } = useParams();
@@ -37,20 +38,24 @@ interface EditProfileProps {
 }
 
 const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const editProfile = useEditProfile(parseInt(id!));
   const [userProfile, setUserProfile] = useState<EditProfileDto>(user);
+
+  const teams: Array<string> = ['none', 'Capiche', 'Syntax Squad', 'Drop'];
 
   const { addTag, deleteTag, tags, selectedTags } = useSelectedTags(user.tags);
 
   const addSkill = (tag: Tag) => {
-    addTag(tag);    
+    addTag(tag);
     updateProfileValue('tags', [...userProfile.tags, { id: tag.id }]);
   };
 
   const deleteSkill = (tag: Tag) => {
     deleteTag(tag);
-    const tempTags = userProfile.tags.filter((userTag) => userTag.id !== tag.id);
+    const tempTags = userProfile.tags.filter(
+      (userTag) => userTag.id !== tag.id
+    );
     updateProfileValue('tags', tempTags);
   };
 
@@ -66,7 +71,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-    if (editProfile) {        
+    if (editProfile) {
       editProfile?.mutate(userProfile);
     }
   };
@@ -75,7 +80,9 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
     <form className={ProfileFormContainer}>
       <header className={ProfileFormHeader}>
         <h1 className={ProfileFormTitle}>{t('user.edit.page.title')}</h1>
-        <p className={ProfileFormDescription}>{t('user.edit.page.description')}</p>
+        <p className={ProfileFormDescription}>
+          {t('user.edit.page.description')}
+        </p>
       </header>
       <div className={ProfileFormItem}>
         <label className={ProfileFormLabel} htmlFor="title">
@@ -97,8 +104,20 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
           type="text"
           id="jobtitle"
           defaultValue={userProfile.jobtitle}
-          variant='default'
+          variant="default"
           onChange={(e) => updateProfileValue('jobtitle', e.target.value)}
+        />
+      </div>
+      <div className={ProfileFormItem}>
+        <label className={ProfileFormLabel} htmlFor="team">
+          {t('common.team')}
+        </label>
+        <Select
+          options={teams.map((team) => {
+            return { value: team, label: team };
+          })}
+          onChange={(e) => updateProfileValue('team', e.target.value)}
+          variant="medium"
         />
       </div>
       <div className={ProfileFormItem}>
@@ -109,7 +128,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
           type="text"
           id="description"
           defaultValue={userProfile.description}
-          variant='default'
+          variant="default"
           onChange={(e) => updateProfileValue('description', e.target.value)}
         />
       </div>
@@ -128,7 +147,9 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
             </TagButton>
           ))}
         </div>
-        <label className={ProfileFormDescription}>{t('user.edit.title.selected')}</label>
+        <label className={ProfileFormDescription}>
+          {t('user.edit.title.selected')}
+        </label>
         <div className={SkillsContainer}>
           <div className={SkillsList}>
             {selectedTags.map((tag: Tag) => (
@@ -139,7 +160,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
                 variant="defaultRemove"
                 onClick={() => deleteSkill(tag)}
               >
-                <IconRemove variant="small"/>
+                <IconRemove variant="small" />
               </TagButton>
             ))}
           </div>

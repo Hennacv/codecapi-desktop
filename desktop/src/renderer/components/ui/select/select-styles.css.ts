@@ -21,8 +21,15 @@ const SelectDefault = style({
   fontWeight: vars.fontWeight.light,
   borderRadius: vars.borderRadius.medium,
 });
+const SelectMedium = style({
+  padding: vars.spacing['0.75x'],
+  fontSize: vars.fontSize.base,
+  backgroundColor: vars.color['dark-200'],
+  borderRadius: vars.borderRadius.medium,
+});
 
 export const SelectVariants = styleVariants({
   small: [SelectBase, SelectSmall],
   default: [SelectBase, SelectDefault],
+  medium: [SelectBase, SelectMedium],
 });

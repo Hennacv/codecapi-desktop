@@ -18,7 +18,9 @@
     "search": "Zoeken",
     "tricks": "Tips/Tricks/Tools",
     "solved": "Opgelost",
-    "jobtitle": "Functie"
+    "jobtitle": "Functie",
+    "team": "Team",
+    "teamless": "Teamloos"
   },
   "toast": {
     "success": {
