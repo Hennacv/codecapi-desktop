@@ -20,11 +20,12 @@ import classNames from 'classnames';
 
 interface CommentListProps {
   comments: Comment[];
-  answerId: number;
+  id: number;
+  type: 'answer' | 'trick';
   refetch: () => void;
 }
 
-const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
+const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
   const {t} = useTranslation();
   
   const [newCommentValue, setNewCommentValue] = useState<string>('');
@@ -64,7 +65,8 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
       addComment.mutate({
         comment: newCommentValue,
         userId: fetchedUser.id,
-        answerId: answerId,
+        answerId: type === 'answer' ? id : undefined,
+        tricksId: type === 'trick' ? id : undefined,
       });
     }
   };
