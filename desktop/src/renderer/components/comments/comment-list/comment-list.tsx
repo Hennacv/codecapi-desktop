@@ -31,8 +31,7 @@ const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
   const [newCommentValue, setNewCommentValue] = useState<string>('');
 
   const { user } = useUserContext();
-  const { data: fetchedUser } = useGetUser(user!.uid);
-
+  
   const [lineHeight, setLineHeigt] = useState<number | null>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const lineRef = useRef<HTMLCanvasElement>(null);
@@ -61,10 +60,10 @@ const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
 
   const handleNewComment = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (fetchedUser && !!newCommentValue) {
+    if (user && !!newCommentValue) {
       addComment.mutate({
         comment: newCommentValue,
-        userId: fetchedUser.id,
+        userId: user.id,
         answerId: type === 'answer' ? id : undefined,
         tricksId: type === 'trick' ? id : undefined,
       });
@@ -79,7 +78,7 @@ const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
             <li key={index} className={CommentListItem}>
               <CommentCard
                 comment={comment}
-                userUid={user?.uid}
+                userUid={user.uid}
                 refetch={refetch}
               />
             </li>

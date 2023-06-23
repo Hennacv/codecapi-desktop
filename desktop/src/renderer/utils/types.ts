@@ -132,6 +132,7 @@ export interface Trick {
   createdAt: string;
   user: User;
   votes: Vote[];
+  comments: Comment[];
 }
 
 export interface Answer {
