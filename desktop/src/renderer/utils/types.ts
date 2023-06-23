@@ -84,7 +84,8 @@ export type AddVoteDto = AddAnswerVoteDto | AddQuestionVoteDto | AddTrickVoteDto
 export interface AddCommentDto {
   comment: string;
   userId: number;
-  answerId: number;
+  answerId?: number;
+  tricksId?: number;
 }
 
 export interface User {

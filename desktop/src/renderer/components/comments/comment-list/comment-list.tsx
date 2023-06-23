@@ -16,7 +16,6 @@ import Button from 'renderer/components/ui/button/button';
 import CommentCard from '../comment-card/comment-card';
 import IconAdd from 'assets/icons/icon-add';
 import InputText from 'renderer/components/ui/input-text/input-text';
-import IconRemove from 'assets/icons/icon-remove';
 import classNames from 'classnames';
 
 interface CommentListProps {
@@ -28,7 +27,6 @@ interface CommentListProps {
 const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
   const {t} = useTranslation();
   
-  const [newCommentActive, setNewCommentActive] = useState<boolean>(false);
   const [newCommentValue, setNewCommentValue] = useState<string>('');
 
   const { user } = useUserContext();
@@ -42,7 +40,6 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
     onSuccess: () => {
       refetch();
       toastSuccess(t('toast.success.comment.add'));
-      setNewCommentActive(false);
       setNewCommentValue('');
     },
   });
@@ -94,60 +91,30 @@ const CommentList = ({ comments, answerId, refetch }: CommentListProps) => {
           ></span>
         </ul>
       )}
-      {!newCommentActive ? (
-        <div
-          className={classNames(CommentListNewVariants.default, {
-            [CommentListNewVariants.withComments]: comments.length > 0,
-          })}
-        >
-          <Button
-            type="button"
-            variant="comment"
-            onClick={() => setNewCommentActive(true)}
-          >
-            <IconAdd variant="small" />
-          </Button>
-          <p>{t('comment.new.button.open')}</p>
-          {comments.length === 0 && (
-            <span
-              className={CommentListLine}
-              style={{ height: '1rem' }}
-            ></span>
-          )}
-        </div>
-      ) : (
-        <form
-          onSubmit={handleNewComment}
-          className={classNames(CommentListNewVariants.default, {
-            [CommentListNewVariants.withComments]: comments.length > 0,
-          })}
-        >
-          <Button
-            type="button"
-            variant="comment"
-            onClick={() => setNewCommentActive(false)}
-          >
-            <IconRemove variant="small" />
-          </Button>
-          <Button type="submit" variant="comment" disabled={!newCommentValue}>
-            <IconAdd variant="small" />
-          </Button>
-          <InputText
-            type="text"
-            value={newCommentValue}
-            id="newCommentInput"
-            placeholder={t('comment.new.input.placeholder')}
-            variant="inline"
-            onChange={(event) => setNewCommentValue(event.target.value)}
-          />
-          {comments.length === 0 && (
-            <span
-              className={CommentListLine}
-              style={{ height: '1rem' }}
-            ></span>
-          )}
-        </form>
-      )}
+      <form
+        onSubmit={handleNewComment}
+        className={classNames(CommentListNewVariants.default, {
+          [CommentListNewVariants.withComments]: comments.length > 0,
+        })}
+      >
+        <Button type="submit" variant="comment" disabled={!newCommentValue}>
+          <IconAdd variant="small" />
+        </Button>
+        <InputText
+          type="text"
+          value={newCommentValue}
+          id="newCommentInput"
+          placeholder={t('comment.new.input.placeholder')}
+          variant="inline"
+          onChange={(event) => setNewCommentValue(event.target.value)}
+        />
+        {comments.length === 0 && (
+          <span
+            className={CommentListLine}
+            style={{ height: '1rem' }}
+          ></span>
+        )}
+      </form>
     </>
   );
 };
