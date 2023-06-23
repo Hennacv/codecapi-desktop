@@ -19,18 +19,6 @@ const UserCard = ({ user }: UserCard) => {
     navigate(`/users/${user.id}`);
   };
 
-  const userTeam = () => {
-    if (user.team) {
-      if (user.team === 'none') {
-        <p>Teamloos</p>;
-      } else {
-        <p className={UserCardFunction}>Team {user.team}</p>;
-      }
-    } else {
-      return null;
-    }
-  };
-
   return (
     <div
       key={user.id}
