@@ -102,7 +102,6 @@ const TextBlockEdit = ({
               console.log(err);
               t('toast.fail.image');
             } else {
-              console.log('Image uploaded successfully:', data.Location);
               const imageUrl = data.Location;
               const range = quillRef.current?.getEditor().getSelection(true);
               if (range) {
