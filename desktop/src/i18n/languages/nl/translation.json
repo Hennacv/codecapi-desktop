@@ -39,6 +39,9 @@
     },
     "copy": {
       "code": "Code gekopieerd"
+    },
+    "fail": {
+      "image": "Het uploaden van afbeeldingen is mislukt"
     }
   },
   "instruction": {

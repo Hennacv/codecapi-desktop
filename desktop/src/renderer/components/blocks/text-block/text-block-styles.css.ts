@@ -32,6 +32,12 @@ globalStyle(`${ContainerStyles} .ql-toolbar .ql-formats button`, {
   borderRadius: vars.borderRadius.small,
 });
 
+globalStyle(`${ContainerStyles} .ql-toolbar .ql-formats .ql-align`, {
+  margin: 2,
+  backgroundColor: vars.color['dark-400'],
+  borderRadius: vars.borderRadius.small,
+});
+
 globalStyle(`${ContainerStyles} .ql-toolbar.ql-snow`, {
   border: `2px solid ${vars.color['dark-300']}`,
 });

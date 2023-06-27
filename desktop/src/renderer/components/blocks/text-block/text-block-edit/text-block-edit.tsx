@@ -15,7 +15,7 @@ import Button from 'renderer/components/ui/button/button';
 import { useTranslation } from 'react-i18next';
 import { useMemo, useRef } from 'react';
 import AWS from 'aws-sdk';
-import '../../../../../../aws-config';
+import '../../../../aws-config';
 
 interface TextBlockEditProps {
   position: number;
@@ -31,7 +31,7 @@ Quill.register('modules/imageCompress', ImageCompress);
 const toolbarOptions = [
   [{ header: [1, 2, 3, false] }],
   ['bold', 'italic', 'underline', 'link', 'image'],
-  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' },{align: []}],
   ['emoji'],
 ];
 
@@ -100,6 +100,7 @@ const TextBlockEdit = ({
           (err: Error | null, data: AWS.S3.ManagedUpload.SendData) => {
             if (err) {
               console.log(err);
+              t('toast.fail.image');
             } else {
               console.log('Image uploaded successfully:', data.Location);
               const imageUrl = data.Location;

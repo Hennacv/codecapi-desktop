@@ -55,6 +55,8 @@ const configuration: webpack.Configuration = {
     new webpack.DefinePlugin({
       API_URL: JSON.stringify(process.env.API_URL),
       FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
+      AWS_ACCESS_KEY_ID: JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
+      AWS_ACCESS_SECRET_KEY: JSON.stringify(process.env.AWS_ACCESS_SECRET_KEY),
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
