@@ -2,19 +2,18 @@ import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'quill-emoji/dist/quill-emoji.css';
 import * as Emoji from 'quill-emoji';
-import { ImageDrop } from 'quill-image-drop-module';
 import ImageResize from 'quill-image-resize-module--fix-imports-error';
+import ImageCompress from 'quill-image-compress';
 import {
   ContainerStyles,
   TextBlockHeader,
   TextBlockLabel,
-  TextBlockTitle,
 } from '../text-block-styles.css';
 import IconRemove from 'assets/icons/icon-remove';
 import { ButtonClose } from 'renderer/components/ui/button/button-styles.css';
 import Button from 'renderer/components/ui/button/button';
 import { useTranslation } from 'react-i18next';
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import AWS from 'aws-sdk';
 import '../../../../../../aws-config';
 
@@ -26,8 +25,8 @@ interface TextBlockEditProps {
 }
 
 Quill.register('modules/emoji', Emoji);
-Quill.register('modules/imageDrop', ImageDrop);
 Quill.register('modules/imageResize', ImageResize);
+Quill.register('modules/imageCompress', ImageCompress);
 
 const toolbarOptions = [
   [{ header: [1, 2, 3, false] }],
@@ -55,7 +54,6 @@ const TextBlockEdit = ({
       'emoji-toolbar': true,
       'emoji-textarea': false,
       'emoji-shortname': true,
-      imageDrop: true,
       imageResize: {
         displayStyles: {
           backgroundColor: 'black',
@@ -63,6 +61,12 @@ const TextBlockEdit = ({
           color: 'white',
         },
         modules: ['Resize', 'DisplaySize', 'Toolbar'],
+      },
+      imageCompress: {
+        quality: 1.0,
+        maxWidth: 1000,
+        maxHeight: 1000,
+        imageType: 'image/jpeg',
       },
     }),
     []
