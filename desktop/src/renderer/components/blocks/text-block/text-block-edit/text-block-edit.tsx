@@ -3,7 +3,6 @@ import 'react-quill/dist/quill.snow.css';
 import 'quill-emoji/dist/quill-emoji.css';
 import * as Emoji from 'quill-emoji';
 import ImageResize from 'quill-image-resize-module--fix-imports-error';
-import ImageCompress from 'quill-image-compress';
 import {
   ContainerStyles,
   TextBlockHeader,
@@ -26,12 +25,17 @@ interface TextBlockEditProps {
 
 Quill.register('modules/emoji', Emoji);
 Quill.register('modules/imageResize', ImageResize);
-Quill.register('modules/imageCompress', ImageCompress);
 
 const toolbarOptions = [
   [{ header: [1, 2, 3, false] }],
   ['bold', 'italic', 'underline', 'link', 'image'],
-  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' },{align: []}],
+  [
+    { list: 'ordered' },
+    { list: 'bullet' },
+    { indent: '-1' },
+    { indent: '+1' },
+    { align: [] },
+  ],
   ['emoji'],
 ];
 
@@ -45,6 +49,14 @@ const TextBlockEdit = ({
   const quillRef = useRef<ReactQuill | null>(null);
   const modules = useMemo(
     () => ({
+      imageResize: {
+        displayStyles: {
+          backgroundColor: 'black',
+          border: 'none',
+          color: 'white',
+        },
+        modules: ['Resize', 'DisplaySize', 'Toolbar'],
+      },
       toolbar: {
         container: toolbarOptions,
         handlers: {
@@ -54,20 +66,6 @@ const TextBlockEdit = ({
       'emoji-toolbar': true,
       'emoji-textarea': false,
       'emoji-shortname': true,
-      imageResize: {
-        displayStyles: {
-          backgroundColor: 'black',
-          border: 'none',
-          color: 'white',
-        },
-        modules: ['Resize', 'DisplaySize', 'Toolbar'],
-      },
-      imageCompress: {
-        quality: 1.0,
-        maxWidth: 1000,
-        maxHeight: 1000,
-        imageType: 'image/jpeg',
-      },
     }),
     []
   );
