@@ -17,10 +17,12 @@ import {
 } from './announcement-form-styles.css';
 import { useEditAnnouncement } from 'renderer/hooks/use-edit-announcement';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
+import Select from 'renderer/components/ui/select/select';
 
 interface AddAnnouncementForm {
   title: string;
   blocks: Block[];
+  type: string;
   id?: number;
   isEditing?: boolean;
 }
@@ -28,6 +30,7 @@ interface AddAnnouncementForm {
 const AnnouncementForm = ({
   title,
   blocks,
+  type,
   id,
   isEditing,
 }: AddAnnouncementForm) => {
@@ -40,13 +43,19 @@ const AnnouncementForm = ({
     },
   });
   const editAnnouncement = useEditAnnouncement(id);
+  const types: Array<string> = ['general', 'event'];
 
   if (!blocks.length) {
     blocks = [{ position: 0, type: 'text', value: '', contents: '' }];
   }
 
+  if (!type) {
+    type = 'general';
+  }
+
   const [form, setForm] = useState<AddAnnouncementForm>({
     title,
+    type,
     blocks,
     id,
   });
@@ -93,6 +102,18 @@ const AnnouncementForm = ({
 
   return (
     <form className={AnnouncementFormSection}>
+      <div className={AnnouncementFormItem}>
+        <label className={AnnouncementFormLabel} htmlFor="type">
+          {t('announcement.new.page.type')}
+        </label>
+        <Select
+          options={types.map((type) => {
+            return { value: type, label: type };
+          })}
+          onChange={(e) => updateFormValue('type', e.target.value)}
+          variant="medium"
+        />
+      </div>
       <div className={AnnouncementFormItem}>
         <label className={AnnouncementFormLabel} htmlFor="title">
           {t('common.title')} *
