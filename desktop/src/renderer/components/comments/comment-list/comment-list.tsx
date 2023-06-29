@@ -1,7 +1,6 @@
 import { Comment } from 'renderer/utils/types';
 import { useEffect, useRef, useState } from 'react';
 import { useAddComment } from 'renderer/hooks/use-add-comment';
-import { useGetUser } from 'renderer/hooks/use-get-user';
 import { useUserContext } from 'renderer/hooks/use-user-context';
 import { useTranslation } from 'react-i18next';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
@@ -65,7 +64,7 @@ const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
         comment: newCommentValue,
         userId: user.id,
         answerId: type === 'answer' ? id : undefined,
-        tricksId: type === 'trick' ? id : undefined,
+        trickId: type === 'trick' ? id : undefined,
         announcementsId: type === 'announcement' ? id : undefined,
       });
     }
@@ -99,7 +98,7 @@ const CommentList = ({ comments, id, type, refetch }: CommentListProps) => {
           [CommentListNewVariants.withComments]: comments.length > 0,
         })}
       >
-        <Button type="submit" variant="comment" disabled={!newCommentValue}>
+        <Button type="submit" variant="extraSmallSquare" disabled={!newCommentValue}>
           <IconAdd variant="small" />
         </Button>
         <InputText

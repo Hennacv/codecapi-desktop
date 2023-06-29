@@ -74,13 +74,16 @@ const ButtonSmallText = style({
   fontSize: vars.fontSize.extraSmall,
 });
 
-const ButtonComment = style({
-  width: vars.spacing['1.75x'],
-  height: vars.spacing['1.75x'],
+const ButtonExtraSmall= style({
   borderRadius: vars.borderRadius.small,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+});
+
+const ButtonExtraSmallSquare= style({
+  width: vars.spacing['1.75x'],
+  height: vars.spacing['1.75x'],
 });
 
 const ButtonVoteSquare = style({
@@ -100,8 +103,8 @@ export const ButtonVariants = styleVariants({
   defaultSquare: [ButtonBase, ButtonDefault, ButtonDefaultSquare],
   defaultDisabled: [ButtonBase, ButtonDefault, ButtonDisabled],
   reset: [Reset],
-  comment: [ButtonBase, ButtonComment, ButtonDisabled],
-  commentDelete: [ButtonBase, ButtonComment, ButtonDisabled, {borderColor: vars.color['delete-200']}],
+  extraSmallSquare: [ButtonBase, ButtonExtraSmall, ButtonExtraSmallSquare, ButtonDisabled],
+  extraSmallSquareDelete: [ButtonBase, ButtonExtraSmall, ButtonExtraSmallSquare, ButtonDisabled, {borderColor: vars.color['delete-200']}],
 });
 
 const Close = style({
