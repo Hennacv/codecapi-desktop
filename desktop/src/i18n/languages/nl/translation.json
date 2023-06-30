@@ -21,7 +21,8 @@
     "jobtitle": "Functie",
     "announcements": "Aankondigingen",
     "team": "Team",
-    "teamless": "Teamloos"
+    "teamless": "Teamloos",
+    "remove": "Verwijder"
   },
   "toast": {
     "success": {

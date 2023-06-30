@@ -57,6 +57,7 @@ const configuration: webpack.Configuration = {
       FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
       AWS_ACCESS_KEY_ID: JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
       AWS_ACCESS_SECRET_KEY: JSON.stringify(process.env.AWS_ACCESS_SECRET_KEY),
+      AWS_ACCESS_URL: JSON.stringify(process.env.AWS_ACCESS_URL),
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',

@@ -13,8 +13,8 @@ import { ButtonClose } from 'renderer/components/ui/button/button-styles.css';
 import Button from 'renderer/components/ui/button/button';
 import { useTranslation } from 'react-i18next';
 import { useMemo, useRef } from 'react';
-import AWS from 'aws-sdk';
 import '../../../../aws-config';
+import { useUploadImage } from 'renderer/hooks/use-upload-image';
 
 interface TextBlockEditProps {
   position: number;
@@ -47,6 +47,18 @@ const TextBlockEdit = ({
 }: TextBlockEditProps) => {
   const { t } = useTranslation();
   const quillRef = useRef<ReactQuill | null>(null);
+  const uploadImage = (e:any) => useUploadImage(e, quillRef, t)
+
+  const handleImageUpload = () => {
+    const input = document.createElement('input');
+
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = uploadImage;
+  };
+
   const modules = useMemo(
     () => ({
       imageResize: {
@@ -60,7 +72,7 @@ const TextBlockEdit = ({
       toolbar: {
         container: toolbarOptions,
         handlers: {
-          image: (e: any) => handleImageUpload(e),
+          image: () => handleImageUpload(),
         },
       },
       'emoji-toolbar': true,
@@ -70,48 +82,8 @@ const TextBlockEdit = ({
     []
   );
 
-  function updateParent(position: number, value: string, contents: string) {
+  const updateParent = (position: number, value: string, contents: string) => {
     updateFormBlock(position, value, contents);
-  }
-
-  const handleImageUpload = (file: File) => {
-    const input = document.createElement('input');
-
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-    input.click();
-
-    input.onchange = async (e: any) => {
-      const file = e.target.files?.[0];
-      const fileName = file.name;
-      if (!file) return;
-      if (file) {
-        const s3 = new AWS.S3();
-        const params = {
-          Bucket: 'codecapi-portal',
-          Key: fileName,
-          Body: file,
-        };
-
-        s3.upload(
-          params,
-          (err: Error | null, data: AWS.S3.ManagedUpload.SendData) => {
-            if (err) {
-              console.log(err);
-              t('toast.fail.image');
-            } else {
-              const imageUrl = data.Location;
-              const range = quillRef.current?.getEditor().getSelection(true);
-              if (range) {
-                quillRef.current
-                  ?.getEditor()
-                  .insertEmbed(range.index, 'image', imageUrl);
-              }
-            }
-          }
-        );
-      }
-    };
   };
 
   return (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { User } from 'renderer/utils/types';
 import { useGetUsers } from './use-get-users';
 
-export function useSelectedUsers(currentUsers: User[]) {
+export const useSelectedUsers = (currentUsers: User[]) => {
   const { data: users = [] } = useGetUsers();
   const [selectedUsers, setSeletectUsers] = useState<User[]>(currentUsers);
   
