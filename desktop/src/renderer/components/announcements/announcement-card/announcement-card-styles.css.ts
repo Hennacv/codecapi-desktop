@@ -29,6 +29,12 @@ export const AnnouncementCardTitle = style({
   fontWeight: vars.fontWeight.medium,
 });
 
+export const AnnouncementCardDescription = style({
+  fontWeight: vars.fontWeight.light,
+  color: vars.color["text-white-200"],
+  fontSize: vars.fontSize.small,
+});
+
 export const AnnouncementCardButtonsContainer = style({
   display: 'flex',
   flexDirection: 'row',

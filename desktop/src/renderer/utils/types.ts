@@ -154,6 +154,8 @@ export interface Announcement {
   blocks: Block[];
   createdAt: string;
   user: User;
+  date: string | undefined;
+  time: string | undefined;
   comments: Comment[];
 }
 

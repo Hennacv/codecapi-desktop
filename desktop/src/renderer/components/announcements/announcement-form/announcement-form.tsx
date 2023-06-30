@@ -18,13 +18,15 @@ import {
 import { useEditAnnouncement } from 'renderer/hooks/use-edit-announcement';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 import Select from 'renderer/components/ui/select/select';
-
+import DateTimePicker from 'renderer/components/ui/date-time-picker/date-time-picker';
 interface AddAnnouncementForm {
   title: string;
   blocks: Block[];
   type: string;
   id?: number;
   isEditing?: boolean;
+  date?: string| undefined;
+  time?: string| undefined;
 }
 
 const AnnouncementForm = ({
@@ -33,6 +35,8 @@ const AnnouncementForm = ({
   type,
   id,
   isEditing,
+  date,
+  time,
 }: AddAnnouncementForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -58,6 +62,8 @@ const AnnouncementForm = ({
     type,
     blocks,
     id,
+    date,
+    time,
   });
 
   const updateFormValue = (field: string, value: any) => {
@@ -151,6 +157,9 @@ const AnnouncementForm = ({
           </Button>
         </div>
       </div>
+      {form.type === 'event' && (
+        <DateTimePicker updateFormValue={(field, value) => updateFormValue(field, value)}/>
+      )}
       {!isEditing ? (
         <div className={AnnouncementFormItem}>
           <Button

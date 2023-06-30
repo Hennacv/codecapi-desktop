@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { LegacyRef, ReactNode } from 'react';
 import { ButtonVariants } from './button-styles.css';
 
 interface ButtonProps {
@@ -8,6 +8,7 @@ interface ButtonProps {
   variant: keyof typeof ButtonVariants;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  forwardRef?: LegacyRef<HTMLButtonElement>;
 }
 
 const Button = ({
@@ -17,6 +18,7 @@ const Button = ({
   variant,
   disabled,
   onClick,
+  forwardRef,
 }: ButtonProps) => {
   return (
     <button
@@ -24,6 +26,7 @@ const Button = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
+      ref={forwardRef}
     >
       {!text ? children : text}
     </button>
