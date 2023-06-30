@@ -25,6 +25,7 @@
     "events": "Evenementen",
     "time": "Tijd",
     "date": "Datum",
+    "location": "Locatie",
     "remove": "Verwijder"
   },
   "toast": {

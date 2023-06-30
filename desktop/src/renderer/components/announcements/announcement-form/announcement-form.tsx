@@ -25,8 +25,9 @@ interface AddAnnouncementForm {
   type: string;
   id?: number;
   isEditing?: boolean;
-  date?: string| undefined;
-  time?: string| undefined;
+  date?: string | undefined;
+  time?: string | undefined;
+  location?: string;
 }
 
 const AnnouncementForm = ({
@@ -37,6 +38,7 @@ const AnnouncementForm = ({
   isEditing,
   date,
   time,
+  location,
 }: AddAnnouncementForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -64,6 +66,7 @@ const AnnouncementForm = ({
     id,
     date,
     time,
+    location,
   });
 
   const updateFormValue = (field: string, value: any) => {
@@ -158,7 +161,23 @@ const AnnouncementForm = ({
         </div>
       </div>
       {form.type === 'event' && (
-        <DateTimePicker updateFormValue={(field, value) => updateFormValue(field, value)}/>
+        <>
+          <DateTimePicker
+            updateFormValue={(field, value) => updateFormValue(field, value)}
+          />
+          <div className={AnnouncementFormItem}>
+            <label className={AnnouncementFormLabel} htmlFor="location">
+              {t('common.location')}
+            </label>
+            <InputText
+              type="text"
+              id="location"
+              defaultValue={form.title}
+              variant="default"
+              onChange={(e) => updateFormValue('location', e.target.value)}
+            />
+          </div>
+        </>
       )}
       {!isEditing ? (
         <div className={AnnouncementFormItem}>
