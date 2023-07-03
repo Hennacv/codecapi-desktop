@@ -89,7 +89,8 @@ const AnswerCard = ({
       </div>
       <CommentList
         comments={answer.comments}
-        answerId={answer.id}
+        id={answer.id}
+        type='answer'
         refetch={refetch}
       />
     </div>

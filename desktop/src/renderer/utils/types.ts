@@ -84,7 +84,9 @@ export type AddVoteDto = AddAnswerVoteDto | AddQuestionVoteDto | AddTrickVoteDto
 export interface AddCommentDto {
   comment: string;
   userId: number;
-  answerId: number;
+  answerId?: number;
+  tricksId?: number;
+  announcementsId?: number;
 }
 
 export interface User {
@@ -131,6 +133,7 @@ export interface Trick {
   createdAt: string;
   user: User;
   votes: Vote[];
+  comments: Comment[];
 }
 
 export interface Answer {
@@ -150,6 +153,7 @@ export interface Announcement {
   blocks: Block[];
   createdAt: string;
   user: User;
+  comments: Comment[];
 }
 
 export interface Comment {
