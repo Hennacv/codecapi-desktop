@@ -7,6 +7,7 @@ import {
   AnnouncementCardDescription,
   AnnouncementCardTitle,
   AnnouncementCardVariants,
+  AnnouncementCardPhotoVariants,
 } from './announcement-card-styles.css';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -32,9 +33,16 @@ const AnnouncementCard = ({
 
   return (
     <div
-      className={classNames(AnnouncementCardVariants.default, {
-        [AnnouncementCardVariants.defaultHover]: !details,
-      })}
+      style={{ backgroundImage: `url("${announcement.image}")` }}
+      className={
+        announcement.image
+          ? classNames(AnnouncementCardPhotoVariants.default, {
+              [AnnouncementCardPhotoVariants.defaultHover]: !details,
+            })
+          : classNames(AnnouncementCardVariants.default, {
+              [AnnouncementCardVariants.defaultHover]: !details,
+            })
+      }
       onClick={() => onPressCard(announcement)}
     >
       {announcement.type === 'general' && (
@@ -46,8 +54,14 @@ const AnnouncementCard = ({
       {announcement.type === 'event' && (
         <div className={AnnouncementCardContent}>
           <span className={AnnouncementCardTitle}>{announcement.title}</span>
-          <span className={AnnouncementCardDescription}>{t('common.date')}: {announcement.date}</span>
-          {announcement.location && <span className={AnnouncementCardDescription}>{t('common.location')}: {announcement.location}</span>}
+          <span className={AnnouncementCardDescription}>
+            {t('common.date')}: {announcement.date}
+          </span>
+          {announcement.location && (
+            <span className={AnnouncementCardDescription}>
+              {t('common.location')}: {announcement.location}
+            </span>
+          )}
           {details && <DynamicBlocksRead blocks={announcement.blocks} />}
         </div>
       )}

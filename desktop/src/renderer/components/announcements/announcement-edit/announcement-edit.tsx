@@ -47,6 +47,11 @@ const AnnouncementEdit = () => {
           blocks={data.blocks}
           id={data.id}
           isEditing={true}
+          type={data.type}
+          date={data.date}
+          time={data.time}
+          location={data.location}
+          image={data.image}
         />
       </div>
     </div>

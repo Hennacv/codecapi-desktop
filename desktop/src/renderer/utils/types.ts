@@ -157,6 +157,7 @@ export interface Announcement {
   date: string | undefined;
   time: string | undefined;
   location: string;
+  image: string;
   comments: Comment[];
 }
 

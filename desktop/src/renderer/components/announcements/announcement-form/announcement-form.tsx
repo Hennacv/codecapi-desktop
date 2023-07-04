@@ -19,6 +19,7 @@ import { useEditAnnouncement } from 'renderer/hooks/use-edit-announcement';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
 import Select from 'renderer/components/ui/select/select';
 import DateTimePicker from 'renderer/components/ui/date-time-picker/date-time-picker';
+import InputImage from 'renderer/components/ui/input-image/input-image';
 interface AddAnnouncementForm {
   title: string;
   blocks: Block[];
@@ -28,6 +29,7 @@ interface AddAnnouncementForm {
   date?: string | undefined;
   time?: string | undefined;
   location?: string;
+  image?: string;
 }
 
 const AnnouncementForm = ({
@@ -39,6 +41,7 @@ const AnnouncementForm = ({
   date,
   time,
   location,
+  image,
 }: AddAnnouncementForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -67,6 +70,7 @@ const AnnouncementForm = ({
     date,
     time,
     location,
+    image,
   });
 
   const updateFormValue = (field: string, value: any) => {
@@ -121,6 +125,7 @@ const AnnouncementForm = ({
           })}
           onChange={(e) => updateFormValue('type', e.target.value)}
           variant="medium"
+          language={type}
         />
       </div>
       <div className={AnnouncementFormItem}>
@@ -175,6 +180,14 @@ const AnnouncementForm = ({
               defaultValue={form.title}
               variant="default"
               onChange={(e) => updateFormValue('location', e.target.value)}
+            />
+          </div>
+          <div className={AnnouncementFormItem}>
+            <label className={AnnouncementFormLabel} htmlFor="image">
+              {t('common.image')}
+            </label>
+            <InputImage
+              updateFormValue={(field, value) => updateFormValue(field, value)}
             />
           </div>
         </>

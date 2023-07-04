@@ -2,12 +2,13 @@ import { useState } from 'react';
 import Button from '../button/button';
 import { useTranslation } from 'react-i18next';
 import { InputContainer, InputImageContainer } from './input-image-styles.css';
+import { useUploadImage } from 'renderer/hooks/use-upload-image';
 
 interface InputImageProps {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  updateFormValue: (field: string, value: any) => void;
 }
 
-const InputImage = ({ onChange }: InputImageProps) => {
+const InputImage = ({ updateFormValue }: InputImageProps) => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
@@ -32,12 +33,13 @@ const InputImage = ({ onChange }: InputImageProps) => {
         <input
           type="file"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            onChange(event);
+            useUploadImage(event)
             const input = event.target;
             if (!input.files?.length) {
               return;
             }
             const file = input.files[0];
+            updateFormValue('image', file.name);
             setSelectedImage(file);
           }}
         />

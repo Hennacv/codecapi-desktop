@@ -26,7 +26,8 @@
     "time": "Tijd",
     "date": "Datum",
     "location": "Locatie",
-    "remove": "Verwijder"
+    "remove": "Verwijder",
+    "image": "Afbeelding"
   },
   "toast": {
     "success": {

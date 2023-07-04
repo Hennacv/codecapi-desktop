@@ -1,5 +1,5 @@
-import { style } from "@vanilla-extract/css";
-import { vars } from "renderer/vars.css";
+import { style } from '@vanilla-extract/css';
+import { vars } from 'renderer/vars.css';
 
 export const AnnouncementFormContainer = style({
   width: vars.width.full,
@@ -30,6 +30,7 @@ export const AnnouncementFormSection = style({
   display: 'flex',
   flexDirection: 'column',
   gap: vars.spacing['2x'],
+  overflow: 'scroll',
 });
 
 export const AnnouncementFormItem = style({
