@@ -17,19 +17,31 @@ import {
 } from './announcement-form-styles.css';
 import { useEditAnnouncement } from 'renderer/hooks/use-edit-announcement';
 import { toastSuccess } from 'renderer/notifications/toast/show-toast-notification';
-
+import Select from 'renderer/components/ui/select/select';
+import DateTimePicker from 'renderer/components/ui/date-time-picker/date-time-picker';
+import InputImage from 'renderer/components/ui/input-image/input-image';
 interface AddAnnouncementForm {
   title: string;
   blocks: Block[];
+  type: string;
   id?: number;
   isEditing?: boolean;
+  date?: string | undefined;
+  time?: string | undefined;
+  location?: string;
+  image?: string;
 }
 
 const AnnouncementForm = ({
   title,
   blocks,
+  type,
   id,
   isEditing,
+  date,
+  time,
+  location,
+  image,
 }: AddAnnouncementForm) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -40,15 +52,25 @@ const AnnouncementForm = ({
     },
   });
   const editAnnouncement = useEditAnnouncement(id);
+  const types: Array<string> = ['general', 'event'];
 
   if (!blocks.length) {
     blocks = [{ position: 0, type: 'text', value: '', contents: '' }];
   }
 
+  if (!type) {
+    type = 'general';
+  }
+
   const [form, setForm] = useState<AddAnnouncementForm>({
     title,
+    type,
     blocks,
     id,
+    date,
+    time,
+    location,
+    image,
   });
 
   const updateFormValue = (field: string, value: any) => {
@@ -94,6 +116,19 @@ const AnnouncementForm = ({
   return (
     <form className={AnnouncementFormSection}>
       <div className={AnnouncementFormItem}>
+        <label className={AnnouncementFormLabel} htmlFor="type">
+          {t('announcement.new.page.type')}
+        </label>
+        <Select
+          options={types.map((type) => {
+            return { value: type, label: type };
+          })}
+          onChange={(e) => updateFormValue('type', e.target.value)}
+          variant="medium"
+          language={form.type}
+        />
+      </div>
+      <div className={AnnouncementFormItem}>
         <label className={AnnouncementFormLabel} htmlFor="title">
           {t('common.title')} *
         </label>
@@ -130,6 +165,33 @@ const AnnouncementForm = ({
           </Button>
         </div>
       </div>
+      {form.type === 'event' && (
+        <>
+          <DateTimePicker
+            updateFormValue={(field, value) => updateFormValue(field, value)}
+          />
+          <div className={AnnouncementFormItem}>
+            <label className={AnnouncementFormLabel} htmlFor="location">
+              {t('common.location')}
+            </label>
+            <InputText
+              type="text"
+              id="location"
+              defaultValue={form.title}
+              variant="default"
+              onChange={(e) => updateFormValue('location', e.target.value)}
+            />
+          </div>
+          <div className={AnnouncementFormItem}>
+            <label className={AnnouncementFormLabel} htmlFor="image">
+              {t('common.image')}
+            </label>
+            <InputImage
+              updateFormValue={(field, value) => updateFormValue(field, value)}
+            />
+          </div>
+        </>
+      )}
       {!isEditing ? (
         <div className={AnnouncementFormItem}>
           <Button

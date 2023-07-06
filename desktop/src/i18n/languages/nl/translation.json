@@ -22,7 +22,12 @@
     "announcements": "Aankondigingen",
     "team": "Team",
     "teamless": "Teamloos",
-    "remove": "Verwijder"
+    "events": "Evenementen",
+    "time": "Tijd",
+    "date": "Datum",
+    "location": "Locatie",
+    "remove": "Verwijder",
+    "image": "Afbeelding"
   },
   "toast": {
     "success": {
@@ -194,6 +199,7 @@
         "preview": "Aankondiging voorvertonen"
       },
       "page": {
+        "type": "Soort Aankondiging",
         "title": "Nieuwe Aankondiging",
         "description": "Gebruik het onderstaande formulier om een aankondiging door te geven aan alle medewerkers van CodeCapi."
       }

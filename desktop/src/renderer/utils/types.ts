@@ -150,9 +150,14 @@ export interface Answer {
 export interface Announcement {
   id: number;
   title: string;
+  type: string;
   blocks: Block[];
   createdAt: string;
   user: User;
+  date: string | undefined;
+  time: string | undefined;
+  location: string;
+  image: string;
   comments: Comment[];
 }
 
