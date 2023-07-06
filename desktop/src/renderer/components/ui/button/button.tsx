@@ -1,4 +1,4 @@
-import { LegacyRef, ReactNode } from 'react';
+import { ReactNode, RefObject } from 'react';
 import { ButtonVariants } from './button-styles.css';
 
 interface ButtonProps {
@@ -8,7 +8,7 @@ interface ButtonProps {
   variant: keyof typeof ButtonVariants;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  forwardRef?: LegacyRef<HTMLButtonElement>;
+  forwardRef?: RefObject<HTMLButtonElement>;
 }
 
 const Button = ({

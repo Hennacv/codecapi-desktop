@@ -31,8 +31,6 @@ const AnnouncementCard = ({
     navigate(`/announcements/${announcement.id}`);
   };
 
-  console.log(announcement)
-
   return (
     <div
       style={{ backgroundImage: `url("${AWS_ACCESS_URL + announcement.image}")` }}

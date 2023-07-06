@@ -113,6 +113,8 @@ const AnnouncementForm = ({
     }
   };
 
+  console.log(form)
+
   return (
     <form className={AnnouncementFormSection}>
       <div className={AnnouncementFormItem}>
@@ -125,7 +127,7 @@ const AnnouncementForm = ({
           })}
           onChange={(e) => updateFormValue('type', e.target.value)}
           variant="medium"
-          language={type}
+          language={form.type}
         />
       </div>
       <div className={AnnouncementFormItem}>

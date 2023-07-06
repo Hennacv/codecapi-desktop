@@ -22,6 +22,7 @@ const AnnouncementEdit = () => {
   if (!data) {
     return null;
   }
+  const {title, blocks, type, date,time, location, image} = data
 
   return (
     <div className={AnnouncementEditContainer}>
@@ -43,15 +44,15 @@ const AnnouncementEdit = () => {
           </p>
         </header>
         <AnnouncementForm
-          title={data.title}
-          blocks={data.blocks}
+          title={title}
+          blocks={blocks}
           id={data.id}
           isEditing={true}
-          type={data.type}
-          date={data.date}
-          time={data.time}
-          location={data.location}
-          image={data.image}
+          type={type}
+          date={date}
+          time={time}
+          location={location}
+          image={image}
         />
       </div>
     </div>

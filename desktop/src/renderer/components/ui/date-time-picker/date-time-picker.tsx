@@ -1,4 +1,4 @@
-import { LegacyRef, forwardRef, useEffect, useState } from 'react';
+import { RefObject, forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from '../button/button';
@@ -41,7 +41,7 @@ const DateTimePicker = ({ updateFormValue }: DateTimeProps) => {
       variant="small"
       type="button"
       onClick={onClick}
-      forwardRef={ref as LegacyRef<HTMLButtonElement>}
+      forwardRef={ref as RefObject<HTMLButtonElement>}
     >
       <IconCalendar variant="default" />
       {value}
@@ -53,7 +53,7 @@ const DateTimePicker = ({ updateFormValue }: DateTimeProps) => {
       variant="small"
       type="button"
       onClick={onClick}
-      forwardRef={ref as LegacyRef<HTMLButtonElement>}
+      forwardRef={ref as RefObject<HTMLButtonElement>}
     >
       <IconTime variant="default" />
       {value}
