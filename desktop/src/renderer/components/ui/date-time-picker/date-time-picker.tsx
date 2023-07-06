@@ -36,29 +36,27 @@ const DateTimePicker = ({ updateFormValue }: DateTimeProps) => {
     day: 'numeric',
   } as DateProp;
 
-  const CustomDate = forwardRef(({ value, onClick }: CustomInputProp, ref) => (
-    <Button
-      variant="small"
-      type="button"
-      onClick={onClick}
-      forwardRef={ref as RefObject<HTMLButtonElement>}
-    >
-      <IconCalendar variant="default" />
-      {value}
-    </Button>
-  ));
+  const CustomDate = forwardRef<HTMLButtonElement, CustomInputProp>(
+    ({ value, onClick }, ref) => {
+      return (
+        <Button variant="small" type="button" onClick={onClick} ref={ref}>
+          <IconCalendar variant="default" />
+          {value}
+        </Button>
+      );
+    }
+  );
 
-  const CustomTime = forwardRef(({ value, onClick }: CustomInputProp, ref) => (
-    <Button
-      variant="small"
-      type="button"
-      onClick={onClick}
-      forwardRef={ref as RefObject<HTMLButtonElement>}
-    >
-      <IconTime variant="default" />
-      {value}
-    </Button>
-  ));
+  const CustomTime = forwardRef<HTMLButtonElement, CustomInputProp>(
+    ({ value, onClick }, ref) => {
+      return (
+        <Button variant="small" type="button" onClick={onClick} ref={ref}>
+          <IconTime variant="default" />
+          {value}
+        </Button>
+      );
+    }
+  );
 
   return (
     <div className={DateTimeContainer}>

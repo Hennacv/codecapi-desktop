@@ -113,8 +113,6 @@ const AnnouncementForm = ({
     }
   };
 
-  console.log(form)
-
   return (
     <form className={AnnouncementFormSection}>
       <div className={AnnouncementFormItem}>

@@ -1,4 +1,4 @@
-import { ReactNode, RefObject } from 'react';
+import { MutableRefObject, ReactNode, forwardRef } from 'react';
 import { ButtonVariants } from './button-styles.css';
 
 interface ButtonProps {
@@ -8,29 +8,22 @@ interface ButtonProps {
   variant: keyof typeof ButtonVariants;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  forwardRef?: RefObject<HTMLButtonElement>;
 }
 
-const Button = ({
-  text,
-  children,
-  type,
-  variant,
-  disabled,
-  onClick,
-  forwardRef,
-}: ButtonProps) => {
-  return (
-    <button
-      className={ButtonVariants[variant]}
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-      ref={forwardRef}
-    >
-      {!text ? children : text}
-    </button>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ text, children, type, variant, disabled, onClick }, ref) => {
+    return (
+      <button
+        className={ButtonVariants[variant]}
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
+        ref={ref}
+      >
+        {!text ? children : text}
+      </button>
+    );
+  }
+);
 
 export default Button;
