@@ -7,7 +7,7 @@ const BaseSideStyles = style({
   height: '100vh',
   backgroundColor: vars.color['dark-200'],
   position: 'relative',
-  transition: 'width 300ms',
+  transition: 'width 400ms',
 });
 
 const BaseToggleContainer = style({
@@ -27,7 +27,7 @@ const BaseToggleContainer = style({
 
 export const SideStyles = styleVariants({
   basic: [BaseSideStyles, { width: 300 }],
-  collapsed: [BaseSideStyles, { width: 80 }],
+  collapsed: [BaseSideStyles, { width: 80, transition: 'width 450ms' }],
 });
 
 export const AsideStyles = style({
