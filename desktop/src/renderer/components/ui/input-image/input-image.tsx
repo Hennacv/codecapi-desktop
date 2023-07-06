@@ -14,7 +14,7 @@ const InputImage = ({ updateFormValue }: InputImageProps) => {
 
   return (
     <div className={InputContainer}>
-      {selectedImage?.name && (
+      {selectedImage && (
         <div className={InputImageContainer}>
           <img
             alt="not found"
@@ -40,7 +40,9 @@ const InputImage = ({ updateFormValue }: InputImageProps) => {
             }
             const file = input.files[0];
             updateFormValue('image', file.name);
-            setSelectedImage(file);
+            setTimeout(() => {
+              setSelectedImage(file);
+            }, 300);
           }}
         />
     </div>

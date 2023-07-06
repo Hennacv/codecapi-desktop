@@ -31,9 +31,11 @@ const AnnouncementCard = ({
     navigate(`/announcements/${announcement.id}`);
   };
 
+  console.log(announcement)
+
   return (
     <div
-      style={{ backgroundImage: `url("${announcement.image}")` }}
+      style={{ backgroundImage: `url("${AWS_ACCESS_URL + announcement.image}")` }}
       className={
         announcement.image
           ? classNames(AnnouncementCardPhotoVariants.default, {
