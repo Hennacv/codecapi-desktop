@@ -85,7 +85,7 @@ export interface AddCommentDto {
   comment: string;
   userId: number;
   answerId?: number;
-  tricksId?: number;
+  trickId?: number;
   announcementsId?: number;
 }
 

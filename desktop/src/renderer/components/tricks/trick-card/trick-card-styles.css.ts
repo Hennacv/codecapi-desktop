@@ -47,5 +47,5 @@ export const TrickCardTitle = style({
 export const TrickCardButtonsContainer = style({
   display: 'flex',
   flexDirection: 'row',
-  gap: vars.spacing['0.25x'],
+  gap: vars.spacing['0.5x'],
 });

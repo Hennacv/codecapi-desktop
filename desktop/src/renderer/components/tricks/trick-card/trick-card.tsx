@@ -29,7 +29,7 @@ const TrickCard = ({ trick, refetch }: TrickCardProps) => {
   const { user } = useUserContext();
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(false);
-  
+
   return (
     <div className={TrickContainer}>
       <div className={TrickCardContainer}>
@@ -39,35 +39,37 @@ const TrickCard = ({ trick, refetch }: TrickCardProps) => {
             <span>-</span>
             {dayjs(trick.createdAt).fromNow()}
           </div>
-          {trick.user.uid === user.uid && (
-            <div className={TrickCardButtonsContainer}>
-              <Button
-                type="button"
-                variant="smallSquare"
-                onClick={() => navigate(`/tricks/edit/${trick.id}`)}
-              >
-                <IconEdit variant="default" />
-              </Button>
-              <Button
-                type="button"
-                variant="smallSquareDelete"
-                onClick={() => setIsShown(true)}
-              >
-                <IconDelete variant="default" />
-              </Button>
-              <TrickDelete
-                id={trick.id.toString()}
-                isShown={isShown}
-                onClose={() => setIsShown(false)}
-                refetch={refetch}
-              />
-            </div>
-          )}
-          {/* <VoteList
-          votes={trick.votes}
-          trickId={trick.id}
-          refetch={refetch}
-        /> */}
+          <div className={TrickCardButtonsContainer}>
+            <VoteList
+              votes={trick.votes}
+              trickId={trick.id}
+              refetch={refetch}
+            />
+            {trick.user.uid === user.uid && (
+              <>
+                <Button
+                  type="button"
+                  variant="extraSmallSquare"
+                  onClick={() => navigate(`/tricks/edit/${trick.id}`)}
+                >
+                  <IconEdit variant="small" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="extraSmallSquareDelete"
+                  onClick={() => setIsShown(true)}
+                >
+                  <IconDelete variant="small" />
+                </Button>
+                <TrickDelete
+                  id={trick.id.toString()}
+                  isShown={isShown}
+                  onClose={() => setIsShown(false)}
+                  refetch={refetch}
+                />
+              </>
+            )}
+          </div>
         </div>
         <div className={TrickCardContent}>
           <span className={TrickCardTitle}>{trick.title}</span>
@@ -75,11 +77,11 @@ const TrickCard = ({ trick, refetch }: TrickCardProps) => {
         </div>
       </div>
       <CommentList
-        comments={trick.comments}
-        id={trick.id}
-        type="trick"
-        refetch={refetch}
-      />
+          comments={trick.comments}
+          id={trick.id}
+          type="trick"
+          refetch={refetch}
+        />
     </div>
   );
 };

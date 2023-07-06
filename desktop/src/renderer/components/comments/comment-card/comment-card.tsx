@@ -59,7 +59,7 @@ const CommentCard = ({ comment, userUid, refetch }: CommentCardProps) => {
       </div>
       {comment.user.uid === userUid && (
         <div className={CommentCardDelete}>
-          <Button type="button" variant="commentDelete" onClick={handleDeleteComment}>
+          <Button type="button" variant="extraSmallSquareDelete" onClick={handleDeleteComment}>
             <IconDelete variant="small" />
           </Button>
         </div>
