@@ -118,6 +118,7 @@ const UserEdit: React.FC<EditProfileProps> = ({ user, id }) => {
           })}
           onChange={(e) => updateProfileValue('team', e.target.value)}
           variant="medium"
+          language={userProfile.team}
         />
       </div>
       <div className={ProfileFormItem}>

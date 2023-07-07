@@ -60,6 +60,7 @@ export interface EditProfileDto {
   name: string;
   description: string;
   tags: { id: number }[];
+  team: string;
 }
 
 interface BaseVoteDto {

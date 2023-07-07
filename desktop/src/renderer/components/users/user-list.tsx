@@ -58,7 +58,7 @@ const UserList = () => {
       </div>
       <div className={UserCardsContainer}>
         {filteredUsers
-          .sort((a, b) => a.id - b.id)
+          .sort((a, b) => a.name.localeCompare(b.name))
           .map((user: User, index) => (
             <UserCard user={user} key={index} />
           ))}
