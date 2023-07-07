@@ -82,7 +82,7 @@ const DateTimePicker = ({ updateFormValue }: DateTimeProps) => {
           selected={startTime}
           onChange={(time) => {
             setStartTime(time);
-            updateFormValue('time', time?.toLocaleTimeString('it-IT'));
+            updateFormValue('time', time?.toLocaleTimeString('it-IT', { hour: "2-digit", minute: "2-digit" }));
           }}
           showTimeSelect
           showTimeSelectOnly
