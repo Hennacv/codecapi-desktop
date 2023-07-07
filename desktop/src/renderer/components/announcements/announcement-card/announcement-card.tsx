@@ -55,7 +55,7 @@ const AnnouncementCard = ({
         <div className={AnnouncementCardContent}>
           <span className={AnnouncementCardTitle}>{announcement.title}</span>
           <span className={AnnouncementCardDescription}>
-            {t('common.date')}: {announcement.date}
+            {t('common.date')}: {announcement.date} {t('common.at')} {announcement.time}
           </span>
           {announcement.location && (
             <span className={AnnouncementCardDescription}>

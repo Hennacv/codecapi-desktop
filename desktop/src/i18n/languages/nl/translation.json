@@ -27,7 +27,8 @@
     "date": "Datum",
     "location": "Locatie",
     "remove": "Verwijder",
-    "image": "Afbeelding"
+    "image": "Afbeelding",
+    "at": "om"
   },
   "toast": {
     "success": {
