@@ -13,8 +13,13 @@ export const mainContainer = style({
 export const contentContainer = style({
   width: vars.width.full,
   height: vars.height.page,
-  overflow: 'hidden',
+  overflow: 'scroll',
   padding: vars.spacing['2x'],
   overflowY: 'auto',
   position: 'relative',
+  selectors: {
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    }
+  }
 });

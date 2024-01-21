@@ -35,4 +35,9 @@ export const ModalContent = style({
   maxHeight: '80vh',
   overflow: 'scroll',
   gap: vars.spacing['2x'],
+  selectors: {
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    }
+  }
 });
